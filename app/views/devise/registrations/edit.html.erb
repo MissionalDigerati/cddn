@@ -15,6 +15,33 @@
   <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
   <%= f.password_field :current_password %></div>
 
+	<div><%= f.label :first_name %><br />
+  <%= f.text_field :first_name %></div>
+
+	<div><%= f.label :last_name %><br />
+  <%= f.text_field :last_name %></div>
+
+	<div><%= f.label :nickname %><br />
+  <%= f.text_field :nickname %></div>
+
+	<div><%= f.label :primary_role %><br />
+  <%= f.text_field :primary_role %></div>
+
+	<div><%= f.label :church %><br />
+  <%= f.text_field :church %></div>
+
+	<div><%= f.label :city_province %><br />
+  <%= f.text_field :city_province %></div>
+
+	<div><%= f.label :state_id %><br />
+  <%= f.text_field :state_id %></div>
+
+	<div><%= f.label :country_id %><br />
+  <%= f.text_field :country_id %></div>
+
+	<div><%= f.label :bio %><br />
+  <%= f.text_area :bio, rows: 5 %></div>
+
   <div><%= f.submit "Update" %></div>
 <% end %>
 
