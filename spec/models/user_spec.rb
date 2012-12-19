@@ -20,8 +20,8 @@ describe User do
     end
     
     it "should allow users to input data about themselves" do
-      user = FactoryGirl.create(:defaulted_user)
-      user.update(:first_name => "fred").should be_valid
+      user = FactoryGirl.create(:defaulted_user, first_name: "rory", last_name: "williams", nickname: "the nose", primary_role: "developer", church: "mormon", bio: "text")
+      user.first_name.should == "rory"
     end
   end
   
