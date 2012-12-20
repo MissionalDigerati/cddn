@@ -23,6 +23,16 @@ describe User do
       user = FactoryGirl.create(:defaulted_user, first_name: "rory", last_name: "williams", nickname: "the nose", primary_role: "developer", church: "mormon", bio: "text")
       user.first_name.should == "rory"
     end
+    
+    it "should require a unique email address" do
+      amy = FactoryGirl.create(:defaulted_user, email: "AmyPond@tardis.net")
+      FactoryGirl.build(:defaulted_user, email: "AmyPond@tardis.net", nickname: "the legs").should_not be_valid
+    end
+    
+    it "should require the uniqueness of a nickname" do
+      rory = FactoryGirl.create(:defaulted_user, nickname: "the nose")
+      FactoryGirl.build(:defaulted_user, email: "testing@fake.com", nickname: "the nose").should_not be_valid
+    end
   end
   
 end

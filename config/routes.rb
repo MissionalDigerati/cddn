@@ -1,5 +1,7 @@
 Cddn::Application.routes.draw do
   devise_for :users
+  resources :users
+  match 'users/dashboard/:id' => 'users#dashboard', method: :get, as: :users_dashboard
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
