@@ -33,6 +33,11 @@ describe User do
       rory = FactoryGirl.create(:defaulted_user, nickname: "the nose")
       FactoryGirl.build(:defaulted_user, email: "testing@fake.com", nickname: "the nose").should_not be_valid
     end
+    
+    it "nil nickname issue validation test" do
+      nick = FactoryGirl.create(:defaulted_user, nickname: nil)
+      FactoryGirl.create(:defaulted_user, email: "testing@fake.com", nickname: nil).should be_valid
+    end
   end
   
 end
