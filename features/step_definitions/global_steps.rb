@@ -36,7 +36,7 @@ Given /^I am a user "(.*?)" and I am logged in$/ do |username|
   click_button "Sign in"
 end
 
-When /^I visit the brag page for "(.*?)"$/ do |username|
-  user = User.where(first_name: username).first
-  visit user_path(user)
+
+Then /^I should not see "(.*?)"$/ do |text|
+  page.should_not have_content text
 end

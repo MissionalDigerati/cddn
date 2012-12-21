@@ -52,7 +52,23 @@ Feature: A user should be able to manage their account and have certain pages an
 		Given I have a user "brag_test"
 		When I visit the brag page for "brag_test"
 		Then I should see "brag_test nickname"
-		# should be able to view own dashboard 
-		# should be able to view brag page 
-		# 		should be able to view others brag page
-		# 		should not be able to view others dashboard
+		
+	Scenario: A logged in user should be able to access only their dashboard
+		Given I have a user "Fred"
+		And I am a user "authentication_test" and I am logged in
+		When I click the "Home | Dashbaord" link
+		Then I should see "authentication_test"
+		And I should not see "Fred"
+		Then I visit the user dash board for "Fred"
+		And I should not see "Fred"
+		And I should see "authentication_test"
+		
+	Scenario: A user that is not logged in should not be able to access anyone's dashboard
+		Given I have a user "dashboard_test"
+		And I am on the home page
+		When I visit the user dash board for "dashboard_test"
+		Then I should be on the user sign in page
+		And I should see "You need to sign in or sign up before continuing."
+		# And I should still be on the user dash board for "authentication_test"
+		
+		#should not be able to view others dashboard
