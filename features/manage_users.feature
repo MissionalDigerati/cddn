@@ -24,6 +24,18 @@ Feature: A user should be able to manage their account and have certain pages an
 		Then I should be on the user sign in page
 		And I should see "Invalid email or password."
 		
+	Scenario: A user should be able to login to their account
+		Given I have a user "login_test"
+		And I am on the home page
+		When I click the "Login" link
+		Then I should be on the user sign in page
+		When I fill in "Email" with "login_test@example.com"
+		And I fill in "Password" with "testing123"
+		And I click the "Sign in" button
+		Then I should be on the home page
+		And I should see "Signed in successfully."
+		And I should see "Logged in as user@test.com"
+		
 		# should be able to view own dashboard 
 		# should be able to view brag page 
 		# 		should be able to view others brag page
