@@ -34,8 +34,24 @@ Feature: A user should be able to manage their account and have certain pages an
 		And I click the "Sign in" button
 		Then I should be on the home page
 		And I should see "Signed in successfully."
-		And I should see "Logged in as user@test.com"
+		And I should see "Logged in as login_test@example.com"
 		
+	Scenario: A user should be able to edit their account info
+		Given I am a user "edit_account_info" and I am logged in
+		And I am on the home page
+		When I click the "Home | Dashbaord" link
+		Then I should see "dashboard"
+		And I should see "edit_account_info@example.com"
+		When I click the "Edit account info" link
+		And I fill in "Email" with "updated_email@test.com"
+		And I fill in "Current password" with "secretpassword1000"
+		And I click the "Update" button
+		Then I should see "You updated your account successfully."
+		
+	Scenario: A users brag page should be viewable publicly or by other members
+		Given I have a user "brag_test"
+		When I visit the brag page for "brag_test"
+		Then I should see "brag_test nickname"
 		# should be able to view own dashboard 
 		# should be able to view brag page 
 		# 		should be able to view others brag page

@@ -21,3 +21,22 @@ end
 Then /^I should see "(.*?)"$/ do |text|
   page.should have_content text
 end
+
+Given /^I have a user "(.*?)"$/ do |username|
+  FactoryGirl.create(:defaulted_user, first_name: username, email: username + "@example.com", password: "testing123", nickname: username + " nickname")
+end
+
+Given /^I am a user "(.*?)" and I am logged in$/ do |username|
+  password = 'secretpassword1000'
+  FactoryGirl.create(:defaulted_user, first_name: username, email: username + "@example.com", password: password, bio: "bio")
+
+  visit '/users/sign_in'
+  fill_in "user_email", :with=> username + "@example.com"
+  fill_in "user_password", :with=>password
+  click_button "Sign in"
+end
+
+When /^I visit the brag page for "(.*?)"$/ do |username|
+  user = User.where(first_name: username).first
+  visit user_path(user)
+end
