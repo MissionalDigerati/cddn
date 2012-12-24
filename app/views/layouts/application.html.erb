@@ -7,11 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<% if user_signed_in? && current_user.please_update == false %>
+		Please Update your contact info.
+		<br/>
+	<% end %>
+	
 	<% if user_signed_in? %>
 	  Logged in as <strong><%= current_user.email %></strong>.
 	  <%= link_to 'Edit account', edit_user_registration_path %> |
-	  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-		<%= link_to "Home | Dashbaord", users_dashboard_path(current_user) %>
+	  <%= link_to "Logout", destroy_user_session_path, method: :delete %> |
+		<%= link_to "Home | Dashbaord", users_dashboard_path(current_user) %> |
+		<%= link_to "View Profile", user_path(current_user) %>
 	<% else %>
 	  <%= link_to "Sign up", new_user_registration_path %> |
 	  <%= link_to "Login", new_user_session_path %>
