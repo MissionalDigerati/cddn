@@ -42,6 +42,8 @@
 	<div><%= f.label :bio %><br />
   <%= f.text_area :bio, rows: 5 %></div>
 
+	<div><%= f.hidden_field :please_update, value: true %><br /></div>
+
   <div><%= f.submit "Update" %></div>
 <% end %>
 

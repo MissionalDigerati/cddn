@@ -69,6 +69,25 @@ Feature: A user should be able to manage their account and have certain pages an
 		When I visit the user dash board for "dashboard_test"
 		Then I should be on the user sign in page
 		And I should see "You need to sign in or sign up before continuing."
-		# And I should still be on the user dash board for "authentication_test"
+		
+	Scenario: A user should see please update contact info message until dismissed 
+		Given I am a user "please_update_test_one" and I am logged in
+		And I am on the home page
+		Then I should see "Please update your contact info."
+		When I click the "Dismiss" link
+		Then I should be on the home page
+		And I should not see "Please update your contact info."
+	
+	Scenario: A user should see please update contact info until they update their account
+		Given I am a user "please_update_test" and I am logged in
+		And I am on the home page 
+		Then I should see "Please update your contact info."
+		When I click the "Edit account" link
+		And I fill in "Current password" with "secretpassword1000"
+		And I click the "Update" button
+		Then I should be on the home page
+		And I should not see "Please update your contact info."
+		And I should see "You updated your account successfully."
+		
 		
 		#should not be able to view others dashboard

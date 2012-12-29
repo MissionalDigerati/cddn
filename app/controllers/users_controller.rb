@@ -9,4 +9,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
+  def please_update
+    @user = User.find(params[:id])
+    @user[:please_update] = true
+    @user.save
+    redirect_to :back
+  end
 end
