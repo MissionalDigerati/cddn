@@ -1,0 +1,7 @@
+<% if user_signed_in? && current_user.please_update == false %>
+	<div class="please_update">
+	Please update your contact info.
+	<br/>
+	<%= link_to "Dismiss", please_update_user_path(current_user), method: :put %>
+	</div>
+<% end %>

@@ -7,13 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<% if user_signed_in? && current_user.please_update == false %>
-		<div class="please_update">
-		Please update your contact info.
-		<br/>
-		<%= link_to "Dismiss", please_update_user_path(current_user), method: :put %>
-		</div>
-	<% end %>
+	<%= render "layouts/please_update_banner" %>
 	
 	<% if user_signed_in? %>
 	  Logged in as <strong><%= current_user.email %></strong>.
