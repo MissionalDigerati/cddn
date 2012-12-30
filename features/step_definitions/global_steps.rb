@@ -40,3 +40,12 @@ end
 Then /^I should not see "(.*?)"$/ do |text|
   page.should_not have_content text
 end
+
+Then /^I should see "([^"]*)" in the "([^"]*)" input$/ do |content, labeltext|
+    find_field("#{labeltext}").value.should == content
+end
+
+Then /^I should not see "(.*?)" in the "(.*?)" input$/ do |content, labeltext|
+  find_field("#{labeltext}").value.should_not == content
+end
+

@@ -20,3 +20,13 @@ Then /^I should still be on the user dash board for "(.*?)"$/ do |username|
   user = User.where(first_name: username).first
   page.current_path.should == users_dashboard_path(user)
 end
+
+Then /^I should be on the dashboard for "(.*?)"$/ do |username|
+  user = User.where(first_name: username).first
+  page.current_path.should == users_dashboard_path(user)
+end
+
+When /^I access the "(.*?)" edit page$/ do |username|
+  user = User.where(first_name: username).first
+  visit edit_user_path(user)
+end

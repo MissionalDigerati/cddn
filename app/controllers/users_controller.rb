@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, only: [:dashboard]
+  before_filter :authenticate_user!, only: [:dashboard, :edit]
   
   def dashboard
   end
@@ -7,6 +7,22 @@ class UsersController < ApplicationController
   #this will be the brag page / the user show page.
   def show
     @user = User.find(params[:id])
+  end
+  
+  def edit
+    @user = current_user
+  end
+  
+  def update
+    @user = current_user
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.html {redirect_to users_dashboard_path(current_user), notice: "Your account information has been updated."}
+      else
+        format.html {render actionL "edit"}
+        flash[:notice] = @user.errors if @user.errors.present?
+      end
+    end
   end
   
   def please_update
