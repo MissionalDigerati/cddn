@@ -20,7 +20,7 @@ Feature: A user should be able to manage their account and have certain pages an
 		Then I should be on the user sign in page
 		When I fill in "Email" with "invalid"
 		And I fill in "Password" with "stupid3432"
-		And I click the "Sign in" button
+		And I click the "sign_in_normally" button
 		Then I should be on the user sign in page
 		And I should see "Invalid email or password."
 		
@@ -31,7 +31,7 @@ Feature: A user should be able to manage their account and have certain pages an
 		Then I should be on the user sign in page
 		When I fill in "Email" with "login_test@example.com"
 		And I fill in "Password" with "testing123"
-		And I click the "Sign in" button
+		And I click the "sign_in_normally" button
 		Then I should be on the home page
 		And I should see "Signed in successfully."
 		And I should see "Logged in as login_test@example.com"

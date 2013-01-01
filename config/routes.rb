@@ -1,5 +1,5 @@
 Cddn::Application.routes.draw do
-  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_for :users, :controllers => {:registrations => "registrations"}, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   resources :users do
     member do
       put "please_update"
