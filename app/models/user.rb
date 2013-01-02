@@ -14,12 +14,14 @@ class User < ActiveRecord::Base
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
-      user.nickname = auth.nickname
+      user.nickname = auth.info.nickname
       user.email = auth.uid + "twitter@noemailprovided.com"
     end
   end
   
-  
+  #a session prefisex with devise. will be automaticall taken care of devise, there is no need to remove it. (according to railscasts)
+  #This methon is not called, rather it is a hook, incase the hash containing the user auth data is somehow faulty (does not pass validations)
+  #the user will be bounced to a page where they can update that information according to the error message. 
   def self.new_with_session(params, session)
     if session["devise.user_attributes"]
       new(session["devise.user_attributes"], without_protection: true) do |user|

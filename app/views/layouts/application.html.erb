@@ -10,7 +10,7 @@
 	<%= render "layouts/please_update_banner" %>
 	
 	<% if user_signed_in? %>
-	  Logged in as <strong><%= current_user.email %></strong>.
+	  Logged in as <strong><%= logged_in_as(current_user) %></strong>.
 	  <%= link_to 'Edit basic account info', edit_user_path(current_user) %> |
 		<%= link_to 'Change password', edit_user_registration_path %> |
 	  <%= link_to "Logout", destroy_user_session_path, method: :delete %> |
