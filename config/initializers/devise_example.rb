@@ -208,6 +208,7 @@
 #   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
 #   config.omniauth :twitter, "key goes here", "secret goes here"
 #   config.omniauth :github, "key goes here", "secret goes here"
+#   config.omniauth :facebook, "key goes here", "secret goes here"
 # 
 #   # ==> Warden configuration
 #   # If you want to use other strategies, that are not supported by Devise, or
