@@ -10,30 +10,13 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   validates_uniqueness_of :nickname, allow_nil: true, allow_blank: true
   
-  def self.from_twitter(auth)
-    where(auth.slice(:provider, :uid)).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.nickname = auth.info.nickname
-      user.email = auth.uid + "twitter@noemailprovided.com"
-    end
-  end
   
-  def self.from_github(auth)
+  def self.omniauth_all(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
-      user.nickname = auth.info.nickname
-      user.email = auth.info.email
-    end
-  end
-  
-  def self.from_facebook(auth)
-    where(auth.slice(:provider, :uid)).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.nickname = auth.info.name
-      user.email = auth.info.email
+      auth.provider == "facebook" ? user.nickname = auth.info.name : user.nickname = auth.info.nickname
+      auth.info.email.present? ? user.email = auth.info.email : user.email = auth.uid + "@noemailprovided.com"
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
     end

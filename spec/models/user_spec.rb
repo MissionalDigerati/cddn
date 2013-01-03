@@ -40,12 +40,41 @@ describe User do
     end
   end
   
-  # context "methods" do
-  #     it "should return a user instance with user information" do
-  # 
-  #       user = User.from_twitter(user_hash)
-  #       user.uid.should == "100004291362982"
-  #     end
-  #   end
+  context "methods" do
+    
+    it "should return a twitter instance if twitter is the provider. Please note there is no email provided here and therefore creates an email address" do
+      user_hash = OmniAuth.config.add_mock(:twitter, info: {nickname: "fred"})
+      user = User.omniauth_all(user_hash)
+      user.uid.should == "1234"
+      user.provider.should == "twitter"
+      user.email.should == "1234@noemailprovided.com"
+      user.nickname.should == "fred"
+      user.first_name.should == nil
+      user.last_name.should == nil
+    end
+    
+    it "should return github instance if github is the provider. Please note that email is provided here" do
+      user_hash = OmniAuth.config.add_mock(:github, info: {nickname: 'hank', email: "user@githubexample.com"})
+      user = User.omniauth_all(user_hash)
+      user.uid.should == "1234"
+      user.provider.should == "github"
+      user.email.should == "user@githubexample.com"
+      user.nickname.should == "hank"
+      user.first_name.should == nil
+      user.last_name.should == nil
+    end
+    
+    it "should return a facbook instance if facebook is the provider. It should also use the name params as the users nickname as facebook is the provider" do
+      user_hash = OmniAuth.config.add_mock(:facebook, info: {nickname: 'martin.mcfly.56679', first_name: 'fred', last_name: 'flintstone', name: 'fred flintstone', email: "user@facebookexample.com"})
+      user = User.omniauth_all(user_hash)
+      user.uid.should == "1234"
+      user.provider.should == "facebook"
+      user.email.should == "user@facebookexample.com"
+      user.nickname.should == "fred flintstone"
+      user.first_name.should == "fred"
+      user.last_name.should == "flintstone"
+    end
+    
+  end
   
 end
