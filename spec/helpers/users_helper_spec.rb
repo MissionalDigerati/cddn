@@ -1,15 +1,17 @@
 require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the UsersHelper. For example:
-#
-# describe UsersHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
-# describe UsersHelper do
-#   pending "add some examples to (or delete) #{__FILE__}"
-# end
+describe ApplicationHelper do
+  context "methods" do
+    
+    it "should retrun the user's nickname and provider rather than the email" do
+      user = FactoryGirl.build(:defaulted_user, email: nil, encrypted_password: nil,  provider: "twitter", nickname: "Nickname123")
+      logged_in_as(user).should == "Nickname123 from twitter"
+    end
+    
+    it "should return the user's email becuase the nickname and provider are not present" do
+      user = FactoryGirl.build(:defaulted_user, email: "123fake@emailtest.com", provider: nil, nickname: nil)
+      logged_in_as(user).should == "123fake@emailtest.com"
+    end
+    
+  end
+end
