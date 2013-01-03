@@ -21,6 +21,7 @@ group :assets do
   gem 'devise'
   gem 'omniauth-twitter'
   gem 'omniauth-github'
+  gem 'omniauth-facebook'
 end
 
 gem 'jquery-rails'

@@ -10,7 +10,7 @@ Feature: A user should be able to manage their account and have certain pages an
 		And I fill in "user_password" with "secret1"
 		And I fill in "user_password_confirmation" with "secret1"
 		And I click the "Sign up now!" button
-		Then I should be on the home page
+		Then I should be redirected to the dashboard for "user@test.com"
 		And I should see "Welcome! You have signed up successfully."
 		And I should see "Logged in as user@test.com"
 		
@@ -32,7 +32,7 @@ Feature: A user should be able to manage their account and have certain pages an
 		When I fill in "Email" with "login_test@example.com"
 		And I fill in "Password" with "testing123"
 		And I click the "sign_in_normally" button
-		Then I should be on the home page
+		Then I should be redirected to the dashboard for "login_test@example.com"
 		And I should see "Signed in successfully."
 		And I should see "Logged in as login_test@example.com"
 		

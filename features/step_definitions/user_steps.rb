@@ -30,3 +30,7 @@ When /^I access the "(.*?)" edit page$/ do |username|
   user = User.where(first_name: username).first
   visit edit_user_path(user)
 end
+Then /^I should be redirected to the dashboard for "(.*?)"$/ do |user_email|
+  user = User.where(email: user_email).first
+  page.current_path.should == users_dashboard_path(user)
+end

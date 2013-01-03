@@ -40,4 +40,12 @@ describe User do
     end
   end
   
+  # context "methods" do
+  #     it "should return a user instance with user information" do
+  # 
+  #       user = User.from_twitter(user_hash)
+  #       user.uid.should == "100004291362982"
+  #     end
+  #   end
+  
 end

@@ -28,6 +28,17 @@ class User < ActiveRecord::Base
     end
   end
   
+  def self.from_facebook(auth)
+    where(auth.slice(:provider, :uid)).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.nickname = auth.info.name
+      user.email = auth.info.email
+      user.first_name = auth.info.first_name
+      user.last_name = auth.info.last_name
+    end
+  end
+  
   #a session prefisex with devise. will be automaticall taken care of devise, there is no need to remove it. (according to railscasts)
   #This methon is not called, rather it is a hook, incase the hash containing the user auth data is somehow faulty (does not pass validations)
   #the user will be bounced to a page where they can update that information according to the error message. 

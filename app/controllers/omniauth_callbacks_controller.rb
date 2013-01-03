@@ -6,7 +6,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     user = User.from_twitter(request.env["omniauth.auth"])
     if user.persisted?
       flash.notice = "Signed in with Twitter!"
-      sign_in_and_redirect user
+      sign_in user
+      redirect_to users_dashboard_path(user)
     else
       session["devise.user_attributes"] = user.attributes
       redirect_to new_user_registration_url
@@ -18,7 +19,21 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     user = User.from_github(request.env["omniauth.auth"])
     if user.persisted?
       flash.notice = "Signed in with Github!"
-      sign_in_and_redirect user
+      sign_in user
+      redirect_to users_dashboard_path(user)
+    else
+      session["devise.user_attributes"] = user.attributes
+      redirect_to new_user_registration_url
+    end
+  end
+  
+  def facebook
+    # raise request.env["omniauth.auth"].to_yaml
+    user= User.from_facebook(request.env["omniauth.auth"])
+    if user.persisted?
+      flash.notice = "Signed in with Facebook!"
+      sign_in user
+      redirect_to users_dashboard_path(user)
     else
       session["devise.user_attributes"] = user.attributes
       redirect_to new_user_registration_url
