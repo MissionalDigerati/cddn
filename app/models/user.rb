@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :nickname, allow_nil: true, allow_blank: true
   
   
+  #if the provider is facebook then it sets the user's nickname to the facebook name (which is the users first and last name)
+  #if no email is provided then one is generated for the sake of requiring one on the cddn appliation
   def self.omniauth_all(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
