@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, only: [:dashboard, :edit]
+  before_filter :user_suspended, except: [:show]
   
   def dashboard
   end

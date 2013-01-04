@@ -30,3 +30,14 @@ When /^I click the "(.*?)" button for "(.*?)"$/ do |link, title|
   end
 end
 
+Given /^I am a user "(.*?)" and I am logged in and I have a suspended account$/ do |email_prefix|
+  password = 'secretpassword1000'
+  user = FactoryGirl.create(:defaulted_admin, email: email_prefix + "@cddn.com", password: password)
+  user.save
+  
+  visit '/admins/sign_in'
+  fill_in "Email", with: email_prefix + "@cddn.com"
+  fill_in "Password", with: password
+  click_button "Sign in"
+end
+

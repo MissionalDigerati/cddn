@@ -62,3 +62,15 @@ Feature: An admin should be able to login as well as well as delete and suspend 
 	 	And I should see "user_to_be_suspended"
 	 	When I click the "Suspend" button for "user_to_be_suspended"
 	 	Then I should see "User has been suspended."
+	
+	
+	Scenario: A user that is suspended should not be able to edit basic account info or access the dashboard
+	 	Given I am a user "suspended_account_test" and I am logged in and I have a suspended account
+		And I am on the home page
+		When I click the "Home | Dashbaord" link
+		Then I should be on the home page
+		And I should see "Your account has been suspended please contact us for any additional information."
+		When I click the "Edit basic account info" link
+		Then I should be on the home page
+		And I should see "Your account has been suspended please contact us for any additional information."
+		
