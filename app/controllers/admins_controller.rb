@@ -1,7 +1,7 @@
 class AdminsController < ApplicationController
-  before_filter :authenticate_admin!, only: [:users_index]
+  before_filter :authenticate_admin!, only: [:index]
   
-  def users_index
+  def index
     @users = User.all
   end
 end

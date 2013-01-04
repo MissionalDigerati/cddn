@@ -17,7 +17,7 @@ Given /^I have an admin account "(.*?)" and I am logged in$/ do |email_prefix|
 end
 
 When /^I try to access the admin user index page$/ do
-  visit admins_users_index_path
+  visit admins_path
 end
 
 Then /^I should be on the admin sign in page$/ do

@@ -1,0 +1,38 @@
+<br/>
+<br/>
+<br/>
+<br/>
+This is the users index
+<br/>
+<br/>
+
+<table>
+	<td>Email</td>
+	<td>First Name</td>
+	<td>Last Name</td>
+	<td>NickName</td>
+	<td>Church</td>
+	<td>City</td>
+	<td>Primary Role</td>
+	<td>Login Provider</td>
+	<td>Sign In Count</td>
+	<td>Last sign in at</td>
+	<td>Last sign in ip</td>
+	<td>Action</td>
+
+<% @users.each do |user| %>
+<tr>
+	<td><%= user.email %></td>
+	<td><%= user.first_name %></td>
+	<td><%= user.last_name %></td>
+	<td><%= user.nickname %></td>
+	<td><%= user.church %></td>
+	<td><%= user.city_province %></td>
+	<td><%= user.primary_role %></td>
+	<td><%= user.provider %></td>
+	<td><%= user.sign_in_count %></td>
+	<td><%= user.last_sign_in_at %></td>
+	<td><%= user.last_sign_in_ip %></td>
+</tr>
+<% end %>
+</table>
