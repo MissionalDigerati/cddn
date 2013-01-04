@@ -42,3 +42,13 @@ Feature: An admin should be able to login as well as well as delete and suspend 
 		When I try to access the admin user index page
 		Then I should be on the admin sign in page
 		And I should see "You need to sign in or sign up before continuing."
+		
+	Scenario: An admin should be able to delete a user
+		Given I have an admin account "admin_delete_user" and I am logged in
+		And I have a user "user_to_be_deleted"
+		And I should be on the home page
+		When I click the "Users index" link
+		Then I should see "This is the users index"
+		And I should see "user_to_be_deleted"
+		When I click the "Delete" button for "user_to_be_deleted"
+		Then I should see "User has been deleted."

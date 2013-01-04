@@ -23,3 +23,10 @@ end
 Then /^I should be on the admin sign in page$/ do
   page.current_path.should == new_admin_session_path
 end
+
+When /^I click the "(.*?)" button for "(.*?)"$/ do |link, title|
+  within(:xpath, "//table/tr[contains(.,'#{title}')]") do
+    click_link link
+  end
+end
+

@@ -33,6 +33,7 @@ This is the users index
 	<td><%= user.sign_in_count %></td>
 	<td><%= user.last_sign_in_at %></td>
 	<td><%= user.last_sign_in_ip %></td>
+	<td><%= link_to "Delete", admin_path(user), method: :delete %></td>
 </tr>
 <% end %>
 </table>
