@@ -6,7 +6,7 @@ This is the users index
 <br/>
 <br/>
 
-<table>
+<table class="table table-striped">
 	<td>Status</td>
 	<td>Email</td>
 	<td>First Name</td>
@@ -35,7 +35,7 @@ This is the users index
 	<td><%= user.sign_in_count %></td>
 	<td><%= user.last_sign_in_at %></td>
 	<td><%= user.last_sign_in_ip %></td>
-	<td><%= link_to "Delete", admin_path(user), method: :delete %> <%= link_to "Suspend", suspend_admin_path(user), method: :put %></td>
+	<td><%= link_to "Delete", admin_path(user), method: :delete, class: "btn btn-danger btn-mini" %> <%= link_to "Suspend", suspend_admin_path(user), method: :put, class: "btn btn-warning btn-mini" %></td>
 </tr>
 <% end %>
 </table>

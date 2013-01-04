@@ -1,0 +1,17 @@
+<div class="navbar navbar-inverse">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="/">Cddn</a>
+			<ul class="nav">
+				<li><%= link_to 'Edit basic account info', edit_user_path(current_user) %> </li>
+				<li><%= link_to 'Change password', edit_user_registration_path %> </li>
+				<li><%= link_to "Logout", destroy_user_session_path, method: :delete %> </li>
+				<li><%= link_to "Home | Dashbaord", users_dashboard_path(current_user) %> </li>
+				<li><%= link_to "View Profile", user_path(current_user) %></li>
+			</ul>
+		</div>
+	</div>
+</div>
+Logged in as <strong><%= logged_in_as(current_user) %></strong>.
+
+
