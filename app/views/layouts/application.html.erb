@@ -12,6 +12,8 @@
 	<% if admin_signed_in? %>
 		Signed in as admin: <b><%= current_admin.email %></b>
 		<br/>
+		<%= link_to "Users index", admins_users_index_path %>
+		<br/>
 		<%= link_to "Admin logout", destroy_admin_session_path, method: :delete %>
 		</br/>
 	<% end %>

@@ -1,5 +1,6 @@
 Cddn::Application.routes.draw do
   devise_for :admins
+  get 'admins/users_index'
 
   devise_for :users, :controllers => {:registrations => "registrations"}, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   resources :users do

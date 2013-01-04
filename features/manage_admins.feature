@@ -1,6 +1,7 @@
-Feature: An admin should be able to login as well as well as delete and suspend users, however a visitor should not be able to create an admin account
+Feature: An admin should be able to login as well as well as delete and suspend users, however a visitor should not be able to create an admin account. Users should not be able to access admin functionality
 	As an admin
 	I want to be able to manage user accounts as well as login and out
+	I do not want users or visitors to be able to access admin functionality
 	
 	Scenario: An admin should be able to login 
 		Given I have an admin account "admin_login_test"
@@ -20,3 +21,24 @@ Feature: An admin should be able to login as well as well as delete and suspend 
 		Then I should be on the home page
 		And I should see "Signed out successfully."
 		And I should not see "Signed in as admin: admin_logout_test@cddn.com"
+		
+	Scenario: An admin should be able to view the users index page
+		Given I have an admin account "admin_index" and I am logged in
+		And I have a user "admin_index_user"
+		And I should be on the home page
+		When I click the "Users index" link
+		Then I should see "This is the users index"
+		And I should see "admin_index_user"
+		
+	Scenario: A user that is logged in should not be able to access the admin index page
+		Given I am a user "user_index_test" and I am logged in
+		And I am on the home page
+		When I try to access the admin user index page
+		Then I should be on the admin sign in page
+		And I should see "You need to sign in or sign up before continuing."
+		
+	Scenario: A visitor to the site should not be able to access the admin index page
+		Given I am on the home page
+		When I try to access the admin user index page
+		Then I should be on the admin sign in page
+		And I should see "You need to sign in or sign up before continuing."
