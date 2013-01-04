@@ -52,3 +52,13 @@ Feature: An admin should be able to login as well as well as delete and suspend 
 		And I should see "user_to_be_deleted"
 		When I click the "Delete" button for "user_to_be_deleted"
 		Then I should see "User has been deleted."
+		
+	Scenario: An admin should be able to suspend a user
+	 	Given I have an admin account "admin_suspend_test" and I am logged in
+	 	And I have a user "user_to_be_suspended"
+	 	And I should be on the home page
+	 	When I click the "Users index" link
+	 	Then I should see "This is the users index"
+	 	And I should see "user_to_be_suspended"
+	 	When I click the "Suspend" button for "user_to_be_suspended"
+	 	Then I should see "User has been suspended."

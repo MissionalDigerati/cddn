@@ -7,6 +7,7 @@ This is the users index
 <br/>
 
 <table>
+	<td>Status</td>
 	<td>Email</td>
 	<td>First Name</td>
 	<td>Last Name</td>
@@ -22,6 +23,7 @@ This is the users index
 
 <% @users.each do |user| %>
 <tr>
+	<td><%= user.suspended %></td>
 	<td><%= user.email %></td>
 	<td><%= user.first_name %></td>
 	<td><%= user.last_name %></td>
@@ -33,7 +35,7 @@ This is the users index
 	<td><%= user.sign_in_count %></td>
 	<td><%= user.last_sign_in_at %></td>
 	<td><%= user.last_sign_in_ip %></td>
-	<td><%= link_to "Delete", admin_path(user), method: :delete %></td>
+	<td><%= link_to "Delete", admin_path(user), method: :delete %> <%= link_to "Suspend", suspend_admin_path(user), method: :put %></td>
 </tr>
 <% end %>
 </table>
