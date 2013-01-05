@@ -42,7 +42,7 @@ describe User do
   
   context "methods" do
     
-    it "should return a twitter instance if twitter is the provider. Please note there is no email provided here and therefore creates an email address" do
+    it "should return a twitter instance if twitter is the provider." do
       user_hash = OmniAuth.config.add_mock(:twitter, info: {nickname: "fred"})
       user = User.omniauth_all(user_hash)
       user.uid.should == "1234"
@@ -53,7 +53,7 @@ describe User do
       user.last_name.should == nil
     end
     
-    it "should return github instance if github is the provider. Please note that email is provided here" do
+    it "should return github instance if github is the provider." do
       user_hash = OmniAuth.config.add_mock(:github, info: {nickname: 'hank', email: "user@githubexample.com"})
       user = User.omniauth_all(user_hash)
       user.uid.should == "1234"
@@ -64,7 +64,7 @@ describe User do
       user.last_name.should == nil
     end
     
-    it "should return a facbook instance if facebook is the provider. It should also use the name params as the users nickname as facebook is the provider" do
+    it "should return a facbook instance if facebook is the provider" do
       user_hash = OmniAuth.config.add_mock(:facebook, info: {nickname: 'martin.mcfly.56679', first_name: 'fred', last_name: 'flintstone', name: 'fred flintstone', email: "user@facebookexample.com"})
       user = User.omniauth_all(user_hash)
       user.uid.should == "1234"
@@ -73,6 +73,26 @@ describe User do
       user.nickname.should == "fred flintstone"
       user.first_name.should == "fred"
       user.last_name.should == "flintstone"
+    end
+    
+    it "should use the name paramater if facebook is the proider instead of nickname like twitter or github would use" do
+      user_hash = OmniAuth.config.add_mock(:facebook, info: {nickname: 'martin.mcfly.56679', name: 'fred flintstone'})
+      user = User.omniauth_all(user_hash)
+      user.nickname.should == "fred flintstone"
+      user.nickname.should_not == "martin.mcfly.56679"
+    end
+    
+    it "should create an email with information from the hash if an email is not provided" do
+      user_hash = OmniAuth.config.add_mock(:github, uid: "1234", info: {nickname: 'hank', email: nil})
+      user = User.omniauth_all(user_hash)
+      user.email.should == "1234@noemailprovided.com"
+    end
+    
+    it "should use the email address if one is provided and not generate one with the uid" do
+      user_hash = OmniAuth.config.add_mock(:github, uid: "1234", info: {nickname: 'hank', email: "userexample@github.com"})
+      user = User.omniauth_all(user_hash)
+      user.email.should == "userexample@github.com"
+      user.email.should_not == "1234@noemailprovided.com"
     end
     
   end
