@@ -16,3 +16,4 @@
 
 # Ignore the devise.rb file that contains the social network key and secrets
 /config/initializers/devise.rb
+.rvmrc
