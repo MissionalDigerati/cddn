@@ -1,8 +1,8 @@
-<div class="alert">
-	<% if user_signed_in? && current_user.please_update == false %>
+<% if user_signed_in? && current_user.please_update == false %>
+	<div class="alert">
 		<div class="please_update">
 		Please update your contact info.
 		<%= link_to "Dismiss.", please_update_user_path(current_user), method: :put, class: "pull-right" %>
 		</div>
-	<% end %>
-</div>
+	</div>
+<% end %>
