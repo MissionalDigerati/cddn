@@ -1,9 +1,22 @@
 Cddn::Application.routes.draw do
-  devise_for :admins
-  resources :admins do
-    member do
-      put "suspend"
+  # devise_for :admins
+  #   resources :admins do
+  #     member do
+  #       put "suspend"
+  #     end
+  #   end
+  
+  scope '/admin' do
+    devise_for :admins
+  end
+  
+  namespace 'admin'do 
+    resources :users do
+      member do
+        put "suspend"
+      end
     end
+    
   end
   
   devise_for :users, :controllers => {:registrations => "registrations"}, controllers: {omniauth_callbacks: "omniauth_callbacks"}

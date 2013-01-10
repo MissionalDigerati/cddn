@@ -10,14 +10,14 @@ Given /^I have an admin account "(.*?)" and I am logged in$/ do |email_prefix|
   password = 'secretpassword1000'
   FactoryGirl.create(:defaulted_admin, email: email_prefix + "@cddn.com", password: password)
 
-  visit '/admins/sign_in'
+  visit '/admin/admins/sign_in'
   fill_in "Email", with: email_prefix + "@cddn.com"
   fill_in "Password", with: password
   click_button "Sign in"
 end
 
 When /^I try to access the admin user index page$/ do
-  visit admins_path
+  visit admin_users_path
 end
 
 Then /^I should be on the admin sign in page$/ do

@@ -1,0 +1,6 @@
+Signed in as admin: <b><%= current_admin.email %></b>
+<br/>
+<%= link_to "Users index", admin_users_path %>
+<br/>
+<%= link_to "Admin logout", destroy_admin_session_path, method: :delete %>
+<br/>
