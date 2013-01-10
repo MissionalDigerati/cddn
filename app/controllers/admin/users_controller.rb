@@ -14,9 +14,15 @@ class Admin::UsersController < ApplicationController
   
   def suspend
     @user = User.find(params[:id])
-    @user[:suspended] = true
-    @user.save
-    flash[:notice] = "User has been suspended."
+    if @user.suspended == false
+      @user[:suspended] = true
+      @user.save
+      flash[:notice] = "User has been suspended."
+    else
+      @user[:suspended] = false
+      @user.save
+      flash[:notice] = "User has been un-suspended."
+    end
     redirect_to :back
   end
   

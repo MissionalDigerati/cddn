@@ -35,7 +35,7 @@ This is the users index
 	<td><%= user.sign_in_count %></td>
 	<td><%= user.last_sign_in_at %></td>
 	<td><%= user.last_sign_in_ip %></td>
-	<td><%= link_to "Delete", admin_user_path(user), method: :delete, class: "btn btn-mini btn-danger" %> <%= link_to "Suspend User", suspend_admin_user_path(user), method: :put, class: "btn btn-mini btn-warning" %></td>
+	<td><%= link_to "Delete", admin_user_path(user), method: :delete, class: "btn btn-mini btn-danger" %> <%= suspend_button(user) %></td>
 </tr>
 <% end %>
 </table>

@@ -40,3 +40,6 @@ Given /^I am a user "(.*?)" and I am logged in and I have a suspended account$/ 
   click_button "Sign in"
 end
 
+Given /^I have a user "(.*?)" and they are suspended$/ do |username|
+    FactoryGirl.create(:defaulted_user, first_name: username, email: username + "@example.com", password: "testing123", nickname: username + " nickname", suspended: true)
+end

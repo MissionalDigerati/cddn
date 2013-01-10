@@ -11,5 +11,17 @@ require 'spec_helper'
 #   end
 # end
 describe Admin::UsersHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "methods" do
+    
+    it "should return the suspend user button if the user is active" do
+      user = FactoryGirl.create(:defaulted_user)
+      suspend_button(user).should == "<a href=\"/admin/users/1/suspend\" class=\"btn btn-mini btn-warning\" data-method=\"put\" rel=\"nofollow\">Suspend</a>"
+    end
+    
+    it "should return the un suspend user button if the user is currently suspended" do
+      user = FactoryGirl.create(:defaulted_user, suspended: true)
+      suspend_button(user).should == "<a href=\"/admin/users/1/suspend\" class=\"btn btn-mini btn-info\" data-method=\"put\" rel=\"nofollow\">Un-suspend</a>"
+    end
+    
+  end
 end
