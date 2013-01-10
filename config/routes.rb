@@ -1,10 +1,4 @@
 Cddn::Application.routes.draw do
-  # devise_for :admins
-  #   resources :admins do
-  #     member do
-  #       put "suspend"
-  #     end
-  #   end
   
   scope '/admin' do
     devise_for :admins
@@ -16,8 +10,9 @@ Cddn::Application.routes.draw do
         put "suspend"
       end
     end
-    
   end
+  
+  match "/admin" => redirect("/admin/admins/sign_in")
   
   devise_for :users, :controllers => {:registrations => "registrations"}, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   resources :users do

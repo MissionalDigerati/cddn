@@ -14,10 +14,12 @@
 	
 	<% if user_signed_in? %>
 	  <%= render "layouts/user_logged_in_nav" %>
-	<% else %>
+	<% end %>
+	
+	<% if !admin_signed_in? && !user_signed_in? %>
+		<%= link_to "Home", root_path %> |
 	  <%= link_to "Sign up", new_user_registration_path %> |
 	  <%= link_to "Login", new_user_session_path %>
-		<%= link_to "Home", root_path %>
 		<br/><br/>
 	<% end %>
 	
