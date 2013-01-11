@@ -1,0 +1,37 @@
+<br/>
+<br/>
+<div class="span3 offset6">
+	<%= form_for(@event) do |f| %>
+	<div><%= f.label :title %><br />
+	<%= f.text_field :title %></div>
+	
+	<div><%= f.label :details %>
+	<%= f.text_area :details, rows: 5 %></div>
+	
+	<div><%= f.label :address_1 %>
+	<%= f.text_field :address_1 %></div>
+	
+	<div><%= f.label :address_2 %>
+	<%= f.text_field :address_2 %></div>
+	
+	<div><%= f.label :city_province %>
+	<%= f.text_field :city_province %></div>
+	
+	<div><%= f.label :state_id %>
+	<%= f.text_field :state_id %></div>
+	
+	<div><%= f.label :country_id %>
+	<%= f.text_field :country_id %></div>
+	
+	<div><%= f.label :zip_code %>
+	<%= f.text_field :zip_code %></div>
+	
+	<div><%= f.label :online_event %>
+	<%= f.check_box :online_event %></div>
+	
+	<br/>
+	
+	<div><%= f.submit "Submit" %></div>
+
+	<% end %>
+</div>

@@ -20,6 +20,7 @@ Cddn::Application.routes.draw do
       put "please_update"
     end
   end
+  resources :events
   match 'users/dashboard/:id' => 'users#dashboard', method: :get, as: :users_dashboard
 
   # The priority is based upon order of creation:
