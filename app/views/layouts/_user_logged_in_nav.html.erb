@@ -8,10 +8,11 @@
 				<li><%= link_to 'Edit basic account info', edit_user_path(current_user) %> </li>
 				<li><%= link_to 'Change password', edit_user_registration_path %> </li>
 				<li><%= link_to 'New Event', new_event_path %> </li>
+				<li><%= link_to 'All Events', events_path %> </li>
 			</ul>
 			
 			<ul class="nav pull-right">
-				<li><%= link_to "Logged in as #{logged_in_as(current_user)}", class: "pull-right" %></li>
+				<li><%= link_to "Logged in as #{logged_in_as(current_user)}", "#", class: "pull-right" %></li>
 				<li><%= link_to "Logout", destroy_user_session_path, method: :delete %> </li>
 			</ul>
 			

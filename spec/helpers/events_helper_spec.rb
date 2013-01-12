@@ -9,7 +9,7 @@ require 'spec_helper'
 #       helper.concat_strings("this","that").should == "this that"
 #     end
 #   end
+# # end
+# describe EventsHelper do
+#   pending "add some examples to (or delete) #{__FILE__}"
 # end
-describe EventsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
-end

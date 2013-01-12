@@ -1,0 +1,21 @@
+Listing all events
+<table class="table table-striped table-bordered">
+	<tr>
+		<td>Title</td>
+		<td>Details</td>
+		<td>City</td>
+		<td>State</td>
+		<td>Country</td>
+		<td>Online Event</td>
+		<td>Action</td>
+	</tr>
+	<% @events.each do |event| %>
+		<td><%= event.title %></td>
+		<td><%= event.details %></td>
+		<td><%= event.city_province %></td>
+		<td><%= event.state_id %></td>
+		<td><%= event.country_id %></td>
+		<td><%= event.online_event %></td>
+		<td>Action</td>
+	<% end %>
+</table>
