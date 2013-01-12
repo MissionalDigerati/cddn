@@ -3,4 +3,6 @@
 FactoryGirl.define do
   factory :attendee do
   end
+  factory :defaulted_attendee, :parent => :attendee do
+  end
 end

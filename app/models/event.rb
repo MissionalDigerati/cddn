@@ -4,6 +4,6 @@ class Event < ActiveRecord::Base
   
   attr_accessible :title, :details, :address_1, :address_2, :city_province, :state_id, :country_id, :zip_code, :online_event
 
-  validates :title, :address_1, :city_province, :state_id, :country_id, :zip_code, :presence => true
+  validates :title, :address_1, :city_province, :state_id, :country_id, :zip_code, presence: true
   
 end

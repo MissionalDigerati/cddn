@@ -10,14 +10,11 @@ class EventsController < ApplicationController
   end
   
   def create
-    @user = current_user
+    @user = current_user.id
     @event = Event.new(params[:event])
     respond_to do |format|
       if @event.save
-        @attendee = @event.attendees.new
-        @attendee.user_id = current_user.id 
-        @attendee.attendee_type = "creator"
-        @attendee.save
+        Attendee.creator(@user, @event)
         format.html {redirect_to users_dashboard_path(current_user)}
         flash[:notice] = "Your Event has been created!"
       else
