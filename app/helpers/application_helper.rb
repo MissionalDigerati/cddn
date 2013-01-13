@@ -8,4 +8,16 @@ module ApplicationHelper
     end
   end
   
+  
+  def attendee_creator_name(event)
+    creator = event.attendees.find_by_attendee_type("creator").user
+    if creator.nickname.present?
+      creator.nickname
+    elsif creator.first_name.present?
+      creator.first_name
+    else
+      creator.email
+    end
+  end
+  
 end

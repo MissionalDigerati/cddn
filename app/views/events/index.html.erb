@@ -16,6 +16,6 @@ Listing all events
 		<td><%= event.state_id %></td>
 		<td><%= event.country_id %></td>
 		<td><%= event.online_event %></td>
-		<td>Action</td>
+		<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %></td>
 	<% end %>
 </table>

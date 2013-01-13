@@ -44,3 +44,20 @@ Feature: A logged in user should be able to create events as state they are atte
 		And I have an event "visitor event index test"
 		When I visit the events index page
 		Then I should see "visitor event index test"
+		
+	Scenario: A user that is logged in should be able to visit a show page for their own event
+		Given I am a user "event_show_test", and I have an event "show_testing_self_test", and I am logged in
+		And I am on the home page
+		When I click the "All Events" button
+		Then I should be on the events index page
+		And I should see "show_testing_self_test"
+		When I click the "View Event" button
+		Then I should see "This event was created by: event_show_test@cddn.com"
+		
+	Scenario: A visitor that is not logged in should be able to view a show page for an event
+		Given I am a user "event_show_test_for_visitor", and I have an event "show_testing_visitor_test", and I am not logged in 
+		And I am on the home page
+		When I visit the events index page
+		Then I should see "show_testing_visitor_test"
+		When I click the "View Event" button
+		Then I should see "This event was created by: event_show_test_for_visitor@cddn.com"

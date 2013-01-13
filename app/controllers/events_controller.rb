@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :authenticate_user!, except: [:index]
+  before_filter :authenticate_user!, except: [:index, :show]
   
   def index
     @events = Event.all
@@ -7,6 +7,10 @@ class EventsController < ApplicationController
   
   def new
     @event = Event.new
+  end
+  
+  def show
+    @event = Event.find(params[:id])
   end
   
   def create
@@ -23,8 +27,5 @@ class EventsController < ApplicationController
       end
     end
   end
-  
-
-  #<Attendee id: nil, user_id: nil, event_id: nil, attendee_type: nil, created_at: nil, updated_at: nil> 
   
 end
