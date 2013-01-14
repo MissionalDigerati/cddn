@@ -9,6 +9,7 @@
 				<li><%= link_to 'Change password', edit_user_registration_path %> </li>
 				<li><%= link_to 'New Event', new_event_path %> </li>
 				<li><%= link_to 'All Events', events_path %> </li>
+				<li><%= link_to 'My Events', my_events_event_path(current_user) %></li>
 			</ul>
 			
 			<ul class="nav pull-right">

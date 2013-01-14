@@ -28,4 +28,8 @@ class EventsController < ApplicationController
     end
   end
   
+  def my_events
+    @current_user_attendee_creator = Attendee.where("user_id = #{current_user.id} AND attendee_type = 'creator'")
+  end
+  
 end
