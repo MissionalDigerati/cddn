@@ -10,7 +10,11 @@ Cddn::Application.routes.draw do
         put "suspend"
       end
     end
-    resources :events
+    resources :events do
+      member do
+        get "event_to_approve"
+      end
+    end
   end
   
   match "/admin" => redirect("/admin/admins/sign_in")

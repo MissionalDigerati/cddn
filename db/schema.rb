@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130110214530) do
+ActiveRecord::Schema.define(:version => 20130115090303) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20130110214530) do
     t.string   "provider"
     t.string   "uid"
     t.boolean  "suspended",              :default => false
+    t.boolean  "event_approved",         :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

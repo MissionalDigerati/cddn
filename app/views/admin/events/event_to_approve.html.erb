@@ -1,0 +1,41 @@
+<br/>
+<br/>
+<br/>
+<br/>
+This is the index for users needing approval
+<br/>
+<br/>
+
+<table class="table table-striped table-bordered">
+	<td>Email</td>
+	<td>First Name</td>
+	<td>Last Name</td>
+	<td>NickName</td>
+	<td>Status</td>
+	<td>Church</td>
+	<td>City</td>
+	<td>Primary Role</td>
+	<td>Login Provider</td>
+	<td>Sign In Count</td>
+	<td>Last sign in at</td>
+	<td>Last sign in ip</td>
+	<td>Action</td>
+
+<% @users.each do |user| %>
+<tr>
+	<td><%= user.email %></td>
+	<td><%= user.first_name %></td>
+	<td><%= user.last_name %></td>
+	<td><%= user.nickname %></td>
+	<td><%= user.suspended %></td>
+	<td><%= user.church %></td>
+	<td><%= user.city_province %></td>
+	<td><%= user.primary_role %></td>
+	<td><%= user.provider %></td>
+	<td><%= user.sign_in_count %></td>
+	<td><%= user.last_sign_in_at %></td>
+	<td><%= user.last_sign_in_ip %></td>
+	<td><%= link_to "Delete", admin_user_path(user), method: :delete, class: "btn btn-mini btn-danger" %> <%= suspend_button(user) %></td>
+</tr>
+<% end %>
+</table>

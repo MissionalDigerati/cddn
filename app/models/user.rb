@@ -52,4 +52,15 @@ class User < ActiveRecord::Base
     end
   end
   
+  
+  def self.users_event_approval(users)
+    users_needing_approval = Array.new
+    users.each do |user|
+      if user.attendees.where(attendee_type: 'creator').present?
+       users_needing_approval << user
+      end 
+    end
+    users_needing_approval
+  end
+  
 end

@@ -12,4 +12,10 @@ class Admin::EventsController < ApplicationController
     flash[:notice] = "Event has been deleted."
     redirect_to :back
   end
+  
+  def event_to_approve
+    @users = User.users_event_approval(User.where(event_approved: false))
+    puts @users
+  end
+  
 end
