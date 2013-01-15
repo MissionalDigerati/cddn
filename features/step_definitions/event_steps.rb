@@ -36,3 +36,13 @@ Given /^I am a user "(.*?)", and I have an event "(.*?)", and I am not logged in
   event = FactoryGirl.create(:defaulted_event, title: event)
   attendee = FactoryGirl.create(:defaulted_attendee, user_id: user.id, event_id: event.id, attendee_type: "creator")
 end
+
+When /^I try to access the my events page for "(.*?)"$/ do |email_prefix|
+  user = User.find_by_email(email_prefix + "@cddn.com")
+  visit my_events_event_path(user)
+end
+
+When /^I try to access the edit event page for "(.*?)"$/ do |event_title|
+  event = Event.find_by_title(event_title)
+  visit edit_event_path(event)
+end

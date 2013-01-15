@@ -61,3 +61,50 @@ Feature: A logged in user should be able to create events as state they are atte
 		Then I should see "show_testing_visitor_test"
 		When I click the "View Event" button
 		Then I should see "This event was created by: event_show_test_for_visitor@cddn.com"
+		
+	Scenario: A user should be able to view their events on the my index page
+		Given I am a user "my_events_show", and I have an event "my_events_show_test", and I am logged in
+		And I am on the home page
+		When I click the "My Events" button
+		And I should see "my_events_show_test" 
+		
+	Scenario: A visitor that is not logged in should not be able to view a users my events index page
+		Given I am a user "my_event_visitor", and I have an event "my_event_visitor_test", and I am not logged in 
+		And I am on the home page
+		When I try to access the my events page for "my_event_visitor"
+		Then I should be on the user sign in page
+		And I should see "You need to sign in or sign up before continuing."
+
+	Scenario: A user that is logged in should not be able to view another users my event page
+		Given I am a user "my_event_user", and I have an event "my_event_user_test", and I am not logged in 
+		And I am a user "testing123", and I have an event "testing999", and I am logged in
+		And I am on the home page
+		When I click the "My Events" button
+		Then I should see "testing999"
+		And I should not see "my_event_user_test"
+		When I try to access the my events page for "my_event_user"
+		Then I should see "testing999"
+		And I should not see "my_event_user_test"
+		
+	Scenario: A visitor that is not logged in should not be to edit another users event
+		Given I am a user "edit_event_visitor", and I have an event "edit_event_visitor_test", and I am not logged in 
+		And I am on the home page
+		When I try to access the edit event page for "edit_event_visitor_test"
+		Then I should be on the user sign in page
+		And I should see "You need to sign in or sign up before continuing."
+		
+	Scenario: A user that is logged in should not be able to edit another users event
+		Given I am a user "edit_event_user", and I have an event "edit_event_visitor_user", and I am not logged in 
+		And I am a user "testing123", and I have an event "testing999", and I am logged in
+		And I am on the home page
+		When I try to access the edit event page for "edit_event_visitor_user"
+		Then I should be on the home page
+		And I should see "Unable to process your request."
+	
+  Scenario: A user should be able to delete their events
+  	Given I am a user "my_events_delete", and I have an event "my_events_delete_test", and I am logged in
+  	And I am on the home page
+  	When I click the "My Events" button
+  	And I should see "my_events_delete_test"
+		When I click the "Delete Event" button for "my_events_delete_test"
+		Then I should see "Your event was successfully deleted."

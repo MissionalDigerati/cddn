@@ -29,7 +29,13 @@ class EventsController < ApplicationController
   end
   
   def edit
-    @event = Event.find(params[:id])
+    @attendee = Attendee.where("event_id = ? AND attendee_type = ?", params[:id], "creator").first
+    if @attendee.user_id == current_user.id
+      @event = Event.find(params[:id])
+    else
+      redirect_to root_path
+      flash[:notice] = "Unable to process your request."
+    end
   end
   
   def update
