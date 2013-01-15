@@ -1,4 +1,4 @@
-Feature: An admin should be able to login as well as well as delete and suspend users, however a visitor should not be able to create an admin account. Users should not be able to access admin functionality
+Feature: An admin should be able to login as well as well as delete and suspend users, however a visitor should not be able to create an admin account. Users should not be able to access admin functionality. An admin should also be able to delete events. They should also be able to approve users for the creation of events. 
 	As an admin
 	I want to be able to manage user accounts as well as login and out
 	I do not want users or visitors to be able to access admin functionality
@@ -82,4 +82,33 @@ Feature: An admin should be able to login as well as well as delete and suspend 
 		When I click the "Edit basic account info" link
 		Then I should be on the home page
 		And I should see "Your account has been suspended please contact us for any additional information."
+	
+	Scenario: An admin should be able to view all events through the event index, and should be able to delete them at will
+		Given I am a user "test1", and I have an event "admin index 1", and I am not logged in 
+		And I am a user "test2", and I have an event "admin index 2", and I am not logged in 
+		And I am a user "test3", and I have an event "admin index 3", and I am not logged in 
+		And I have an admin account "Admin delete event test" and I am logged in
+		And I am on the home page
+		When I click the "Events index" button
+		Then I should see "admin index 1"
+		Then I should see "admin index 2"
+		Then I should see "admin index 3"
+		When I click the "Delete Event" button for "admin index 1"
+		Then I should see "Event has been deleted."
+		And I should see "admin index 2"
+		And I should see "admin index 3"
+		And I should not see "admin index 1"
+		
+	Scenario: A user that is logged in should not be able to access the admin event index page
+		Given I am a user "admin_event_index" and I am logged in
+		When I try to access the admin event index page
+		Then I should be on the admin sign in page
+		And I should see "You need to sign in or sign up before continuing."
+		
+ 	Scenario: A visitor that is not logged in should not be able to access the admin event index page
+ 		Given I am on the home page
+ 		When I try to access the admin event index page
+ 		Then I should be on the admin sign in page
+ 		And I should see "You need to sign in or sign up before continuing."
+		
 		

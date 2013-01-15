@@ -43,3 +43,7 @@ end
 Given /^I have a user "(.*?)" and they are suspended$/ do |username|
     FactoryGirl.create(:defaulted_user, first_name: username, email: username + "@example.com", password: "testing123", nickname: username + " nickname", suspended: true)
 end
+
+When /^I try to access the admin event index page$/ do
+  visit admin_events_path
+end
