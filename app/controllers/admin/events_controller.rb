@@ -1,5 +1,5 @@
 class Admin::EventsController < ApplicationController
-  before_filter :authenticate_admin!, only: [:index, :destroy]
+  before_filter :authenticate_admin!, only: [:index, :destroy, :event_to_approve, :allow_event_posting]
   def index
     @events = Event.all
   end
@@ -15,7 +15,20 @@ class Admin::EventsController < ApplicationController
   
   def event_to_approve
     @users = User.users_event_approval(User.where(event_approved: false))
-    puts @users
+  end
+  
+  def allow_event_posting
+    @user = User.find(params[:id])
+    if @user.event_approved == false
+      @user[:event_approved] = true
+      @user.save
+      flash[:notice] = "User has been approved to post events."
+    else
+      @user[:event_approved] = false
+      @user.save
+      flash[:notice] = "User has been un-approed for returning events."
+    end
+    redirect_to :back
   end
   
 end

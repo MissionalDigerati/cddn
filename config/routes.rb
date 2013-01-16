@@ -13,6 +13,7 @@ Cddn::Application.routes.draw do
     resources :events do
       member do
         get "event_to_approve"
+        put "allow_event_posting"
       end
     end
   end

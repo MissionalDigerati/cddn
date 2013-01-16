@@ -25,5 +25,4 @@ class Admin::UsersController < ApplicationController
     end
     redirect_to :back
   end
-  
 end

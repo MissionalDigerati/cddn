@@ -110,5 +110,30 @@ Feature: An admin should be able to login as well as well as delete and suspend 
  		When I try to access the admin event index page
  		Then I should be on the admin sign in page
  		And I should see "You need to sign in or sign up before continuing."
+
+ 	Scenario: An admin should be able to approved a user for events, as well as view all users that have created events that are un approved for event creation
+		Given I am a user "Approved_user", and I have an event "approved event", and I am not logged in
+		And I am a user "Unapproved_user", and I have an event "not approved event", and I am not logged in, and I am not approved for event creation
+ 		And I have an admin account "admin_event_index" and I am logged in
+		And I am on the home page
+		When I click the "Users Event Approval" button
+		And I should see "Unapproved_user"
+		And I should not see "Approved_user"
+		When I click the "Approve for events" button for "Unapproved_user"
+		Then I should see "User has been approved to post events."
+		And I should not see "Unapproved_user"
+		
+	Scenario: A user that is logged in should not be able to access the event user approval page
+		Given I am a user "admin_event_user_access_test" and I am logged in
+		When I try to access the event approval user page
+		Then I should be on the admin sign in page
+		And I should see "You need to sign in or sign up before continuing."
+		
+	Scenario: A visitor to the site that is not logged in should not be able to access the event suer approval page
+		Given I am on the home page
+		When I try to access the event approval user page
+		Then I should be on the admin sign in page
+		And I should see "You need to sign in or sign up before continuing."
+		
 		
 		

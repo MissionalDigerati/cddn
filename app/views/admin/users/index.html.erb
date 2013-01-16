@@ -12,6 +12,7 @@ This is the users index
 	<td>Last Name</td>
 	<td>NickName</td>
 	<td>Status</td>
+	<td>Event Approved</td>
 	<td>Church</td>
 	<td>City</td>
 	<td>Primary Role</td>
@@ -27,7 +28,8 @@ This is the users index
 	<td><%= user.first_name %></td>
 	<td><%= user.last_name %></td>
 	<td><%= user.nickname %></td>
-	<td><%= user.suspended %></td>
+	<td><%= status(user.suspended) %></td>
+	<td><%= yes_or_no(user.event_approved) %></td>
 	<td><%= user.church %></td>
 	<td><%= user.city_province %></td>
 	<td><%= user.primary_role %></td>

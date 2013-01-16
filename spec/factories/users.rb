@@ -6,5 +6,6 @@ FactoryGirl.define do
   factory :defaulted_user, :parent => :user do
     email "fakeuser@test.com"
     password "testing"
+    event_approved true
   end
 end

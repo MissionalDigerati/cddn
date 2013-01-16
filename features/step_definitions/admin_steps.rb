@@ -47,3 +47,8 @@ end
 When /^I try to access the admin event index page$/ do
   visit admin_events_path
 end
+
+When /^I try to access the event approval user page$/ do
+  admin = FactoryGirl.create(:defaulted_admin)
+  visit event_to_approve_admin_event_path(admin)
+end

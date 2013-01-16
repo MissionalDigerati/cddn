@@ -35,6 +35,11 @@ describe ApplicationHelper do
       attendee_creator_name(event).should == "fake@fake.com"
     end
     
+    it "Should return yes or no depending on if the provided information is true or false" do
+      yes_or_no(true).should == "Yes"
+      yes_or_no(false).should == "No"
+    end
+    
   end
   
 end

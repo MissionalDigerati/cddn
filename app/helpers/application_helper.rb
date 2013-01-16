@@ -8,7 +8,6 @@ module ApplicationHelper
     end
   end
   
-  
   def attendee_creator_name(event)
     creator = event.attendees.find_by_attendee_type("creator").user
     if creator.nickname.present?
@@ -18,6 +17,10 @@ module ApplicationHelper
     else
       creator.email
     end
+  end
+  
+  def yes_or_no(arg)
+    arg == true ? "Yes" : "No"
   end
   
 end

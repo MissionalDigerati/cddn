@@ -1,15 +1,15 @@
 require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the AdminsHelper. For example:
-#
-# describe AdminsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
-# describe AdminsHelper do
-#   pending "add some examples to (or delete) #{__FILE__}"
-# end
+describe AdminsHelper do 
+  describe "methods" do
+    
+    it "Should return active if the boolean is false" do
+      status(false).should == "Active"
+    end
+    
+    it "Should return suspended if the boolean is true" do
+      status(true).should == "Suspended"
+    end
+    
+  end
+end
