@@ -117,6 +117,17 @@ Feature: A logged in user should be able to create events as state they are atte
 		Then I should see "approved event"
 		And I should not see "event not approved"
 	
+	Scenario: You should only be able to access the show page for events that are created by approved users
+		Given I am a user "Unapproved_event_user", and I have an event "un approved event", and I am not logged in, and I am not approved for event creation
+		And I am a user "approved_event_user", and I have an event "approved event", and I am not logged in 
+		And I am on the home page
+		When I try to view the show page for the "un approved event" event
+		Then I should be on the home page
+		And I should see "Unable to locate event."
+		When I try to view the show page for the "approved event" event
+		Then I should see "approved event"
+		And I should see "This event was created by: approved_event_user"
+		
 	
 	
 	

@@ -48,3 +48,8 @@ When /^I try to access the edit event page for "(.*?)"$/ do |event_title|
   event = Event.find_by_title(event_title)
   visit edit_event_path(event)
 end
+
+When /^I try to view the show page for the "(.*?)" event$/ do |event_title|
+  event = Event.find_by_title(event_title)
+  visit event_path(event)
+end
