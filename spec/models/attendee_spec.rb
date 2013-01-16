@@ -26,12 +26,24 @@ describe Attendee do
       user = FactoryGirl.create(:defaulted_user)
       user_id = user.id
       event = FactoryGirl.create(:defaulted_event)
-      Attendee.creator(user_id, event)
+      Attendee.attendee_creation(user_id, event, "creator")
       attendee = Attendee.first
       attendee.user_id.should == user.id
       attendee.event_id.should == event.id
       attendee.attendee_type.should == "creator"
     end
+    
+    it "should create an attendee record for an attendee type role so long as the credentials are correct" do
+      user = FactoryGirl.create(:defaulted_user)
+      user_id = user.id
+      event = FactoryGirl.create(:defaulted_event)
+      Attendee.attendee_creation(user_id, event, "attendee")
+      attendee = Attendee.first
+      attendee.user_id.should == user.id
+      attendee.event_id.should == event.id
+      attendee.attendee_type.should == "attendee"
+    end
+    
   end
   
 end

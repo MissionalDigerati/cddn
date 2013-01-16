@@ -20,6 +20,5 @@ class Event < ActiveRecord::Base
     end
     approved_events
   end
-
   
 end

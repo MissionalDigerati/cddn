@@ -24,7 +24,7 @@ class EventsController < ApplicationController
     @event = Event.new(params[:event])
     respond_to do |format|
       if @event.save
-        Attendee.creator(@user, @event)
+        Attendee.attendee_creation(@user, @event, 'creator')
         format.html {redirect_to users_dashboard_path(current_user)}
         flash[:notice] = "Your Event has been created!"
       else
@@ -72,4 +72,7 @@ class EventsController < ApplicationController
     @current_user_attendee_creator = Attendee.where("user_id = #{current_user.id} AND attendee_type = 'creator'")
   end
   
+  def attend_event
+    
+  end
 end

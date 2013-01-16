@@ -5,10 +5,10 @@ class Attendee < ActiveRecord::Base
   validates :user_id, :event_id, :attendee_type, presence: true
   
   # for the create action, if the save is successful this method is called where it sets the foreign keys for the attendee tables and creates the record bridiging the two tables together. 
-  def self.creator(user_id, event)
+  def self.attendee_creation(user_id, event, role)
     attendee = event.attendees.new
     attendee.user_id = user_id
-    attendee.attendee_type = "creator"
+    attendee.attendee_type = role
     attendee.save
   end
   
