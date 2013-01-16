@@ -7,7 +7,9 @@ When /^I try to access the new event page$/ do
 end
 
 Given /^I have an event "(.*?)"$/ do |event_name|
-  FactoryGirl.create(:defaulted_event, title: event_name)
+  user = FactoryGirl.create(:defaulted_user)
+  event = FactoryGirl.create(:defaulted_event, title: event_name)
+  attendee = FactoryGirl.create(:defaulted_attendee, user_id: user.id, event_id: event.id, attendee_type: 'creator')
 end
 
 Then /^I should be on the events index page$/ do

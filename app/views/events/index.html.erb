@@ -10,6 +10,7 @@ Listing all events
 		<td>Action</td>
 	</tr>
 	<% @events.each do |event| %>
+	</tr>
 		<td><%= event.title %></td>
 		<td><%= event.details %></td>
 		<td><%= event.city_province %></td>
@@ -17,5 +18,6 @@ Listing all events
 		<td><%= event.country_id %></td>
 		<td><%= event.online_event %></td>
 		<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %></td>
+	</tr>
 	<% end %>
 </table>

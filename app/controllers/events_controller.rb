@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
   
   def index
-    @events = Event.all
+    @events = Event.events_by_approved_users(Event.all)
   end
   
   def new

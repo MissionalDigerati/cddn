@@ -108,3 +108,15 @@ Feature: A logged in user should be able to create events as state they are atte
   	And I should see "my_events_delete_test"
 		When I click the "Delete Event" button for "my_events_delete_test"
 		Then I should see "Your event was successfully deleted."
+
+	Scenario: Only events that are created by an approved user should be publicly viewable 
+		Given I am a user "Unapproved_event_user", and I have an event "event not approved", and I am not logged in, and I am not approved for event creation
+		And I am a user "approved_user", and I have an event "approved event", and I am not logged in 
+		And I am on the home page
+		When I visit the events index page
+		Then I should see "approved event"
+		And I should not see "event not approved"
+	
+	
+	
+	

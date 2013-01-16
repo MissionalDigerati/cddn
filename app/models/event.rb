@@ -11,4 +11,14 @@ class Event < ActiveRecord::Base
     user.nickname.present? ? user.nickname : user.email
   end
   
+  def self.events_by_approved_users(events)
+    approved_events = Array.new
+    events.each do |event|
+      if event.attendees.find_by_attendee_type('creator').user.event_approved == true
+        approved_events << event
+      end
+    end
+    approved_events
+  end
+  
 end
