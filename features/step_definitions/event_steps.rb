@@ -53,3 +53,8 @@ When /^I try to view the show page for the "(.*?)" event$/ do |event_title|
   event = Event.find_by_title(event_title)
   visit event_path(event)
 end
+
+Then /^I should be on the show page for the "(.*?)" event$/ do |event_title|
+  event = Event.find_by_title(event_title)
+  page.current_path.should == event_path(event)
+end

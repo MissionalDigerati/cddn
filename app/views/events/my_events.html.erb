@@ -22,3 +22,30 @@ Events created by me:<br/>
 		</tr>
 	<% end %>
 </table>
+
+<br/>	
+	
+Events that I am attending: <br/>
+	
+<table class="table table-striped table-bordered">
+	<tr>
+		<td>Title</td>
+		<td>Details</td>
+		<td>City</td>
+		<td>State</td>
+		<td>Country</td>
+		<td>Online Event</td>
+		<td>Action</td>
+	</tr>
+	<% @current_user_event_attendee.each do |attendee| %>
+		<tr>
+			<td><%= attendee.event.title %></td>
+			<td><%= attendee.event.details %></td>
+			<td><%= attendee.event.city_province %></td>
+			<td><%= attendee.event.state_id %></td>
+			<td><%= attendee.event.country_id %></td>
+			<td><%= attendee.event.online_event %></td>
+			<td><%= link_to "View Event", event_path(attendee.event), class: "btn btn-mini btn-info" %> <%= attend_event_button(attendee.event) %></td>
+		</tr>
+	<% end %>
+</table>

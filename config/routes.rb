@@ -29,6 +29,7 @@ Cddn::Application.routes.draw do
   resources :events do
     member do
       match "my_events"
+      put "attend_event"
     end
   end
   match 'users/dashboard/:id' => 'users#dashboard', method: :get, as: :users_dashboard

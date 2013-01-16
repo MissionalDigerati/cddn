@@ -128,6 +128,19 @@ Feature: A logged in user should be able to create events as state they are atte
 		Then I should see "approved event"
 		And I should see "This event was created by: approved_event_user"
 		
+	Scenario: A user should be able to attend and un attend an event
+		Given I am a user "attend_event_test_1", and I have an event "attend this event", and I am not logged in 
+		And I am a user "attend_event_test_2" and I am logged in
+		When I click the "All Events" button
+		Then I should see "attend this event"
+		When I click the "Attend Event" button 
+		Then I should be on the show page for the "attend this event" event
+		And I should see "You are now attending Attend this event"
+		When I click the "My Events" button
+		Then I should see "attend this event"
+		When I click the "Un-attend Event" button
+		Then I should be on the show page for the "attend this event" event
+		And I should see "You are no longer attending Attend this event"
 	
 	
 	

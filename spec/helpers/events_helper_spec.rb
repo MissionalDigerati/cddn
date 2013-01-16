@@ -4,12 +4,12 @@ require 'spec_helper'
 # the EventsHelper. For example:
 #
 # describe EventsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
+#   describe "methods" do
+#     
+#     it "" do
 #       helper.concat_strings("this","that").should == "this that"
 #     end
+#     
 #   end
-# # end
-# describe EventsHelper do
-#   pending "add some examples to (or delete) #{__FILE__}"
 # end
+

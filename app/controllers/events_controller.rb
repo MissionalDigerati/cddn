@@ -34,6 +34,8 @@ class EventsController < ApplicationController
     end
   end
   
+  #I built in a safty measure to ensure that only the creator of an event is able to edit it. 
+  # If someone else tries to access it, then they are redirected and told we are unable to process their request
   def edit
     @attendee = Attendee.where("event_id = ? AND attendee_type = ?", params[:id], "creator").first
     if @attendee.user_id == current_user.id
@@ -70,9 +72,22 @@ class EventsController < ApplicationController
   
   def my_events
     @current_user_attendee_creator = Attendee.where("user_id = #{current_user.id} AND attendee_type = 'creator'")
+    @current_user_event_attendee = Attendee.where("user_id = #{current_user.id} AND attendee_type = 'attendee'")
   end
   
   def attend_event
-    
+    @user = current_user.id
+    @event = Event.find(params[:id])
+    @attendee = Attendee.where(user_id: @user, event_id: @event.id, attendee_type: 'attendee').first
+    if @attendee.present?
+      @attendee.delete
+      redirect_to event_path(@event)
+      flash[:notice] = "You are no longer attending #{@event.title.capitalize}."
+    else
+      Attendee.attendee_creation(@user, @event, 'attendee')
+      redirect_to event_path(@event)
+      flash[:notice] = "You are now attending #{@event.title.capitalize}."
+    end
   end
+  
 end
