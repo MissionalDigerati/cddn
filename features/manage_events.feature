@@ -124,7 +124,7 @@ Feature: A logged in user should be able to create events as state they are atte
 		And I am on the home page
 		When I try to view the show page for the "un approved event" event
 		Then I should be on the home page
-		And I should see "Unable to locate event."
+		And I should see "Unable to process your request."
 		When I try to view the show page for the "approved event" event
 		Then I should see "approved event"
 		And I should see "This event was created by: approved_event_user"

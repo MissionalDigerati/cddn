@@ -8,6 +8,7 @@ Events created by me:<br/>
 		<td>State</td>
 		<td>Country</td>
 		<td>Online Event</td>
+		<td>Date</td>
 		<td>Action</td>
 	</tr>
 	<% @current_user_attendee_creator.each do |attendee| %>
@@ -18,6 +19,7 @@ Events created by me:<br/>
 			<td><%= attendee.event.state_id %></td>
 			<td><%= attendee.event.country_id %></td>
 			<td><%= attendee.event.online_event %></td>
+			<td><%= attendee.event.event_date %></td>
 			<td><%= link_to "View Event", event_path(attendee.event), class: "btn btn-mini btn-info" %> <%= link_to "Edit Event", edit_event_path(attendee.event), class: "btn btn-mini btn-success" %> <%= link_to "Delete Event", event_path(attendee.event), method: :delete, class: "btn btn-mini btn-danger", confirm: "Are you sure you want to delete this event?" %></td>
 		</tr>
 	<% end %>
@@ -35,6 +37,7 @@ Events that I am attending: <br/>
 		<td>State</td>
 		<td>Country</td>
 		<td>Online Event</td>
+		<td>Date</td>
 		<td>Action</td>
 	</tr>
 	<% @current_user_event_attendee.each do |attendee| %>
@@ -44,6 +47,7 @@ Events that I am attending: <br/>
 			<td><%= attendee.event.city_province %></td>
 			<td><%= attendee.event.state_id %></td>
 			<td><%= attendee.event.country_id %></td>
+			<td><%= attendee.event.online_event %></td>
 			<td><%= attendee.event.online_event %></td>
 			<td><%= link_to "View Event", event_path(attendee.event), class: "btn btn-mini btn-info" %> <%= attend_event_button(attendee.event) %></td>
 		</tr>

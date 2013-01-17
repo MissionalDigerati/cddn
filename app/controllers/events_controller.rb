@@ -12,11 +12,11 @@ class EventsController < ApplicationController
   
   def show
     @event = Event.find(params[:id])
-    if @event.attendees.find_by_attendee_type('creator').user.event_approved == true
+    if @event.approved_event == true 
       @event
     else
       redirect_to root_path
-      flash[:notice] = "Unable to locate event."
+      flash[:notice] = "Unable to process your request."
     end
   end
   
