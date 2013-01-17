@@ -19,13 +19,16 @@ class Admin::EventsController < ApplicationController
   
   def allow_event_posting
     @user = User.find(params[:id])
+    @events = Event.joins(:attendees).where(attendees: {user_id: 3, attendee_type: 'creator'})
     if @user.event_approved == false
       @user[:event_approved] = true
       @user.save
+      @events.update_all({approved_event: true})
       flash[:notice] = "User has been approved to post events."
     else
       @user[:event_approved] = false
       @user.save
+      @events.update_all({approved_event: false})
       flash[:notice] = "User has been un-approed for returning events."
     end
     redirect_to :back

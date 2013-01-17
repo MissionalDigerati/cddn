@@ -63,9 +63,9 @@ class EventsController < ApplicationController
   
   def destroy
     @event = Event.find(params[:id])
-    @attendee = Attendee.where("user_id = #{current_user.id} AND event_id = #{@event.id}").first
+    @attendee = Attendee.where("event_id = #{@event.id}")
     @event.delete
-    @attendee.delete
+    @attendee.delete_all
     respond_to do |format|
       format.html {redirect_to my_events_event_path(current_user)}
       flash[:notice] = "Your event was successfully deleted."
