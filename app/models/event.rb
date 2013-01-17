@@ -11,6 +11,8 @@ class Event < ActiveRecord::Base
     user.nickname.present? ? user.nickname : user.email
   end
   
+  #This can be deleted
+  
   def self.events_by_approved_users(events)
     approved_events = Array.new
     events.each do |event|

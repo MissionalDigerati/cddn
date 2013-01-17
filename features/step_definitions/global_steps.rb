@@ -55,3 +55,7 @@ Given /^I am a user "(.*?)", and I have an event "(.*?)", and I am not logged in
   event = FactoryGirl.create(:defaulted_event, title: event, approved_event: false)
   attendee = FactoryGirl.create(:defaulted_attendee, user_id: user.id, event_id: event.id, attendee_type: "creator")
 end
+
+When /^I visit the users events index page$/ do
+  visit events_path
+end

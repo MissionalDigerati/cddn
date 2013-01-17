@@ -19,7 +19,7 @@ class Admin::EventsController < ApplicationController
   
   def allow_event_posting
     @user = User.find(params[:id])
-    @events = Event.joins(:attendees).where(attendees: {user_id: 3, attendee_type: 'creator'})
+    @events = Event.joins(:attendees).where(attendees: {user_id: @user.id, attendee_type: 'creator'})
     if @user.event_approved == false
       @user[:event_approved] = true
       @user.save

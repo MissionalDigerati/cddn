@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
     end
   end
   
-  
+  #this can be deleted
   def self.users_event_approval(users)
     users_needing_approval = Array.new
     users.each do |user|
