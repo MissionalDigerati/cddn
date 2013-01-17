@@ -1,8 +1,9 @@
 class EventsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
   
+  #this will only display events that are created by authorized users
   def index
-    @events = Event.events_by_approved_users(Event.all)
+    @events = Event.where(approved_event: true)
   end
   
   def new
@@ -20,11 +21,12 @@ class EventsController < ApplicationController
   end
   
   def create
-    @user = current_user.id
+    @user = current_user
     @event = Event.new(params[:event])
+    @user.event_approved == true ? @event.approved_event = true : @event.approved_event = false
     respond_to do |format|
       if @event.save
-        Attendee.attendee_creation(@user, @event, 'creator')
+        Attendee.attendee_creation(@user.id, @event, 'creator')
         format.html {redirect_to users_dashboard_path(current_user)}
         flash[:notice] = "Your Event has been created!"
       else

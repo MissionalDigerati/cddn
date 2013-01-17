@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  scope :approved, where(event_approved: true)
+  scope :current_events, joins(:attendees).where('attendees.attendee_type' => 'creator')
   has_many :attendees
   has_many :events, through: :attendees
   # Include default devise modules. Others available are:

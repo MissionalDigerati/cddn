@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130115090303) do
+ActiveRecord::Schema.define(:version => 20130117015914) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -49,11 +49,13 @@ ActiveRecord::Schema.define(:version => 20130115090303) do
     t.integer  "state_id"
     t.integer  "country_id"
     t.string   "zip_code"
-    t.boolean  "online_event",  :default => false
+    t.boolean  "online_event",   :default => false
     t.string   "longitude"
     t.string   "latitude"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.boolean  "approved_event", :default => false
+    t.date     "event_date"
   end
 
   create_table "users", :force => true do |t|

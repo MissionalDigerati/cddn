@@ -12,5 +12,7 @@ FactoryGirl.define do
     country_id 2
     zip_code "21345"
     online_event false
+    approved_event true
+    event_date Time.now.to_date
   end
 end

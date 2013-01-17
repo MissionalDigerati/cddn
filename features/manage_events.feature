@@ -14,6 +14,7 @@ Feature: A logged in user should be able to create events as state they are atte
 		And I fill in "State" with "California"
 		And I fill in "Country" with "United States"
 		And I fill in "Zip code" with "95123"
+		And I fill in "Event date" with "1/01/2013"
 		And I click the "Submit" button
 		Then I should see "Your Event has been created!"
 		
@@ -23,7 +24,7 @@ Feature: A logged in user should be able to create events as state they are atte
 		When I click the "New Event" link
 		Then I should be on the new event page
 		When I click the "Submit" button
-		Then I should see "Title can't be blank, Address 1 can't be blank, City province can't be blank, State can't be blank, Country can't be blank, and Zip code can't be blank"
+		Then I should see "Title can't be blank, Address 1 can't be blank, City province can't be blank, State can't be blank, Country can't be blank, Zip code can't be blank, and Event date can't be blank"
 		
 	Scenario: A visitor that is not logged in should not be able to access the the new events form page
 		Given I am on the home page

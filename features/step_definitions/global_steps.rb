@@ -52,6 +52,6 @@ end
 Given /^I am a user "(.*?)", and I have an event "(.*?)", and I am not logged in, and I am not approved for event creation$/ do |email_prefix, event|
   password = 'secretpassword1000'
   user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password, event_approved: false, first_name: email_prefix)
-  event = FactoryGirl.create(:defaulted_event, title: event)
+  event = FactoryGirl.create(:defaulted_event, title: event, approved_event: false)
   attendee = FactoryGirl.create(:defaulted_attendee, user_id: user.id, event_id: event.id, attendee_type: "creator")
 end
