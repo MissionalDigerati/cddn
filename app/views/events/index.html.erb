@@ -19,7 +19,7 @@ Listing all events
 		<td><%= event.country_id %></td>
 		<td><%= event.online_event %></td>
 		<td><%= event.event_date %></td>
-		<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %> <%= attend_event_button(event) if user_signed_in? %></td>
+		<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %> <%= attend_event_button(current_user.id, event) if user_signed_in? %></td>
 	</tr>
 	<% end %>
 </table>

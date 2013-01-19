@@ -49,7 +49,7 @@ Events that I am attending: <br/>
 			<td><%= attendee.event.country_id %></td>
 			<td><%= attendee.event.online_event %></td>
 			<td><%= attendee.event.online_event %></td>
-			<td><%= link_to "View Event", event_path(attendee.event), class: "btn btn-mini btn-info" %> <%= attend_event_button(attendee.event) %></td>
+			<td><%= link_to "View Event", event_path(attendee.event), class: "btn btn-mini btn-info" %> <%= attend_event_button(current_user.id, attendee.event) if user_signed_in? %></td>
 		</tr>
 	<% end %>
 </table>

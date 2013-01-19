@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   scope :approved, where(event_approved: true)
-  scope :current_events, joins(:attendees).where('attendees.attendee_type' => 'creator')
+  scope :event_unapproved, where(event_approved: false)
+  scope :attendee_event_creator, joins(:attendees).where(attendees:{attendee_type: 'creator'})
   has_many :attendees
   has_many :events, through: :attendees
   # Include default devise modules. Others available are:
@@ -52,17 +53,6 @@ class User < ActiveRecord::Base
     else
       super
     end
-  end
-  
-  #this can be deleted
-  def self.users_event_approval(users)
-    users_needing_approval = Array.new
-    users.each do |user|
-      if user.attendees.where(attendee_type: 'creator').present?
-       users_needing_approval << user
-      end 
-    end
-    users_needing_approval
   end
   
 end

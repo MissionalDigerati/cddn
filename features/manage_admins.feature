@@ -136,11 +136,11 @@ Feature: An admin should be able to login as well as well as delete and suspend 
 		And I should see "You need to sign in or sign up before continuing."
 		
 	Scenario: An event should only be visible through the event index page if the admin as approved their events. Also their events should update once they have been approved
-		And I am a user "Unapproved_user_2", and I have an event "party", and I am not logged in, and I am not approved for event creation
+		And I am a user "Unapproved_user_2", and I have an event "party asdfasdf", and I am not logged in, and I am not approved for event creation
 		And I have an admin account "admin_event_index" and I am logged in
 		And I am on the home page
 		When I visit the users events index page
-		Then I should not see "party"
+		Then I should not see "party asdfasf"
 		When I click the "Users Event Approval" button
 		Then I should see "Unapproved_user_2"
 		When I click the "Approve for events" button for "Unapproved_user_2"
@@ -148,7 +148,7 @@ Feature: An admin should be able to login as well as well as delete and suspend 
 		And I should not see "Unapproved_user_2"
 		When I click the "Admin logout" button
 		And I visit the users events index page
-		Then I should see "party"
+		Then I should see "party asdfasdf"
 		 
 		
 		

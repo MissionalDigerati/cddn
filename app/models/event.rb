@@ -7,20 +7,8 @@ class Event < ActiveRecord::Base
   validates :title, :address_1, :city_province, :state_id, :country_id, :zip_code, :event_date, presence: true
   
   def self.event_create_by(event)
-    user = Attendee.where("event_id = #{event.id} AND attendee_type = 'creator'").first.user
+    user = User.joins(:attendees).where(attendees: {event_id: event.id, attendee_type: 'creator'}).first
     user.nickname.present? ? user.nickname : user.email
-  end
-  
-  #This can be deleted
-  
-  def self.events_by_approved_users(events)
-    approved_events = Array.new
-    events.each do |event|
-      if event.attendees.find_by_attendee_type('creator').user.event_approved == true
-        approved_events << event
-      end
-    end
-    approved_events
   end
   
 end

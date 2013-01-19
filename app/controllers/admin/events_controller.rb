@@ -14,7 +14,8 @@ class Admin::EventsController < ApplicationController
   end
   
   def event_to_approve
-    @users = User.users_event_approval(User.where(event_approved: false))
+    # @users = User.event_unapproved.joins(:attendees).where(attendees:{attendee_type: 'creator'})
+    @users = User.event_unapproved.attendee_event_creator
   end
   
   def allow_event_posting
