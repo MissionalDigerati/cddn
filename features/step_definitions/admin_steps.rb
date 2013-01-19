@@ -52,3 +52,13 @@ When /^I try to access the event approval user page$/ do
   admin = FactoryGirl.create(:defaulted_admin)
   visit event_to_approve_admin_event_path(admin)
 end
+
+Then /^I should be on the admin event show page for "(.*?)"$/ do |event_title|
+  event = Event.where(title: event_title).first
+  page.current_path.should == admin_event_path(event)
+end
+
+When /^I try to access the admin event show page for "(.*?)"$/ do |event_title|
+  event = Event.where(title: event_title).first
+  visit admin_event_path(event)
+end

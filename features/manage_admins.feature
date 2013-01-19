@@ -136,7 +136,7 @@ Feature: An admin should be able to login as well as well as delete and suspend 
 		And I should see "You need to sign in or sign up before continuing."
 		
 	Scenario: An event should only be visible through the event index page if the admin as approved their events. Also their events should update once they have been approved
-		And I am a user "Unapproved_user_2", and I have an event "party asdfasdf", and I am not logged in, and I am not approved for event creation
+		Given I am a user "Unapproved_user_2", and I have an event "party asdfasdf", and I am not logged in, and I am not approved for event creation
 		And I have an admin account "admin_event_index" and I am logged in
 		And I am on the home page
 		When I visit the users events index page
@@ -150,5 +150,28 @@ Feature: An admin should be able to login as well as well as delete and suspend 
 		And I visit the users events index page
 		Then I should see "party asdfasdf"
 		 
+	Scenario: An admin should be able to view events that have not been approved
+		Given I am a user "Not an approved event user", and I have an event "unapproved event title", and I am not logged in, and I am not approved for event creation
+		And I have an admin account "admin_event_show" and I am logged in
+		And I am on the home page
+		When I click the "Users Event Approval" button
+		Then I should see "Not an approved event user"
+		When I click the "unapproved event title" button
+		Then I should be on the admin event show page for "unapproved event title"
+		And I should see "unapproved event title"
+		And I should see "This event was created by: Not an approved event user"
 		
+	Scenario: A user that is logged in should not be able to view events that have not been approved through the admin event show page
+		Given I am a user "Sam", and I have an event "birthday", and I am not logged in, and I am not approved for event creation
+		And I am a user "crab man" and I am logged in
+		When I try to access the admin event show page for "birthday"
+		Then I should be on the home page
+		And I should see "Unable to process your request."
+		
+	Scenario: A visitor to the site that is not logged in should not be able to view events that have not been approved through the admin event show page
+		Given I am a user "fred", and I have an event "tea party", and I am not logged in, and I am not approved for event creation
+		And I am on the home page
+		When I try to access the admin event show page for "tea party"
+		Then I should be on the home page
+		And I should see "Unable to process your request."
 		

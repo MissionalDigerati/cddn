@@ -30,7 +30,19 @@ This is the index for users needing approval
 	<td><%= user.primary_role %></td>
 	<td><%= user.provider %></td>
 	<td><%= user.sign_in_count %></td>
-	<td><%=  %></td>
+	<td>
+	<div class="btn-group">
+	  <button class="btn btn-mini">Events</button>
+	  <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+	    <span class="caret"></span>
+	  </button>
+	  <ul class="dropdown-menu">
+		<% user.events.each do |event| %>
+	    <li><%= link_to event.title, admin_event_path(event)%></li>
+		<% end %>
+	  </ul>
+	</div>
+	</td>
 	<td><%= link_to "View User", user_path(user), class: "btn btn-mini btn-info" %> <%= link_to "Approve for events", allow_event_posting_admin_event_path(user), method: :put, class: "btn btn-mini btn-warning"  %></td>
 </tr>
 <% end %>

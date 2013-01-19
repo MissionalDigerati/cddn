@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   scope :approved, where(event_approved: true)
   scope :event_unapproved, where(event_approved: false)
   scope :attendee_event_creator, joins(:attendees).where(attendees:{attendee_type: 'creator'})
+  scope :include_events, includes(:events)
   has_many :attendees
   has_many :events, through: :attendees
   # Include default devise modules. Others available are:

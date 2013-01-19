@@ -4,6 +4,15 @@ class Admin::EventsController < ApplicationController
     @events = Event.all
   end
   
+  def show
+    unless current_admin
+      redirect_to root_path
+      flash[:notice] = "Unable to process your request."
+    else
+      @event = Event.find(params[:id])
+    end
+  end
+  
   def destroy
     @event = Event.find(params[:id])
     @attendees = Attendee.where("event_id = ?", params[:id])
@@ -14,8 +23,8 @@ class Admin::EventsController < ApplicationController
   end
   
   def event_to_approve
-    # @users = User.event_unapproved.joins(:attendees).where(attendees:{attendee_type: 'creator'})
-    @users = User.event_unapproved.attendee_event_creator
+    # queries all users that are not event approved that have created events a la attendee records.
+    @users = User.event_unapproved.attendee_event_creator.include_events
   end
   
   def allow_event_posting
