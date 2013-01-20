@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130117015914) do
+ActiveRecord::Schema.define(:version => 20130120093257) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -56,6 +56,24 @@ ActiveRecord::Schema.define(:version => 20130117015914) do
     t.datetime "updated_at",                        :null => false
     t.boolean  "approved_event", :default => false
     t.date     "event_date"
+  end
+
+  create_table "networks", :force => true do |t|
+    t.integer  "social_media_id"
+    t.string   "account_name"
+    t.string   "account_url"
+    t.integer  "networkable_id"
+    t.string   "networkable_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "networks", ["networkable_id", "networkable_type"], :name => "index_networks_on_networkable_id_and_networkable_type"
+
+  create_table "social_media", :force => true do |t|
+    t.string   "service"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
