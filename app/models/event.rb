@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   has_many :attendees
   has_many :users, through: :attendees
+  has_many :networks, as: :networkable
   
   attr_accessible :title, :details, :address_1, :address_2, :city_province, :state_id, :country_id, :zip_code, :online_event, :event_date
 

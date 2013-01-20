@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   scope :include_events, includes(:events)
   has_many :attendees
   has_many :events, through: :attendees
+  has_many :networks, as: :networkable
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable

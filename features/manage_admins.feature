@@ -79,7 +79,7 @@ Feature: An admin should be able to login as well as well as delete and suspend 
 		When I click the "Home | Dashbaord" link
 		Then I should be on the home page
 		And I should see "Your account has been suspended please contact us for any additional information."
-		When I click the "Edit basic account info" link
+		When I click the "user_account_info_link" link
 		Then I should be on the home page
 		And I should see "Your account has been suspended please contact us for any additional information."
 	
