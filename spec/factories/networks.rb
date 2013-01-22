@@ -5,6 +5,6 @@ FactoryGirl.define do
   end
   factory :defaulted_network, :parent => :network do
     account_name "Sammy Simmons"
-    account_url "http://www.facebook.com/sammysimmons"
+    account_url "http://www.facebook.com/"
   end
 end

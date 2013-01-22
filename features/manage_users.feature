@@ -39,10 +39,10 @@ Feature: A user should be able to manage their account and have certain pages an
 	Scenario: A user should be able to edit their password and email
 		Given I am a user "edit_account_info" and I am logged in
 		And I am on the home page
-		When I click the "Home | Dashbaord" link
+		When I click the "Home | Dashboard" link
 		Then I should see "dashboard"
 		And I should see "edit_account_info@example.com"
-		When I click the "Edit account info" link
+		When I click the "account_settings" link
 		And I fill in "Email" with "updated_email@test.com"
 		And I fill in "Current password" with "secretpassword1000"
 		And I click the "Update" button
@@ -52,7 +52,7 @@ Feature: A user should be able to manage their account and have certain pages an
 	Scenario: A user should be able to edit the basic account info 
 		Given I am a user "edit_account_info_2" and I am logged in
 		And I am on the home page
-		When I click the "Home | Dashbaord" link
+		When I click the "Home | Dashboard" link
 		Then I should see "dashboard"
 		And I should see "edit_account_info_2@example.com"
 		When I click the "user_account_info_link" link
@@ -70,7 +70,7 @@ Feature: A user should be able to manage their account and have certain pages an
 	Scenario: A logged in user should be able to access only their dashboard
 		Given I have a user "Fred"
 		And I am a user "authentication_test" and I am logged in
-		When I click the "Home | Dashbaord" link
+		When I click the "Home | Dashboard" link
 		Then I should see "authentication_test"
 		And I should not see "Fred"
 		Then I visit the user dash board for "Fred"

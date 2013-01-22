@@ -8,5 +8,9 @@
 <%= @user.bio %><br/>
 <%= @user.primary_role %><br/>
 <%= @user.state_id %><br/>
-<%= @user.country_id %>
+<%= @user.country_id %><br/>
+
+<% @user.networks.each do |network| %>
+	<%= link_to network.account_url %><br/>
+<% end %>
 </div>

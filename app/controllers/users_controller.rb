@@ -3,11 +3,13 @@ class UsersController < ApplicationController
   before_filter :user_suspended, except: [:show]
   
   def dashboard
+    @user = User.include_networks.find(current_user)
   end
   
   #this will be the brag page / the user show page.
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    @user = User.include_networks.find(params[:id])
   end
   
   def edit

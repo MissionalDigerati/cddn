@@ -1,18 +1,24 @@
 <div class="span6 offset3">
 <h2>This is the dashboard for </h2>
 <br/>
-<%= current_user.email %><br/>
-<%= current_user.nickname %><br/>
+<%= @user.email %><br/>
+<%= @user.nickname %><br/>
 <br/>
-<%= current_user.first_name %><br/>
-<%= current_user.last_name %><br/>
-<%= current_user.church %><br/>
-<%= current_user.bio %><br/>
-<%= current_user.city_province %><br/>
-<%= current_user.primary_role %><br/>
-<%= current_user.state_id %><br/>
-<%= current_user.country_id %><br/>
-<%= link_to 'Edit account info', edit_user_registration_path %><br/>
-<%= link_to 'View My Profile / Brag page', user_path(current_user) %>
+<%= @user.first_name %><br/>
+<%= @user.last_name %><br/>
+<%= @user.church %><br/>
+<%= @user.bio %><br/>
+<%= @user.city_province %><br/>
+<%= @user.primary_role %><br/>
+<%= @user.state_id %><br/>
+<%= @user.country_id %><br/>
+<br/>
+<% @user.networks.each do |network| %>
+	<%= link_to network.account_url, network.account_url %><br/>
+<% end %>
+<br/>
+<%= link_to 'Account Settings', edit_user_registration_path, id: "account_settings" %><br/>
+<%= link_to 'Edit account information', edit_user_path(@user) %><br/>
+<%= link_to 'View My Profile / Brag page', user_path(@user) %>
 
 </div>

@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   scope :event_unapproved, where(event_approved: false)
   scope :attendee_event_creator, joins(:attendees).where(attendees:{attendee_type: 'creator'})
   scope :include_events, includes(:events)
+  scope :include_networks, includes(:networks)
   has_many :attendees
   has_many :events, through: :attendees
   has_many :networks, as: :networkable
@@ -14,8 +15,10 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :nickname, :primary_role, :church, :bio, :city_province, :state_id, :country_id, :please_update
-  # attr_accessible :title, :body
+  attr_accessible :networks_attributes
   validates_uniqueness_of :nickname, allow_nil: true, allow_blank: true
+  
+  accepts_nested_attributes_for :networks, reject_if: lambda{ |a| a[:account_url].blank? }, allow_destroy: true
   
   
   #if the provider is facebook then it sets the user's nickname to the facebook name (which is the users first and last name)
