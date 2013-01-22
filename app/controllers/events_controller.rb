@@ -11,7 +11,7 @@ class EventsController < ApplicationController
   end
   
   def show
-    @event = Event.find(params[:id])
+    @event = Event.include_networks.find(params[:id])
     if @event.approved_event == true 
       @event
     else
@@ -27,7 +27,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.save
         Attendee.attendee_creation(@user.id, @event, 'creator')
-        format.html {redirect_to users_dashboard_path(current_user)}
+        format.html {redirect_to my_events_event_path(current_user)}
         flash[:notice] = "Your Event has been created!"
       else
         format.html {render action: "new"}
@@ -62,9 +62,9 @@ class EventsController < ApplicationController
   end
   
   def destroy
-    @event = Event.find(params[:id])
+    @event = Event.include_networks.find(params[:id])
     @attendee = Attendee.where("event_id = #{@event.id}")
-    @event.delete
+    @event.destroy
     @attendee.delete_all
     respond_to do |format|
       format.html {redirect_to my_events_event_path(current_user)}
