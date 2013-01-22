@@ -20,6 +20,15 @@ When /^I visit the events index page$/ do
   visit events_path
 end
 
+When /^I am on the new event page$/ do
+  visit new_event_path
+end
+
+When /^I visit the my events page for "(.*?)"$/ do |email_prefix|
+  user = User.find_by_email(email_prefix + "@example.com")
+  visit my_events_event_path(user)
+end
+
 Given /^I am a user "(.*?)", and I have an event "(.*?)", and I am logged in$/ do |email_prefix, event|
   password = 'secretpassword1000'
   user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password)
