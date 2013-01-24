@@ -36,7 +36,7 @@
 		
 		Programming languages<br/>
 		<% ProgrammingLanguage.all.each do |language| %>
-			<%= check_box_tag "multi_select[programming_language_ids][]", language.id, Event.check_lang(@event.programmings.pluck(:programming_language_id), language.id)  %>
+			<%= check_box_tag "event[programming_language_ids][]", language.id, Event.check_lang(@event.programmings.pluck(:programming_language_id), language.id)  %>
 			<%= label_tag "#{language.language}"%>
 			
 		<% end %>

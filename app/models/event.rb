@@ -16,7 +16,7 @@ class Event < ActiveRecord::Base
   
   validates :title, :address_1, :city_province, :state_id, :country_id, :zip_code, :event_date, presence: true
   
-  # after_save :save_programming_languages
+  after_save :save_programming_languages
   
   def self.event_create_by(event)
     user = User.joins(:attendees).where(attendees: {event_id: event.id, attendee_type: 'creator'}).first
@@ -28,14 +28,12 @@ class Event < ActiveRecord::Base
   end
   
   private
-    def self.save_programming_languages(event, array_of_ids)
-      event.programmings.destroy_all
-      if array_of_ids.present? == true
-        array_of_ids.each do |lang|
-          event.programmings.create({programming_language_id: lang}) unless lang.blank?
-        end
+    def save_programming_languages
+    self.programmings.destroy_all
+    return if self.programming_language_ids.blank?
+    self.programming_language_ids.each do |lang|
+        self.programmings.create({programming_language_id: lang}) unless lang.blank?
       end
     end
-    
     
 end
