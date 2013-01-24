@@ -8,6 +8,7 @@ class EventsController < ApplicationController
   
   def new
     @event = Event.new
+    @event.programmings.build
   end
   
   def show
@@ -24,8 +25,10 @@ class EventsController < ApplicationController
     @user = current_user
     @event = Event.new(params[:event])
     @user.event_approved == true ? @event.approved_event = true : @event.approved_event = false
+    tags = params[:multi_select][:programming_language_ids] unless params[:multi_select].nil?
     respond_to do |format|
       if @event.save
+        Event.save_programming_languages(@event, tags) 
         Attendee.attendee_creation(@user.id, @event, 'creator')
         format.html {redirect_to my_events_event_path(current_user)}
         flash[:notice] = "Your Event has been created!"
@@ -50,8 +53,10 @@ class EventsController < ApplicationController
   
   def update
     @event = Event.find(params[:id])
+    tags = params[:multi_select][:programming_language_ids] unless params[:multi_select].nil?
     respond_to do |format|
       if @event.update_attributes(params[:event])
+        Event.save_programming_languages(@event, tags) 
         format.html {redirect_to my_events_event_path(current_user)} 
         flash[:notice] = "Your event was successfully updated."
       else
@@ -62,10 +67,8 @@ class EventsController < ApplicationController
   end
   
   def destroy
-    @event = Event.include_networks.find(params[:id])
-    @attendee = Attendee.where("event_id = #{@event.id}")
+    @event = Event.find(params[:id])
     @event.destroy
-    @attendee.delete_all
     respond_to do |format|
       format.html {redirect_to my_events_event_path(current_user)}
       flash[:notice] = "Your event was successfully deleted."

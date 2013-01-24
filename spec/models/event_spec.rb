@@ -11,6 +11,26 @@ describe Event do
       FactoryGirl.build(:defaulted_event, title: nil).should_not be_valid
     end
     
+    it "should delete attendee records if the event who created it is deleted however it should not delete the user" do
+      user = FactoryGirl.create(:defaulted_user)
+      event = FactoryGirl.create(:defaulted_event)
+      FactoryGirl.create(:defaulted_attendee, user_id: user.id, event_id: event.id, attendee_type: "creator").should be_valid
+      event.destroy
+      Attendee.all.length.should == 0
+      User.first.should == user
+    end
+    
+    it "should delete the network records if the event that owns them is deleted/destroyed" do
+      user = FactoryGirl.create(:defaulted_user)
+      event = FactoryGirl.create(:defaulted_event)
+      attendee = FactoryGirl.create(:defaulted_attendee, user_id: user.id, event_id: event.id, attendee_type: "creator")
+      social_media = FactoryGirl.create(:social_medium, service: "facebook")
+      network = FactoryGirl.create(:defaulted_network, social_media_id: social_media.id, networkable_type: "Event", networkable_id: event.id).should be_valid
+      Network.all.length.should == 1
+      event.destroy
+      Network.all.length.should == 0
+    end
+    
   end
   
   describe "methods" do

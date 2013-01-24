@@ -19,6 +19,7 @@ describe Attendee do
     it "should not create a successful record without all the necissary information" do
       FactoryGirl.build(:defaulted_attendee, user_id: nil, event_id: nil, attendee_type: nil).should_not be_valid
     end
+    
   end
   
   describe "methods" do

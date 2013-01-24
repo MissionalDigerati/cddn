@@ -15,9 +15,9 @@ class Admin::EventsController < ApplicationController
   
   def destroy
     @event = Event.find(params[:id])
-    @attendees = Attendee.where("event_id = ?", params[:id])
+    # @attendees = Attendee.where("event_id = ?", params[:id])
     @event.delete
-    @attendees.delete_all
+    # @attendees.delete_all
     flash[:notice] = "Event has been deleted."
     redirect_to :back
   end

@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
   scope :attendee_event_creator, joins(:attendees).where(attendees:{attendee_type: 'creator'})
   scope :include_events, includes(:events)
   scope :include_networks, includes(:networks)
-  has_many :attendees
-  has_many :events, through: :attendees
-  has_many :networks, as: :networkable
+  has_many :attendees, dependent: :destroy
+  has_many :events, through: :attendees, dependent: :destroy
+  has_many :networks, as: :networkable, dependent: :destroy
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable

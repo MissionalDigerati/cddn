@@ -38,6 +38,24 @@ describe User do
       nick = FactoryGirl.create(:defaulted_user, nickname: nil)
       FactoryGirl.create(:defaulted_user, email: "testing@fake.com", nickname: nil).should be_valid
     end
+    
+    it "should delete attendee and event records if the user who created it is deleted" do
+       user = FactoryGirl.create(:defaulted_user)
+       event = FactoryGirl.create(:defaulted_event)
+       FactoryGirl.create(:defaulted_attendee, user_id: user.id, event_id: event.id, attendee_type: "creator").should be_valid
+       user.destroy
+       Attendee.all.length.should == 0
+       Event.all.length.should == 1
+     end
+     
+    it "should delete the network records if the user that owns them is deleted/destroyed" do
+      user = FactoryGirl.create(:defaulted_user)
+      social_media = FactoryGirl.create(:social_medium, service: "facebook")
+      network = FactoryGirl.create(:defaulted_network, social_media_id: social_media.id, networkable_type: "User", networkable_id: user.id).should be_valid
+      Network.all.length.should == 1
+      user.destroy
+      Network.all.length.should == 0
+    end
   end
   
   context "methods" do

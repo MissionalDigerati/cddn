@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130120093257) do
+ActiveRecord::Schema.define(:version => 20130123010012) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -69,6 +69,20 @@ ActiveRecord::Schema.define(:version => 20130120093257) do
   end
 
   add_index "networks", ["networkable_id", "networkable_type"], :name => "index_networks_on_networkable_id_and_networkable_type"
+
+  create_table "programming_languages", :force => true do |t|
+    t.string   "language"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "programmings", :force => true do |t|
+    t.integer  "programming_language_id"
+    t.integer  "programmable_id"
+    t.string   "programmable_type"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
 
   create_table "social_media", :force => true do |t|
     t.string   "service"

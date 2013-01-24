@@ -151,19 +151,19 @@ Feature: An admin should be able to login as well as well as delete and suspend 
 		Then I should see "party asdfasdf"
 		 
 	Scenario: An admin should be able to view events that have not been approved
-		Given I am a user "Not an approved event user", and I have an event "unapproved event title", and I am not logged in, and I am not approved for event creation
+		Given I am a user "Not_an_approved_event_user", and I have an event "unapproved event title", and I am not logged in, and I am not approved for event creation
 		And I have an admin account "admin_event_show" and I am logged in
 		And I am on the home page
 		When I click the "Users Event Approval" button
-		Then I should see "Not an approved event user"
+		Then I should see "Not_an_approved_event_user"
 		When I click the "unapproved event title" button
 		Then I should be on the admin event show page for "unapproved event title"
 		And I should see "unapproved event title"
-		And I should see "This event was created by: Not an approved event user"
+		And I should see "This event was created by: Not_an_approved_event_user"
 		
 	Scenario: A user that is logged in should not be able to view events that have not been approved through the admin event show page
 		Given I am a user "Sam", and I have an event "birthday", and I am not logged in, and I am not approved for event creation
-		And I am a user "crab man" and I am logged in
+		And I am a user "crab_man" and I am logged in
 		When I try to access the admin event show page for "birthday"
 		Then I should be on the home page
 		And I should see "Unable to process your request."
