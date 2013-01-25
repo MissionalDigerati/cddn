@@ -33,6 +33,24 @@ describe Event do
     
   end
   
+  describe "aftersave" do
+    it "should created corresponding programmings records after the event is save so long as there are programming language ids provided in the programming_language_ids params" do
+      language = FactoryGirl.create(:defaulted_programming_language, language: "Ruby")
+      event = FactoryGirl.build(:defaulted_event, programming_language_ids: [1])
+      event.save
+      event.programmings.length.should == 1
+      event.programmings.first.programmable_id.should == event.id
+      event.programmings.first.programmable_type.should == "Event"
+      event.programmings.first.programming_language_id.should == language.id
+    end
+    
+    it "should not create a programmings record for the event if no programming language ids are passed" do
+      event = FactoryGirl.build(:defaulted_event, programming_language_ids: nil)
+      event.save
+      event.programmings.length.should == 0
+    end
+  end
+  
   describe "methods" do
     
     it "should return the user nickname of the user who created the event if it is available when an event is supplied" do

@@ -59,3 +59,7 @@ end
 When /^I visit the users events index page$/ do
   visit events_path
 end
+
+Then /^I check the "(.*?)" checkbox$/ do |checkbox|
+  check(checkbox)
+end

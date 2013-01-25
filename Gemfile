@@ -10,6 +10,7 @@ gem 'sqlite3'
 gem 'omniauth-twitter'
 gem 'omniauth-github'
 gem 'omniauth-facebook'
+gem 'devise'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -21,13 +22,12 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'devise'
 end
 
 gem 'jquery-rails'
 
 group :test, :development do
-  gem "rspec-rails"
+  gem "rspec-rails", "~> 2.12.2"
   gem "factory_girl_rails"
 end
 

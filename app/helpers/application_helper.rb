@@ -27,7 +27,6 @@ module ApplicationHelper
     SocialMedia.all.collect {|p| [ p.service, p.id ] }
   end
   
-  
   def link_to_add_fields(name, f, association)
     new_object = f.object.send(association).klass.new
     id = new_object.object_id
@@ -35,6 +34,16 @@ module ApplicationHelper
       render( association.to_s.singularize + "_fields", f: builder )
     end
     link_to(name, '#', class: "add_fields btn btn-small btn-danger", data: {id: id, fields: fields.gsub("/n", "")})
+  end
+  
+  def display_programming_tags(programmings_ids)
+    langs_to_display = []
+    ProgrammingLanguage.all.each do |lang|
+      if programmings_ids.include?(lang.id)
+        langs_to_display << lang.language
+      end
+    end
+    langs_to_display
   end
   
 end

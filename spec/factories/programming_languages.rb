@@ -3,4 +3,7 @@
 FactoryGirl.define do
   factory :programming_language do
   end
+  factory :defaulted_programming_language, :parent => :programming_language do
+    language "Ruby"
+  end
 end

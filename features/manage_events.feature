@@ -142,6 +142,24 @@ Feature: A logged in user should be able to create events as state they are atte
 		When I click the "Un-attend Event" button
 		Then I should be on the show page for the "attend this event" event
 		And I should see "You are no longer attending Attend this event"
+		
+	Scenario: A user should be able to create an event with language tags
+		Given I am a user "event_lang_tags_create" and I am logged in
+		And I am on the home page
+		When I click the "user_new_event" link
+		Then I should be on the new event page
+		And I fill in "Title" with "event"
+		And I fill in "Address 1" with "123 fake street"
+		And I fill in "City province" with "San Jose"
+		And I fill in "State" with "California"
+		And I fill in "Country" with "United States"
+		And I fill in "Zip code" with "95123"
+		And I fill in "Event date" with "1/01/2013"
+		And I check the "event[programming_language_ids][]" checkbox
+		And I click the "Submit" button
+		Then I should see "Your Event has been created!"
+		When I try to view the show page for the "event" event
+		Then I should see "Ruby"
 	
 	
 	

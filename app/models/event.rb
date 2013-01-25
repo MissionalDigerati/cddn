@@ -5,6 +5,7 @@ class Event < ActiveRecord::Base
   has_many :programming_languages, through: :programmings, source: :programmable, source_type: "Event"
   has_many :programmings, as: :programmable, dependent: :destroy
   scope :include_networks, includes(:networks)
+  scope :include_programmings, includes(:programmings)
   
   attr_accessible :title, :details, :address_1, :address_2, :city_province, :state_id, :country_id, :zip_code, :online_event, :event_date, :programming_language_ids
   attr_accessible :networks_attributes
