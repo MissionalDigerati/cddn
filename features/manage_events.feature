@@ -155,11 +155,50 @@ Feature: A logged in user should be able to create events as state they are atte
 		And I fill in "Country" with "United States"
 		And I fill in "Zip code" with "95123"
 		And I fill in "Event date" with "1/01/2013"
-		And I check the "event[programming_language_ids][]" checkbox
+		And I check the "Ruby" checkbox
 		And I click the "Submit" button
 		Then I should see "Your Event has been created!"
 		When I try to view the show page for the "event" event
 		Then I should see "Ruby"
+		
+	Scenario: A user that has language tags should be able to retain them through updating
+		Given I am a user "attend_event_test_1", and I have an event "event_tag_retention", and I have a ruby language tag, and I am logged in 
+		When I try to view the show page for the "event_tag_retention" event
+		Then I should see "Ruby"
+		And I should not see "SmallTalk"
+		When I click the "user_my_events" button
+		And I click the "Edit Event" button for "event_tag_retention"
+		And I click the "Submit" button
+		Then I should see "Your event was successfully updated."
+		And I click the "View Event" button for "event_tag_retention"
+		Then I should see "event_tag_retention"
+		And I should see "Ruby"
+		And I should not see "SmallTalk"
+		
+	Scenario:	A user should be able to edit an event and add programming language tags to it
+		Given I am a user "attend_event_test_1", and I have an event "event_tag_update", and I have a ruby language tag, and I am logged in 
+		When I try to view the show page for the "event_tag_update" event
+		Then I should see "Ruby"
+		And I should not see "SmallTalk"
+		When I click the "user_my_events" button
+		And I click the "Edit Event" button for "event_tag_update"
+		And I check the "SmallTalk" checkbox
+		And I click the "Submit" button
+		Then I should see "Your event was successfully updated."
+		And I click the "View Event" button for "event_tag_update"
+		Then I should see "event_tag_update"
+		And I should see "Ruby"
+		And I should see "SmallTalk"
 	
-	
-	
+	Scenario:	A user should be able to destroy language tags by unselecting them
+		Given I am a user "attend_event_test_1", and I have an event "event_tag_delete", and I have a ruby language tag, and I am logged in 
+		When I try to view the show page for the "event_tag_delete" event
+		Then I should see "Ruby"
+		When I click the "user_my_events" button
+		And I click the "Edit Event" button for "event_tag_delete"
+		And I uncheck the "Ruby" checkbox
+		And I click the "Submit" button
+		Then I should see "Your event was successfully updated."
+		And I click the "View Event" button for "event_tag_delete"
+		Then I should see "event_tag_delete"
+		And I should not see "Ruby"

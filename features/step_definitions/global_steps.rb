@@ -63,3 +63,11 @@ end
 Then /^I check the "(.*?)" checkbox$/ do |checkbox|
   check(checkbox)
 end
+
+When /^The "(.*?)" checkbox should be checked$/ do |checkbox|
+  find(checkbox).should be_checked
+end
+
+When /^I uncheck the "(.*?)" checkbox$/ do |checkbox|
+  uncheck(checkbox)
+end

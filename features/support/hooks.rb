@@ -6,4 +6,5 @@ Before do
   FactoryGirl.create(:defaulted_social_media, service: "GitHub")
   FactoryGirl.create(:defaulted_social_media, service: "Twitter")
   FactoryGirl.create(:defaulted_programming_language)
+  FactoryGirl.create(:defaulted_programming_language, language: "SmallTalk")
 end
