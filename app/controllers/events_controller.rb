@@ -3,7 +3,11 @@ class EventsController < ApplicationController
   
   #this will only display events that are created by authorized users
   def index
-    @events = Event.where(approved_event: true)
+    if params[:language].present?
+      @events = Event.approved_events.joins(:programmings).where(programmings: {programming_language_id: params[:language]})
+    else
+      @events = Event.approved_events.include_programmings
+    end
   end
   
   def new

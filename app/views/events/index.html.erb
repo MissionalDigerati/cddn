@@ -1,4 +1,11 @@
 Listing all events
+<br/>
+<%= form_tag events_path, method: :get do %>
+	Search by language: <br/>
+	<%= select_tag :language, options_from_collection_for_select(ProgrammingLanguage.all, "id", "language"), include_blank: true, id: "lang_select" %> <br/>
+	<%= submit_tag "Search" %>
+<% end %>
+<br/><br/>
 <table class="table table-striped table-bordered">
 	<tr>
 		<td>Title</td>

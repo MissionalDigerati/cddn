@@ -50,4 +50,8 @@ module ApplicationHelper
     lang_array.include?(lang_id)
   end
   
+  def programming_select
+    ProgrammingLanguage.all.collect {|p| [ p.language, p.id ] }
+  end
+  
 end
