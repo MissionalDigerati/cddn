@@ -46,6 +46,12 @@
 		<br/>
 		<br/>
 		<div><%= f.submit "Update" %></div>
+		
+		Programming languages<br/>
+		<% ProgrammingLanguage.all.each do |language| %>
+			<%= check_box_tag "user[programming_language_ids][]", language.id, check_lang(@user.programmings.pluck(:programming_language_id), language.id), {id: "#{language.language}"}  %>
+			<%= label_tag language.language%>
+		<% end %>
 	</div>
 	
 	

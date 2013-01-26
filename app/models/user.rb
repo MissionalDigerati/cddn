@@ -4,9 +4,12 @@ class User < ActiveRecord::Base
   scope :attendee_event_creator, joins(:attendees).where(attendees:{attendee_type: 'creator'})
   scope :include_events, includes(:events)
   scope :include_networks, includes(:networks)
+  scope :include_programmings, includes(:programmings)
   has_many :attendees, dependent: :destroy
   has_many :events, through: :attendees, dependent: :destroy
   has_many :networks, as: :networkable, dependent: :destroy
+  has_many :programming_languages, through: :programmings, source: :programmable, source_type: "User"
+  has_many :programmings, as: :programmable, dependent: :destroy
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -14,12 +17,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :nickname, :primary_role, :church, :bio, :city_province, :state_id, :country_id, :please_update
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :nickname, :primary_role, :church, :bio, :city_province, :state_id, :country_id, :please_update, :programming_language_ids
   attr_accessible :networks_attributes
+  attr_accessor :programming_language_ids
   validates_uniqueness_of :nickname, allow_nil: true, allow_blank: true
   
   accepts_nested_attributes_for :networks, reject_if: lambda{ |a| a[:account_url].blank? }, allow_destroy: true
-  
+  after_save :save_programming_languages
   
   #if the provider is facebook then it sets the user's nickname to the facebook name (which is the users first and last name)
   #if no email is provided then one is generated for the sake of requiring one on the cddn appliation
@@ -59,5 +63,14 @@ class User < ActiveRecord::Base
       super
     end
   end
+  
+  private
+    def save_programming_languages
+    self.programmings.destroy_all
+    return if self.programming_language_ids.blank?
+    self.programming_language_ids.each do |lang|
+        self.programmings.create({programming_language_id: lang}) unless lang.blank?
+      end
+    end
   
 end

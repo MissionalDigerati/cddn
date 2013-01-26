@@ -46,4 +46,8 @@ module ApplicationHelper
     langs_to_display
   end
   
+  def check_lang(lang_array, lang_id)
+    lang_array.include?(lang_id)
+  end
+  
 end

@@ -24,10 +24,6 @@ class Event < ActiveRecord::Base
     user.nickname.present? ? user.nickname : user.email
   end
   
-  def self.check_lang(lang_array, lang_id)
-    lang_array.include?(lang_id)
-  end
-  
   private
     def save_programming_languages
     self.programmings.destroy_all
