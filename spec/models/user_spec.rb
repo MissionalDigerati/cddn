@@ -58,6 +58,27 @@ describe User do
     end
   end
   
+  
+  describe "aftersave" do
+    it "should created corresponding programmings records after the event is save so long as there are programming language ids provided in the programming_language_ids params" do
+      language = FactoryGirl.create(:defaulted_programming_language, language: "Ruby")
+      user = FactoryGirl.build(:defaulted_user, programming_language_ids: [1])
+      user.save
+      user.programmings.length.should == 1
+      user.programmings.first.programmable_id.should == user.id
+      user.programmings.first.programmable_type.should == "User"
+      user.programmings.first.programming_language_id.should == language.id
+    end
+    
+    it "should not create a programmings record for the event if no programming language ids are passed" do
+      user = FactoryGirl.build(:defaulted_user, programming_language_ids: nil)
+      user.save
+      user.programmings.length.should == 0
+    end
+  end
+  
+  
+  
   context "methods" do
     
     it "should return a twitter instance if twitter is the provider." do

@@ -40,6 +40,11 @@ describe ApplicationHelper do
       yes_or_no(false).should == "No"
     end
     
+    it "should return true if the id for a language id passed in, is contained with the array of languages" do
+      check_lang([1, 2, 4], 3).should == false
+      check_lang([1, 2, 4], 1).should == true
+    end
+    
   end
   
 end
