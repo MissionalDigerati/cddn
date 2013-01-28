@@ -4,9 +4,9 @@ class EventsController < ApplicationController
   #this will only display events that are created by authorized users
   def index
     if params[:language].present?
-      @events = Event.approved_events.joins(:programmings).where(programmings: {programming_language_id: params[:language]})
+      @events = Event.approved_events.joins(:programmings).where(programmings: {programming_language_id: params[:language]}).page(params[:page]).per(10)
     else
-      @events = Event.approved_events.include_programmings
+      @events = Event.approved_events.include_programmings.page(params[:page]).per(10)
     end
   end
   

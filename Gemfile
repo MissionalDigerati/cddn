@@ -11,13 +11,15 @@ gem 'omniauth-twitter'
 gem 'omniauth-github'
 gem 'omniauth-facebook'
 gem 'devise'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'bootstrap-sass'
-
+  gem 'jquery-ui-rails'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
@@ -29,6 +31,8 @@ gem 'jquery-rails'
 group :test, :development do
   gem "rspec-rails", "~> 2.12.2"
   gem "factory_girl_rails"
+  gem 'populator'
+  gem 'faker'
 end
 
 group :test do
