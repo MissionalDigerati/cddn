@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :networks, as: :networkable, dependent: :destroy
   has_many :programming_languages, through: :programmings, source: :programmable, source_type: "User"
   has_many :programmings, as: :programmable, dependent: :destroy
+  has_many :projects, through: :memberships, dependent: :destroy
+  has_many :memberships, dependent: :destroy
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable

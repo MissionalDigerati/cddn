@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130123010012) do
+ActiveRecord::Schema.define(:version => 20130129002400) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(:version => 20130123010012) do
     t.date     "event_date"
   end
 
+  create_table "memberships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.string   "status"
+    t.string   "role"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "networks", :force => true do |t|
     t.integer  "social_media_id"
     t.string   "account_name"
@@ -82,6 +91,16 @@ ActiveRecord::Schema.define(:version => 20130123010012) do
     t.string   "programmable_type"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
+  end
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "license"
+    t.string   "organization"
+    t.boolean  "accepts_requests"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "social_media", :force => true do |t|
