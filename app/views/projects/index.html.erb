@@ -18,9 +18,9 @@ Listing all projects
 			<td><%= project.description %></td>
 			<td><%= project.license %></td>
 			<td><%= project.organization %></td>
-			<td><%= creator_name_link(project) %></td>
+			<td><%= project_creator_link(project) %></td>
 			<td><%= project.created_at %></td>
-			<td><%= link_to "View Project", project_path(project) %> <%= link_to "Join Project", project_path(project) %> <%= creator_name_link(project) %></td>
+			<td><%= link_to "View Project", project_path(project) %> <%= link_to "Join Project", project_path(project) %> <%= project_creator_link(project) %></td>
 		</tr>
 	<% end %>
 	</tbody>

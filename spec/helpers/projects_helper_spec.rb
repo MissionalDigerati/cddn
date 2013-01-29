@@ -1,15 +1,15 @@
 require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the ProjectsHelper. For example:
-#
-# describe ProjectsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
+
 describe ProjectsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "methods" do
+    
+    it "should return a link to the users profile when a record is provided" do
+      user = FactoryGirl.create(:defaulted_user)
+      project = FactoryGirl.create(:defaulted_project)
+      memberships = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress")
+      project_creator_link(project).should == "<a href=\"/users/1\">fakeuser@test.com</a>"
+    end
+    
+  end
 end
