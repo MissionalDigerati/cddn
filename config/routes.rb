@@ -32,6 +32,8 @@ Cddn::Application.routes.draw do
       put "attend_event"
     end
   end
+  resources :projects do
+  end
   match 'users/dashboard/:id' => 'users#dashboard', method: :get, as: :users_dashboard
 
   # The priority is based upon order of creation:

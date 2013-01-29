@@ -1,0 +1,28 @@
+<h3>New Project</h3>
+<%= form_for(@project) do |f| %>
+	<br/>
+	<br/>
+	<div class="span3 offset5">
+		<div><%= f.label :name %>
+		<%= f.text_field :name %></div>
+	
+		<div><%= f.label :description %>
+		<%= f.text_area :description, rows: 5 %></div>
+	
+		<div><%= f.label :license %>
+		<%= f.text_field :license %></div>
+	
+		<div><%= f.label :organization %>
+		<%= f.text_field :organization %></div>
+	
+		<div><%= f.label :accepts_requests, "Accept requests?" %>
+		<%= f.check_box :accepts_requests %></div>
+		
+		<br/>
+		<div><%= f.submit "Submit" %></div>
+	</div>
+		
+		
+	
+	
+<% end %>
