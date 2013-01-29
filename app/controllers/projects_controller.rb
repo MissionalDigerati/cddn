@@ -24,4 +24,26 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
   
+  
+  def index
+    @projects = Project.include_creator
+  end
+  
+  def edit
+    @project = Project.find(params[:id])
+  end
+  
+  def update
+    @project = Project.find(params[:id])
+    respond_to do |format|
+      if @project.update_attributes(params[:project])
+        format.html {render action: "show"}
+        flash[:notice] = "Your project has been succesfully updated."
+      else
+        format.html { render action: "edit" }
+        flash[:notice] = @project.errors.full_messages.to_sentence
+      end
+    end
+  end
+  
 end

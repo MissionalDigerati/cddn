@@ -1,0 +1,27 @@
+Listing all projects
+<br/>
+
+<table id="projects" class="table table-striped table-bordered">
+	<tbody>
+	<tr>
+		<td>Name</td>
+		<td>Description</td>
+		<td>License</td>
+		<td>Organization</td>
+		<td>Created by</td>
+		<td>Created at</td>
+		<td>Action</td>
+	</tr>
+	<% @projects.each do |project| %>
+		<tr>
+			<td><%= project.name %></td>
+			<td><%= project.description %></td>
+			<td><%= project.license %></td>
+			<td><%= project.organization %></td>
+			<td><%= creator_name_link(project) %></td>
+			<td><%= project.created_at %></td>
+			<td><%= link_to "View Project", project_path(project) %> <%= link_to "Join Project", project_path(project) %> <%= creator_name_link(project) %></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>

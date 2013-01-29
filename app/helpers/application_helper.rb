@@ -54,4 +54,10 @@ module ApplicationHelper
     ProgrammingLanguage.all.collect {|p| [ p.language, p.id ] }
   end
   
+  def creator_name_link(record)
+    creator = record.users.first
+    name = creator.nickname.present? ? creator.nickname : creator.email
+    link_to name, user_path(creator)
+  end
+  
 end
