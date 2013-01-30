@@ -71,3 +71,4 @@ end
 When /^I uncheck the "(.*?)" checkbox$/ do |checkbox|
   uncheck(checkbox)
 end
+

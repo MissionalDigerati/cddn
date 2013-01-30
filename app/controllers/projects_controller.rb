@@ -29,14 +29,20 @@ class ProjectsController < ApplicationController
   end
   
   def edit
-    @project = Project.find(params[:id])
+    @membership = Membership.where("project_id = ? AND role = ?", params[:id], "creator").first
+    if @membership.user_id == current_user.id
+      @project = Project.find(params[:id])
+    else
+      redirect_to root_path
+      flash[:notice] = "Unable to process your request."
+    end
   end
   
   def update
     @project = Project.find(params[:id])
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        format.html {render action: "show"}
+        format.html {redirect_to project_path(@project)}
         flash[:notice] = "Your project has been successfully updated."
       else
         format.html { render action: "edit" }
@@ -50,7 +56,7 @@ class ProjectsController < ApplicationController
     @project.destroy
     respond_to do |format|
       format.html {redirect_to users_dashboard_path(current_user)}
-      flash[:notice] = "Your Project has been deleted"
+      flash[:notice] = "Your Project has been deleted."
     end
   end
   

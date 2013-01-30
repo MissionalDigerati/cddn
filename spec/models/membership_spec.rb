@@ -15,6 +15,14 @@ describe Membership do
       FactoryGirl.build(:membership, user_id: user.id, project_id: nil, role: "creator", status: "progress").should_not be_valid
     end
     
+    it "should delete the membership records if the project is destoryed" do
+      user = FactoryGirl.create(:defaulted_user)
+      project = FactoryGirl.create(:defaulted_project)
+      membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress")
+      Membership.all.length.should == 1
+      project.destroy
+      Membership.all.length.should == 0 
+    end
     
   end
 end
