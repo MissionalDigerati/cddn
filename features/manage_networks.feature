@@ -125,4 +125,89 @@ Feature: A user should be able to add social networking accounts and links to th
 			And I should be on the dashboard for "networking_user_reject_test"
 			And I should not see "http://www.facebook.com"
 			
+	 @javascript
+	 	Scenario: A user should be able to add networks to their projects and show be viewable on the project show page
+	 		Given I am a user "create_projects_networks" and I am logged in
+	 		And I am on the new project page
+	 		And I fill in "Name" with "create projects network"
+	 		And I fill in "Description" with "this is a project description"
+	 		And I fill in "License" with "Standard"
+	 		And I fill in "Organization" with "CDDN"
+	 		And I click the "Add Social Network" button
+	 		And I select "GitHub" from "Service"
+	 		And I fill in "Account name" with "github"
+	 		And I fill in "Account url" with "http://www.GitHub.com"
+	 		And I click the "Submit" button
+	 		Then I should see "Your project has been successfully created."
+			And I should be on the project show page for "create projects network"
+	 		And I should see "http://www.GitHub.com"
+	
+	 @javascript
+	   Scenario: A user should be able to edit networks associated with their projects
+	   	Given I am a user "edit_projects_networks" and I am logged in
+	   	And I am on the new project page
+	   	And I fill in "Name" with "edit projects network"
+	   	And I fill in "Description" with "this is a project description"
+	   	And I fill in "License" with "Standard"
+	   	And I fill in "Organization" with "CDDN"
+	   	And I click the "Add Social Network" button
+	   	And I select "GitHub" from "Service"
+	   	And I fill in "Account name" with "github"
+	   	And I fill in "Account url" with "http://www.GitHub.com"
+	   	And I click the "Submit" button
+	   	Then I should see "Your project has been successfully created."
+	 	 	And I should be on the project show page for "edit projects network"
+	  	And I should see "http://www.GitHub.com"
+			When I click the "Home | Dashboard" link
+			And I click the "Edit Project" button
+			And I select "Twitter" from "Service"
+			And I fill in "Account name" with "Twitter"
+	   	And I fill in "Account url" with "http://www.Twitter.com"
+			And I click the "Submit" button
+			Then I should see "Your project has been successfully updated."
+			And I should be on the project show page for "edit projects network"
+			And I should see "http://www.Twitter.com"
+			And I should not see "http://www.GitHub.com"
 			
+	 @javascript
+	    Scenario: A user should be able to delete networks associated with their projects
+	    Given I am a user "delete_projects_networks" and I am logged in
+	    And I am on the new project page
+	    And I fill in "Name" with "delete projects network"
+	    And I fill in "Description" with "this is a project description"
+	    And I fill in "License" with "Standard"
+	    And I fill in "Organization" with "CDDN"
+	    And I click the "Add Social Network" button
+	    And I select "GitHub" from "Service"
+	    And I fill in "Account name" with "github"
+	    And I fill in "Account url" with "http://www.GitHub.com"
+	    And I click the "Submit" button
+	    Then I should see "Your project has been successfully created."
+	  	And I should be on the project show page for "delete projects network"
+	   	And I should see "http://www.GitHub.com"
+	 		When I click the "Home | Dashboard" link
+	 		And I click the "Edit Project" button
+	 		And I click the "remove" button
+	 		And I click the "Submit" button
+	 		Then I should see "Your project has been successfully updated."
+	 		And I should be on the project show page for "delete projects network"
+	 		And I should not see "http://www.GitHub.com"
+			
+  @javascript
+      Scenario: A network for a project should not be created if (rejected) if the url is not provided
+      Given I am a user "reject_projects_networks" and I am logged in
+      And I am on the new project page
+      And I fill in "Name" with "reject projects network"
+      And I fill in "Description" with "this is a project description"
+      And I fill in "License" with "Standard"
+      And I fill in "Organization" with "CDDN"
+      And I click the "Add Social Network" button
+      And I select "GitHub" from "Service"
+      And I fill in "Account name" with "github"
+      And I click the "Submit" button
+      Then I should see "Your project has been successfully created."
+    	And I should be on the project show page for "reject projects network"
+     	And I should not see "http://www.GitHub.com"
+			And I should not see "github"
+
+  

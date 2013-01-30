@@ -5,3 +5,9 @@ This is the show page
 <%= @project.description %><br/>
 <%= @project.organization %><br/>
 <%= @project.license %><br/>
+
+<br/>
+<% @project.networks.each do |network| %>
+	<%= link_to network.account_url, network.account_url %><br/>
+<% end %>
+<br/>

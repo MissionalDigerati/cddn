@@ -38,3 +38,7 @@ end
 When /^I visit the projects index$/ do
   visit projects_path
 end
+
+Given /^I am on the new project page$/ do
+  visit new_project_path
+end

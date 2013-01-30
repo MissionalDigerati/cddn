@@ -1,0 +1,14 @@
+<fieldset class="networking_attributes">
+	<br/>
+	<%= f.label :social_media_id, "Service"%>
+	<%= f.select(:social_media_id, network_service_select) %>
+	<%= f.label :account_name %>
+	<%= f.text_field :account_name %>
+	<%= f.label :account_url %>
+	<%= f.text_field :account_url %>
+	<%= f.hidden_field :_destroy, class: "remove_boolean"%>
+	<%= link_to "remove", '#', class: "remove_fields btn btn-small btn-info", id: "remove_button" %>
+	<div class="clear"></div>
+</fieldset>
+
+<!-- #<Network id: nil, social_media_id: nil, account_name: nil, account_url: nil, networkable_id: nil, networkable_type: nil, created_at: nil, updated_at: nil> -->
