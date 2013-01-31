@@ -9,5 +9,6 @@ FactoryGirl.define do
     license "license"
     organization "organization"
     accepts_requests false
+    approved_project true
   end
 end

@@ -5,6 +5,7 @@ class Project < ActiveRecord::Base
   scope :include_creator, includes(:memberships).where(memberships:{role: 'creator'})
   scope :include_memberships, includes(:memberships)
   scope :include_networks, includes(:networks)
+  scope :approved_projects, where(approved_project: true)
   
   attr_accessible :name, :description, :license, :organization, :accepts_requests
   attr_accessible :networks_attributes

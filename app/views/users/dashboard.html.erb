@@ -20,17 +20,22 @@
 		<% end %>
 		<br/>
 
+		<% if @user.event_approved == false %>
+			You are not currently approved for event creation.
+			<br/><br/>
+		<% end %>
+		
+		<% if @user.project_approved == false %>
+			You are not currently approved for project creation.
+			<br/><br/>
+		<% end %>
+
 		Language tags:<br/>
 		<% display_programming_tags(@user.programmings.pluck(:programming_language_id)).each do |language|%>
 			<%= language %> <br/>
 		<% end %>
 		<br/>
-
-		<% if @user.event_approved == false %>
-			You are not currently approved for event creation.
-			<br/><br/>
-		<% end %>
-
+		
 		<%= link_to 'Account Settings', edit_user_registration_path, id: "account_settings" %><br/>
 		<%= link_to 'Edit account information', edit_user_path(@user) %><br/>
 		<%= link_to 'View My Profile / Brag page', user_path(@user) %>

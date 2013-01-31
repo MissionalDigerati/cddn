@@ -28,7 +28,7 @@ end
 
 Given /^I am a user "(.*?)" and I am logged in$/ do |username|
   password = 'secretpassword1000'
-  FactoryGirl.create(:defaulted_user, first_name: username, email: username + "@example.com", password: password, bio: "bio")
+  FactoryGirl.create(:defaulted_user, first_name: username, email: username + "@example.com", password: password, bio: "bio", project_approved: true)
 
   visit '/users/sign_in'
   fill_in "user_email", :with=> username + "@example.com"

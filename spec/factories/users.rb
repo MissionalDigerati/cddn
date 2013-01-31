@@ -7,5 +7,6 @@ FactoryGirl.define do
     email "fakeuser@test.com"
     password "testing"
     event_approved true
+    project_approved true
   end
 end

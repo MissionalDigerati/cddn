@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130129002400) do
+ActiveRecord::Schema.define(:version => 20130131034352) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -99,8 +99,9 @@ ActiveRecord::Schema.define(:version => 20130129002400) do
     t.string   "license"
     t.string   "organization"
     t.boolean  "accepts_requests"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.boolean  "approved_project", :default => false
   end
 
   create_table "social_media", :force => true do |t|
@@ -136,6 +137,7 @@ ActiveRecord::Schema.define(:version => 20130129002400) do
     t.string   "uid"
     t.boolean  "suspended",              :default => false
     t.boolean  "event_approved",         :default => false
+    t.boolean  "project_approved",       :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

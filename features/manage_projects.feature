@@ -14,11 +14,8 @@ Feature: A user should be able to create update delete and join projects, as wel
 		And I fill in "Organization" with "CDDN"
 		And I click the "Submit" button
 		Then I should see "Your project has been successfully created."
-		And I should be on the project show page for "Project Name"
 		And I should see "Project Name"
-		And I should see "This is the best project ever"
-		And I should see "Standard"
-		And I should see "CDDN"
+		And I should be on the user dashboard for "create_project_test"
 	
 	Scenario: A user that is not logged in should not be able to access the create new project page
 		Given I am on the home page
@@ -35,7 +32,7 @@ Feature: A user should be able to create update delete and join projects, as wel
 		And I fill in "Name" with "Edited_project_name"
 		And I click the "Submit" button
 		Then I should see "Your project has been successfully updated."
-		And I should be on the project show page for "Edited_project_name"
+		And I should be on the user dashboard for "edit_project_test"
 		
 	Scenario: A visitor that is not logged in should not be able to access edit page for a users project
 		Given I am a user "visitor_access_edit_project" and I have a project "visitor access project", and I am not logged in
@@ -78,3 +75,14 @@ Feature: A user should be able to create update delete and join projects, as wel
 		When I click the "Delete Project" button for "project name"
 		Then I should see "Your Project has been deleted."
 		And I should not see "project name"
+		
+  Scenario: A user that is not project approved should not have their projects viewable via index or show
+  	Given I am a user "un_approved_project_show" and I have a project "un-approved-project", and I am not approved for project creation
+  	And I am on the home page
+  	When I click the "Home | Dashboard" button
+  	Then I should see "un-approved-project"
+  	When I visit the projects index
+  	Then I should not see "un-approved-project"
+  	When I click the "Home | Dashboard" button
+		And I click the "View Project" button
+		Then I should see "Unable to process your request."

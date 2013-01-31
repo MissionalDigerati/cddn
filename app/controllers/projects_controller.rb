@@ -6,12 +6,13 @@ class ProjectsController < ApplicationController
   end
   
   def create
-    @user_id = current_user.id
+    @user = current_user
     @project = Project.new(params[:project])
+    @user.project_approved == true ? @project.approved_project = true : @project.approved_project = false
     respond_to do |format|
       if @project.save
-        Membership.membership_creation(@user_id, @project, 'creator', 'filler')
-        format.html {redirect_to project_path(@project)}
+        Membership.membership_creation(@user.id, @project, 'creator', 'filler')
+        format.html {redirect_to users_dashboard_path(current_user)}
         flash[:notice] = "Your project has been successfully created."
       else
         format.html {render action: "new"}
@@ -21,11 +22,17 @@ class ProjectsController < ApplicationController
   end
   
   def show
-    @project = Project.include_networks.find(params[:id])
+    @project = Project.include_networks.include_memberships.find(params[:id])
+    if @project.approved_project == true 
+      @project
+    else
+      redirect_to :back
+      flash[:notice] = "Unable to process your request."
+    end
   end
   
   def index
-    @projects = Project.include_creator
+    @projects = Project.approved_projects.include_creator
   end
   
   def edit
@@ -42,7 +49,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        format.html {redirect_to project_path(@project)}
+        format.html {redirect_to users_dashboard_path(current_user)}
         flash[:notice] = "Your project has been successfully updated."
       else
         format.html { render action: "edit" }

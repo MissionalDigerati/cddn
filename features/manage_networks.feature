@@ -139,8 +139,8 @@ Feature: A user should be able to add social networking accounts and links to th
 	 		And I fill in "Account url" with "http://www.GitHub.com"
 	 		And I click the "Submit" button
 	 		Then I should see "Your project has been successfully created."
-			And I should be on the project show page for "create projects network"
-	 		And I should see "http://www.GitHub.com"
+			When I click the "View Project" button
+	 		Then I should see "http://www.GitHub.com"
 	
 	 @javascript
 	   Scenario: A user should be able to edit networks associated with their projects
@@ -156,7 +156,8 @@ Feature: A user should be able to add social networking accounts and links to th
 	   	And I fill in "Account url" with "http://www.GitHub.com"
 	   	And I click the "Submit" button
 	   	Then I should see "Your project has been successfully created."
-	 	 	And I should be on the project show page for "edit projects network"
+			When I click the "View Project" button
+	 	 	Then I should be on the project show page for "edit projects network"
 	  	And I should see "http://www.GitHub.com"
 			When I click the "Home | Dashboard" link
 			And I click the "Edit Project" button
@@ -165,7 +166,8 @@ Feature: A user should be able to add social networking accounts and links to th
 	   	And I fill in "Account url" with "http://www.Twitter.com"
 			And I click the "Submit" button
 			Then I should see "Your project has been successfully updated."
-			And I should be on the project show page for "edit projects network"
+			When I click the "View Project" button
+			Then I should be on the project show page for "edit projects network"
 			And I should see "http://www.Twitter.com"
 			And I should not see "http://www.GitHub.com"
 			
@@ -183,14 +185,16 @@ Feature: A user should be able to add social networking accounts and links to th
 	    And I fill in "Account url" with "http://www.GitHub.com"
 	    And I click the "Submit" button
 	    Then I should see "Your project has been successfully created."
-	  	And I should be on the project show page for "delete projects network"
+			When I click the "View Project" button
+	  	Then I should be on the project show page for "delete projects network"
 	   	And I should see "http://www.GitHub.com"
 	 		When I click the "Home | Dashboard" link
 	 		And I click the "Edit Project" button
 	 		And I click the "remove" button
 	 		And I click the "Submit" button
 	 		Then I should see "Your project has been successfully updated."
-	 		And I should be on the project show page for "delete projects network"
+			When I click the "View Project" button
+	 		Then I should be on the project show page for "delete projects network"
 	 		And I should not see "http://www.GitHub.com"
 			
   @javascript
@@ -206,7 +210,8 @@ Feature: A user should be able to add social networking accounts and links to th
       And I fill in "Account name" with "github"
       And I click the "Submit" button
       Then I should see "Your project has been successfully created."
-    	And I should be on the project show page for "reject projects network"
+			When I click the "View Project" button
+    	Then I should be on the project show page for "reject projects network"
      	And I should not see "http://www.GitHub.com"
 			And I should not see "github"
 

@@ -13,7 +13,7 @@ end
 
 Given /^I am a user "(.*?)" and I have a project "(.*?)", and I am logged in$/ do |email_prefix, project|
   password = 'secretpassword1000'
-  user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password)
+  user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password, first_name: email_prefix)
   project = FactoryGirl.create(:defaulted_project, name: project)
   membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress")
   
@@ -41,4 +41,21 @@ end
 
 Given /^I am on the new project page$/ do
   visit new_project_path
+end
+
+Given /^I am a user "(.*?)" and I have a project "(.*?)", and I am not approved for project creation$/ do |email_prefix, project|
+  password = 'secretpassword1000'
+  user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password, project_approved: false)
+  project = FactoryGirl.create(:defaulted_project, name: project, approved_project: false)
+  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress")
+  
+  visit '/users/sign_in'
+  fill_in "Email", with: email_prefix + "@cddn.com"
+  fill_in "Password", with: password
+  click_button "Sign in"
+end
+
+Then /^I should be on the user dashboard for "(.*?)"$/ do |first_name|
+  user = User.where(first_name: first_name).first
+  page.current_path.should == users_dashboard_path(user)
 end

@@ -17,7 +17,6 @@ Cddn::Application.routes.draw do
       end
     end
     resources :projects do
-      
     end
   end
   
