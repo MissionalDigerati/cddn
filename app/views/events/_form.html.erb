@@ -48,7 +48,7 @@
 		Add your social networking links to your profile
 		<br/>
 		<%= f.fields_for :networks do |builder| %>
-			<%= render 'events/network_fields', f: builder %>
+			<%= render partial: '/layouts/network_fields', locals: {f: builder} %>
 		<% end %>
 		<%= link_to_add_fields "Add Social Network", f, :networks %>
 		<div><%= f.submit "Submit" %></div>

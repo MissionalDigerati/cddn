@@ -26,4 +26,7 @@ This is the event show page
 	This event was created by: <%= attendee_creator_name(@event) %>
 	<%= attend_event_button(current_user.id, @event) if user_signed_in? %>
 	
+	<br/>
+	<%= render "layouts/share_this" %>
+	
 <!-- #<Event id: nil, title: nil, details: nil, address_1: nil, address_2: nil, city_province: nil, state_id: nil, country_id: nil, zip_code: nil, online_event: false, longitude: nil, latitude: nil, created_at: nil, updated_at: nil>  -->

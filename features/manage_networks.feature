@@ -73,7 +73,7 @@ Feature: A user should be able to add social networking accounts and links to th
 		And I should see "http://www.twitter.com"
 		When I visit the my events page for "event_network_remove"  
 		And I click the "Edit Event" button
-		And I click the "remove_button" button
+		And I click the "remove_networks_button" button
 		And I click the "Submit" button
 		Then I should see "Your event was successfully updated."
 		And I click the "View Event" button
