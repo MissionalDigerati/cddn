@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
   end
   
   def show
-    @project = Project.include_networks.include_memberships.find(params[:id])
+    @project = Project.include_networks.include_memberships.include_programmings.find(params[:id])
     if @project.approved_project == true 
       @project
     else

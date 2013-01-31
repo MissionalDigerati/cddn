@@ -31,6 +31,15 @@ describe Event do
       Network.all.length.should == 0
     end
     
+    it "should delete the programmigns records if the event that owns them is destroyed" do
+      language = FactoryGirl.create(:defaulted_programming_language)
+      event = FactoryGirl.create(:defaulted_event)
+      tag = event.programmings.create({programming_language_id: language.id})
+      Programming.all.length.should == 1
+      event.destroy
+      Programming.all.length.should == 0
+    end
+    
   end
   
   describe "aftersave" do

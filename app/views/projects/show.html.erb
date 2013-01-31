@@ -10,5 +10,15 @@ This is the show page
 <% @project.networks.each do |network| %>
 	<%= link_to network.account_url, network.account_url %><br/>
 <% end %>
+
+<br/><br/>
+
+Language tags:<br/>
+<% display_programming_tags(@project.programmings.pluck(:programming_language_id)).each do |language|%>
+	<%= language %> <br/>
+<% end %>
+<br/>
+
+
 <br/>
 
