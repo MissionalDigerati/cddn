@@ -2,7 +2,7 @@
 <br/>
 <br/>
 <br/>
-This is the Events index
+This is the Events index for admins
 <br/>
 <br/>
 
@@ -32,8 +32,8 @@ This is the Events index
 	<td><%= event.zip_code %></td>
 	<td><%= event.online_event %></td>
 	<td><%= event.created_at %></td>
-	<td><%= Event.event_create_by(event) %></td>
-	<td><%= link_to "Delete Event", admin_event_path(event), method: :delete, class: "btn btn-danger btn-mini", confirm: "Are you sure?" %></td>
+	<td><%= link_to_users_profile(event.attendees.first.user) %></td>
+	<td><%= link_to "Delete Event", admin_event_path(event), method: :delete, class: "btn btn-danger btn-mini", confirm: "Are you sure?" %> <%= link_to "View Event", admin_event_path(event), class: "btn btn-info btn-mini" %></td>
 </tr>
 <% end %>
 </table>

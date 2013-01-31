@@ -7,6 +7,8 @@ class Event < ActiveRecord::Base
   scope :include_networks, includes(:networks)
   scope :include_programmings, includes(:programmings)
   scope :approved_events, where(approved_event: true)
+  scope :includes_users, includes(:users)
+  scope :include_attendees_creator, includes(:attendees).where(attendees:{attendee_type: "creator"})
   
   attr_accessible :title, :details, :address_1, :address_2, :city_province, :state_id, :country_id, :zip_code, :online_event, :event_date, :programming_language_ids
   attr_accessible :networks_attributes
@@ -19,11 +21,6 @@ class Event < ActiveRecord::Base
   validates :title, :address_1, :city_province, :state_id, :country_id, :zip_code, :event_date, presence: true
   
   after_save :save_programming_languages
-  
-  def self.event_create_by(event)
-    user = User.joins(:attendees).where(attendees: {event_id: event.id, attendee_type: 'creator'}).first
-    user.nickname.present? ? user.nickname : user.email
-  end
   
   private
     def save_programming_languages

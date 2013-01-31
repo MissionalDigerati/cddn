@@ -54,4 +54,8 @@ module ApplicationHelper
     ProgrammingLanguage.all.collect {|p| [ p.language, p.id ] }
   end
   
+  def link_to_users_profile(user)
+    name = user.nickname.present? ? user.nickname : user.email
+    link_to name, user_path(user)
+  end
 end

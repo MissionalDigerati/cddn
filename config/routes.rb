@@ -16,6 +16,9 @@ Cddn::Application.routes.draw do
         put "allow_event_posting"
       end
     end
+    resources :projects do
+      
+    end
   end
   
   match "/admin" => redirect("/admin/admins/sign_in")

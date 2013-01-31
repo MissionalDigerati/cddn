@@ -17,5 +17,12 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+  
+  def admin_auth
+    unless current_admin
+      redirect_to root_path
+      flash[:notice] = "Unable to process your request."
+    end
+  end
 
 end

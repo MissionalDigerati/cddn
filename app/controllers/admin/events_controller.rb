@@ -1,29 +1,23 @@
 class Admin::EventsController < ApplicationController
   before_filter :authenticate_admin!, only: [:index, :destroy, :event_to_approve, :allow_event_posting]
+  before_filter :admin_auth, only: [:show]
+  
   def index
-    @events = Event.all
+    @events = Event.include_attendees_creator.includes_users
   end
   
   def show
-    unless current_admin
-      redirect_to root_path
-      flash[:notice] = "Unable to process your request."
-    else
-      @event = Event.find(params[:id])
-    end
+    @event = Event.find(params[:id])
   end
   
   def destroy
     @event = Event.find(params[:id])
-    # @attendees = Attendee.where("event_id = ?", params[:id])
-    @event.delete
-    # @attendees.delete_all
+    @event.destroy
     flash[:notice] = "Event has been deleted."
     redirect_to :back
   end
   
   def event_to_approve
-    # queries all users that are not event approved that have created events a la attendee records.
     @users = User.event_unapproved.attendee_event_creator.include_events
   end
   

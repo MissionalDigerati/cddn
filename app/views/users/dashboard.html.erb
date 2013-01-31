@@ -1,5 +1,6 @@
 <div class="container">
 	<div class="span3">
+		
 		<h2>This is the dashboard for </h2>
 		<br/>
 		<%= @user.email %><br/>
@@ -25,11 +26,16 @@
 		<% end %>
 		<br/>
 
+		<% if @user.event_approved == false %>
+			You are not currently approved for event creation.
+			<br/><br/>
+		<% end %>
+
 		<%= link_to 'Account Settings', edit_user_registration_path, id: "account_settings" %><br/>
 		<%= link_to 'Edit account information', edit_user_path(@user) %><br/>
 		<%= link_to 'View My Profile / Brag page', user_path(@user) %>
 
-	</div>
+	</div> <!-- span 3 -->
 
 	<div class="span8">
 		<h3>My Projects</h3>

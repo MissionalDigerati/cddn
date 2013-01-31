@@ -6,6 +6,14 @@
 				<li><%= link_to "Users index", admin_users_path %></li>
 				<li><%= link_to "Events index", admin_events_path  %></li>
 				<li><%= link_to "Users Event Approval", event_to_approve_admin_event_path(current_admin) %></li>
+				
+				<li class="dropdown"><a href="#" class="dropdown-toggle account_dropdown" data-toggle="dropdown">Projects <b class="caret"></b>
+					<ul class="dropdown-menu account_dropdown_menu">
+						<li><%= link_to 'All Projects', admin_projects_path, id: "admin_projecs_index" %> </li>
+						<li><%= link_to 'Users Projects Approval', projects_path, id: "all_events" %> </li>
+					</ul>
+				</li>
+				
 			</ul>
 			
 			<ul class="nav pull-right">
