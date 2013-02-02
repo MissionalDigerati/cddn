@@ -22,6 +22,16 @@ class Event < ActiveRecord::Base
   
   after_save :save_programming_languages
   
+  # returns query to controller based on the id of the programming language tag associated with the event. 
+  # This will only return events approved by the admin.
+  def self.index_search_query(language_tag_id)
+    if language_tag_id.present?
+      Event.approved_events.joins(:programmings).where(programmings: {programming_language_id: language_tag_id})
+    else
+      Event.approved_events.include_programmings
+    end
+  end
+  
   private
     def save_programming_languages
     self.programmings.destroy_all

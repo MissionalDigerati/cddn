@@ -60,4 +60,20 @@ describe Event do
     end
   end
   
+  
+  describe "methods" do
+    it "should return queries based on programming languages associated with events. However if none are filtered, then it should return all events. However only events that are approved" do
+      language = FactoryGirl.create(:defaulted_programming_language)
+      approved_event_without_tag = FactoryGirl.create(:defaulted_event, title: "no_tag")
+      unapproved_event = FactoryGirl.create(:defaulted_event, approved_event: false, title: "unapproved")
+      approved_event_with_tag = FactoryGirl.create(:defaulted_event, title: "approved_with_tag")
+      tag = approved_event_with_tag.programmings.create({programming_language_id: language.id})
+      #should only return 2 becasue the 3rd is not approved
+      Event.index_search_query(nil).length.should == 2
+      #should only return 1 because it is filtered by a programming language
+      Event.index_search_query(1).length.should == 1
+      Event.index_search_query(1).first.title.should == "approved_with_tag"
+    end
+  end
+  
 end
