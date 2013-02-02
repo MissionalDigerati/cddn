@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
   end
   
   def index
-    @projects = Project.approved_projects.include_creator
+    @projects = Project.approved_projects.include_creator.page(params[:page]).per(15)
   end
   
   def edit
