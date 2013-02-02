@@ -8,7 +8,6 @@ class EventsController < ApplicationController
   
   def new
     @event = Event.new
-    @event.programmings.build
   end
   
   def show
