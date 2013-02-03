@@ -41,4 +41,34 @@ describe Project do
     end
     
   end
+  
+  describe "methods" do
+    
+    it "should return a regular search if no params are provided" do
+      user = FactoryGirl.create(:defaulted_user)
+      project = FactoryGirl.create(:defaulted_project)
+      membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress")
+      search = Project.project_index_search(nil)
+      search.length.should == 1
+      search.include?(project).should == true
+    end
+    
+    it "should search projects by programming language tag if and id is supplied to it" do
+      #created two projects, one with a tag, one witout, created corresponding user, memberships, lanuage and tag
+      language = FactoryGirl.create(:defaulted_programming_language)
+      user = FactoryGirl.create(:defaulted_user)
+      project_without_tag = FactoryGirl.create(:defaulted_project, name: "project without tag")
+      membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project_without_tag.id, role: "creator", status: "progress")
+      project_with_tag = FactoryGirl.create(:defaulted_project, name: "project with tag")
+      membership_2 = FactoryGirl.create(:membership, user_id: user.id, project_id: project_with_tag.id, role: "creator", status: "progress")
+      tag = project_with_tag.programmings.create({programming_language_id: language.id})
+      
+      search = Project.project_index_search(1)
+      search.length.should == 1
+      search.include?(project_with_tag).should == true
+      search.include?(project_without_tag).should == false
+    end
+    
+  end
+  
 end

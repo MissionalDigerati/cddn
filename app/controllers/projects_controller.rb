@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
   end
   
   def index
-    @projects = Project.approved_projects.open_projects.include_creator.page(params[:page]).per(15)
+    @projects = Project.project_index_search(params[:language]).page(params[:page]).per(15)
   end
   
   def edit

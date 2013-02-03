@@ -10,6 +10,7 @@ class Project < ActiveRecord::Base
   scope :approved_projects, where(approved_project: true)
   scope :include_programmings, includes(:programmings)
   scope :open_projects, where(accepts_requests: true)
+  scope :joins_programmings, joins(:programmings)
   
   attr_accessible :name, :description, :license, :organization, :accepts_requests, :programming_language_ids
   attr_accessible :networks_attributes
@@ -20,6 +21,22 @@ class Project < ActiveRecord::Base
   validates :name, :description, :license, :organization, presence: true
   after_save :save_programming_languages
   
+  
+  def self.project_index_search(language_tag_id)
+    if language_tag_id.present?
+      programming_language_search(language_tag_id)
+    else
+      regular_project_search
+    end
+  end
+  
+  def self.regular_project_search
+    Project.approved_projects.open_projects.include_creator
+  end
+  
+  def self.programming_language_search(language_tag_id)
+    Project.approved_projects.open_projects.include_creator.joins_programmings.where(programmings: {programming_language_id: language_tag_id})
+  end
   
   private
     def save_programming_languages
