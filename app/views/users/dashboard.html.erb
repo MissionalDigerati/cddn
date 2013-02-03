@@ -50,7 +50,6 @@
 				<td>Name</td>
 				<td>License</td>
 				<td>Organization</td>
-				<td>Created at</td>
 				<td>Action</td>
 			</tr>
 			<% @projects.each do |project| %>
@@ -58,7 +57,6 @@
 					<td><%= project.name %></td>
 					<td><%= project.license %></td>
 					<td><%= project.organization %></td>
-					<td><%= project.created_at.to_date %></td>
 					<td><%= link_to "View Project", project_path(project), class: "btn btn-mini btn-info" %> <%= link_to "Edit Project", edit_project_path(project), class: "btn btn-mini btn-success" %> <%= link_to "Delete Project", project_path(project), method: :delete, class: "btn btn-mini btn-danger" %></td>
 				</tr>
 			<% end %>

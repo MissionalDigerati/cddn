@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
         flash[:notice] = "Your project has been successfully created."
       else
         format.html {render action: "new"}
-        @project.errors.full_messages.to_sentence
+        flash[:notice] = @project.errors.full_messages.to_sentence
       end
     end
   end
@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
   end
   
   def index
-    @projects = Project.approved_projects.include_creator.page(params[:page]).per(15)
+    @projects = Project.approved_projects.open_projects.include_creator.page(params[:page]).per(15)
   end
   
   def edit

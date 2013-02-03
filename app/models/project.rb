@@ -9,6 +9,7 @@ class Project < ActiveRecord::Base
   scope :include_networks, includes(:networks)
   scope :approved_projects, where(approved_project: true)
   scope :include_programmings, includes(:programmings)
+  scope :open_projects, where(accepts_requests: true)
   
   attr_accessible :name, :description, :license, :organization, :accepts_requests, :programming_language_ids
   attr_accessible :networks_attributes

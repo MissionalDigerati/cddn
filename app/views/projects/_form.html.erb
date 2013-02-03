@@ -16,7 +16,10 @@
 		<%= f.text_field :organization %></div>
 	
 		<div><%= f.label :accepts_requests, "Accept requests?" %>
-		<%= f.check_box :accepts_requests %></div>
+		<%= f.radio_button :accepts_requests, false, checked: true %>
+		<%= f.label :accepts_requests, "No"%>
+		<%= f.radio_button :accepts_requests, true %></div>
+		<%= f.label :accepts_requests, "Yes" %>
 		
 		<br/>
 		Programming languages<br/>
