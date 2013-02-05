@@ -22,20 +22,33 @@ class Project < ActiveRecord::Base
   after_save :save_programming_languages
   
   
-  def self.project_index_search(language_tag_id)
-    if language_tag_id.present?
+  def self.project_index_search(language_tag_id, accepting_requests)
+    if language_tag_id.present? && accepting_requests.present?
+      open_projects_with_tag(language_tag_id, accepting_requests)
+    elsif language_tag_id.present?
       programming_language_search(language_tag_id)
+    elsif accepting_requests.present?
+      only_open_projects
     else
       regular_project_search
     end
   end
   
+  def self.open_projects_with_tag(language_tag_id, accepting_requests)
+    Project.open_projects.joins_programmings.where(programmings: {programming_language_id: language_tag_id})
+  end
+  
+  #the regular project search index all projects, open or not, as long as they are approved, including their creator.
   def self.regular_project_search
-    Project.approved_projects.open_projects.include_creator
+    Project.approved_projects.include_creator
   end
   
   def self.programming_language_search(language_tag_id)
-    Project.approved_projects.open_projects.include_creator.joins_programmings.where(programmings: {programming_language_id: language_tag_id})
+    Project.approved_projects.include_creator.joins_programmings.where(programmings: {programming_language_id: language_tag_id})
+  end
+  
+  def self.only_open_projects
+    Project.approved_projects.open_projects.include_creator
   end
   
   private

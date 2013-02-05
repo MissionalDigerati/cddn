@@ -2,7 +2,9 @@ Listing all projects that are open for accepting requests
 <br/>
 <%= form_tag projects_path, method: :get do %>
 	Search by language: <br/>
-	<%= select_tag :language, options_from_collection_for_select(ProgrammingLanguage.all, "id", "language"), include_blank: true, id: "lang_select" %> <br/>
+	<%= check_box_tag :open_projects, "open_projects", params[:open_projects] %> <%= label_tag :open_projects, "Search by open projects" %> <br/>
+	<%= select_tag(:language, options_from_collection_for_select(ProgrammingLanguage.all, "id", "language", selected: params[:language]), include_blank: true, id: "lang_select") %> <br/>
+	<%= label_tag :language, "Search by programming language" %><br/>
 	<%= submit_tag "Search" %>
 <% end %>
 <br/>
