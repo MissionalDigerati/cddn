@@ -174,4 +174,28 @@ Feature: An admin should be able to login as well as well as delete and suspend 
 		When I try to access the admin event show page for "tea party"
 		Then I should be on the home page
 		And I should see "Unable to process your request."
+	
+	Scenario: An admin should be able to mark users as project approved, in doing so they also approve all of the projects that user has created. Thus making them visible to all users
+		Given I am a user "project_unapproved" and I have a project "unapproved_project", that is not approved for project creation, and I am not logged in
+		And I have an admin account "project_approval test" and I am logged in
+		When I visit the projects index
+		Then I should not see "unapproved_project"
+		When I click the "admin_project_approval" button
+		Then I should see "project_unapproved@cddn.com"
+		When I click the "Approve for Projects" button
+		Then I should see "User has been approved to post projects."
+		And I should not see "project_unapproved@cddn.com"
+		When I visit the projects index
+		Then I should see "unapproved_project"
 		
+	Scenario: A visitor to the site that is not logged in should not be able to access the project approval page
+		Given I am on the home page
+		When I try to access the project approval page
+		Then I should be on the home page
+		And I should see "Unable to process your request."
+		
+	Scenario: A user that is logged in should not be able to access the admin project approval page
+		Given I am a user "admin_project_user_access_test" and I am logged in
+		When I try to access the project approval page
+		Then I should be on the home page
+		And I should see "Unable to process your request."

@@ -62,3 +62,8 @@ When /^I try to access the admin event show page for "(.*?)"$/ do |event_title|
   event = Event.where(title: event_title).first
   visit admin_event_path(event)
 end
+
+When /^I try to access the project approval page$/ do
+  admin = FactoryGirl.create(:defaulted_admin)
+  visit project_to_approve_admin_project_path(admin)
+end
