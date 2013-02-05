@@ -32,8 +32,6 @@ class ProjectsController < ApplicationController
   end
   
   def index
-    puts params[:open_projects]
-    puts "cheesecake"
     @projects = Project.project_index_search(params[:language], params[:open_projects]).page(params[:page]).per(15)
   end
   

@@ -30,6 +30,13 @@ Given /^I am a user "(.*?)" and I have a project "(.*?)", and I am not logged in
   membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress")
 end
 
+Given /^I am a user "(.*?)" and I have a project "(.*?)", that is not accepting requests, and I am not logged in$/ do |email_prefix, project|
+  password = 'secretpassword1000'
+  user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password)
+  project = FactoryGirl.create(:defaulted_project, name: project, accepts_requests: false)
+  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress")
+end
+
 When /^I try to access the edit project page for "(.*?)"$/ do |title|
   project = Project.find_by_name(title)
   visit edit_project_path(project)
@@ -58,4 +65,22 @@ end
 Then /^I should be on the user dashboard for "(.*?)"$/ do |first_name|
   user = User.where(first_name: first_name).first
   page.current_path.should == users_dashboard_path(user)
+end
+
+Given /^I am a user "(.*?)" and I have a project "(.*?)", that has a language tag, and I am not logged in$/ do |email_prefix, project|
+  password = 'secretpassword1000'
+  user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password)
+  project = FactoryGirl.create(:defaulted_project, name: project, accepts_requests: true)
+  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress")
+  language = ProgrammingLanguage.first
+  project.programmings.create(programming_language_id:language.id)
+end
+
+Given /^I am a user "(.*?)" and I have a project "(.*?)", that has a language tag, that is not accepting requests, and I am not logged in$/ do |email_prefix, project|
+  password = 'secretpassword1000'
+  user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password)
+  project = FactoryGirl.create(:defaulted_project, name: project, accepts_requests: false)
+  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress")
+  language = ProgrammingLanguage.first
+  project.programmings.create(programming_language_id:language.id)
 end
