@@ -1,1 +1,27 @@
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Listing all projects that are open for accepting requests
+<br/>
+<%= form_tag projects_path, method: :get do %>
+	Search by language: <br/>
+	<%= check_box_tag :open_projects, "open_projects", params[:open_projects] %> <%= label_tag :open_projects, "Search by open projects" %> <br/>
+	<%= select_tag(:language, options_from_collection_for_select(ProgrammingLanguage.all, "id", "language", selected: params[:language]), include_blank: true, id: "lang_select") %> <br/>
+	<%= label_tag :language, "Search by programming language" %><br/>
+	<%= submit_tag "Search" %>
+<% end %>
+<br/>
+<table id="projects" class="table table-striped table-bordered">
+	<tbody>
+	<tr>
+		<td>Name</td>
+		<td>Description</td>
+		<td>License</td>
+		<td>Organization</td>
+		<td>Created by</td>
+		<td>Created at</td>
+		<td>Action</td>
+	</tr>
+	
+	<%= render @projects %>
+	</tbody>
+</table>
+
+

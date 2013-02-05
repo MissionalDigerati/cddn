@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   scope :include_events, includes(:events)
   scope :include_networks, includes(:networks)
   scope :include_programmings, includes(:programmings)
+  scope :project_unapproved, where(project_approved: false)
+  scope :include_projects, includes(:projects)
+  scope :memberships_project_creator, joins(:memberships).where(memberships:{role: 'creator'})
   has_many :attendees, dependent: :destroy
   has_many :events, through: :attendees, dependent: :destroy
   has_many :networks, as: :networkable, dependent: :destroy

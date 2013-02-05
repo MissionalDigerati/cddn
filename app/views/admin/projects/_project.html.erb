@@ -1,0 +1,9 @@
+<tr>
+	<td><%= project.name %></td>
+	<td><%= project.description %></td>
+	<td><%= project.license %></td>
+	<td><%= project.organization %></td>
+	<td><%= project_creator_link(project) %></td>
+	<td><%= project.created_at %></td>
+	<td><%= link_to "View Project", admin_project_path(project) %> <%= link_to "Delete Project", admin_project_path(project), method: :delete, class: "btn btn-danger btn-mini" %> <%= project_creator_link(project) %></td>
+</tr>

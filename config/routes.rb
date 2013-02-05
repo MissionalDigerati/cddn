@@ -17,6 +17,10 @@ Cddn::Application.routes.draw do
       end
     end
     resources :projects do
+      member do
+        get "project_to_approve"
+        put "allow_project_posting"
+      end
     end
   end
   

@@ -8,5 +8,6 @@ FactoryGirl.define do
     password "testing"
     event_approved true
     project_approved true
+    last_sign_in_at Time.now
   end
 end
