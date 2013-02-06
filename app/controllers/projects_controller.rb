@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
     @user.project_approved == true ? @project.approved_project = true : @project.approved_project = false
     respond_to do |format|
       if @project.save
-        Membership.membership_creation(@user.id, @project, 'creator', 'filler')
+        Membership.membership_creation(@user.id, @project, 'creator', 'filler', true)
         format.html {redirect_to users_dashboard_path(current_user)}
         flash[:notice] = "Your project has been successfully created."
       else
@@ -64,6 +64,19 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html {redirect_to users_dashboard_path(current_user)}
       flash[:notice] = "Your Project has been deleted."
+    end
+  end
+  
+  def join_project
+    @project = Project.find(params[:id])
+    @user = current_user
+    if @project.accepts_requests == true && @project.approved_project == true
+      Project.join_project(@project, @user)
+      redirect_to :back
+      flash[:notice] = "Request to join project has been sent."
+    else
+      redirect_to :back
+      flash[:notice] = "Unable to process your request."
     end
   end
   

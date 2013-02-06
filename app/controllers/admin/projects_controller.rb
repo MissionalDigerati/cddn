@@ -1,6 +1,6 @@
 class Admin::ProjectsController < ApplicationController
   before_filter :admin_auth
-  before_filter :authenticate_admin!, only: [:index, :destroy, :project_to_approve, :allow_project_posting]
+  before_filter :authenticate_admin!, only: [:index, :show, :destroy, :project_to_approve, :allow_project_posting]
   
   
   def index

@@ -39,6 +39,9 @@ Cddn::Application.routes.draw do
     end
   end
   resources :projects do
+    member do
+      post "join_project"
+    end
   end
   match 'users/dashboard/:id' => 'users#dashboard', method: :get, as: :users_dashboard
 

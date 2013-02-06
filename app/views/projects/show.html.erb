@@ -1,4 +1,4 @@
-This is the show page
+This is the project show page
 <br/>
 <br/>
 <%= @project.name %><br/>
@@ -20,11 +20,13 @@ Language tags:<br/>
 <br/> <br/>
 Project members:<br/>
 <% @project.memberships.each do |member| %>
-	<% if member.role == "creator" %>
+	<% if member.role == "creator" && member.team_approved == true %>
 		Project Creator: <%= link_to_users_profile(member.user) %><br/>
-	<% else %>
+	<% elsif member.role != "creator" && member.team_approved == true %>
 		<%= link_to_users_profile(member.user) %><br/>
 	<% end %>
 <% end %>
 <br/>
+
+<%= join_project_request_button(@project, current_user) if user_signed_in?%>
 
