@@ -35,29 +35,22 @@ class Project < ActiveRecord::Base
   end
   
   def self.open_projects_with_tag(language_tag_id, accepting_requests)
-    Project.open_projects.joins_programmings.where(programmings: {programming_language_id: language_tag_id})
+    self.open_projects.joins_programmings.where(programmings: {programming_language_id: language_tag_id})
   end
   
   #the regular project search index all projects, open or not, as long as they are approved, including their creator.
   def self.regular_project_search
-    Project.approved_projects.include_creator
+    self.approved_projects.include_creator
   end
   
   def self.programming_language_search(language_tag_id)
-    Project.approved_projects.include_creator.joins_programmings.where(programmings: {programming_language_id: language_tag_id})
+    self.approved_projects.include_creator.joins_programmings.where(programmings: {programming_language_id: language_tag_id})
   end
   
   def self.only_open_projects
-    Project.approved_projects.open_projects.include_creator
+    self.approved_projects.open_projects.include_creator
   end
   
-  def self.join_project(project, user)
-    if project.memberships.find_by_role("creator").user_id == user.id
-      return
-    else
-      project.memberships.create({user_id: user.id, project_id: project.id, role: "project_helper"})
-    end
-  end
   
   private
     def save_programming_languages

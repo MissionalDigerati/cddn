@@ -25,4 +25,20 @@ describe Membership do
     end
     
   end
+  
+  describe "methods" do
+    
+    it "should create a valid membership for the creator of a project if all the params are provided" do
+      user = FactoryGirl.create(:defaulted_user)
+      project = FactoryGirl.create(:defaulted_project) 
+      Membership.membership_creation(user.id, project, 'creator', 'active')
+      membership_created = Membership.first
+      membership_created.user_id.should == user.id
+      membership_created.project_id.should == project.id
+      membership_created.role.should == "creator"
+      membership_created.status.should == "active"
+    end
+    
+  end
+  
 end
