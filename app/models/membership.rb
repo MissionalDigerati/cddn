@@ -16,4 +16,9 @@ class Membership < ActiveRecord::Base
     end
   end
   
+  def self.leave_project(project, user)
+    membership = Membership.where(project_id: project.id, user_id: user.id, role: "member").first
+    membership.delete if membership.present?
+  end
+  
 end
