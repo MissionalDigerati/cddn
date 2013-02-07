@@ -41,6 +41,7 @@ Cddn::Application.routes.draw do
   resources :projects do
     member do
       post "join_project_request", as: "join"
+      delete "leave_project", as: "leave"
     end
   end
   match 'users/dashboard/:id' => 'users#dashboard', method: :get, as: :users_dashboard

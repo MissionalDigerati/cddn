@@ -86,7 +86,7 @@ class ProjectsController < ApplicationController
     if Membership.where("user_id = ? AND project_id = ?", @user.id, @project.id).present?
       Membership.leave_project(@project, @user)
       redirect_to :back
-      flash[:notice] = "Request to join project has been sent."
+      flash[:notice] = "You have left the project."
     else
       redirect_to :back
       flash[:notice] = "Unable to process your request."
