@@ -44,6 +44,11 @@ Cddn::Application.routes.draw do
       delete "leave_project", as: "leave"
     end
   end
+  resources :memberships do
+    member do
+      put "project_update_memberships", as: "project_update"
+    end
+  end
   match 'users/dashboard/:id' => 'users#dashboard', method: :get, as: :users_dashboard
 
   # The priority is based upon order of creation:

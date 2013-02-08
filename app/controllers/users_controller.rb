@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   
   def dashboard
     @user = User.include_networks.include_programmings.find(current_user)
-    @projects = Project.include_memberships.where(memberships:{user_id: current_user.id, role:'creator'})
+    @projects = Project.joins(:memberships).where(memberships:{user_id: current_user.id, role:'creator'})
+    @memberships_for_approval = @projects.includes(:memberships)
   end
   
   #this will be the brag page / the user show page.
