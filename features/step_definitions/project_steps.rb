@@ -27,7 +27,7 @@ Given /^I am a user "(.*?)" and I have a project "(.*?)", and I am not logged in
   password = 'secretpassword1000'
   user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password)
   project = FactoryGirl.create(:defaulted_project, name: project)
-  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress")
+  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "active")
 end
 
 Given /^I am a user "(.*?)" and I have a project "(.*?)", that is not accepting requests, and I am not logged in$/ do |email_prefix, project|

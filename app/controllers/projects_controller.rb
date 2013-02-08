@@ -72,7 +72,7 @@ class ProjectsController < ApplicationController
     @user = current_user
     if @project.accepts_requests == true && @project.approved_project == true
       Membership.join_project_request(@project, @user)
-      redirect_to :back
+      redirect_to project_path(@project)
       flash[:notice] = "Request to join project has been sent."
     else
       redirect_to :back
