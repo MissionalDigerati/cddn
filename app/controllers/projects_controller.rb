@@ -75,7 +75,7 @@ class ProjectsController < ApplicationController
       redirect_to project_path(@project)
       flash[:notice] = "Request to join project has been sent."
     else
-      redirect_to :back
+      redirect_to root_path
       flash[:notice] = "Unable to process your request."
     end
   end
