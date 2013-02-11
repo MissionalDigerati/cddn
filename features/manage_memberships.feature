@@ -11,7 +11,7 @@ Feature: A user that is logged in should be able to join projects so long as the
 		Then I should see "accepting_requests_project"
 		When I click the "View Project" button
 		And I should be on the project show page for "accepting_requests_project"
-		And I should see "Project Creator: project_creator"
+		And I should see "Project Creator: Project_creator"
 		When I click the "Request to Join Project" button
 		Then I should be on the project show page for "accepting_requests_project"
 		And I should see "Request to join project has been sent."
@@ -24,7 +24,7 @@ Feature: A user that is logged in should be able to join projects so long as the
 		Then I should see "leaving_project"
 		When I click the "View Project" button
 		And I should be on the project show page for "leaving_project"
-		And I should see "Project Creator: project_creator"
+		And I should see "Project Creator: Project_creator"
 		And I should see "leaving_project_user"
 		When I click the "Leave Project" button
 		Then I should be on the project show page for "leaving_project"
@@ -36,19 +36,19 @@ Feature: A user that is logged in should be able to join projects so long as the
 		And I am a user "needing_approval", that is requesting to be a member of the project "approve_requests_projects", and I am logged not in
 		And I am on the home page
 		When I click the "Home | Dashboard" button
-		Then I should see "needing_approval"
+		Then I should see "Needing_approval"
 		When I click the "Approve" button
 		Then I should see "User has been approved"
 		And I should not see "needing_approval"
 		When I click the "View Project" button
-		Then I should see "needing_approval"
+		Then I should see "Needing_approval"
 	
 	Scenario: A creator of a project should be able to deny users that have requested to be members of projects
 		Given I am a user "project_creator" and I have a project "deny_requests_projects", and I am logged in 
 		And I am a user "needing_denial", that is requesting to be a member of the project "deny_requests_projects", and I am logged not in
 		And I am on the home page
 		When I click the "Home | Dashboard" button
-		Then I should see "needing_denial"
+		Then I should see "Needing_denial"
 		When I click the "Deny" button
 		Then I should see "User has been denied"
 		And I should not see "needing_denial"
