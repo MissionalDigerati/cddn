@@ -1,12 +1,12 @@
 class ProjectsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :current_user_variable
   
   def new
     @project = Project.new
   end
   
   def create
-    @user = current_user
     @project = Project.new(params[:project])
     @user.project_approved == true ? @project.approved_project = true : @project.approved_project = false
     respond_to do |format|
@@ -67,7 +67,6 @@ class ProjectsController < ApplicationController
   
   def join_project_request
     @project = Project.find(params[:id])
-    @user = current_user
     if @project.accepts_requests == true && @project.approved_project == true
       Membership.join_project_request(@project, @user)
       redirect_to project_path(@project)
@@ -79,7 +78,6 @@ class ProjectsController < ApplicationController
   
   def leave_project
     @project = Project.find(params[:id])
-    @user = current_user
     if Membership.where("user_id = ? AND project_id = ?", @user.id, @project.id).present?
       Membership.leave_project(@project, @user)
       redirect_to :back

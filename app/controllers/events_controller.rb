@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :current_user_variable
   
   #this will only display events that are created by authorized users
   def index
@@ -20,7 +21,6 @@ class EventsController < ApplicationController
   end
   
   def create
-    @user = current_user
     @event = Event.new(params[:event])
     @user.event_approved == true ? @event.approved_event = true : @event.approved_event = false
     respond_to do |format|
@@ -74,15 +74,14 @@ class EventsController < ApplicationController
   end
   
   def attend_event
-    @user = current_user.id
     @event = Event.find(params[:id])
-    @attendee = Attendee.where(user_id: @user, event_id: @event.id, attendee_type: 'attendee').first
+    @attendee = Attendee.where(user_id: @user.id, event_id: @event.id, attendee_type: 'attendee').first
     if @attendee.present?
-      @attendee.delete
+      @attendee.destroy
       redirect_to event_path(@event)
       flash[:notice] = "You are no longer attending #{@event.title.capitalize}."
     else
-      Attendee.attendee_creation(@user, @event, 'attendee')
+      Attendee.attendee_creation(@user.id, @event, 'attendee')
       redirect_to event_path(@event)
       flash[:notice] = "You are now attending #{@event.title.capitalize}."
     end

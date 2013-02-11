@@ -28,5 +28,9 @@ class ApplicationController < ActionController::Base
       redirect_home
     end
   end
+  
+  def current_user_variable
+    @user = current_user if current_user.present?
+  end
 
 end
