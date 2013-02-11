@@ -80,6 +80,15 @@ describe Membership do
       Membership.all.first.should == creator_membership
     end
     
+    it "should update a membership with the params inputted by the controller/view" do
+      project = FactoryGirl.create(:defaulted_project) 
+      membership = FactoryGirl.create(:membership, user_id: 1, project_id: project.id, role: "member", status: "pending")
+      Membership.membership_approve_deny(membership, "approved")
+      membership.status.should == "approved"
+      
+      Membership.membership_approve_deny(membership, "denied")
+      membership.status.should == "denied"
+    end
   end
   
 end

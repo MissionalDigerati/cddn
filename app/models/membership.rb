@@ -21,4 +21,9 @@ class Membership < ActiveRecord::Base
     membership.delete if membership.present?
   end
   
+  def self.membership_approve_deny(membership, updated_value)
+    membership.status = updated_value
+    membership.save
+  end
+  
 end

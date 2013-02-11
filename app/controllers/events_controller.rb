@@ -15,8 +15,7 @@ class EventsController < ApplicationController
     if @event.approved_event == true 
       @event
     else
-      redirect_to root_path
-      flash[:notice] = "Unable to process your request."
+      redirect_home
     end
   end
   
@@ -43,8 +42,7 @@ class EventsController < ApplicationController
     if @attendee.user_id == current_user.id
       @event = Event.find(params[:id])
     else
-      redirect_to root_path
-      flash[:notice] = "Unable to process your request."
+      redirect_home
     end
   end
   

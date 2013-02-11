@@ -18,10 +18,14 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def redirect_home
+    redirect_to root_path
+    flash[:notice] = "Unable to process your request."
+  end
+  
   def admin_auth
     unless current_admin
-      redirect_to root_path
-      flash[:notice] = "Unable to process your request."
+      redirect_home
     end
   end
 

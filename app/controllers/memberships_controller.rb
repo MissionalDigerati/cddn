@@ -4,13 +4,11 @@ class MembershipsController < ApplicationController
   def project_update_memberships
     @membership = Membership.find(params[:id])
     if @membership.project.memberships.find_by_role('creator').user_id == current_user.id
-      @membership.status = params[:mem_update]
-      @membership.save
+      Membership.membership_approve_deny(@membership, params[:mem_update])
       redirect_to :back
       flash[:notice] = "User has been " + params[:mem_update]
     else
-      redirect_to root_path
-      flash[:notice] = "Unable to process your request."
+      redirect_home
     end
   end
   
