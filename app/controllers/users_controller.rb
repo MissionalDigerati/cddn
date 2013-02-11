@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   
   #this will be the brag page / the user show page.
   def show
-    # @user = User.find(params[:id])
     @user = User.include_networks.include_programmings.find(params[:id])
   end
   
@@ -32,8 +31,7 @@ class UsersController < ApplicationController
   
   def please_update
     @user = User.find(params[:id])
-    @user[:please_update] = true
-    @user.save
+    User.update_notification(@user)
     redirect_to :back
   end
 end

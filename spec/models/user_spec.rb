@@ -134,6 +134,12 @@ describe User do
       user.email.should_not == "1234@noemailprovided.com"
     end
     
+    it "should set the user's please update column to true, thus removing the please update message" do
+      user = FactoryGirl.create(:defaulted_user, please_update: false)
+      User.update_notification(user)
+      user.please_update.should == true
+    end
+    
   end
   
 end

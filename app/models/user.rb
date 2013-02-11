@@ -69,6 +69,11 @@ class User < ActiveRecord::Base
     end
   end
   
+  def self.update_notification(user)
+    user.please_update = true
+    user.save
+  end
+  
   private
     def save_programming_languages
     self.programmings.destroy_all

@@ -26,8 +26,7 @@ class ProjectsController < ApplicationController
     if @project.approved_project == true 
       @project
     else
-      redirect_to :back
-      flash[:notice] = "Unable to process your request."
+      redirect_home
     end
   end
   
@@ -40,8 +39,7 @@ class ProjectsController < ApplicationController
     if @membership.user_id == current_user.id
       @project = Project.find(params[:id])
     else
-      redirect_to root_path
-      flash[:notice] = "Unable to process your request."
+      redirect_home
     end
   end
   
@@ -60,7 +58,7 @@ class ProjectsController < ApplicationController
   
   def destroy
     @project = Project.find(params[:id])
-    @project.destroy
+    @project.destroy if @project.memberships.find_by_role("creator").user_id = current_user.id
     respond_to do |format|
       format.html {redirect_to users_dashboard_path(current_user)}
       flash[:notice] = "Your Project has been deleted."
@@ -75,8 +73,7 @@ class ProjectsController < ApplicationController
       redirect_to project_path(@project)
       flash[:notice] = "Request to join project has been sent."
     else
-      redirect_to root_path
-      flash[:notice] = "Unable to process your request."
+      redirect_home
     end
   end
   
@@ -88,8 +85,7 @@ class ProjectsController < ApplicationController
       redirect_to :back
       flash[:notice] = "You have left the project."
     else
-      redirect_to :back
-      flash[:notice] = "Unable to process your request."
+      redirect_home
     end
   end
   
