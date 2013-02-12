@@ -21,7 +21,7 @@ Language tags:<br/>
 Project members:<br/>
 <% @project.memberships.each do |member| %>
 	<% if member.role == "creator" && member.status == "active" %>
-		Project Creator: <%= link_to_users_profile(member.user) %><br/>
+		Project Creator: <span class="label label-inverse"><%= link_to_users_profile(member.user) %></span><br/>
 	<% elsif member.role != "creator" && member.status == "approved" %>
 		Members:<br/>
 		<%= link_to_users_profile(member.user) %><br/>

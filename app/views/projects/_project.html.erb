@@ -5,5 +5,5 @@
 	<td><%= project.organization %></td>
 	<td><%= project_creator_link(project) %></td>
 	<td><%= project.created_at.to_date %></td>
-	<td><%= link_to "View Project", project_path(project) %>  <%= project_creator_link(project) %></td>
+	<td><%= link_to "View Project", project_path(project), class: "btn btn-info btn-mini" %> </td>
 </tr>

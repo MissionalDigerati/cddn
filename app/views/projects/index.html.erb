@@ -1,3 +1,4 @@
+<div class="container">
 Listing all projects that are open for accepting requests
 <br/>
 <%= form_tag projects_path, method: :get do %>
@@ -25,3 +26,4 @@ Listing all projects that are open for accepting requests
 </table>
 
 <%= paginate @projects, :theme => 'twitter-bootstrap' %>
+</div>
