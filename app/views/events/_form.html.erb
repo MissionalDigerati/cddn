@@ -2,7 +2,7 @@
 	<br/>
 	<br/>
 	<div class="span3 offset5">
-		<div><%= f.label :title %><br />
+		<div><%= f.label :title %>
 		<%= f.text_field :title, required: true %></div>
 	
 		<div><%= f.label :details %>
@@ -29,8 +29,13 @@
 		<div><%= f.label :event_date %>
 		<%= f.text_field :event_date %></div>
 	
-		<div><%= f.label :online_event %>
-		<%= f.check_box :online_event %></div>
+		<div>
+		<%= f.radio_button :online_event, false, checked: true, class: "pull-left" %>
+		<%= f.label :online_event, "No", class: "pull-left"%>
+		<%= f.radio_button :online_event, true, class: "pull-left" %>
+		<%= f.label :online_event, "Yes", class: "pull-left" %>
+		<br/>
+		</div>
 		
 		<br/>
 		
@@ -50,6 +55,7 @@
 			<%= render partial: '/layouts/network_fields', locals: {f: builder} %>
 		<% end %>
 		<%= link_to_add_fields "Add Social Network", f, :networks %>
+		<br/><br/>
 		<div><%= f.submit "Submit" %></div>
 	</div>
 

@@ -2,32 +2,32 @@
 	<br/>
 	<br/>
 	<div class="span3 offset5">
-		<div><%= f.label :first_name %><br/>
+		<div><%= f.label :first_name %>
 		<%= f.text_field :first_name %></div>
 
-		<div><%= f.label :last_name %><br />
+		<div><%= f.label :last_name %>
 		<%= f.text_field :last_name %></div>
 
-		<div><%= f.label :nickname %><br />
+		<div><%= f.label :nickname %>
 		<%= f.text_field :nickname %></div>
 
-		<div><%= f.label :primary_role %><br />
+		<div><%= f.label :primary_role %>
 		<%= f.text_field :primary_role %></div>
 
-		<div><%= f.label :church %><br />
+		<div><%= f.label :church %>
 		<%= f.text_field :church %></div>
 
-		<div><%= f.label :city_province %><br />
+		<div><%= f.label :city_province %>
 		<%= f.text_field :city_province %></div>
 
-		<div><%= f.label :state_id %><br />
+		<div><%= f.label :state_id %>
 		<%= f.text_field :state_id %></div>
 
-		<div><%= f.label :country_id %><br />
+		<div><%= f.label :country_id %>
 		<%= f.text_field :country_id %></div>
 
-		<div><%= f.label :bio %><br />
-		<%= f.text_area :bio, rows: 5 %></div>
+		<div><%= f.label :bio %>
+		<%= f.text_area :bio, rows: 12 %></div>
 
 		<div><%= f.hidden_field :please_update, value: true %><br /></div>
 
@@ -42,16 +42,17 @@
 		<% end %>
 		<%= link_to_add_fields "Add Social Network", f, :networks %>
 		
-		<div class="clear"></div>
-		<br/>
-		<br/>
-		<div><%= f.submit "Update" %></div>
+		<br/><br/>
 		
 		Programming languages<br/>
 		<% ProgrammingLanguage.all.each do |language| %>
 			<%= check_box_tag "user[programming_language_ids][]", language.id, check_lang(@user.programmings.pluck(:programming_language_id), language.id), {id: "#{language.language}"}  %>
 			<%= label_tag language.language%>
 		<% end %>
+		<div class="clear"></div>
+		<br/>
+		<br/>
+		<div><%= f.submit "Update" %></div>
 	</div>
 	
 	
