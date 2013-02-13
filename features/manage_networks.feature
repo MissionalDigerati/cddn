@@ -87,7 +87,7 @@ Feature: A user should be able to add social networking accounts and links to th
 			When I click the "Home | Dashboard" link
 			Then I should be on the dashboard for "networking_user_delete_test"
 			And I should see "twitter: twitter"
-			When I click the "Edit account information" button
+			When I click the "edit_account_details" button
 			And I click the "remove" button
 			And I click the "Update" button
 			Then I should see "Your account information has been updated."
@@ -100,7 +100,7 @@ Feature: A user should be able to add social networking accounts and links to th
 			And I am on the home page
 			When I click the "Home | Dashboard" link
 			Then I should be on the dashboard for "networking_user_add_test"
-			When I click the "Edit account information" button
+			When I click the "edit_account_details" button
 			And I click the "Add Social Network" button
 			And I select "Facebook" from "Service"
 			And I fill in "Account name" with "facebook"
@@ -116,7 +116,7 @@ Feature: A user should be able to add social networking accounts and links to th
 			And I am on the home page
 			When I click the "Home | Dashboard" link
 			Then I should be on the dashboard for "networking_user_reject_test"
-			When I click the "Edit account information" button
+			When I click the "edit_account_details" button
 			And I click the "Add Social Network" button
 			And I select "Facebook" from "Service"
 			And I fill in "Account name" with "facebook"
