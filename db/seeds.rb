@@ -1,7 +1,16 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+# Remove the current data
 #
-# Examples:
+SocialMedia.destroy_all
+# Grab the data files
 #
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+social_media = YAML.load_file(File.join(Rails.root.to_s, "db", "seeds", "social_media_seed.yml"))
+# Seed the data
+#
+puts "Seeding Social Media Table"
+social_media["social_media"].each do |sm|
+	puts sm
+	new_sm = SocialMedia.new
+	new_sm.service = sm
+	new_sm.save!
+end
+puts "Seeding complete.  Have fun :)"
