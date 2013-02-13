@@ -22,3 +22,6 @@
 	clear: both;
 	height: 1px;
 }
+.required{
+	color: red;
+}

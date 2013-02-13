@@ -26,10 +26,12 @@
 	<%= render "layouts/please_update_banner" %>
 
 	<% if flash[:notice] %>
-		<div class="notice">
+		<div class="alert">
+			<a class="close" data-dismiss="alert" href="#">&times;</a>
 			<%= flash[:notice] %>
 		</div>
 	<% end %>
+	
 	<% if flash[:alert] %>
 		<div class="alert">
 			<%= flash[:alert] %>

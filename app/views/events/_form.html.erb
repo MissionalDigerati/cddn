@@ -2,31 +2,31 @@
 	<br/>
 	<br/>
 	<div class="span3 offset5">
-		<div><%= f.label :title %>
+		<div><%= f.label :title, class: "pull-left" %><span class="required">*</span>
 		<%= f.text_field :title, required: true %></div>
 	
 		<div><%= f.label :details %>
 		<%= f.text_area :details, rows: 5 %></div>
 	
-		<div><%= f.label :address_1 %>
+		<div><%= f.label :address_1, class: "pull-left" %><span class="required">*</span>
 		<%= f.text_field :address_1 %></div>
 	
 		<div><%= f.label :address_2 %>
 		<%= f.text_field :address_2 %></div>
 	
-		<div><%= f.label :city_province %>
+		<div><%= f.label :city_province, class: "pull-left" %><span class="required">*</span>
 		<%= f.text_field :city_province %></div>
 	
-		<div><%= f.label :state_id %>
+		<div><%= f.label :state_id, class: "pull-left" %><span class="required">*</span>
 		<%= f.text_field :state_id %></div>
 	
-		<div><%= f.label :country_id %>
+		<div><%= f.label :country_id, class: "pull-left" %><span class="required">*</span>
 		<%= f.text_field :country_id %></div>
 	
-		<div><%= f.label :zip_code %>
+		<div><%= f.label :zip_code, class: "pull-left" %><span class="required">*</span>
 		<%= f.text_field :zip_code %></div>
 	
-		<div><%= f.label :event_date %>
+		<div><%= f.label :event_date, class: "pull-left" %><span class="required">*</span>
 		<%= f.text_field :event_date %></div>
 	
 		<div>
@@ -57,6 +57,7 @@
 		<%= link_to_add_fields "Add Social Network", f, :networks %>
 		<br/><br/>
 		<div><%= f.submit "Submit" %></div>
+		<span class="required">*</span> = Required
 	</div>
 
 <% end %>
