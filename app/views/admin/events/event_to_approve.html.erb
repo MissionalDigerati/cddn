@@ -37,7 +37,7 @@ This is the index for users needing approval for events
 	    <span class="caret"></span>
 	  </button>
 	  <ul class="dropdown-menu">
-		<% user.events.each do |event| %>
+		<% user.events.order("title ASC").each do |event| %>
 	    <li><%= link_to event.title, admin_event_path(event)%></li>
 		<% end %>
 	  </ul>

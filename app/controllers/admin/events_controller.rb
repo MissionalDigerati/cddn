@@ -18,7 +18,7 @@ class Admin::EventsController < ApplicationController
   end
   
   def event_to_approve
-    @users = User.event_unapproved.attendee_event_creator.include_events
+    @users = User.event_unapproved.attendee_event_creator.include_events.group("users.id")
   end
   
   def allow_event_posting
