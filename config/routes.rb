@@ -30,6 +30,7 @@ Cddn::Application.routes.draw do
   resources :users do
     member do
       put "please_update"
+      get "my_projects"
     end
   end
   resources :events do

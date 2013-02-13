@@ -8,7 +8,7 @@ describe ProjectsHelper do
       user = FactoryGirl.create(:defaulted_user)
       project = FactoryGirl.create(:defaulted_project)
       memberships = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress")
-      project_creator_link(project).should == "<a href=\"/users/1\">fakeuser@test.com</a>"
+      project_creator_link(project).should == "<a href=\"/users/1\">Fakeuser@test.com</a>"
     end
     
     it "should return the correct button/link depending on the type of user" do

@@ -27,6 +27,10 @@ This is the event show page
 	<%= attend_event_button(current_user.id, @event) if user_signed_in? %>
 	
 	<br/>
-	<%= render "layouts/share_this" %>
+	<br/>
+	Confirmed Attendees:<br/>
+	<% @event.users.each do |user| %>
+		<%= link_to_users_profile(user) %><br/>
+	<% end %>
 	
 <!-- #<Event id: nil, title: nil, details: nil, address_1: nil, address_2: nil, city_province: nil, state_id: nil, country_id: nil, zip_code: nil, online_event: false, longitude: nil, latitude: nil, created_at: nil, updated_at: nil>  -->

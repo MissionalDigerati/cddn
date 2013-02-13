@@ -92,3 +92,20 @@ Given /^I am a user "(.*?)" and I have a project "(.*?)", that is not approved f
   membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress")
 end
 
+Given /^"(.*?)" is a "(.*?)" member of the "(.*?)"$/ do |user_name, status, project_name|
+  project = Project.find_by_name(project_name)
+  user = User.find_by_email(user_name + "@cddn.com")
+  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "member", status: "approved")
+end
+
+Then /^I should be on the my project page for "(.*?)"$/ do |user_name|
+  user = User.find_by_email(user_name + '@cddn.com')
+  page.current_path.should == my_projects_user_path(user)
+end
+
+When /^I try to access the my project page for "(.*?)"$/ do |user_name|
+  user = User.find_by_email(user_name + '@cddn.com')
+  visit my_projects_user_path(user)
+end
+
+

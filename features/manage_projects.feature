@@ -191,3 +191,30 @@ Feature: A user should be able to create update delete and join projects, as wel
 		And I should not see "no_tag_not_accepting_project"
 		And I should not see "project_with_lang_not_accepting_project"
 		
+	Scenario: A user that is logged in should be able to view their my projects page
+		Given I am a user "user_one" and I have a project "other_project", and I am not logged in
+		And I am a user "user_two" and I have a project "my_project", and I am logged in
+		And "user_two" is a "approved" member of the "other_project"
+		And I am on the home page
+		When I click the "user_my_projects" button
+		Then I should see "other_project"
+		And I should see "my_project"
+		
+	Scenario: A user that is logged in should not be able to view another users my project page
+		Given I am a user "user_one" and I have a project "other_project", and I am not logged in
+		And I am a user "user_two" and I have a project "my_project", and I am logged in
+		And I am on the home page
+		When I click the "user_my_projects" button
+		Then I should be on the my project page for "user_two"
+		Then I should see "my_project"
+		And I should not see "other_project"
+		When I try to access the my project page for "user_one"
+		And I should see "my_project"
+		And I should not see "other_project"
+	
+	Scenario: A user that is not logged in should not be able to access the my project page
+		Given I am a user "user_one" and I have a project "my_project", and I am not logged in
+		And I am on the home page
+		When I try to access the my project page for "user_one"
+		Then I should be on the user sign in page
+		And I should see "You need to sign in or sign up before continuing."

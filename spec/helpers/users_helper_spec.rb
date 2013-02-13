@@ -47,7 +47,7 @@ describe ApplicationHelper do
     
     it "should return a link the the users profile when the user instance is provided. It will return nickname if available or email if not" do
       user_with_nickname = FactoryGirl.create(:defaulted_user, nickname: "The Master")
-      link_to_users_profile(user_with_nickname).should == "<a href=\"/users/1\">The Master</a>"
+      link_to_users_profile(user_with_nickname).should == "<a href=\"/users/1\">The master</a>"
       user_with_nickname = FactoryGirl.create(:defaulted_user, nickname: nil, email: "123@fakeemail.com")
       link_to_users_profile(user_with_nickname).should == "<a href=\"/users/2\">123@fakeemail.com</a>"
     end
