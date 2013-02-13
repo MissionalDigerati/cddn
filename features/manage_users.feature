@@ -87,7 +87,7 @@ Feature: A user should be able to manage their account and have certain pages an
 	Scenario: A user should see please update contact info message until dismissed 
 		Given I am a user "please_update_test_one" and I am logged in
 		And I am on the home page
-		Then I should see "Please update your contact info."
+		Then I should see "Please tell us more about YOU!"
 		When I click the "Dismiss" link
 		Then I should be on the home page
 		And I should not see "Please update your contact info."
@@ -95,7 +95,7 @@ Feature: A user should be able to manage their account and have certain pages an
 	Scenario: A user should see please update contact info until they update their account info
 		Given I am a user "please_update_test" and I am logged in
 		And I am on the home page 
-		Then I should see "Please update your contact info."
+		Then I should see "Please tell us more about YOU!"
 		When I click the "user_account_info_link" link
 		And I click the "Update" button
 		Then I should be on the dashboard for "please_update_test"

@@ -1,7 +1,7 @@
 <% if user_signed_in? && current_user.please_update == false %>
 	<div class="alert">
 		<div class="please_update">
-		Please update your contact info.
+		Please tell us more about YOU! <%= link_to "click Here", edit_user_path(current_user) %>
 		<%= link_to "Dismiss.", please_update_user_path(current_user), method: :put, class: "pull-right" %>
 		</div>
 	</div>
