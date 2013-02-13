@@ -1,0 +1,45 @@
+<div class="container">
+
+	<div class="row">
+		
+		<div class="span6">
+			Projects created by me:<br/>
+
+			<table class="table table-striped table-bordered">
+				<tr>
+					<td>Name</td>
+					<td>Organization</td>
+					<td>Action</td>
+				</tr>
+				<% @my_projects.each do |my_project| %>
+					<tr>
+						<td><%= my_project.name %></td>
+						<td><%= my_project.organization %></td>
+						<td><%= link_to "View Project", project_path(my_project), class: "btn btn-mini btn-info" %> <%= link_to "Edit Project", edit_project_path(my_project), class: "btn btn-mini btn-success" %> <%= link_to "Delete Project", project_path(my_project), method: :delete, class: "btn btn-mini btn-danger", confirm: "Are you sure?" %></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+		
+		
+		<div class="span6">
+			Projects I contribute to:<br/>
+
+			<table class="table table-striped table-bordered">
+				<tr>
+					<td>Name</td>
+					<td>Organization</td>
+					<td>Action</td>
+				</tr>
+				<% @project_participation.each do |project| %>
+					<tr>
+						<td><%= project.name %></td>
+						<td><%= project.organization %></td>
+						<td><%= link_to "View Project", project_path(project), class: "btn btn-mini btn-info" %> <%= link_to "Leave Project", leave_project_path(project), method: :delete, confirm: "Are you sure you want to leave the project's team?", class: "btn btn-mini btn-danger" %></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+	
+	</div>
+</div>

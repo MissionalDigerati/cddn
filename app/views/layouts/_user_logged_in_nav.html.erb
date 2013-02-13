@@ -10,15 +10,14 @@
 						<li><%= link_to "View Profile", user_path(current_user), id: "view_profile" %></li>
 						<li><%= link_to 'Edit basic account info', edit_user_path(current_user), id: "user_account_info_link" %> </li>
 						<li><%= link_to 'Account Settings', edit_user_registration_path %> </li>
-						<li><%= link_to 'My Events', my_events_event_path(current_user) %></li>
 					</ul>
 				</li>
 				
 				
 				<li class="dropdown"><a href="#" class="dropdown-toggle account_dropdown" data-toggle="dropdown">Events <b class="caret"></b>
 					<ul class="dropdown-menu account_dropdown_menu">
-						<li><%= link_to 'All Events', events_path, id: "all_events" %> </li>
 						<li><%= link_to 'New Event', new_event_path, id: "user_new_event" %> </li>
+						<li><%= link_to 'All Events', events_path, id: "all_events" %> </li>
 						<li><%= link_to 'My Events', my_events_event_path(current_user), id: "user_my_events"%></li>
 					</ul>
 				</li>
@@ -27,6 +26,7 @@
 					<ul class="dropdown-menu account_dropdown_menu">
 						<li><%= link_to 'New Project', new_project_path, id: "user_new_project" %> </li>
 						<li><%= link_to 'All Projects', projects_path %> </li>
+						<li><%= link_to 'My Projects', my_projects_user_path(current_user) %></li>
 					</ul>
 				</li>
 				

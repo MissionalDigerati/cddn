@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, only: [:dashboard, :edit]
+  before_filter :authenticate_user!, except: [:show]
   before_filter :user_suspended, except: [:show]
   
   def dashboard
@@ -15,6 +15,11 @@ class UsersController < ApplicationController
   
   def edit
     @user = current_user
+  end
+  
+  def my_projects
+    @my_projects = Project.joins(:memberships).where(memberships:{user_id: current_user.id, role:'creator'})
+    @project_participation = Project.joins(:memberships).where(memberships:{user_id: current_user.id, role:'member', status: 'approved'})
   end
   
   def update
