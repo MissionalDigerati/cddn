@@ -12,7 +12,7 @@ This is the event show page
 	<%= @event.online_event %><br/>
 	
 	<% @event.networks.each do |network| %>
-		<%= link_to network.account_url, network.account_url %><br/>
+		<%= network_service(network) %><%= networking_link(network) %><br/>
 	<% end %>
 	<br/>
 	

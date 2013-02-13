@@ -7,16 +7,16 @@ Feature: A user should be able to add social networking accounts and links to th
 		Given I am a user "networking_user_show_test" and I have a network "facebook" I am logged in
 		And I am on the home page
 		When I click the "Home | Dashboard" button
-		Then I should see "http://www.facebook.com"
+		Then I should see "facebook: facebook"
 		When I click the "view_profile" button 
-		Then I should see "http://www.facebook.com"
+		Then I should see "facebook: facebook"
 		
 	Scenario: A user's should be able to edit the their networks
 		Given I am a user "networking_user_edit_test" and I have a network "github" I am logged in
 		And I am on the home page
 		When I click the "Home | Dashboard" link
 		Then  I should be on the dashboard for "networking_user_edit_test"
-		And I should see "http://www.github.com"
+		And I should see "github: github"
 		When I click the "user_account_info_link" button
 		And I select "Twitter" from "Service"
 		And I fill in "Account name" with "Twitter"
@@ -24,14 +24,14 @@ Feature: A user should be able to add social networking accounts and links to th
 		And I click the "Update" button
 		Then I should see "Your account information has been updated."
 		And I should be on the dashboard for "networking_user_edit_test"
-		And I should see "http://www.twitter.com"
-		And I should not see "http://www.github.com"
+		And I should see "Twitter: Twitter"
+		And I should not see "github: github"
 
 	Scenario: An event networks should be visible both on the dashbaord as well as on the show page
 		Given I am a logged in user "event_network_show" and I have an event "event networking show" with a network "facebook" 
 		When I try to view the show page for the "event networking show" event
 		Then I should be on the show page for the "event networking show" event
-		And I should see "http://www.facebook.com"
+		And I should see "network_name: facebook"
 	
 	Scenario: An event networks should be visible both on the dashbaord as well as on the show page
 		Given I am a logged in user "event_network_edit" and I have an event "event networking edit" with a network "facebook" 
@@ -44,7 +44,7 @@ Feature: A user should be able to add social networking accounts and links to th
 		And I click the "Submit" button
 		Then I should see "Your event was successfully updated."
 		And I click the "View Event" button for "event networking edit"
-		Then I should see "http://www.twitter.com"
+		Then I should see "Facebook: twitter"
 		
 	@javascript
 		Scenario: A user should be able to add networks to their events
@@ -64,20 +64,20 @@ Feature: A user should be able to add social networking accounts and links to th
 			And I click the "Submit" button
 			Then I should see "Your Event has been created!"
 			When I click the "View Event" button
-			Then I should see "http://www.GitHub.com"
+			Then I should see "GitHub: github"
 			
 	@javascript
 		Scenario: A user's should be able to delete their social networks for their events
 		Given I am a logged in user "event_network_remove" and I have an event "event networking remove" with a network "twitter" 
 		And I try to view the show page for the "event networking remove" event
-		And I should see "http://www.twitter.com"
+		And I should see "network_name: twitter"
 		When I visit the my events page for "event_network_remove"  
 		And I click the "Edit Event" button
 		And I click the "remove_networks_button" button
 		And I click the "Submit" button
 		Then I should see "Your event was successfully updated."
 		And I click the "View Event" button
-		Then I should not see "http://www.twitter.com"
+		Then I should not see "network_name: twitter"
 			
 	 
 	@javascript
@@ -86,13 +86,13 @@ Feature: A user should be able to add social networking accounts and links to th
 			And I am on the home page
 			When I click the "Home | Dashboard" link
 			Then I should be on the dashboard for "networking_user_delete_test"
-			And I should see "http://www.twitter.com"
+			And I should see "twitter: twitter"
 			When I click the "Edit account information" button
 			And I click the "remove" button
 			And I click the "Update" button
 			Then I should see "Your account information has been updated."
 			And I should be on the dashboard for "networking_user_delete_test"
-			And I should not see "http://www.twitter.com"
+			And I should not see "twitter: twitter"
 
 	@javascript	
 		Scenario: A user should be able to add social networks to their user account
@@ -108,7 +108,7 @@ Feature: A user should be able to add social networking accounts and links to th
 			And I click the "Update" button
 			Then I should see "Your account information has been updated."
 			And I should be on the dashboard for "networking_user_add_test"
-			And I should see "http://www.facebook.com"
+			And I should see "Facebook: facebook"
 			
 	@javascript
 		Scenario: The application should reject a social network the attribute url is left blank
@@ -140,7 +140,7 @@ Feature: A user should be able to add social networking accounts and links to th
 	 		And I click the "Submit" button
 	 		Then I should see "Your project has been successfully created."
 			When I click the "View Project" button
-	 		Then I should see "http://www.GitHub.com"
+	 		Then I should see "GitHub: github"
 	
 	 @javascript
 	   Scenario: A user should be able to edit networks associated with their projects
@@ -158,7 +158,7 @@ Feature: A user should be able to add social networking accounts and links to th
 	   	Then I should see "Your project has been successfully created."
 			When I click the "View Project" button
 	 	 	Then I should be on the project show page for "edit projects network"
-	  	And I should see "http://www.GitHub.com"
+	  	And I should see "GitHub: github"
 			When I click the "Home | Dashboard" link
 			And I click the "Edit Project" button
 			And I select "Twitter" from "Service"
@@ -168,8 +168,8 @@ Feature: A user should be able to add social networking accounts and links to th
 			Then I should see "Your project has been successfully updated."
 			When I click the "View Project" button
 			Then I should be on the project show page for "edit projects network"
-			And I should see "http://www.Twitter.com"
-			And I should not see "http://www.GitHub.com"
+			And I should see "Twitter: Twitter"
+			And I should not see "GitHub: github"
 			
 	 @javascript
 	    Scenario: A user should be able to delete networks associated with their projects
@@ -187,7 +187,7 @@ Feature: A user should be able to add social networking accounts and links to th
 	    Then I should see "Your project has been successfully created."
 			When I click the "View Project" button
 	  	Then I should be on the project show page for "delete projects network"
-	   	And I should see "http://www.GitHub.com"
+	   	And I should see "GitHub: github"
 	 		When I click the "Home | Dashboard" link
 	 		And I click the "Edit Project" button
 	 		And I click the "remove" button
@@ -195,7 +195,7 @@ Feature: A user should be able to add social networking accounts and links to th
 	 		Then I should see "Your project has been successfully updated."
 			When I click the "View Project" button
 	 		Then I should be on the project show page for "delete projects network"
-	 		And I should not see "http://www.GitHub.com"
+	 		And I should not see "GitHub: github"
 			
   @javascript
       Scenario: A network for a project should not be created if (rejected) if the url is not provided
@@ -212,7 +212,7 @@ Feature: A user should be able to add social networking accounts and links to th
       Then I should see "Your project has been successfully created."
 			When I click the "View Project" button
     	Then I should be on the project show page for "reject projects network"
-     	And I should not see "http://www.GitHub.com"
+     	And I should not see "GitHub: github"
 			And I should not see "github"
 
   

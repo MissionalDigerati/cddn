@@ -59,4 +59,12 @@ module ApplicationHelper
     link_to name.capitalize, user_path(user)
   end
   
+  def network_service(network)
+    "#{network.social_media.service}: "
+  end
+  
+  def networking_link(network)
+    link_to "#{network.account_name}", network.account_url
+  end
+  
 end

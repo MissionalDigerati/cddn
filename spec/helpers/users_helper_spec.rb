@@ -52,6 +52,20 @@ describe ApplicationHelper do
       link_to_users_profile(user_with_nickname).should == "<a href=\"/users/2\">123@fakeemail.com</a>"
     end
     
+    
+    it "should return a link the the network" do
+      social_media = FactoryGirl.create(:social_medium, service: "facebook")
+      network = FactoryGirl.create(:defaulted_network, social_media_id: social_media.id)
+      networking_link(network).should == "<a href=\"http://www.facebook.com/\">Sammy Simmons</a>"
+    end
+    
+    
+    it "should return the name of the social network such as FaceBook: " do
+      social_media = FactoryGirl.create(:social_medium, service: "facebook")
+      network = FactoryGirl.create(:defaulted_network, social_media_id: social_media.id)
+      network_service(network).should == "facebook: "
+    end
+    
   end
   
 end

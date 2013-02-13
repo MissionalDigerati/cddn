@@ -8,7 +8,7 @@ This is the project show page
 
 <br/>
 <% @project.networks.each do |network| %>
-	<%= link_to network.account_url, network.account_url %><br/>
+	<%= network_service(network) %><%= networking_link(network) %><br/>
 <% end %>
 
 <br/><br/>

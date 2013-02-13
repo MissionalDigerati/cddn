@@ -11,7 +11,7 @@
 <%= @user.country_id %><br/>
 
 <% @user.networks.each do |network| %>
-	<%= link_to network.account_url %><br/>
+	<%= network_service(network) %><%= networking_link(network) %><br/>
 <% end %>
 
 <br/>
