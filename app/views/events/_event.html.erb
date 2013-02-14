@@ -4,6 +4,6 @@
 	<td><%= event.state_id %></td>
 	<td><%= event.country_id %></td>
 	<td><%= yes_or_no(event.online_event) %></td>
-	<td><%= event.event_date %></td>
+	<td></td>
 	<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %> <%= attend_event_button(current_user.id, event) if user_signed_in? %></td>
 </tr>

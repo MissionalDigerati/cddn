@@ -20,7 +20,7 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :programmings, allow_destroy: true
   accepts_nested_attributes_for :programming_languages
   
-  validates :title, :address_1, :city_province, :state_id, :country_id, :zip_code, :event_date, presence: true
+  validates :title, :address_1, :city_province, :state_id, :country_id, :zip_code, presence: true
   
   after_save :save_programming_languages
   
