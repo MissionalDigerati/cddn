@@ -52,9 +52,7 @@ Feature: A user should be able to add social networking accounts and links to th
 			And I am on the new event page
 			And I fill in "Title" with "Rails meet up"
 			And I fill in "Address 1" with "123 fake street"
-			And I fill in "City province" with "San Jose"
-			And I fill in "State" with "California"
-			And I fill in "Country" with "United States"
+			And I fill in "event_city_province" with "San Jose"
 			And I fill in "Zip code" with "95123"
 			And I fill in "Event date" with "1/01/2013"
 			And I click the "Add Social Network" button

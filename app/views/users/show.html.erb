@@ -7,8 +7,8 @@
 <%= @user.church %><br/>
 <%= @user.bio %><br/>
 <%= @user.primary_role %><br/>
-<%= @user.state_id %><br/>
-<%= @user.country_id %><br/>
+<%= display_state_name(@user.state_id) %><br/>
+<%= display_country_name(@user.country_id) %><br/>
 
 <% @user.networks.each do |network| %>
 	<%= network_service(network) %><%= networking_link(network) %><br/>

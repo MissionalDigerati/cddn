@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  belongs_to :country
+  belongs_to :state
   has_many :attendees, dependent: :destroy
   has_many :users, through: :attendees
   has_many :networks, as: :networkable, dependent: :destroy

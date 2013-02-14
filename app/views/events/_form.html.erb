@@ -3,7 +3,7 @@
 	<br/>
 	<div class="span3 offset5">
 		<div><%= f.label :title, class: "pull-left" %><span class="required">*</span>
-		<%= f.text_field :title, required: true %></div>
+		<%= f.text_field :title %></div>
 	
 		<div><%= f.label :details %>
 		<%= f.text_area :details, rows: 5 %></div>
@@ -14,14 +14,14 @@
 		<div><%= f.label :address_2 %>
 		<%= f.text_field :address_2 %></div>
 	
-		<div><%= f.label :city_province, class: "pull-left" %><span class="required">*</span>
+		<div><%= f.label :city_province, "City/Province", class: "pull-left" %><span class="required">*</span>
 		<%= f.text_field :city_province %></div>
 	
 		<div><%= f.label :state_id, class: "pull-left" %><span class="required">*</span>
-		<%= f.text_field :state_id %></div>
+		<%= f.select(:state_id, state_drop_down) %></div>
 	
 		<div><%= f.label :country_id, class: "pull-left" %><span class="required">*</span>
-		<%= f.text_field :country_id %></div>
+		<%= f.select(:country_id, country_drop_down) %></div>
 	
 		<div><%= f.label :zip_code, class: "pull-left" %><span class="required">*</span>
 		<%= f.text_field :zip_code %></div>

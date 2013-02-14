@@ -8,8 +8,8 @@ FactoryGirl.define do
     details "Lorem ipsum dolor sit amet, consectetur adipisicing elit"
     address_1 "123 fake street"
     city_province "San Jose"
-    state_id 1
-    country_id 2
+    state_id 5
+    country_id 226
     zip_code "21345"
     online_event false
     approved_event true
