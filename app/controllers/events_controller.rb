@@ -27,7 +27,7 @@ class EventsController < ApplicationController
       if @event.save
         Attendee.attendee_creation(@user.id, @event, 'creator')
         format.html {redirect_to my_events_event_path(current_user)}
-        flash[:notice] = "Your Event has been created!"
+        @event.approved_event == true ? flash[:notice] = "Your Event has been created!" : flash[:notice] = "Your Event has been submitted for approval, and will not be visible until approved."
       else
         format.html {render action: "new"}
         flash[:notice] = @event.errors.full_messages.to_sentence

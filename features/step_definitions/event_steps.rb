@@ -91,3 +91,13 @@ Given /^I am a user "(.*?)", and I have an event "(.*?)", and I have a smalltalk
   event.programmings.create(programming_language_id:language.id)
 end
 
+Given /^I am a user "(.*?)" that is not approved for event creation, and I am logged in$/ do |email_prefix|
+  password = 'secretpassword1000'
+  user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password, event_approved: false)
+  
+  visit '/users/sign_in'
+  fill_in "Email", with: email_prefix + "@cddn.com"
+  fill_in "Password", with: password
+  click_button "Sign in"
+end
+

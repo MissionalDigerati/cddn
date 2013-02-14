@@ -214,3 +214,16 @@ Feature: A logged in user should be able to create events as state they are atte
 		And I click the "Search" button
 		Then I should see "stupid event"
 		And I should not see "fun event"
+		
+	Scenario: A user that is not approved for event creation, should receive a message stating so after creating an event
+		Given I am a user "unapproved_event_message" that is not approved for event creation, and I am logged in
+		And I am on the home page
+		When I click the "user_new_event" link
+		Then I should be on the new event page
+		And I fill in "Title" with "Rails meet up"
+		And I fill in "Address 1" with "123 fake street"
+		And I fill in "event_city_province" with "San Jose"
+		And I fill in "Zip code" with "95123"
+		And I fill in "Event date" with "1/01/2013"
+		And I click the "Submit" button
+		Then I should see "Your Event has been submitted for approval, and will not be visible until approved"

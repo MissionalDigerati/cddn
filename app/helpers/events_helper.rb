@@ -10,4 +10,8 @@ module EventsHelper
     end
   end
   
+  def view_event(event)
+    link_to "View Event", event_path(event), class: "btn btn-mini btn-info" if event.approved_event == true
+  end
+  
 end

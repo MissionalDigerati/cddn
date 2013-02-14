@@ -20,6 +20,13 @@ describe EventsHelper do
       attend_event_button(user_that_not_attend_event.id, event).should == "<a href=\"/events/1/attend_event\" class=\"btn btn-mini\" data-method=\"put\" rel=\"nofollow\">Attend Event</a>"
     end
     
+    it "should return a link to the event, unless the event is not approved, in which case it will return nothing" do
+      approved_event = FactoryGirl.create(:defaulted_event)
+      unapproved_event = FactoryGirl.create(:defaulted_event, approved_event: false)
+      view_event(approved_event).should == "<a href=\"/events/1\" class=\"btn btn-mini btn-info\">View Event</a>"
+      view_event(unapproved_event).should == nil
+    end
+    
   end
 end
 
