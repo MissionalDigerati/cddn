@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130206233453) do
+ActiveRecord::Schema.define(:version => 20130214000738) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(:version => 20130206233453) do
     t.string   "attendee_type"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "countries", :force => true do |t|
+    t.string   "iso"
+    t.string   "name"
+    t.string   "printable_name"
+    t.string   "iso3"
+    t.integer  "numcode"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "events", :force => true do |t|
@@ -108,6 +118,13 @@ ActiveRecord::Schema.define(:version => 20130206233453) do
     t.string   "service"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "states", :force => true do |t|
+    t.string   "state_long"
+    t.string   "state_short"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|
