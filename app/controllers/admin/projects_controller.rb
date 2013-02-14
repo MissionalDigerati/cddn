@@ -2,7 +2,6 @@ class Admin::ProjectsController < ApplicationController
   before_filter :admin_auth
   before_filter :authenticate_admin!, only: [:index, :show, :destroy, :allow_project_posting]
   
-  
   def index
     @projects = Project.all
     @users = User.project_unapproved.memberships_project_creator.include_projects

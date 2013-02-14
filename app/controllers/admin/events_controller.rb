@@ -2,7 +2,6 @@ class Admin::EventsController < ApplicationController
   before_filter :admin_auth
   before_filter :authenticate_admin!, only: [:index, :destroy, :event_to_approve, :allow_event_posting]
   
-  
   def index
     @events = Event.include_attendees_creator.includes_users
     @users = User.event_unapproved.attendee_event_creator.include_events.group("users.id")
