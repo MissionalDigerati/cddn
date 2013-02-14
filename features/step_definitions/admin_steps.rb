@@ -65,5 +65,5 @@ end
 
 When /^I try to access the project approval page$/ do
   admin = FactoryGirl.create(:defaulted_admin)
-  visit project_to_approve_admin_project_path(admin)
+  visit admin_projects_path
 end

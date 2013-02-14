@@ -102,14 +102,14 @@ Feature: An admin should be able to login as well as well as delete and suspend 
 	Scenario: A user that is logged in should not be able to access the admin event index page
 		Given I am a user "admin_event_index" and I am logged in
 		When I try to access the admin event index page
-		Then I should be on the admin sign in page
-		And I should see "You need to sign in or sign up before continuing."
+		Then I should be on the home page
+		And I should see "Unable to process your request."
 		
  	Scenario: A visitor that is not logged in should not be able to access the admin event index page
  		Given I am on the home page
  		When I try to access the admin event index page
- 		Then I should be on the admin sign in page
- 		And I should see "You need to sign in or sign up before continuing."
+ 		Then I should be on the home page
+		And I should see "Unable to process your request."
 
  	Scenario: An admin should be able to approved a user for events, as well as view all users that have created events that are un approved for event creation
 		Given I am a user "Approved_user", and I have an event "approved event", and I am not logged in
@@ -121,18 +121,6 @@ Feature: An admin should be able to login as well as well as delete and suspend 
 		# 		When I click the "Approve for events" button for "Unapproved_user" within "[@class='needing_approval']"
 		# 		Then I should see "User has been approved to post events."
 		# 		And I should not see "Unapproved_user" 
-		
-	# Scenario: A user that is logged in should not be able to access the event user approval page
-	# 		Given I am a user "admin_event_user_access_test" and I am logged in
-	# 		When I try to access the event approval user page
-	# 		Then I should be on the admin sign in page
-	# 		And I should see "You need to sign in or sign up before continuing."
-	# 		
-	# 	Scenario: A visitor to the site that is not logged in should not be able to access the event suer approval page
-	# 		Given I am on the home page
-	# 		When I try to access the event approval user page
-	# 		Then I should be on the admin sign in page
-	# 		And I should see "You need to sign in or sign up before continuing."
 		
 	Scenario: An event should only be visible through the event index page if the admin as approved their events. Also their events should update once they have been approved
 		Given I am a user "Unapproved_user_2", and I have an event "party asdfasdf", and I am not logged in, and I am not approved for event creation
@@ -186,14 +174,14 @@ Feature: An admin should be able to login as well as well as delete and suspend 
 		When I visit the projects index
 		Then I should see "unapproved_project"
 		
-	# Scenario: A visitor to the site that is not logged in should not be able to access the project approval page
-	# 		Given I am on the home page
-	# 		When I try to access the project approval page
-	# 		Then I should be on the home page
-	# 		And I should see "Unable to process your request."
-	# 		
-	# 	Scenario: A user that is logged in should not be able to access the admin project approval page
-	# 		Given I am a user "admin_project_user_access_test" and I am logged in
-	# 		When I try to access the project approval page
-	# 		Then I should be on the home page
-	# 		And I should see "Unable to process your request."
+	Scenario: A visitor to the site that is not logged in should not be able to access the project approval page
+		Given I am on the home page
+		When I try to access the project approval page
+		Then I should be on the home page
+		And I should see "Unable to process your request."
+				
+	Scenario: A user that is logged in should not be able to access the admin project approval page
+		Given I am a user "admin_project_user_access_test" and I am logged in
+		When I try to access the project approval page
+		Then I should be on the home page
+		And I should see "Unable to process your request."
