@@ -17,14 +17,14 @@
 		<div><%= f.label :church %>
 		<%= f.text_field :church %></div>
 
-		<div><%= f.label :city_province %>
+		<div><%= f.label :city_province, "City/Province" %>
 		<%= f.text_field :city_province %></div>
 
-		<div><%= f.label :state_id %>
-		<%= f.text_field :state_id %></div>
+		<div><%= f.label :state_id, "State" %>
+		<%= f.select(:state_id, state_drop_down) %></div>
 
-		<div><%= f.label :country_id %>
-		<%= f.text_field :country_id %></div>
+		<div><%= f.label :country_id, "Country" %>
+		<%= f.select(:country_id, country_drop_down) %></div>
 
 		<div><%= f.label :bio %>
 		<%= f.text_area :bio, rows: 12 %></div>

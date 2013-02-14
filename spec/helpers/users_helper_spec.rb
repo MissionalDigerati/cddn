@@ -66,6 +66,29 @@ describe ApplicationHelper do
       network_service(network).should == "facebook: "
     end
     
+    it "should return a select box containing all states" do
+      FactoryGirl.create(:defaulted_state)
+      state_drop_down.should == [["California", 1]]
+    end
+    
+    it "should return a select box containing all countries" do
+      FactoryGirl.create(:defaulted_country)
+      country_drop_down.should == [["United States", 1]]
+    end
+    
+    it "should return the name of the state provided if available, else it will return a blank string" do
+      state = FactoryGirl.create(:defaulted_state)
+      display_state_name(state.id).should == "California"
+      display_state_name(nil).should == ""
+    end
+    
+    
+    it "should return the name of the country that is associated with the id, if one is not provided it should return a blank string" do
+      country = FactoryGirl.create(:defaulted_country)
+      display_country_name(country.id).should == "United States"
+      display_country_name(nil).should == ""
+    end
+    
   end
   
 end

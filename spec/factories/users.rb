@@ -9,5 +9,7 @@ FactoryGirl.define do
     event_approved true
     project_approved true
     last_sign_in_at Time.now
+    state_id 5
+    country_id 226
   end
 end

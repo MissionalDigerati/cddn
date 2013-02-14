@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   scope :project_unapproved, where(project_approved: false)
   scope :include_projects, includes(:projects)
   scope :memberships_project_creator, joins(:memberships).where(memberships:{role: 'creator'})
+  belongs_to :country
+  belongs_to :state
   has_many :attendees, dependent: :destroy
   has_many :events, through: :attendees, dependent: :destroy
   has_many :networks, as: :networkable, dependent: :destroy
