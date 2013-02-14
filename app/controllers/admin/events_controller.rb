@@ -4,6 +4,7 @@ class Admin::EventsController < ApplicationController
   
   def index
     @events = Event.include_attendees_creator.includes_users
+    @users = User.event_unapproved.attendee_event_creator.include_events.group("users.id")
   end
   
   def show
@@ -17,9 +18,6 @@ class Admin::EventsController < ApplicationController
     redirect_to :back
   end
   
-  def event_to_approve
-    @users = User.event_unapproved.attendee_event_creator.include_events.group("users.id")
-  end
   
   def allow_event_posting
     @user = User.find(params[:id])

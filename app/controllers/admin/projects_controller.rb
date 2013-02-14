@@ -1,10 +1,11 @@
 class Admin::ProjectsController < ApplicationController
   before_filter :admin_auth
-  before_filter :authenticate_admin!, only: [:index, :show, :destroy, :project_to_approve, :allow_project_posting]
+  before_filter :authenticate_admin!, only: [:index, :show, :destroy, :allow_project_posting]
   
   
   def index
     @projects = Project.all
+    @users = User.project_unapproved.memberships_project_creator.include_projects
   end
   
   def show
@@ -18,10 +19,6 @@ class Admin::ProjectsController < ApplicationController
       format.html {redirect_to admin_projects_path}
       flash[:notice] = "Project has been deleted."
     end
-  end
-  
-  def project_to_approve
-    @users = User.project_unapproved.memberships_project_creator.include_projects
   end
   
   def allow_project_posting

@@ -12,13 +12,11 @@ Cddn::Application.routes.draw do
     end
     resources :events do
       member do
-        get "event_to_approve"
         put "allow_event_posting"
       end
     end
     resources :projects do
       member do
-        get "project_to_approve"
         put "allow_project_posting"
       end
     end
