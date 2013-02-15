@@ -10,6 +10,10 @@ When /^I fill in "(.*?)" with "(.*?)"$/ do |form_name, form_content|
   fill_in form_name, with: form_content
 end
 
+Then /^I fill in "(.*?)" with current time$/ do |form_name|
+  fill_in form_name, with: Time.now.to_s
+end
+
 When /^I click the "(.*?)" button$/ do |button|
   click_on button
 end

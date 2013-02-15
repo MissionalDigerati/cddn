@@ -12,7 +12,8 @@ Feature: A logged in user should be able to create events as state they are atte
 		And I fill in "Address 1" with "123 fake street"
 		And I fill in "event_city_province" with "San Jose"
 		And I fill in "Zip code" with "95123"
-		# And I fill in "Event date" with "1/01/2013"
+		And I fill in "event_event_dates_attributes_0_date_of_event" with current time
+		And I fill in "event_event_dates_attributes_0_time_of_event" with current time
 		And I click the "Submit" button
 		Then I should see "Your Event has been created!"
 		
@@ -150,7 +151,8 @@ Feature: A logged in user should be able to create events as state they are atte
 		And I fill in "Address 1" with "123 fake street"
 		And I fill in "event_city_province" with "San Jose"
 		And I fill in "Zip code" with "95123"
-		# And I fill in "Event date" with "1/01/2013"
+		And I fill in "event_event_dates_attributes_0_date_of_event" with current time
+		And I fill in "event_event_dates_attributes_0_time_of_event" with current time
 		And I check the "Ruby" checkbox
 		And I click the "Submit" button
 		Then I should see "Your Event has been created!"
@@ -224,6 +226,7 @@ Feature: A logged in user should be able to create events as state they are atte
 		And I fill in "Address 1" with "123 fake street"
 		And I fill in "event_city_province" with "San Jose"
 		And I fill in "Zip code" with "95123"
-		# And I fill in "Event date" with "1/01/2013"
+		And I fill in "event_event_dates_attributes_0_date_of_event" with current time
+		And I fill in "event_event_dates_attributes_0_time_of_event" with current time
 		And I click the "Submit" button
 		Then I should see "Your Event has been submitted for approval, and will not be visible until approved"

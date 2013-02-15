@@ -9,6 +9,7 @@ class EventsController < ApplicationController
   
   def new
     @event = Event.new
+    @event.event_dates.build
   end
   
   def show

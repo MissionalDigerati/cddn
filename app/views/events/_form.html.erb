@@ -28,11 +28,23 @@
 	
 	
 		<div>
-		<%= f.radio_button :online_event, false, checked: true, class: "pull-left" %>
-		<%= f.label :online_event, "No", class: "pull-left"%>
-		<%= f.radio_button :online_event, true, class: "pull-left" %>
-		<%= f.label :online_event, "Yes", class: "pull-left" %>
+			<%= f.label :online_event, "Online Event?" %><span class="required">*</span>
+			<%= f.radio_button :online_event, false, checked: true, class: "pull-left" %>
+			<%= f.label :online_event, "No", class: "pull-left"%>
+			<%= f.radio_button :online_event, true, class: "pull-left" %>
+			<%= f.label :online_event, "Yes", class: "pull-left" %>
 		<br/>
+		</div>
+		
+		<div>
+			<br/>
+			<%= f.fields_for :event_dates do |builder| %>
+				<%= builder.label :date_of_event, class: "pull-left" %><span class="required">*</span>
+				<%= builder.text_field :date_of_event, class: "date_of_event" %>
+				<br/>
+				<%= builder.label :time_of_event, class: "pull-left" %><span class="required">*</span>
+				<%= builder.text_field :time_of_event, class: "time_of_event" %>
+			<% end %>
 		</div>
 		
 		<br/>
