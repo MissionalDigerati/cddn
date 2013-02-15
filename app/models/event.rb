@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
   has_many :networks, as: :networkable, dependent: :destroy
   has_many :programming_languages, through: :programmings, source: :programmable, source_type: "Event"
   has_many :programmings, as: :programmable, dependent: :destroy
+  has_one :event_date, dependent: :destroy
   scope :include_networks, includes(:networks)
   scope :include_programmings, includes(:programmings)
   scope :approved_events, where(approved_event: true)
