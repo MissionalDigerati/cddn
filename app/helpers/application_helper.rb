@@ -20,7 +20,13 @@ module ApplicationHelper
   end
   
   def yes_or_no(arg)
-    arg == true ? "Yes" : "No"
+    if arg == true
+      "Yes"
+    elsif arg == false
+      "No"
+    else
+      ""
+    end
   end
   
   def network_service_select

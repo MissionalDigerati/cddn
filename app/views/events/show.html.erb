@@ -9,7 +9,7 @@ This is the event show page
 	<%= display_state_name(@event.state_id) %><br/>
 	<%= display_country_name(@event.country_id) %><br/>
 	<%= @event.zip_code %><br/>
-	<%= @event.online_event %><br/>
+	Online Event?: <%= yes_or_no(@event.online_event) %><br/>
 	
 	
 	<% @event.networks.each do |network| %>

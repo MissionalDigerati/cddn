@@ -38,6 +38,7 @@ describe ApplicationHelper do
     it "Should return yes or no depending on if the provided information is true or false" do
       yes_or_no(true).should == "Yes"
       yes_or_no(false).should == "No"
+      yes_or_no(nil).should == ""
     end
     
     it "should return true if the id for a language id passed in, is contained with the array of languages" do
