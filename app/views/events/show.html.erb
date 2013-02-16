@@ -10,6 +10,8 @@ This is the event show page
 	<%= display_country_name(@event.country_id) %><br/>
 	<%= @event.zip_code %><br/>
 	Online Event?: <%= yes_or_no(@event.online_event) %><br/>
+	Event Date (m/d/y): <%= date_format(@event.event_dates.first) %><br/>
+	Event Time: <%= @event.event_dates.first.time_of_event %><br/>
 	
 	
 	<% @event.networks.each do |network| %>

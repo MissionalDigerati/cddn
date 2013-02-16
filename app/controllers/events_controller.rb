@@ -13,7 +13,7 @@ class EventsController < ApplicationController
   end
   
   def show
-    @event = Event.includes_users.include_networks.include_programmings.find(params[:id])
+    @event = Event.includes_users.include_networks.include_programmings.include_date.find(params[:id])
     if @event.approved_event == true 
       @event
     else

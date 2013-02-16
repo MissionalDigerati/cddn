@@ -17,6 +17,7 @@ Given /^I am a logged in user "(.*?)" and I have an event "(.*?)" with a network
   password = 'secretpassword1000'
   user = FactoryGirl.create(:defaulted_user, first_name: username, email: username + "@example.com", password: password, bio: "bio")
   event = FactoryGirl.create(:defaulted_event, title: event_title)
+  event.event_dates.create(date_of_event: Time.now, time_of_event: Time.now)
   attendee = FactoryGirl.create(:defaulted_attendee, user_id: user.id, event_id: event.id, attendee_type: "creator")
   social_media = FactoryGirl.create(:defaulted_social_media, service: "network_name")
   FactoryGirl.create(:defaulted_network, social_media_id: social_media.id, networkable_id: event.id, networkable_type: "Event", account_name: network_name, account_url: "http://www." + network_name + ".com")
