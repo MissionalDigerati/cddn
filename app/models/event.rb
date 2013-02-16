@@ -14,6 +14,7 @@ class Event < ActiveRecord::Base
   scope :approved_events, where(approved_event: true)
   scope :includes_users, includes(:users)
   scope :include_attendees_creator, includes(:attendees).where(attendees:{attendee_type: "creator"})
+  scope :include_date, includes(:event_dates)
   
   attr_accessible :title, :details, :address_1, :address_2, :city_province, :state_id, :country_id, :zip_code, :online_event, :event_date, :programming_language_ids
   attr_accessible :networks_attributes
@@ -36,7 +37,7 @@ class Event < ActiveRecord::Base
     if language_tag_id.present?
       Event.approved_events.joins(:programmings).where(programmings: {programming_language_id: language_tag_id})
     else
-      Event.approved_events.include_programmings
+      Event.approved_events.include_programmings.include_date
     end
   end
   

@@ -33,6 +33,7 @@ Given /^I am a user "(.*?)", and I have an event "(.*?)", and I am logged in$/ d
   password = 'secretpassword1000'
   user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password)
   event = FactoryGirl.create(:defaulted_event, title: event)
+  event.event_dates.create(date_of_event: Time.now, time_of_event: Time.now)
   attendee = FactoryGirl.create(:defaulted_attendee, user_id: user.id, event_id: event.id, attendee_type: "creator")
   
   visit '/users/sign_in'
@@ -45,6 +46,7 @@ Given /^I am a user "(.*?)", and I have an event "(.*?)", and I am not logged in
   password = 'secretpassword1000'
   user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password)
   event = FactoryGirl.create(:defaulted_event, title: event)
+  event.event_dates.create(date_of_event: Time.now, time_of_event: Time.now)
   attendee = FactoryGirl.create(:defaulted_attendee, user_id: user.id, event_id: event.id, attendee_type: "creator")
 end
 
@@ -72,6 +74,7 @@ Given /^I am a user "(.*?)", and I have an event "(.*?)", and I have a ruby lang
   password = 'secretpassword1000'
   user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password)
   event = FactoryGirl.create(:defaulted_event, title: event)
+  event.event_dates.create(date_of_event: Time.now, time_of_event: Time.now)
   attendee = FactoryGirl.create(:defaulted_attendee, user_id: user.id, event_id: event.id, attendee_type: "creator")
   language = ProgrammingLanguage.first
   event.programmings.create(programming_language_id:language.id)
@@ -86,6 +89,7 @@ Given /^I am a user "(.*?)", and I have an event "(.*?)", and I have a smalltalk
   password = 'secretpassword1000'
   user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password)
   event = FactoryGirl.create(:defaulted_event, title: event)
+  event.event_dates.create(date_of_event: Time.now, time_of_event: Time.now)
   attendee = FactoryGirl.create(:defaulted_attendee, user_id: user.id, event_id: event.id, attendee_type: "creator")
   language = ProgrammingLanguage.last
   event.programmings.create(programming_language_id:language.id)

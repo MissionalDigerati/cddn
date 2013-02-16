@@ -89,6 +89,17 @@ describe ApplicationHelper do
       display_country_name(nil).should == ""
     end
     
+    it "should return the date in a date format if one is available, if not then it should return nothing" do
+      date = Time.now.to_date
+      time = Time.now
+      event = FactoryGirl.create(:defaulted_event)
+      event.event_dates.create(date_of_event: date, time_of_event: time)
+      event_without_date = FactoryGirl.create(:defaulted_event)
+      
+      date_format(event.event_dates.first).should == date.strftime('%m/%d/%Y')
+      date_format(event_without_date.event_dates.first).should == nil
+    end
+    
   end
   
 end

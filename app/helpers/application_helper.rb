@@ -82,4 +82,8 @@ module ApplicationHelper
   def display_country_name(country_id)
     country_id.present? ? Country.find(country_id).printable_name : ""
   end
+  
+  def date_format(event_date)
+    event_date.date_of_event.strftime('%m/%d/%Y') if event_date.present?
+  end
 end

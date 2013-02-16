@@ -57,6 +57,7 @@ Given /^I am a user "(.*?)", and I have an event "(.*?)", and I am not logged in
   password = 'secretpassword1000'
   user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password, event_approved: false, first_name: email_prefix)
   event = FactoryGirl.create(:defaulted_event, title: event, approved_event: false)
+  event.event_dates.create(date_of_event: Time.now, time_of_event: Time.now)
   attendee = FactoryGirl.create(:defaulted_attendee, user_id: user.id, event_id: event.id, attendee_type: "creator")
 end
 
