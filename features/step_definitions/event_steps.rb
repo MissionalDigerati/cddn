@@ -9,6 +9,7 @@ end
 Given /^I have an event "(.*?)"$/ do |event_name|
   user = FactoryGirl.create(:defaulted_user)
   event = FactoryGirl.create(:defaulted_event, title: event_name)
+  event.event_dates.create(date_of_event: Time.now, time_of_event: Time.now)
   attendee = FactoryGirl.create(:defaulted_attendee, user_id: user.id, event_id: event.id, attendee_type: 'creator')
 end
 
@@ -103,5 +104,12 @@ Given /^I am a user "(.*?)" that is not approved for event creation, and I am lo
   fill_in "Email", with: email_prefix + "@cddn.com"
   fill_in "Password", with: password
   click_button "Sign in"
+end
+
+Given /^I am a user "(.*?)", and I have an event "(.*?)", that is a past event, that is not logged in$/ do |email_prefix, event|
+  password = 'secretpassword1000'
+  user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password)
+  event = FactoryGirl.create(:defaulted_event, title: event)
+  event.event_dates.create(date_of_event: 1.weeks.ago, time_of_event: 1.weeks.ago)
 end
 

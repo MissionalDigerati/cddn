@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  
   belongs_to :country
   belongs_to :state
   
@@ -15,6 +16,8 @@ class Event < ActiveRecord::Base
   scope :includes_users, includes(:users)
   scope :include_attendees_creator, includes(:attendees).where(attendees:{attendee_type: "creator"})
   scope :include_date, includes(:event_dates)
+  scope :upcoming_events, where(["event_dates.date_of_event >= ?", Time.now.to_date])
+  scope :order_by_date, order("event_dates.date_of_event asc")
   
   attr_accessible :title, :details, :address_1, :address_2, :city_province, :state_id, :country_id, :zip_code, :online_event, :event_date, :programming_language_ids
   attr_accessible :networks_attributes
@@ -33,11 +36,11 @@ class Event < ActiveRecord::Base
   
   # returns query to controller based on the id of the programming language tag associated with the event. 
   # This will only return events approved by the admin.
-  def self.index_search_query(language_tag_id)
+  def self.upcoming_event_query(language_tag_id)
     if language_tag_id.present?
-      Event.approved_events.joins(:programmings).where(programmings: {programming_language_id: language_tag_id})
+      Event.approved_events.include_date.upcoming_events.joins(:programmings).where(programmings: {programming_language_id: language_tag_id}).order_by_date
     else
-      Event.approved_events.include_programmings.include_date
+      Event.approved_events.include_date.upcoming_events.include_programmings.order_by_date
     end
   end
   

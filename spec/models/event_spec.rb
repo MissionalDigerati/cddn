@@ -65,15 +65,28 @@ describe Event do
     it "should return queries based on programming languages associated with events. However if none are filtered, then it should return all events. However only events that are approved" do
       language = FactoryGirl.create(:defaulted_programming_language)
       approved_event_without_tag = FactoryGirl.create(:defaulted_event, title: "no_tag")
+      FactoryGirl.create(:defaulted_event_date, event_id: approved_event_without_tag.id)
       unapproved_event = FactoryGirl.create(:defaulted_event, approved_event: false, title: "unapproved")
+      FactoryGirl.create(:defaulted_event_date, event_id: unapproved_event.id)
       approved_event_with_tag = FactoryGirl.create(:defaulted_event, title: "approved_with_tag")
+      FactoryGirl.create(:defaulted_event_date, event_id: approved_event_with_tag.id)
       tag = approved_event_with_tag.programmings.create({programming_language_id: language.id})
       #should only return 2 becasue the 3rd is not approved
-      Event.index_search_query(nil).length.should == 2
+      Event.upcoming_event_query(nil).length.should == 2
       #should only return 1 because it is filtered by a programming language
-      Event.index_search_query(1).length.should == 1
-      Event.index_search_query(1).first.title.should == "approved_with_tag"
+      Event.upcoming_event_query(1).length.should == 1
+      Event.upcoming_event_query(1).first.title.should == "approved_with_tag"
     end
+    
+    it "should only return upcoming events not past events" do
+      upcoming_event = FactoryGirl.create(:defaulted_event, title: "upcoming")
+      FactoryGirl.create(:defaulted_event_date, event_id: upcoming_event.id)
+      past_event = FactoryGirl.create(:defaulted_event, title: "past_event")
+      FactoryGirl.create(:defaulted_event_date, event_id: past_event.id, date_of_event: 1.week.ago.to_date)
+      Event.upcoming_event_query(nil).length.should == 1
+      Event.upcoming_event_query(nil).first.should == upcoming_event
+    end
+    
   end
   
 end

@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  
+  belongs_to :country
+  belongs_to :state
+  
   scope :approved, where(event_approved: true)
   scope :event_unapproved, where(event_approved: false)
   scope :attendee_event_creator, joins(:attendees).where(attendees:{attendee_type: 'creator'})
@@ -8,8 +12,7 @@ class User < ActiveRecord::Base
   scope :project_unapproved, where(project_approved: false)
   scope :include_projects, includes(:projects)
   scope :memberships_project_creator, joins(:memberships).where(memberships:{role: 'creator'})
-  belongs_to :country
-  belongs_to :state
+  
   has_many :attendees, dependent: :destroy
   has_many :events, through: :attendees, dependent: :destroy
   has_many :networks, as: :networkable, dependent: :destroy
