@@ -12,6 +12,7 @@
 	<div class="row">
 		
 		<div class="span6">
+			Upcoming Projects:
 			<% if @projects.present? %>
 				<table class="table">
 					<tr>
@@ -24,6 +25,27 @@
 							<td><%= project.name %></td>
 							<td><%= project.organization %></td>
 							<td><%= link_to "View Project", project_path(project), class: "btn btn-mini btn-info" %></td>
+						</tr>
+					<% end %>
+				</table>
+			<% end %>
+		</div>
+		
+		
+		<div class="span6">
+			Upcoming Events:
+			<% if @events.present? %>
+				<table class="table">
+					<tr>
+						<th>Title</th>
+						<th>Date</th>
+						<th>Action</th>
+					</tr>
+					<% @events.each do |event| %>
+						<tr>
+							<td><%= event.title %></td>
+							<td><%= date_format(event.event_dates.first) %></td>
+							<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %></td>
 						</tr>
 					<% end %>
 				</table>
