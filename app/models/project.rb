@@ -1,9 +1,11 @@
 class Project < ActiveRecord::Base
+  
   has_many :users, through: :memberships
   has_many :memberships, dependent: :destroy
   has_many :networks, as: :networkable, dependent: :destroy
   has_many :programming_languages, through: :programmings, source: :programmable, source_type: "Project"
   has_many :programmings, as: :programmable, dependent: :destroy
+  
   scope :include_creator, includes(:memberships).where(memberships:{role: 'creator'})
   scope :include_memberships, includes(:memberships)
   scope :include_networks, includes(:networks)
@@ -17,10 +19,8 @@ class Project < ActiveRecord::Base
   attr_accessor :programming_language_ids
   accepts_nested_attributes_for :networks, reject_if: lambda{ |a| a[:account_url].blank? }, allow_destroy: true
   
-  
   validates :name, :description, :license, :organization, presence: true
   after_save :save_programming_languages
-  
   
   def self.project_index_search(language_tag_id, accepting_requests)
     if language_tag_id.present? && accepting_requests.present?
@@ -50,7 +50,6 @@ class Project < ActiveRecord::Base
   def self.only_open_projects
     self.approved_projects.open_projects.include_creator
   end
-  
   
   private
     def save_programming_languages

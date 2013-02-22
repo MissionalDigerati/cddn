@@ -230,3 +230,16 @@ Feature: A logged in user should be able to create events as state they are atte
 		And I fill in "event_event_dates_attributes_0_time_of_event" with current time
 		And I click the "Submit" button
 		Then I should see "Your Event has been submitted for approval, and will not be visible until approved"
+		
+	Scenario: The events index page should only display upcoming events not past events
+		Given I am a user "date_event_user", and I have an event "upcoming_event", and I am logged in
+		And I am a user "date_event_user_2", and I have an event "past_event", that is a past event, that is not logged in
+		When I click the "all_events" button
+		Then I should see "upcoming_event"
+		And I should not see "past_event"
+		
+		
+		
+		
+		
+		

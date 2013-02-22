@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   
   #this will only display events that are created by authorized users
   def index
-    @events = Event.index_search_query(params[:language]).page(params[:page]).per(15)
+    @events = Event.upcoming_event_query(params[:language]).page(params[:page]).per(15)
   end
   
   def new
