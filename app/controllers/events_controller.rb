@@ -7,6 +7,10 @@ class EventsController < ApplicationController
     @events = Event.upcoming_event_query(params[:language]).page(params[:page]).per(15)
   end
   
+  def past_events
+    @events = Event.upcoming_event_query(params[:language]).page(params[:page]).per(15)
+  end
+  
   def new
     @event = Event.new
     @event.event_dates.build
