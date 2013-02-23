@@ -17,6 +17,7 @@ class Event < ActiveRecord::Base
   scope :include_attendees_creator, includes(:attendees).where(attendees:{attendee_type: "creator"})
   scope :include_date, includes(:event_dates)
   scope :upcoming_events, where(["event_dates.date_of_event >= ?", Time.now.to_date])
+  scope :past_events, where(["event_dates.date_of_event <= ?", Time.now.to_date])
   scope :order_by_date, order("event_dates.date_of_event asc")
   
   attr_accessible :title, :details, :address_1, :address_2, :city_province, :state_id, :country_id, :zip_code, :online_event, :event_date, :programming_language_ids
