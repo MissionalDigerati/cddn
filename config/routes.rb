@@ -35,7 +35,7 @@ Cddn::Application.routes.draw do
     member do
       match "my_events"
       put "attend_event"
-      get "past_events"
+      # get "past_events"
     end
   end
   resources :projects do
@@ -50,6 +50,7 @@ Cddn::Application.routes.draw do
     end
   end
   match 'users/dashboard/:id' => 'users#dashboard', method: :get, as: :users_dashboard
+  match 'event/past_events' => 'events#past_events', as: "past_events"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
