@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   end
   
   def past_events
-    @events = Event.approved_events.include_date.past_events.include_programmings.order_by_date.page(params[:page]).per(15)
+    @events = Event.past_event_query(params[:language]).page(params[:page]).per(15)
   end
   
   def new
