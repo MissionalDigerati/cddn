@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :authenticate_user!, except: [:index, :show, :past_events]
   before_filter :current_user_variable
   
   #this will only display events that are created by authorized users

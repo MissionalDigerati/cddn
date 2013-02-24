@@ -238,6 +238,27 @@ Feature: A logged in user should be able to create events as state they are atte
 		Then I should see "upcoming_event"
 		And I should not see "past_event"
 		
+	Scenario: Only past events should be viewable on the view past events page. 
+		Given I am a user "date_event_user", and I have an event "upcoming_event", and I am logged in
+		And I am a user "date_event_user_2", and I have an event "past_event", that is a past event, that is not logged in
+		When I click the "past_events" button
+		Then I should see "past_event"
+		And I should not see "upcoming_event"
+		
+	Scenario: users that are not logged in should be able to view the past events page
+		Given I am a user "date_event_user_2", and I have an event "past_event", that is a past event, that is not logged in
+		And I am on the home page
+		When I access the past events page
+		Then I should be on the past events page
+		And I should see "past_event"
+		
+	Scenario: users that are logged in should be able to access the past events page
+		Given I am a user "create_events_failure_test" and I am logged in
+		And I am a user "date_event_user_2", and I have an event "past_event", that is a past event, that is not logged in
+		And I am on the home page
+		When I access the past events page
+		Then I should be on the past events page
+		And I should see "past_event"
 		
 		
 		

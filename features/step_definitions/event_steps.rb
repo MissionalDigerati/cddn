@@ -113,3 +113,10 @@ Given /^I am a user "(.*?)", and I have an event "(.*?)", that is a past event, 
   event.event_dates.create(date_of_event: 1.weeks.ago, time_of_event: 1.weeks.ago)
 end
 
+When /^I access the past events page$/ do
+  visit past_events_path
+end
+
+Then /^I should be on the past events page$/ do
+  current_path.should == past_events_path
+end
