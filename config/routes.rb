@@ -29,11 +29,11 @@ Cddn::Application.routes.draw do
     member do
       put "please_update"
       get "my_projects"
+      get "my_events"
     end
   end
   resources :events do
     member do
-      match "my_events"
       put "attend_event"
       # get "past_events"
     end

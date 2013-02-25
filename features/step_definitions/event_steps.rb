@@ -27,7 +27,7 @@ end
 
 When /^I visit the my events page for "(.*?)"$/ do |email_prefix|
   user = User.find_by_email(email_prefix + "@example.com")
-  visit my_events_event_path(user)
+  visit my_events_user_path(user)
 end
 
 Given /^I am a user "(.*?)", and I have an event "(.*?)", and I am logged in$/ do |email_prefix, event|
@@ -53,7 +53,7 @@ end
 
 When /^I try to access the my events page for "(.*?)"$/ do |email_prefix|
   user = User.find_by_email(email_prefix + "@cddn.com")
-  visit my_events_event_path(user)
+  visit my_events_user_path(user)
 end
 
 When /^I try to access the edit event page for "(.*?)"$/ do |event_title|
