@@ -19,7 +19,7 @@
 						<li><%= link_to 'New Event', new_event_path, id: "user_new_event" %> </li>
 						<li><%= link_to 'All Events', events_path, id: "all_events" %> </li>
 						<li><%= link_to 'Past Events', past_events_path, id: "past_events" %></li>
-						<li><%= link_to 'My Events', my_events_event_path(current_user), id: "user_my_events"%></li>
+						<li><%= link_to 'My Events', my_events_user_path(current_user), id: "user_my_events"%></li>
 					</ul>
 				</li>
 				
@@ -41,6 +41,3 @@
 		</div>
 	</div>
 </div>
-
-
-

@@ -16,6 +16,7 @@ class Event < ActiveRecord::Base
   scope :includes_users, includes(:users)
   scope :include_attendees_creator, includes(:attendees).where(attendees:{attendee_type: "creator"})
   scope :include_date, includes(:event_dates)
+  scope :joins_attendees, joins(:attendees)
   scope :upcoming_events, where(["event_dates.date_of_event >= ?", Time.now.to_date])
   scope :past_events, where(["event_dates.date_of_event <= ?", Time.now.to_date])
   scope :order_by_date, order("event_dates.date_of_event asc")

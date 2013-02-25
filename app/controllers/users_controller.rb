@@ -22,6 +22,12 @@ class UsersController < ApplicationController
     @project_participation = Project.joins(:memberships).where(memberships:{user_id: current_user.id, role:'member', status: 'approved'})
   end
   
+  def my_events
+    @created_by_user = Event.joins_attendees.where(["attendees.user_id = ? AND attendee_type = ?", current_user.id, 'creator']).include_date.order_by_date
+    @my_upcoming_events = Event.include_date.upcoming_events.joins_attendees.where(["attendees.user_id = ? AND attendee_type = ?", current_user.id, 'attendee']).order_by_date
+    @my_past_events = Event.include_date.past_events.joins_attendees.where(["attendees.user_id = ? AND attendee_type = ?", current_user.id, 'attendee']).order_by_date
+  end
+  
   def update
     @user = current_user
     respond_to do |format|

@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   end
   
   def past_events
-    @events = Event.past_event_query(params[:language]).page(params[:page]).per(15)
+    @past_events = Event.past_event_query(params[:language]).page(params[:page]).per(15)
   end
   
   def new
@@ -31,7 +31,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.save
         Attendee.attendee_creation(@user.id, @event, 'creator')
-        format.html {redirect_to my_events_event_path(current_user)}
+        format.html {redirect_to my_events_user_path(current_user)}
         @event.approved_event == true ? flash[:notice] = "Your Event has been created!" : flash[:notice] = "Your Event has been submitted for approval, and will not be visible until approved."
       else
         format.html {render action: "new"}
@@ -55,7 +55,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        format.html {redirect_to my_events_event_path(current_user)} 
+        format.html {redirect_to my_events_user_path(current_user)} 
         flash[:notice] = "Your event was successfully updated."
       else
         format.html { render action: "edit" }
@@ -68,14 +68,9 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.destroy
     respond_to do |format|
-      format.html {redirect_to my_events_event_path(current_user)}
+      format.html {redirect_to my_events_user_path(current_user)}
       flash[:notice] = "Your event was successfully deleted."
     end
-  end
-  
-  def my_events
-    @current_user_attendee_creator = Attendee.where("user_id = #{current_user.id} AND attendee_type = 'creator'").include_event
-    @current_user_event_attendee = Attendee.where("user_id = #{current_user.id} AND attendee_type = 'attendee'").include_event
   end
   
   def attend_event

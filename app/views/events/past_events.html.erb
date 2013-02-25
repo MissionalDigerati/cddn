@@ -18,8 +18,18 @@
 			<td>Date (m/d/y)</td>
 			<td>Action</td>
 		</tr>
-			<%= render @events %>
+		<% @past_events.each do |event| %>
+			<tr>
+				<td><%= event.title %></td>
+				<td><%= event.city_province %></td>
+				<td><%= display_state_name(event.state_id) %></td>
+				<td><%= display_country_name(event.country_id) %></td>
+				<td><%= yes_or_no(event.online_event) %></td>
+				<td><%= date_format(event.event_dates.first) %></td>
+				<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %> </td>
+			</tr>
+		<% end %>	
 		</tbody>
 	</table>
-	<%= paginate @events, :theme => 'twitter-bootstrap' %>
+	<%= paginate @past_events, :theme => 'twitter-bootstrap' %>
 </div>
