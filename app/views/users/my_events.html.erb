@@ -10,11 +10,11 @@
 					<td>Date</td>
 					<td>Action</td>
 				</tr>
-				<% @current_user_attendee_creator.each do |attendee| %>
+				<% @created_by_user.each do |event| %>
 					<tr>
-						<td><%= attendee.event.title %></td>
-						<td><%= date_format(attendee.event.event_dates.first) %></td>
-						<td><%= view_event(attendee.event) %> <%= link_to "Edit Event", edit_event_path(attendee.event), class: "btn btn-mini btn-success" %> <%= link_to "Delete Event", event_path(attendee.event), method: :delete, class: "btn btn-mini btn-danger", confirm: "Are you sure you want to delete this event?" %></td>
+						<td><%= event.title %></td>
+						<td><%= date_format(event.event_dates.first) %></td>
+						<td><%= view_event(event) %> <%= link_to "Edit Event", edit_event_path(event), class: "btn btn-mini btn-success" %> <%= link_to "Delete Event", event_path(event), method: :delete, class: "btn btn-mini btn-danger", confirm: "Are you sure you want to delete this event?" %></td>
 					</tr>
 				<% end %>
 			</table>
@@ -22,24 +22,42 @@
 
 
 		<div class="span6">	
-		Events that I am attending: <br/>
-
-			<table class="table table-striped table-bordered">
-				<tr>
-					<td>Title</td>
-					<td>City</td>
-					<td>Date</td>
-					<td>Action</td>
-				</tr>
-				<% @current_user_event_attendee.each do |attendee| %>
-					<tr>
-						<td><%= attendee.event.title %></td>
-						<td><%= attendee.event.city_province %></td>
-						<td><%= date_format(attendee.event.event_dates.first) %></td>
-						<td><%= link_to "View Event", event_path(attendee.event), class: "btn btn-mini btn-info" %> <%= attend_event_button(current_user.id, attendee.event) if user_signed_in? %></td>
-					</tr>
-				<% end %>
-			</table>
+			<% if @my_upcoming_events.present? %>
+				Upcoming events that I am attending: <br/>
+					<table class="table table-striped table-bordered">
+						<tr>
+							<td>Title</td>
+							<td>Date</td>
+							<td>Action</td>
+						</tr>
+						<% @my_upcoming_events.each do |event| %>
+							<tr>
+								<td><%= event.title %></td>
+								<td><%= date_format(event.event_dates.first) %></td>
+								<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %> <%= attend_event_button(current_user.id, event) if user_signed_in? %></td>
+							</tr>
+						<% end %>
+					</table>
+			<% end %>
+			
+			<% if @my_past_events.present? %>
+				Past events: <br/>
+					<table class="table table-striped table-bordered">
+						<tr>
+							<td>Title</td>
+							<td>Date</td>
+							<td>Action</td>
+						</tr>
+						<% @my_past_events.each do |event| %>
+							<tr>
+								<td><%= event.title %></td>
+								<td><%= date_format(event.event_dates.first) %></td>
+								<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %> <%= attend_event_button(current_user.id, event) if user_signed_in? %></td>
+							</tr>
+						<% end %>
+					</table>
+			<% end %>
+			
 		</div>
 	
 	</div>
