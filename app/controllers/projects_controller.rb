@@ -32,6 +32,7 @@ class ProjectsController < ApplicationController
   
   def index
     @projects = Project.project_index_search(params[:language], params[:open_projects]).page(params[:page]).per(15)
+    @project_rss = Project.approved_projects.include_creator.limit(10)
   end
   
   def edit
