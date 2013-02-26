@@ -11,6 +11,8 @@ class UsersController < ApplicationController
   #this will be the brag page / the user show page.
   def show
     @user = User.include_networks.include_programmings.find(params[:id])
+    @upcoming_events = Event.include_date.upcoming_events.joins_attendees.where(["attendees.user_id = ?", @user]).order_by_date.limit(5)
+    @my_projects = Project.joins(:memberships).where(memberships:{user_id: @user}).limit(5)
   end
   
   def edit
