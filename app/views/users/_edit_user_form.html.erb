@@ -47,13 +47,9 @@
 		Programming languages<br/>
 		<div>
 		<%= f.label :lang_tokens, "Languages" %>
-		<%= f.text_field :lang_tokens, data: {load: @pre_populate} %>
+		<%= f.text_field :lang_tokens, data: {load: @user.programming_languages} %>
 		</div>
 		
-		<% ProgrammingLanguage.all.each do |language| %>
-			<%= check_box_tag "user[programming_language_ids][]", language.id, check_lang(@user.programmings.pluck(:programming_language_id), language.id), {id: "#{language.language}"}  %>
-			<%= label_tag language.language%>
-		<% end %>
 		<div class="clear"></div>
 		<br/>
 		<br/>

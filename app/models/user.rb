@@ -31,15 +31,11 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :nickname, :primary_role, :church, :bio, :city_province, :state_id, :country_id, :please_update, :programming_language_ids, :lang_tokens
   attr_accessible :networks_attributes
   attr_accessor :programming_language_ids
-  attr_reader :lang_tokens
+  attr_accessor :lang_tokens
   validates_uniqueness_of :nickname, allow_nil: true, allow_blank: true
   
   accepts_nested_attributes_for :networks, reject_if: lambda{ |a| a[:account_url].blank? }, allow_destroy: true
   after_save :save_programming_languages
-  
-  def lang_tokens=(ids)
-    self.programming_language_ids = ids.split(",")
-  end
   
   #if the provider is facebook then it sets the user's nickname to the facebook name (which is the users first and last name)
   #if no email is provided then one is generated for the sake of requiring one on the cddn appliation
@@ -87,9 +83,9 @@ class User < ActiveRecord::Base
   
   private
     def save_programming_languages
-    self.programmings.destroy_all
-    return if self.programming_language_ids.blank?
-    self.programming_language_ids.each do |lang|
+      self.programmings.destroy_all
+      return if self.lang_tokens.blank?
+      lang_tokens.split(",").each do |lang|
         self.programmings.create({programming_language_id: lang}) unless lang.blank?
       end
     end
