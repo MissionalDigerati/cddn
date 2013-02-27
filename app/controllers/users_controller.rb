@@ -17,7 +17,6 @@ class UsersController < ApplicationController
   
   def edit
     @user = current_user
-    @pre_populate = ProgrammingLanguage.joins(:programmings).where(["programmings.programmable_id = ? and programmings.programmable_type = ?", current_user.id, "User"])
   end
   
   def my_projects
