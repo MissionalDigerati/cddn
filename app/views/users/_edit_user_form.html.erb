@@ -47,7 +47,7 @@
 		Programming languages<br/>
 		<div>
 		<%= f.label :lang_tokens, "Languages" %>
-		<%= f.text_field :lang_tokens, data: {load: 'Ruby'.to_json} %>
+		<%= f.text_field :lang_tokens, data: {load: @pre_populate} %>
 		</div>
 		
 		<% ProgrammingLanguage.all.each do |language| %>

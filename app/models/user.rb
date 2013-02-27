@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
   has_many :attendees, dependent: :destroy
   has_many :events, through: :attendees, dependent: :destroy
   has_many :networks, as: :networkable, dependent: :destroy
-  # has_many :programming_languages, through: :programmings, source: :programmings, :source_type => 'ProgrammingLanguage'
-  # has_many :programming_languages, :through => :programmings, :source => :programmable, :source_type => 'ProgrammingLanguage'
   has_many :programming_languages, through: :programmings
   has_many :programmings, as: :programmable, dependent: :destroy
   has_many :projects, through: :memberships, dependent: :destroy
@@ -37,7 +35,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :nickname, allow_nil: true, allow_blank: true
   
   accepts_nested_attributes_for :networks, reject_if: lambda{ |a| a[:account_url].blank? }, allow_destroy: true
-  # after_save :save_programming_languages
+  after_save :save_programming_languages
   
   def lang_tokens=(ids)
     self.programming_language_ids = ids.split(",")
