@@ -11,6 +11,8 @@
  *= require_self
  *= require_tree .
  *= reqire_twitter/bootstrap
+ *= require token-input-facebook.css
+ *= require token-input-bootstrappy
  */
 
 

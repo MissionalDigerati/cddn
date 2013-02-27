@@ -51,6 +51,9 @@ Cddn::Application.routes.draw do
   end
   match 'users/dashboard/:id' => 'users#dashboard', method: :get, as: :users_dashboard
   match 'event/past_events' => 'events#past_events', as: "past_events"
+  resources :programming_languages do
+    
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
