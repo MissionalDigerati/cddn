@@ -23,6 +23,16 @@ Given /^I am a user "(.*?)" and I have a project "(.*?)", and I am logged in$/ d
   click_button "Sign in"
 end
 
+Given /^I am a user not approved for project creation "(.*?)" and I am logged in$/ do |email_prefix|
+  password = 'secretpassword1000'
+  user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password, first_name: email_prefix, project_approved: false)
+  
+  visit '/users/sign_in'
+  fill_in "Email", with: email_prefix + "@cddn.com"
+  fill_in "Password", with: password
+  click_button "Sign in"
+end
+
 Given /^I am a user "(.*?)" and I have a project "(.*?)", and I am not logged in$/ do |email_prefix, project|
   password = 'secretpassword1000'
   user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password)

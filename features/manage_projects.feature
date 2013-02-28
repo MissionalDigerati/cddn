@@ -3,7 +3,7 @@ Feature: A user should be able to create update delete and join projects, as wel
 	I want to be able to manage my projects links
 	I do not want users or visitors to be able to access the pages need to edit this information.
 	
-	Scenario: A user should be able to create a project
+	Scenario: A user should be able to create a project, as an project approved user, it will redirect them to the project show page
 		Given I am a user "create_project_test" and I am logged in
 		And I am on the home page
 		When I click the "user_new_project" link
@@ -15,15 +15,28 @@ Feature: A user should be able to create update delete and join projects, as wel
 		And I click the "Submit" button
 		Then I should see "Your project has been successfully created."
 		And I should see "Project Name"
-		And I should be on the user dashboard for "create_project_test"
-	
+		And I should be on the project show page for "Project Name"
+		
+	Scenario: A user that is not approved for project creation should receive a special message and redirection for product creation
+		Given I am a user not approved for project creation "unapproved_project_user" and I am logged in 
+		And I am on the home page
+		When I click the "user_new_project" link
+		Then I should be on the new project page
+		And I fill in "Name" with "Project Name"
+		And I fill in "Description" with "This is the best project ever"
+		And I fill in "License" with "Standard"
+		And I fill in "Organization" with "CDDN"
+		And I click the "Submit" button
+		Then I should see "Your Project has been submitted for approval, and will not be visible until approved."
+		And I should be on the my project page for "unapproved_project_user"
+		
 	Scenario: A user that is not logged in should not be able to access the create new project page
 		Given I am on the home page
 		When I try to access the new project form page
 		Then I should be on the user sign in page
 		And I should see "You need to sign in or sign up before continuing."
 		
-	Scenario: A user should be able to edit their project
+	Scenario: A user should be able to edit their project, and as approved users should be redirected to the project show page.
 		Given I am a user "edit_project_test" and I have a project "project name", and I am logged in
 		And I am on the home page
 		When I click the "Home | Dashboard" button
@@ -32,7 +45,18 @@ Feature: A user should be able to create update delete and join projects, as wel
 		And I fill in "Name" with "Edited_project_name"
 		And I click the "Submit" button
 		Then I should see "Your project has been successfully updated."
-		And I should be on the user dashboard for "edit_project_test"
+		And I should be on the project show page for "Edited_project_name"
+		
+	Scenario: As an unapproved user editing their project, I should see a message stating it is still not viewable, and should be directed to the my projects page
+		Given I am a user "un_approved_project_update" and I have a project "un-approved-project", and I am not approved for project creation
+		And I am on the home page
+		When I click the "Home | Dashboard" button
+		Then I should see "un-approved-project"
+		When I click the "Edit Project" button for "un-approved-project"
+		And I fill in "Name" with "Edited_project_name"
+		And I click the "Submit" button
+		Then I should see "Your Project has been update, and is still pending approval, and will not be visible until approved."
+		And I should be on the my project page for "un_approved_project_update"
 		
 	Scenario: A visitor that is not logged in should not be able to access edit page for a users project
 		Given I am a user "visitor_access_edit_project" and I have a project "visitor access project", and I am not logged in

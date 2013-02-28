@@ -28,12 +28,17 @@ class EventsController < ApplicationController
   
   def create
     @event = Event.new(params[:event])
-    @user.event_approved == true ? @event.approved_event = true : @event.approved_event = false
+    @event.approved_event = @user.event_approved
     respond_to do |format|
       if @event.save
         Attendee.attendee_creation(@user.id, @event, 'creator')
-        format.html {redirect_to my_events_user_path(current_user)}
-        @event.approved_event == true ? flash[:notice] = "Your Event has been created!" : flash[:notice] = "Your Event has been submitted for approval, and will not be visible until approved."
+        if @event.approved_event == true
+          format.html {redirect_to event_path(@event)}
+          flash[:notice] = "Your Event has been created!"
+        else
+          format.html {redirect_to my_events_user_path(current_user)}
+          flash[:notice] = "Your Event has been submitted for approval, and will not be visible until approved."
+        end
       else
         format.html {render action: "new"}
         flash[:notice] = @event.errors.full_messages.to_sentence
@@ -54,10 +59,16 @@ class EventsController < ApplicationController
   
   def update
     @event = Event.find(params[:id])
+    @event.approved_event = @user.event_approved
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        format.html {redirect_to my_events_user_path(current_user)} 
-        flash[:notice] = "Your event was successfully updated."
+        if @event.approved_event == true
+          format.html {redirect_to event_path(@event)}
+          flash[:notice] = "Your event was successfully updated."
+        else
+          format.html {redirect_to my_events_user_path(current_user)}
+          flash[:notice] = "Your event has been update, and is still pending approval, and will not be visible until approved."
+        end
       else
         format.html { render action: "edit" }
         flash[:notice] = @event.errors.full_messages.to_sentence

@@ -3,7 +3,7 @@ Feature: A logged in user should be able to create events as state they are atte
 	I should be able to create events as well as manage them, as well as state my role in them. 
 	I do not want users or visitors to be able to access the creation or editing functionality of events. However they can mark that they are attending them
 	
-	Scenario: A user should be able to create events 
+	Scenario: A user should be able to create events, as an event approved user they should be redirected to the event show page
 		Given I am a user "create_events_test" and I am logged in
 		And I am on the home page
 		When I click the "user_new_event" link
@@ -16,6 +16,42 @@ Feature: A logged in user should be able to create events as state they are atte
 		And I fill in "event_event_dates_attributes_0_time_of_event" with current time
 		And I click the "Submit" button
 		Then I should see "Your Event has been created!"
+		And I should be on the event show page for "Rails meet up"
+		
+	Scenario: A user that is not approved for event creation, should receive a message stating so after creating an event
+		Given I am a user "unapproved_event_message" that is not approved for event creation, and I am logged in
+		And I am on the home page
+		When I click the "user_new_event" link
+		Then I should be on the new event page
+		And I fill in "Title" with "Rails meet up"
+		And I fill in "Address 1" with "123 fake street"
+		And I fill in "event_city_province" with "San Jose"
+		And I fill in "Zip code" with "95123"
+		And I fill in "event_event_dates_attributes_0_date_of_event" with current time
+		And I fill in "event_event_dates_attributes_0_time_of_event" with current time
+		And I click the "Submit" button
+		Then I should see "Your Event has been submitted for approval, and will not be visible until approved"
+		And I should be on the my events page for "unapproved_event_message"
+		
+	Scenario: A user that is approved for event creation should be able to edit their events, and should be redirected to the event show page
+		Given I am a user "event_update_redirect", and I have an event "great_event", and I am logged in
+		And I am on the home page
+		When I click the "user_my_events" button
+		And I click the "Edit Event" button for "great_event"
+		And I fill in "Title" with "better_event"
+		And I click the "Submit" button
+		Then I should see "Your event was successfully updated."
+		And I should be on the event show page for "better_event"
+		
+	Scenario: A user that is not approved for event creation should be able to edit their event, and should receive a message and be redirected to the my events page
+		Given I am a user "unapproved_event_update_redirect", and I have an event "unapproved_redirect", and I am logged in, and I am not approved for event creation
+		And I am on the home page
+		When I click the "user_my_events" button
+		And I click the "Edit Event" button for "unapproved_redirect"
+		And I fill in "Title" with "still_not_approved"
+		And I click the "Submit" button
+		Then I should see "Your event has been update, and is still pending approval, and will not be visible until approved."
+		And I should be on the my events page for "unapproved_event_update_redirect"
 		
 	Scenario: A user should not be able to create events if all the the required attributes are not present
 		Given I am a user "create_events_failure_test" and I am logged in
@@ -158,20 +194,6 @@ Feature: A logged in user should be able to create events as state they are atte
 		And I click the "Search" button
 		Then I should see "stupid event"
 		And I should not see "fun event"
-		
-	Scenario: A user that is not approved for event creation, should receive a message stating so after creating an event
-		Given I am a user "unapproved_event_message" that is not approved for event creation, and I am logged in
-		And I am on the home page
-		When I click the "user_new_event" link
-		Then I should be on the new event page
-		And I fill in "Title" with "Rails meet up"
-		And I fill in "Address 1" with "123 fake street"
-		And I fill in "event_city_province" with "San Jose"
-		And I fill in "Zip code" with "95123"
-		And I fill in "event_event_dates_attributes_0_date_of_event" with current time
-		And I fill in "event_event_dates_attributes_0_time_of_event" with current time
-		And I click the "Submit" button
-		Then I should see "Your Event has been submitted for approval, and will not be visible until approved"
 		
 	Scenario: The events index page should only display upcoming events not past events
 		Given I am a user "date_event_user", and I have an event "upcoming_event", and I am logged in

@@ -43,6 +43,19 @@ Given /^I am a user "(.*?)", and I have an event "(.*?)", and I am logged in$/ d
   click_button "Sign in"
 end
 
+Given /^I am a user "(.*?)", and I have an event "(.*?)", and I am logged in, and I am not approved for event creation$/ do |email_prefix, event|
+  password = 'secretpassword1000'
+  user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password, event_approved: false)
+  event = FactoryGirl.create(:defaulted_event, title: event, approved_event: false)
+  event.event_dates.create(date_of_event: Time.now, time_of_event: Time.now)
+  attendee = FactoryGirl.create(:defaulted_attendee, user_id: user.id, event_id: event.id, attendee_type: "creator")
+  
+  visit '/users/sign_in'
+  fill_in "Email", with: email_prefix + "@cddn.com"
+  fill_in "Password", with: password
+  click_button "Sign in"
+end
+
 Given /^I am a user "(.*?)", and I have an event "(.*?)", and I am not logged in$/ do |email_prefix, event|
   password = 'secretpassword1000'
   user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password)
@@ -144,4 +157,14 @@ end
 
 Then /^I should be on the past events page$/ do
   current_path.should == past_events_path
+end
+
+Then /^I should be on the event show page for "(.*?)"$/ do |title|
+  event = Event.find_by_title(title)
+  current_path.should == event_path(event)
+end
+
+Then /^I should be on the my events page for "(.*?)"$/ do |email_prefix|
+  user = User.find_by_email(email_prefix + "@cddn.com")
+  current_path.should == my_events_user_path(user)
 end

@@ -8,12 +8,17 @@ class ProjectsController < ApplicationController
   
   def create
     @project = Project.new(params[:project])
-    @user.project_approved == true ? @project.approved_project = true : @project.approved_project = false
+    @project.approved_project = @user.project_approved
     respond_to do |format|
       if @project.save
         Membership.membership_creation(@user.id, @project, 'creator', 'active')
-        format.html {redirect_to users_dashboard_path(current_user)}
-        flash[:notice] = "Your project has been successfully created."
+        if @project.approved_project == true  
+          format.html {redirect_to project_path(@project)} 
+          flash[:notice] = "Your project has been successfully created."
+        else 
+          format.html {redirect_to my_projects_user_path(current_user)}
+          flash[:notice] = "Your Project has been submitted for approval, and will not be visible until approved."
+        end
       else
         format.html {render action: "new"}
         flash[:notice] = @project.errors.full_messages.to_sentence
@@ -46,10 +51,16 @@ class ProjectsController < ApplicationController
   
   def update
     @project = Project.find(params[:id])
+    @project.approved_project = @user.project_approved
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        format.html {redirect_to users_dashboard_path(current_user)}
-        flash[:notice] = "Your project has been successfully updated."
+        if @project.approved_project == true  
+          format.html {redirect_to project_path(@project)} 
+          flash[:notice] = "Your project has been successfully updated."
+        else 
+          format.html {redirect_to my_projects_user_path(current_user)}
+          flash[:notice] = "Your Project has been update, and is still pending approval, and will not be visible until approved."
+        end
       else
         format.html { render action: "edit" }
         flash[:notice] = @project.errors.full_messages.to_sentence
