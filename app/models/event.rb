@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
   has_many :attendees, dependent: :destroy
   has_many :users, through: :attendees
   has_many :networks, as: :networkable, dependent: :destroy
-  has_many :programming_languages, through: :programmings, source: :programmable, source_type: "Event"
+  has_many :programming_languages, through: :programmings
   has_many :programmings, as: :programmable, dependent: :destroy
   has_many :event_dates, dependent: :destroy
   
@@ -21,11 +21,11 @@ class Event < ActiveRecord::Base
   scope :past_events, where(["event_dates.date_of_event <= ?", Time.now.to_date])
   scope :order_by_date, order("event_dates.date_of_event asc")
   
-  attr_accessible :title, :details, :address_1, :address_2, :city_province, :state_id, :country_id, :zip_code, :online_event, :event_date, :programming_language_ids
+  attr_accessible :title, :details, :address_1, :address_2, :city_province, :state_id, :country_id, :zip_code, :online_event, :event_date, :lang_tokens
   attr_accessible :networks_attributes
   attr_accessible :programmings_attributes
   attr_accessible :event_dates_attributes
-  attr_accessor :programming_language_ids
+  attr_accessor :lang_tokens
   
   accepts_nested_attributes_for :networks, reject_if: lambda{ |a| a[:account_url].blank? }, allow_destroy: true
   accepts_nested_attributes_for :programmings, allow_destroy: true
@@ -55,10 +55,11 @@ class Event < ActiveRecord::Base
   end
   
   private
+    
     def save_programming_languages
-    self.programmings.destroy_all
-    return if self.programming_language_ids.blank?
-    self.programming_language_ids.each do |lang|
+      self.programmings.destroy_all
+      return if self.lang_tokens.blank?
+      lang_tokens.split(",").each do |lang|
         self.programmings.create({programming_language_id: lang}) unless lang.blank?
       end
     end

@@ -71,7 +71,7 @@ describe User do
     end
     
     it "should not create a programmings record for the event if no programming language ids are passed" do
-      user = FactoryGirl.build(:defaulted_user, programming_language_ids: nil)
+      user = FactoryGirl.build(:defaulted_user, lang_tokens: nil)
       user.save
       user.programmings.length.should == 0
     end

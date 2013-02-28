@@ -18,10 +18,10 @@
 //= require bootstrap
 //= require_tree .
 $(document).ready(function() {
-	$('#user_lang_tokens').tokenInput("/programming_languages.json", {
+	$('.lang_tokens').tokenInput("/programming_languages.json", {
 		theme: "facebook",
 		propertyToSearch: "language",
 		preventDuplicates: true,
-		prePopulate: $('#user_lang_tokens').data('load')
+		prePopulate: $('.lang_tokens').data('load')
 	});
 });

@@ -30,7 +30,6 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :nickname, :primary_role, :church, :bio, :city_province, :state_id, :country_id, :please_update, :programming_language_ids, :lang_tokens
   attr_accessible :networks_attributes
-  attr_accessor :programming_language_ids
   attr_accessor :lang_tokens
   validates_uniqueness_of :nickname, allow_nil: true, allow_blank: true
   

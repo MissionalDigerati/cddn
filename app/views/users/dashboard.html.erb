@@ -29,10 +29,12 @@
 			You are not currently approved for project creation.
 			<br/><br/>
 		<% end %>
-
-		Language tags:<br/>
-		<% display_programming_tags(@user.programmings.pluck(:programming_language_id)).each do |language|%>
-			<%= language %> <br/>
+		
+		<% if @user.programming_languages.present? %>
+			Language tags:<br/>
+			<% @user.programming_languages.each do |lang| %>
+				<%= lang.language %><br/>
+			<% end %>
 		<% end %>
 		<br/>
 		
