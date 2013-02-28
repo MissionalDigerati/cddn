@@ -45,7 +45,7 @@ describe Event do
   describe "aftersave" do
     it "should created corresponding programmings records after the event is save so long as there are programming language ids provided in the programming_language_ids params" do
       language = FactoryGirl.create(:defaulted_programming_language, language: "Ruby")
-      event = FactoryGirl.build(:defaulted_event, programming_language_ids: [1])
+      event = FactoryGirl.build(:defaulted_event, lang_tokens: "1")
       event.save
       event.programmings.length.should == 1
       event.programmings.first.programmable_id.should == event.id
