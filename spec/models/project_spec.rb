@@ -42,6 +42,25 @@ describe Project do
     
   end
   
+  describe "aftersave" do
+    it "should create the correct programming language tags when the lang_token passes the ids for the corresponding languages" do
+      language = FactoryGirl.create(:defaulted_programming_language, language: "Ruby")
+      project = FactoryGirl.build(:defaulted_project, lang_tokens: "1")
+      project.save
+      project.programmings.length.should == 1
+      project.programmings.first.programmable_id.should == project.id
+      project.programmings.first.programmable_type.should == "Project"
+      project.programmings.first.programming_language_id.should == language.id
+    end
+    
+    it "should not create a programmings record for the event if no programming language ids are passed" do
+      project = FactoryGirl.build(:defaulted_project, lang_tokens: nil)
+      project.save
+      project.programmings.length.should == 0
+    end
+  end
+  
+  
   describe "methods" do
     
     it "should return a regular search if no params are provided including both open and closed projects returning projects with tags as well." do

@@ -109,3 +109,63 @@ Feature: You should be able to add programming language tags for users, events, 
 	# 		And I click the "View Event" button for "event_tag_delete"
 	# 		Then I should see "event_tag_delete"
 	# 		And I should not see "Ruby"
+	
+	# Scenario: A user should be able to create a project with language tags
+	# 		Given I am a user "project_language_tags_create" and I am logged in
+	# 		And I am on the home page
+	# 		When I click the "user_new_project" link
+	# 		And I fill in "Name" with "Project Name"
+	# 		And I fill in "Description" with "This is the best project ever"
+	# 		And I fill in "License" with "Standard"
+	# 		And I fill in "Organization" with "CDDN"
+	# 		And I check the "Ruby" checkbox
+	# 		And I click the "Submit" button
+	# 		Then I should see "Your project has been successfully created."
+	# 		When I click the "View Project" button
+	# 		Then I should be on the project show page for "Project Name"
+	# 		And I should see "Ruby"
+	# 		
+	# 	Scenario: A user should be able to retain a projects languages through an update
+	# 		Given I am a user "project_language_tags_retain" and I am logged in
+	# 		And I am on the home page
+	# 		When I click the "user_new_project" link
+	# 		And I fill in "Name" with "Project Name"
+	# 		And I fill in "Description" with "This is the best project ever"
+	# 		And I fill in "License" with "Standard"
+	# 		And I fill in "Organization" with "CDDN"
+	# 		And I check the "Ruby" checkbox
+	# 		And I click the "Submit" button
+	# 		Then I should see "Your project has been successfully created."
+	# 		When I click the "View Project" button
+	# 		Then I should be on the project show page for "Project Name"
+	# 		And I should see "Ruby"
+	# 		When I click the "Home | Dashboard" button
+	# 		And I click the "Edit Project" button
+	# 		And I click the "Submit" button
+	# 		Then I should see "Your project has been successfully updated."
+	# 		When I click the "View Project" button
+	# 		Then I should be on the project show page for "Project Name"
+	# 		And I should see "Ruby"
+	# 		
+	#   Scenario: A user should be able to remove a projects languages through an update
+	#   	Given I am a user "project_language_tags_remove" and I am logged in
+	#   	And I am on the home page
+	#   	When I click the "user_new_project" link
+	#   	And I fill in "Name" with "Project Name"
+	#   	And I fill in "Description" with "This is the best project ever"
+	#   	And I fill in "License" with "Standard"
+	#   	And I fill in "Organization" with "CDDN"
+	#   	And I check the "Ruby" checkbox
+	#   	And I click the "Submit" button
+	#   	Then I should see "Your project has been successfully created."
+	#   	When I click the "View Project" button
+	#   	Then I should be on the project show page for "Project Name"
+	#   	And I should see "Ruby"
+	#   	When I click the "Home | Dashboard" button
+	#   	And I click the "Edit Project" button
+	# 		And I uncheck the "Ruby" checkbox
+	#   	And I click the "Submit" button
+	#   	Then I should see "Your project has been successfully updated."
+	#   	When I click the "View Project" button
+	#   	Then I should be on the project show page for "Project Name"
+	#   	And I should not see "Ruby"

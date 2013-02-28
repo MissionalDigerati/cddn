@@ -54,7 +54,7 @@ describe Event do
     end
     
     it "should not create a programmings record for the event if no programming language ids are passed" do
-      event = FactoryGirl.build(:defaulted_event, programming_language_ids: nil)
+      event = FactoryGirl.build(:defaulted_event, lang_tokens: nil)
       event.save
       event.programmings.length.should == 0
     end
