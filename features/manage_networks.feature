@@ -43,7 +43,7 @@ Feature: A user should be able to add social networking accounts and links to th
 		And I fill in "Account url" with "http://www.twitter.com"
 		And I click the "Submit" button
 		Then I should see "Your event was successfully updated."
-		And I click the "View Event" button for "event networking edit"
+		And I should be on the show page for the "event networking edit" event
 		Then I should see "Facebook: twitter"
 		
 	@javascript
@@ -62,7 +62,7 @@ Feature: A user should be able to add social networking accounts and links to th
 			And I fill in "Account url" with "http://www.GitHub.com"
 			And I click the "Submit" button
 			Then I should see "Your Event has been created!"
-			When I click the "View Event" button
+			And I should be on the show page for the "Rails meet up" event
 			Then I should see "GitHub: github"
 			
 	@javascript
@@ -75,7 +75,7 @@ Feature: A user should be able to add social networking accounts and links to th
 		And I click the "remove_networks_button" button
 		And I click the "Submit" button
 		Then I should see "Your event was successfully updated."
-		And I click the "View Event" button
+		And I should be on the show page for the "event networking remove" event
 		Then I should not see "network_name: twitter"
 			
 	 
@@ -138,7 +138,7 @@ Feature: A user should be able to add social networking accounts and links to th
 	 		And I fill in "Account url" with "http://www.GitHub.com"
 	 		And I click the "Submit" button
 	 		Then I should see "Your project has been successfully created."
-			When I click the "View Project" button
+			And I should be on the project show page for "create projects network"
 	 		Then I should see "GitHub: github"
 	
 	 @javascript
@@ -155,8 +155,7 @@ Feature: A user should be able to add social networking accounts and links to th
 	   	And I fill in "Account url" with "http://www.GitHub.com"
 	   	And I click the "Submit" button
 	   	Then I should see "Your project has been successfully created."
-			When I click the "View Project" button
-	 	 	Then I should be on the project show page for "edit projects network"
+	 	 	And I should be on the project show page for "edit projects network"
 	  	And I should see "GitHub: github"
 			When I click the "Home | Dashboard" link
 			And I click the "Edit Project" button
@@ -165,8 +164,7 @@ Feature: A user should be able to add social networking accounts and links to th
 	   	And I fill in "Account url" with "http://www.Twitter.com"
 			And I click the "Submit" button
 			Then I should see "Your project has been successfully updated."
-			When I click the "View Project" button
-			Then I should be on the project show page for "edit projects network"
+			And I should be on the project show page for "edit projects network"
 			And I should see "Twitter: Twitter"
 			And I should not see "GitHub: github"
 			
@@ -184,16 +182,14 @@ Feature: A user should be able to add social networking accounts and links to th
 	    And I fill in "Account url" with "http://www.GitHub.com"
 	    And I click the "Submit" button
 	    Then I should see "Your project has been successfully created."
-			When I click the "View Project" button
-	  	Then I should be on the project show page for "delete projects network"
+	  	And I should be on the project show page for "delete projects network"
 	   	And I should see "GitHub: github"
 	 		When I click the "Home | Dashboard" link
 	 		And I click the "Edit Project" button
 	 		And I click the "remove" button
 	 		And I click the "Submit" button
 	 		Then I should see "Your project has been successfully updated."
-			When I click the "View Project" button
-	 		Then I should be on the project show page for "delete projects network"
+	 		And I should be on the project show page for "delete projects network"
 	 		And I should not see "GitHub: github"
 			
   @javascript
@@ -209,8 +205,7 @@ Feature: A user should be able to add social networking accounts and links to th
       And I fill in "Account name" with "github"
       And I click the "Submit" button
       Then I should see "Your project has been successfully created."
-			When I click the "View Project" button
-    	Then I should be on the project show page for "reject projects network"
+    	And I should be on the project show page for "reject projects network"
      	And I should not see "GitHub: github"
 			And I should not see "github"
 
