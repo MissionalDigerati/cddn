@@ -21,11 +21,10 @@ class Event < ActiveRecord::Base
   scope :past_events, where(["event_dates.date_of_event <= ?", Time.now.to_date])
   scope :order_by_date, order("event_dates.date_of_event asc")
   
-  attr_accessible :title, :details, :address_1, :address_2, :city_province, :state_id, :country_id, :zip_code, :online_event, :event_date, :programming_language_ids, :lang_tokens
+  attr_accessible :title, :details, :address_1, :address_2, :city_province, :state_id, :country_id, :zip_code, :online_event, :event_date, :lang_tokens
   attr_accessible :networks_attributes
   attr_accessible :programmings_attributes
   attr_accessible :event_dates_attributes
-  attr_accessor :programming_language_ids
   attr_accessor :lang_tokens
   
   accepts_nested_attributes_for :networks, reject_if: lambda{ |a| a[:account_url].blank? }, allow_destroy: true

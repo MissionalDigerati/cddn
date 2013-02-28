@@ -13,10 +13,13 @@ This is the project show page
 
 <br/><br/>
 
-Language tags:<br/>
-<% display_programming_tags(@project.programmings.pluck(:programming_language_id)).each do |language|%>
-	<%= language %> <br/>
+<% if @project.programming_languages.present? %>
+	Language tags:<br/>
+	<% @project.programming_languages.each do |lang| %>
+		<%= lang.language %><br/>
+	<% end %>
 <% end %>
+
 <br/> <br/>
 Project members:<br/>
 <% @project.memberships.each do |member| %>

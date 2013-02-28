@@ -22,12 +22,6 @@
 		<%= f.label :accepts_requests, "No"%>
 		
 		<br/>
-		Programming languages<br/>
-		<% ProgrammingLanguage.all.each do |language| %>
-			<%= check_box_tag "project[programming_language_ids][]", language.id, check_lang(@project.programmings.pluck(:programming_language_id), language.id), {id: "#{language.language}"}  %>
-			<%= label_tag language.language%>
-		<% end %>
-		
 	</div>
 		
 		
@@ -40,6 +34,14 @@
 		<% end %>
 		<%= link_to_add_fields "Add Social Network", f, :networks %>
 		<br/><br/>
+		
+		Programming languages<br/>
+		<div>
+		<%= f.label :lang_tokens, "Languages" %>
+		<%= f.text_field :lang_tokens, class: "lang_tokens", data: {load: @project.programming_languages} %>
+		</div>
+		<br/>
+		
 		<div><%= f.submit "Submit" %></div>
 		<span class="required">*</span> = Required
 	</div>

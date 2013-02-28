@@ -16,13 +16,13 @@
 
 <br/>
 
-<% if @user.programmings.present? %>
+<% if @user.programming_languages.present? %>
 	Language tags:<br/>
-	<% display_programming_tags(@user.programmings.pluck(:programming_language_id)).each do |language|%>
-		<%= language %> <br/>
+	<% @user.programming_languages.each do |lang| %>
+		<%= lang.language %><br/>
 	<% end %>
+	<br/>
 <% end %>
-<br/>
 
 
 <% if @upcoming_events.present? %>
