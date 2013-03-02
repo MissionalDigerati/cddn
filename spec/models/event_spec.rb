@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe Event do
   describe "validations" do
+    before(:each) do
+      Gmaps4rails.stub!(:geocode).and_return([{:lat => 33, :lng => 33, :matched_address => ""}])
+    end
     
     it "should create a valid record" do
       FactoryGirl.create(:defaulted_state)
@@ -53,6 +56,9 @@ describe Event do
   end
   
   describe "aftersave" do
+    before(:each) do
+      Gmaps4rails.stub!(:geocode).and_return([{:lat => 33, :lng => 33, :matched_address => ""}])
+    end
     it "should created corresponding programmings records after the event is save so long as there are programming language ids provided in the programming_language_ids params" do
       FactoryGirl.create(:defaulted_state)
       FactoryGirl.create(:defaulted_country)
@@ -76,6 +82,11 @@ describe Event do
   
   
   describe "methods" do
+    
+    before(:each) do
+      Gmaps4rails.stub!(:geocode).and_return([{:lat => 33, :lng => 33, :matched_address => ""}])
+    end
+    
     it "should return queries based on programming languages associated with events. However if none are filtered, then it should return all events. However only events that are approved" do
       FactoryGirl.create(:defaulted_state)
       FactoryGirl.create(:defaulted_country)
@@ -103,6 +114,25 @@ describe Event do
       FactoryGirl.create(:defaulted_event_date, event_id: past_event.id, date_of_event: 1.week.ago.to_date)
       Event.upcoming_event_query(nil).length.should == 1
       Event.upcoming_event_query(nil).first.should == upcoming_event
+    end
+    
+    it "should save lat and long after an address is entered" do
+      FactoryGirl.create(:defaulted_state)
+      FactoryGirl.create(:defaulted_country)
+      event = FactoryGirl.build(:defaulted_event, address_1: "Golden gate bridge", city_province: " ", zip_code: " ")
+      event.save
+      event.latitude.should == 33
+      event.longitude.should == 33
+    end
+    
+    it "should return a string of the whole address for the event" do
+      FactoryGirl.create(:defaulted_state)
+      FactoryGirl.create(:defaulted_country)
+      event_without_add2 = FactoryGirl.create(:defaulted_event)
+      event_without_add2.gmaps4rails_address.should == "123 fake street , San Jose, CA United States"
+      
+      event_with_add2 = FactoryGirl.create(:defaulted_event, address_2: "STE 124")
+      event_with_add2.gmaps4rails_address.should == "123 fake street STE 124, San Jose, CA United States"
     end
     
   end

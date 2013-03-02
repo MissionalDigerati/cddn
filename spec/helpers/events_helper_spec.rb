@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe EventsHelper do
+  before(:each) do
+    Gmaps4rails.stub!(:geocode).and_return([{:lat => 33, :lng => 33, :matched_address => ""}])
+  end
   describe "methods" do
     
     it "should return the appropriate button to either attend, unattend an event. Or noting at all if you created the event and it should only display if it is an upcoming event" do

@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe Programming do
   
+  before(:each) do
+    Gmaps4rails.stub!(:geocode).and_return([{:lat => 33, :lng => 33, :matched_address => ""}])
+  end
+  
   describe "validations" do
     
     it "should not create a valid programming tag as no event, user or project is created it." do

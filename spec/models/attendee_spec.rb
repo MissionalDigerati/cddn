@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe Attendee do
+  
+  before(:each) do
+    Gmaps4rails.stub!(:geocode).and_return([{:lat => 33, :lng => 33, :matched_address => ""}])
+  end
+  
   describe "validations" do  
     it "should create a successful attendee record" do
       FactoryGirl.create(:defaulted_state)
