@@ -3,6 +3,8 @@ require 'spec_helper'
 describe Attendee do
   describe "validations" do  
     it "should create a successful attendee record" do
+      FactoryGirl.create(:defaulted_state)
+      FactoryGirl.create(:defaulted_country)
       fred = FactoryGirl.create(:defaulted_user, email: "fred@test.com")
       event = FactoryGirl.create(:defaulted_event)
       FactoryGirl.create(:defaulted_attendee, user_id: fred.id, event_id: event.id, attendee_type: "creator").should be_valid
@@ -12,6 +14,8 @@ describe Attendee do
     
     it "should not create a successful record without both a user and an event" do
       #note that there is no user
+      FactoryGirl.create(:defaulted_state)
+      FactoryGirl.create(:defaulted_country)
       event = FactoryGirl.create(:defaulted_event)
       FactoryGirl.build(:defaulted_attendee, event_id: event.id, attendee_type: "creator").should_not be_valid
     end
@@ -24,6 +28,8 @@ describe Attendee do
   
   describe "methods" do
     it "should create an attendee record so long the user and event are both provided" do
+      FactoryGirl.create(:defaulted_state)
+      FactoryGirl.create(:defaulted_country)
       user = FactoryGirl.create(:defaulted_user)
       user_id = user.id
       event = FactoryGirl.create(:defaulted_event)
@@ -35,6 +41,8 @@ describe Attendee do
     end
     
     it "should create an attendee record for an attendee type role so long as the credentials are correct" do
+      FactoryGirl.create(:defaulted_state)
+      FactoryGirl.create(:defaulted_country)
       user = FactoryGirl.create(:defaulted_user)
       user_id = user.id
       event = FactoryGirl.create(:defaulted_event)

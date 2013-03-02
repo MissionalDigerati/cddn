@@ -13,6 +13,7 @@
  *= reqire_twitter/bootstrap
  *= require token-input-facebook.css
  *= require token-input-bootstrappy
+ *= require gmaps4rails
  */
 
 
@@ -26,4 +27,10 @@
 }
 .required{
 	color: red;
+}
+#map img { 
+  max-width: none;
+}
+#map label { 
+  width: auto; display:inline; 
 }

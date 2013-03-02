@@ -10,6 +10,8 @@ describe Programming do
     end
     
     it "should create a valid programming languge tag for an event" do
+      FactoryGirl.create(:defaulted_state)
+      FactoryGirl.create(:defaulted_country)
       language = FactoryGirl.create(:defaulted_programming_language)
       user = FactoryGirl.create(:defaulted_user)
       event = FactoryGirl.create(:defaulted_event)

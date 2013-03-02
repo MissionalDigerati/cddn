@@ -4,6 +4,8 @@ describe EventsHelper do
   describe "methods" do
     
     it "should return the appropriate button to either attend, unattend an event. Or noting at all if you created the event and it should only display if it is an upcoming event" do
+      FactoryGirl.create(:defaulted_state)
+      FactoryGirl.create(:defaulted_country)
       user_that_created_event = FactoryGirl.create(:defaulted_user, nickname: "The Master", email: "creator@fake.com")
       event = FactoryGirl.create(:defaulted_event)
       event.event_dates.create(date_of_event: Time.now.to_date, time_of_event: Time.now)
@@ -29,6 +31,8 @@ describe EventsHelper do
     end
     
     it "should return a link to the event, unless the event is not approved, in which case it will return nothing" do
+      FactoryGirl.create(:defaulted_state)
+      FactoryGirl.create(:defaulted_country)
       approved_event = FactoryGirl.create(:defaulted_event)
       unapproved_event = FactoryGirl.create(:defaulted_event, approved_event: false)
       view_event(approved_event).should == "<a href=\"/events/1\" class=\"btn btn-mini btn-info\">View Event</a>"

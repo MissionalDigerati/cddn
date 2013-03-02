@@ -40,6 +40,8 @@ describe User do
     end
     
     it "should delete attendee and event records if the user who created it is deleted" do
+       FactoryGirl.create(:defaulted_state)
+       FactoryGirl.create(:defaulted_country)
        user = FactoryGirl.create(:defaulted_user)
        event = FactoryGirl.create(:defaulted_event)
        FactoryGirl.create(:defaulted_attendee, user_id: user.id, event_id: event.id, attendee_type: "creator").should be_valid
@@ -60,7 +62,7 @@ describe User do
   
   
   describe "aftersave" do
-    it "should created corresponding programmings records after the event is save so long as there are programming language ids provided in the programming_language_ids params" do
+    it "should created corresponding programmings records after the user is save so long as there are programming language ids provided in the programming_language_ids params" do
       language = FactoryGirl.create(:defaulted_programming_language, language: "Ruby")
       user = FactoryGirl.build(:defaulted_user, lang_tokens: "1")
       user.save

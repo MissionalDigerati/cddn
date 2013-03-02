@@ -16,6 +16,8 @@
 //= require jquery.tokeninput
 // Loads all Bootstrap javascripts
 //= require bootstrap
+//= require gmaps4rails/gmaps4rails.base.js.coffee
+//= require gmaps4rails/gmaps4rails.googlemaps.js.coffee
 //= require_tree .
 $(document).ready(function() {
 	$('.lang_tokens').tokenInput("/programming_languages.json", {

@@ -15,6 +15,8 @@ describe ApplicationHelper do
     
     
     it "should return the event creator nickname if available" do
+      FactoryGirl.create(:defaulted_state)
+      FactoryGirl.create(:defaulted_country)
       user = FactoryGirl.create(:defaulted_user, nickname: "fred")
       event = FactoryGirl.create(:defaulted_event)
       attendee = FactoryGirl.create(:defaulted_attendee, user_id: user.id, event_id: event.id, attendee_type: "creator")
@@ -22,6 +24,8 @@ describe ApplicationHelper do
     end
     
     it "should return the events creator's first name if it is available and nickname is not available" do
+      FactoryGirl.create(:defaulted_state)
+      FactoryGirl.create(:defaulted_country)
       user = FactoryGirl.create(:defaulted_user, first_name: "rory")
       event = FactoryGirl.create(:defaulted_event)
       attendee = FactoryGirl.create(:defaulted_attendee, user_id: user.id, event_id: event.id, attendee_type: "creator")
@@ -29,6 +33,8 @@ describe ApplicationHelper do
     end 
     
     it "should return the user's email if both the nickname and the first name are unavailable" do
+      FactoryGirl.create(:defaulted_state)
+      FactoryGirl.create(:defaulted_country)
       user = FactoryGirl.create(:defaulted_user, email: "fake@fake.com")
       event = FactoryGirl.create(:defaulted_event)
       attendee = FactoryGirl.create(:defaulted_attendee, user_id: user.id, event_id: event.id, attendee_type: "creator")
@@ -69,12 +75,12 @@ describe ApplicationHelper do
     
     it "should return a select box containing all states" do
       FactoryGirl.create(:defaulted_state)
-      state_drop_down.should == [["California", 1]]
+      state_drop_down.should == [["California", 5]]
     end
     
     it "should return a select box containing all countries" do
       FactoryGirl.create(:defaulted_country)
-      country_drop_down.should == [["United States", 1]]
+      country_drop_down.should == [["United States", 226]]
     end
     
     it "should return the name of the state provided if available, else it will return a blank string" do
@@ -91,6 +97,8 @@ describe ApplicationHelper do
     end
     
     it "should return the date in a date format if one is available, if not then it should return nothing" do
+      FactoryGirl.create(:defaulted_state, id: 5)
+      FactoryGirl.create(:defaulted_country, id: 226)
       date = Time.now.to_date
       time = Time.now
       event = FactoryGirl.create(:defaulted_event)

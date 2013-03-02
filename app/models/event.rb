@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  acts_as_gmappable
   
   belongs_to :country
   belongs_to :state
@@ -21,7 +22,7 @@ class Event < ActiveRecord::Base
   scope :past_events, where(["event_dates.date_of_event <= ?", Time.now.to_date])
   scope :order_by_date, order("event_dates.date_of_event asc")
   
-  attr_accessible :title, :details, :address_1, :address_2, :city_province, :state_id, :country_id, :zip_code, :online_event, :event_date, :lang_tokens
+  attr_accessible :title, :details, :address_1, :address_2, :city_province, :state_id, :country_id, :zip_code, :online_event, :event_date, :lang_tokens, :longitude, :latitude
   attr_accessible :networks_attributes
   attr_accessible :programmings_attributes
   attr_accessible :event_dates_attributes
@@ -52,6 +53,16 @@ class Event < ActiveRecord::Base
     else
       Event.approved_events.include_date.past_events.include_programmings.order_by_date
     end
+  end
+  
+  def gmaps4rails_address
+  #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
+    "#{self.address_1}, #{self.address_2}, #{self.city_province}, #{State.find(self.state_id).state_short} #{Country.find(self.country_id).printable_name}" 
+  end
+  
+  def gmaps4rails_infowindow
+    extra = self.address_2.present? ? "#{self.address_2} <br>" : nil
+    "<p>#{self.address_1}<br/> #{extra} #{self.city_province}<br/> #{State.find(self.state_id).state_short}<br/> #{Country.find(self.country_id).printable_name}</p>" 
   end
   
   private
