@@ -57,7 +57,7 @@ class Event < ActiveRecord::Base
   
   def gmaps4rails_address
   #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
-    "#{self.address_1}, #{self.address_2}, #{self.city_province}, #{State.find(self.state_id).state_short} #{Country.find(self.country_id).printable_name}" 
+    "#{self.address_1} #{self.address_2}, #{self.city_province}, #{State.find(self.state_id).state_short} #{Country.find(self.country_id).printable_name}" 
   end
   
   def gmaps4rails_infowindow

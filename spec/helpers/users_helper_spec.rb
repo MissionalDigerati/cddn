@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe ApplicationHelper do
   context "methods" do
+    before(:each) do
+      Gmaps4rails.stub!(:geocode).and_return([{:lat => 33, :lng => 33, :matched_address => ""}])
+    end
     
     it "should retrun the user's nickname and provider rather than the email" do
       user = FactoryGirl.build(:defaulted_user, email: nil, encrypted_password: nil,  provider: "twitter", nickname: "Nickname123")

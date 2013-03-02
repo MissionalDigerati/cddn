@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe EventDate do
+  before(:each) do
+    Gmaps4rails.stub!(:geocode).and_return([{:lat => 33, :lng => 33, :matched_address => ""}])
+  end
   context "validations" do
     
     it "should create a valid event date." do |variable|
