@@ -4,6 +4,7 @@ FactoryGirl.define do
   factory :country do
   end
   factory :defaulted_country, :parent => :country do
+    id 226
     iso "US" 
     name "UNITED STATES"
     printable_name "United States"

@@ -21,6 +21,7 @@ class EventsController < ApplicationController
     @event = Event.includes_users.include_networks.include_programmings.include_date.find(params[:id])
     if @event.approved_event == true 
       @event
+      @json = @event.to_gmaps4rails
     else
       redirect_home
     end

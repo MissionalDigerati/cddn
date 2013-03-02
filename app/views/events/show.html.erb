@@ -1,5 +1,4 @@
 This is the event show page
-
 	<br/>
 	<%= @event.title %><br/>
 	<%= @event.details %><br/>
@@ -36,5 +35,16 @@ This is the event show page
 	<% @event.users.each do |user| %>
 		<%= link_to_users_profile(user) %><br/>
 	<% end %>
+	
+	<div id="google_map">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		
+		<%= gmaps({
+		       "map_options" => {"auto_zoom" => false, "zoom" => 15 },
+		       "markers"     => {"data" => @json }
+		      })
+		%>
+		
+	</div>
 	
 <!-- #<Event id: nil, title: nil, details: nil, address_1: nil, address_2: nil, city_province: nil, state_id: nil, country_id: nil, zip_code: nil, online_event: false, longitude: nil, latitude: nil, created_at: nil, updated_at: nil>  -->
