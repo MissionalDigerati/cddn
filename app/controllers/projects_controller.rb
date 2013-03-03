@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
     @project.approved_project = @user.project_approved
     respond_to do |format|
       if @project.save
-        Membership.membership_creation(@user.id, @project, 'creator', 'active')
+        Membership.membership_creation(@user.id, @project)
         if @project.approved_project == true  
           format.html {redirect_to project_path(@project)} 
           flash[:notice] = "Your project has been successfully created."
