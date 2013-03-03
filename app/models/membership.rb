@@ -13,7 +13,7 @@ class Membership < ActiveRecord::Base
     if creator.creator_id == user.id || project.memberships.where(user_id: user.id).present?
       return
     else
-      project.memberships.create({user_id: user.id, project_id: project.id, status: "pending", role: "member", creator_id: creator.id})
+      project.memberships.create({user_id: user.id, project_id: project.id, status: "pending", role: "member", creator_id: creator.creator_id})
     end
   end
   
