@@ -1,18 +1,19 @@
 class Membership < ActiveRecord::Base
-  attr_accessible :user_id, :project_id, :role, :status
+  attr_accessible :user_id, :project_id, :role, :status, :creator_id
   belongs_to :user
   belongs_to :project
   validates :user_id, :project_id, :role, presence: true
   
-  def self.membership_creation(user_id, project, role, status)
-    project.memberships.create({user_id: user_id, role: role, status: status})
+  def self.membership_creation(user_id, project)
+    project.memberships.create({creator_id: user_id, user_id: user_id, role: "creator", status: 'active'})
   end
   
   def self.join_project_request(project, user)
-    if project.memberships.find_by_role("creator").user_id == user.id
+    creator = project.memberships.find_by_role("creator")
+    if creator.creator_id == user.id || project.memberships.where(user_id: user.id).present?
       return
     else
-      project.memberships.create({user_id: user.id, project_id: project.id, status: "pending", role: "member"})
+      project.memberships.create({user_id: user.id, project_id: project.id, status: "pending", role: "member", creator_id: creator.id})
     end
   end
   
