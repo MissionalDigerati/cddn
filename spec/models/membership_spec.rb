@@ -6,7 +6,7 @@ describe Membership do
     it "should create a a valid membership record." do
       user = FactoryGirl.create(:defaulted_user)
       project = FactoryGirl.create(:defaulted_project)
-      FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress").should be_valid
+      FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress", creator_id: user.id).should be_valid
     end
     
     
@@ -18,7 +18,7 @@ describe Membership do
     it "should delete the membership records if the project is destoryed" do
       user = FactoryGirl.create(:defaulted_user)
       project = FactoryGirl.create(:defaulted_project)
-      membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress")
+      membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress", creator_id: user.id)
       Membership.all.length.should == 1
       project.destroy
       Membership.all.length.should == 0 
@@ -94,7 +94,7 @@ describe Membership do
     
     it "should update a membership with the params inputted by the controller/view" do
       project = FactoryGirl.create(:defaulted_project) 
-      membership = FactoryGirl.create(:membership, user_id: 1, project_id: project.id, role: "member", status: "pending")
+      membership = FactoryGirl.create(:membership, user_id: 1, project_id: project.id, role: "member", status: "pending", creator_id: 1)
       Membership.membership_approve_deny(membership, "approved")
       membership.status.should == "approved"
       

@@ -15,7 +15,7 @@ Given /^I am a user "(.*?)" and I have a project "(.*?)", and I am logged in$/ d
   password = 'secretpassword1000'
   user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password, first_name: email_prefix)
   project = FactoryGirl.create(:defaulted_project, name: project)
-  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress")
+  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress", creator_id: user.id)
   
   visit '/users/sign_in'
   fill_in "Email", with: email_prefix + "@cddn.com"
@@ -37,14 +37,14 @@ Given /^I am a user "(.*?)" and I have a project "(.*?)", and I am not logged in
   password = 'secretpassword1000'
   user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password)
   project = FactoryGirl.create(:defaulted_project, name: project)
-  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "active")
+  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "active", creator_id: user.id)
 end
 
 Given /^I am a user "(.*?)" and I have a project "(.*?)", that is not accepting requests, and I am not logged in$/ do |email_prefix, project|
   password = 'secretpassword1000'
   user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password)
   project = FactoryGirl.create(:defaulted_project, name: project, accepts_requests: false)
-  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress")
+  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress", creator_id: user.id)
 end
 
 When /^I try to access the edit project page for "(.*?)"$/ do |title|
@@ -64,7 +64,7 @@ Given /^I am a user "(.*?)" and I have a project "(.*?)", and I am not approved 
   password = 'secretpassword1000'
   user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password, project_approved: false)
   project = FactoryGirl.create(:defaulted_project, name: project, approved_project: false)
-  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress")
+  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress", creator_id: user.id)
   
   visit '/users/sign_in'
   fill_in "Email", with: email_prefix + "@cddn.com"
@@ -81,7 +81,7 @@ Given /^I am a user "(.*?)" and I have a project "(.*?)", that has a language ta
   password = 'secretpassword1000'
   user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password)
   project = FactoryGirl.create(:defaulted_project, name: project, accepts_requests: true)
-  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress")
+  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress", creator_id: user.id)
   language = ProgrammingLanguage.first
   project.programmings.create(programming_language_id:language.id)
 end
@@ -90,7 +90,7 @@ Given /^I am a user "(.*?)" and I have a project "(.*?)", that has a language ta
   password = 'secretpassword1000'
   user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password)
   project = FactoryGirl.create(:defaulted_project, name: project, accepts_requests: false)
-  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress")
+  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress", creator_id: user.id)
   language = ProgrammingLanguage.first
   project.programmings.create(programming_language_id:language.id)
 end
@@ -99,13 +99,14 @@ Given /^I am a user "(.*?)" and I have a project "(.*?)", that is not approved f
   password = 'secretpassword1000'
   user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password, project_approved: false)
   project = FactoryGirl.create(:defaulted_project, name: project, approved_project: false)
-  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress")
+  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress", creator_id: user.id)
 end
 
 Given /^"(.*?)" is a "(.*?)" member of the "(.*?)"$/ do |user_name, status, project_name|
+  creator = User.first
   project = Project.find_by_name(project_name)
   user = User.find_by_email(user_name + "@cddn.com")
-  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "member", status: "approved")
+  membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "member", status: "approved", creator_id: creator.id)
 end
 
 Then /^I should be on the my project page for "(.*?)"$/ do |user_name|
