@@ -64,25 +64,24 @@
 			<% end %>
 		</table>
 		
-		<div class="span5">
-			<table>
-				<tr>
-					<th>Project</th>
-					<th>User</th>
-					<th>Action</th>
-				</tr>
-				<% @memberships_for_approval.each do |project| %>
-					<% project.memberships.where(status: "pending").each do |membership| %>
+		<% if @memberships_for_approval.present? %>
+			<div class="span5">
+				<table>
+					<tr>
+						<th>Project</th>
+						<th>User</th>
+						<th>Action</th>
+					</tr>
+					<% @memberships_for_approval.each do |membership| %>
 						<tr>
 							<td><%= membership.project.name.titleize %></td>
 							<td><%= link_to_users_profile(membership.user) %></td>
 							<td><%= approve_mem_button(membership) %> <%= deny_mem_button(membership) %></td>
 						</tr>
 					<% end %>
-				<% end %>
-			</table>
-		</div>
-	
+				</table>
+			</div>
+		<% end %>
 		
 	</div>
 </div>

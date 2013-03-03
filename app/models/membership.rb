@@ -2,7 +2,7 @@ class Membership < ActiveRecord::Base
   attr_accessible :user_id, :project_id, :role, :status, :creator_id
   belongs_to :user
   belongs_to :project
-  validates :user_id, :project_id, :role, presence: true
+  validates :user_id, :project_id, :role, :status, :creator_id, presence: true
   
   def self.membership_creation(user_id, project)
     project.memberships.create({creator_id: user_id, user_id: user_id, role: "creator", status: 'active'})
@@ -13,7 +13,7 @@ class Membership < ActiveRecord::Base
     if creator.creator_id == user.id || project.memberships.where(user_id: user.id).present?
       return
     else
-      project.memberships.create({user_id: user.id, project_id: project.id, status: "pending", role: "member", creator_id: creator.id})
+      project.memberships.create({user_id: user.id, project_id: project.id, status: "pending", role: "member", creator_id: creator.creator_id})
     end
   end
   
