@@ -117,4 +117,8 @@ Feature: A user should be able to manage their account and have certain pages an
 		Then I should see "Fred" in the "First name" input
 		And I should not see "Sam" in the "First name" input
 		
-		#should not be able to view others dashboard
+	Scenario: A user should be able to view their upcoming events on their dashboard
+		Given I am a user "dashboard_event_user", and I have an event "upcoming_event", and I am logged in
+		And I am on the home page
+		When I click the "Home | Dashboard" button
+		Then I should see "upcoming_event"
