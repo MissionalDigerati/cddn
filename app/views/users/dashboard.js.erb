@@ -1,0 +1,7 @@
+$('table#approvals tbody').append('<%= escape_javascript render(@approvals) %>');
+<% if (@approvals.current_page < @approvals.num_pages) %> 
+  $('.pagination').replaceWith('<%= escape_javascript paginate(@approvals, :theme => "twitter-bootstrap") %>');
+<% else %>
+  $('.pagination').remove();
+<% end %>
+<% sleep 1 %>

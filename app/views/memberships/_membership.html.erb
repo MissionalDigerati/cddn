@@ -1,0 +1,5 @@
+<tr>
+	<td><%= membership.project.name.titleize %></td>
+	<td><%= link_to_users_profile(membership.user) %></td>
+	<td><%= approve_mem_button(membership) %> <%= deny_mem_button(membership) %></td>
+</tr>
