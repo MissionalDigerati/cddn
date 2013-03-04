@@ -157,7 +157,7 @@ Feature: A user should be able to add social networking accounts and links to th
 	   	Then I should see "Your project has been successfully created."
 	 	 	And I should be on the project show page for "edit projects network"
 	  	And I should see "GitHub: github"
-			When I click the "Home | Dashboard" link
+			When I visit the my project page for "edit_projects_networks"
 			And I click the "Edit Project" button
 			And I select "Twitter" from "Service"
 			And I fill in "Account name" with "Twitter"
@@ -184,7 +184,7 @@ Feature: A user should be able to add social networking accounts and links to th
 	    Then I should see "Your project has been successfully created."
 	  	And I should be on the project show page for "delete projects network"
 	   	And I should see "GitHub: github"
-	 		When I click the "Home | Dashboard" link
+	 		When I visit the my project page for "delete_projects_networks"
 	 		And I click the "Edit Project" button
 	 		And I click the "remove" button
 	 		And I click the "Submit" button
