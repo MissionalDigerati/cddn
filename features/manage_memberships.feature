@@ -40,7 +40,8 @@ Feature: A user that is logged in should be able to join projects so long as the
 		When I click the "Approve" button
 		Then I should see "User has been approved"
 		And I should not see "needing_approval"
-		When I click the "View Project" button
+		When I click the "user_my_projects" button
+		And I click the "View Project" button
 		Then I should see "Needing_approval"
 	
 	Scenario: A creator of a project should be able to deny users that have requested to be members of projects
@@ -52,7 +53,8 @@ Feature: A user that is logged in should be able to join projects so long as the
 		When I click the "Deny" button
 		Then I should see "User has been denied"
 		And I should not see "needing_denial"
-		When I click the "View Project" button
+		When I click the "user_my_projects" button
+		And I click the "View Project" button
 		Then I should not see "needing_denial"
 		
 	Scenario: A user should not be able to request to join a project that is not accepting requests

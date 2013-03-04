@@ -119,4 +119,7 @@ When /^I try to access the my project page for "(.*?)"$/ do |user_name|
   visit my_projects_user_path(user)
 end
 
-
+When /^I visit the my project page for "(.*?)"$/ do |name|
+  user = User.find_by_first_name(name)
+  visit my_projects_user_path(user)
+end

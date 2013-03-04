@@ -39,7 +39,7 @@ Feature: A user should be able to create update delete and join projects, as wel
 	Scenario: A user should be able to edit their project, and as approved users should be redirected to the project show page.
 		Given I am a user "edit_project_test" and I have a project "project name", and I am logged in
 		And I am on the home page
-		When I click the "Home | Dashboard" button
+		When I click the "user_my_projects" button
 		Then I should see "project name"
 		When I click the "Edit Project" button for "project name"
 		And I fill in "Name" with "Edited_project_name"
@@ -50,7 +50,7 @@ Feature: A user should be able to create update delete and join projects, as wel
 	Scenario: As an unapproved user editing their project, I should see a message stating it is still not viewable, and should be directed to the my projects page
 		Given I am a user "un_approved_project_update" and I have a project "un-approved-project", and I am not approved for project creation
 		And I am on the home page
-		When I click the "Home | Dashboard" button
+		When I click the "user_my_projects" button
 		Then I should see "un-approved-project"
 		When I click the "Edit Project" button for "un-approved-project"
 		And I fill in "Name" with "Edited_project_name"
@@ -94,7 +94,7 @@ Feature: A user should be able to create update delete and join projects, as wel
 	Scenario: A user that as a project should be able to delete said project
 		Given I am a user "delete_projects_test" and I have a project "project name", and I am logged in
 		And I am on the home page
-		When I click the "Home | Dashboard" button
+		When I click the "user_my_projects" button
 		Then I should see "project name"
 		When I click the "Delete Project" button for "project name"
 		Then I should see "Your Project has been deleted."
@@ -103,11 +103,11 @@ Feature: A user should be able to create update delete and join projects, as wel
   Scenario: A user that is not project approved should not have their projects viewable via index or show
   	Given I am a user "un_approved_project_show" and I have a project "un-approved-project", and I am not approved for project creation
   	And I am on the home page
-  	When I click the "Home | Dashboard" button
+  	When I click the "user_my_projects" button
   	Then I should see "un-approved-project"
   	When I visit the projects index
   	Then I should not see "un-approved-project"
-  	When I click the "Home | Dashboard" button
+  	When I click the "user_my_projects" button
 		And I click the "View Project" button
 		Then I should see "Unable to process your request."
 		
