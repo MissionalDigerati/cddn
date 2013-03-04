@@ -14,6 +14,10 @@ Then /^I fill in "(.*?)" with current time$/ do |form_name|
   fill_in form_name, with: Time.now.to_s
 end
 
+Given /^I fill in "(.*?)" with current date$/ do |form_name|
+  fill_in form_name, with: Time.now.strftime("%d-%m-%Y").to_s
+end
+
 When /^I click the "(.*?)" button$/ do |button|
   click_on button
 end

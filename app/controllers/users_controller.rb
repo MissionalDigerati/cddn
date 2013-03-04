@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @user = User.include_networks.include_programmings.find(current_user)
     @projects = Project.joins(:memberships).where(memberships:{user_id: current_user.id, role:'creator'})
     @memberships_for_approval = Membership.where(creator_id: current_user.id, status: "pending")
+    @events = @user.events.upcoming_events.include_date.order_by_date
   end
   
   #this will be the brag page / the user show page.

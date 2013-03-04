@@ -46,24 +46,49 @@
 
 	<div class="span8">
 		
-		<% if @memberships_for_approval.present? %>
-			<div class="span5">
-				<table>
-					<tr>
-						<th>Project</th>
-						<th>User</th>
-						<th>Action</th>
-					</tr>
-					<% @memberships_for_approval.each do |membership| %>
+		<div class="row">
+			
+			<% if @memberships_for_approval.present? %>
+				<div class="span4">
+					Members for Approval:
+					<table class="table table-bordered table-hover">
 						<tr>
-							<td><%= membership.project.name.titleize %></td>
-							<td><%= link_to_users_profile(membership.user) %></td>
-							<td><%= approve_mem_button(membership) %> <%= deny_mem_button(membership) %></td>
+							<th>Project</th>
+							<th>User</th>
+							<th>Action</th>
 						</tr>
-					<% end %>
-				</table>
-			</div>
-		<% end %>
+						<% @memberships_for_approval.each do |membership| %>
+							<tr>
+								<td><%= membership.project.name.titleize %></td>
+								<td><%= link_to_users_profile(membership.user) %></td>
+								<td><%= approve_mem_button(membership) %> <%= deny_mem_button(membership) %></td>
+							</tr>
+						<% end %>
+					</table>
+				</div>
+			<% end %>
+		
+			<% if @events.present? %>
+				<div class="span4">
+					Upcoming Events:
+					<table class="table table-bordered table-hover">
+						<tr>
+							<th>Event</th>
+							<th>Date(m/d/y)</th>
+							<th>Action</th>
+						</tr>
+						<% @events.each do |event| %>
+							<tr>
+								<td><%= event.title %></td>
+								<td><%= date_format(event.event_dates.first) %></td>
+								<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %></td>
+							</tr>
+						<% end %>
+					</table>
+				</div>
+			<% end %>
+		
+		</div>
 		
 	</div>
 </div>

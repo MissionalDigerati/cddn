@@ -26,4 +26,8 @@ $(document).ready(function() {
 		preventDuplicates: true,
 		prePopulate: $('.lang_tokens').data('load')
 	});
+	
+	$('.date_of_event').datepicker({
+		dateFormat: "dd-mm-yy"
+	});
 });
