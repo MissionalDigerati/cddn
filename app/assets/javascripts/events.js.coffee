@@ -7,6 +7,6 @@ jQuery ->
 			url = $('.pagination .next_page a').attr('href')
 			console.log($('.pagination'))
 			if url && $(window).scrollTop() > $(document).height() - $(window).height() - 50
-				$('.pagination').text("Fetching more products...")
+				$('.pagination').html('<img src="/assets/ajax-loader.gif" />')
 				$.getScript(url)
 		$(window).scroll()

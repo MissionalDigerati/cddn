@@ -75,9 +75,12 @@
 					</table>
 				</div>
 			<% end %>
+			
+			<div class="span3 offset3">
+				<%= paginate @approvals, :theme => 'twitter-bootstrap' %>
+				<div class="hidden"><%= paginate @events, :theme => 'twitter-bootstrap' %></div>
+			</div>
 		
 		</div>
-		<%= paginate @approvals, :theme => 'twitter-bootstrap' %>
-		<%= paginate @events, :theme => 'twitter-bootstrap' %>
 	</div>
 </div>

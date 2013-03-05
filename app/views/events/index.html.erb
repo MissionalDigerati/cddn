@@ -21,5 +21,9 @@
 			<%= render @events, dash: false %>
 		</tbody>
 	</table>
-	<%= paginate @events, :theme => 'twitter-bootstrap' %>
+	
+	<div class="span12">
+		<%= paginate @events, :theme => 'twitter-bootstrap' %>
+	</div>
+	
 </div>
