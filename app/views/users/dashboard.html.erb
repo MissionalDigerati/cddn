@@ -48,22 +48,16 @@
 		
 		<div class="row">
 			
-			<% if @memberships_for_approval.present? %>
+			<% if @approvals.present? %>
 				<div class="span4">
 					Members for Approval:
-					<table class="table table-bordered table-hover">
+					<table class="table table-bordered table-hover" id="approvals">
 						<tr>
 							<th>Project</th>
 							<th>User</th>
 							<th>Action</th>
 						</tr>
-						<% @memberships_for_approval.each do |membership| %>
-							<tr>
-								<td><%= membership.project.name.titleize %></td>
-								<td><%= link_to_users_profile(membership.user) %></td>
-								<td><%= approve_mem_button(membership) %> <%= deny_mem_button(membership) %></td>
-							</tr>
-						<% end %>
+						<%= render @approvals %>
 					</table>
 				</div>
 			<% end %>
@@ -71,24 +65,22 @@
 			<% if @events.present? %>
 				<div class="span4">
 					Upcoming Events:
-					<table class="table table-bordered table-hover">
+					<table class="table table-bordered table-hover" id="dash_events">
 						<tr>
 							<th>Event</th>
 							<th>Date(m/d/y)</th>
 							<th>Action</th>
 						</tr>
-						<% @events.each do |event| %>
-							<tr>
-								<td><%= event.title %></td>
-								<td><%= date_format(event.event_dates.first) %></td>
-								<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %></td>
-							</tr>
-						<% end %>
+							<%= render @events, dash: true %>
 					</table>
 				</div>
 			<% end %>
+			
+			<div class="span3 offset3">
+				<%= paginate @approvals, :theme => 'twitter-bootstrap' %>
+				<div class="hidden"><%= paginate @events, :theme => 'twitter-bootstrap' %></div>
+			</div>
 		
 		</div>
-		
 	</div>
 </div>

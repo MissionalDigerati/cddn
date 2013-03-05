@@ -5,8 +5,9 @@ class UsersController < ApplicationController
   def dashboard
     @user = User.include_networks.include_programmings.find(current_user)
     @projects = Project.joins(:memberships).where(memberships:{user_id: current_user.id, role:'creator'})
-    @memberships_for_approval = Membership.where(creator_id: current_user.id, status: "pending")
-    @events = @user.events.upcoming_events.include_date.order_by_date
+    @approvals = Membership.where(creator_id: current_user.id, status: "pending").page(params[:page]).per(10)
+    @events = @user.events.upcoming_events.include_date.order_by_date.page(params[:page]).per(10)
+    @dashboard_elements = [@approvals, @events]
   end
   
   #this will be the brag page / the user show page.

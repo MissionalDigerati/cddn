@@ -13,7 +13,7 @@ class EventsController < ApplicationController
   end
   
   def new
-    @event = Event.new(:state_id => 5, :country_id => 226)
+    @event = Event.new(state_id: 5, country_id: 226)
     @event.event_dates.build
   end
   

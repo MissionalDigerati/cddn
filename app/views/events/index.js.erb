@@ -1,5 +1,5 @@
-$('table#events tbody').append('<%= escape_javascript render(@events) %>');
-<% if (@events.current_page < @events.num_pages) %> console.log("im am here");
+$('table#events tbody').append('<%= escape_javascript render(@events, dash: false) %>');
+<% if (@events.current_page < @events.num_pages) %> 
   $('.pagination').replaceWith('<%= escape_javascript paginate(@events, :theme => "twitter-bootstrap") %>');
 <% else %>
   $('.pagination').remove();
