@@ -18,7 +18,7 @@
 			<td>Date (m/d/y)</td>
 			<td>Action</td>
 		</tr>
-			<%= render @events %>
+			<%= render @events, dash: false %>
 		</tbody>
 	</table>
 	<%= paginate @events, :theme => 'twitter-bootstrap' %>

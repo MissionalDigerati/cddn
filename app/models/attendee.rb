@@ -1,7 +1,7 @@
 class Attendee < ActiveRecord::Base
   belongs_to :user
   belongs_to :event
-  # attr_accessible :title, :body
+  attr_accessible :user_id, :event_id, :attendee_type
   scope :include_event, includes(:event)
   validates :user_id, :event_id, :attendee_type, presence: true
   
