@@ -12,8 +12,8 @@ Feature: A logged in user should be able to create events as state they are atte
 		And I fill in "Address 1" with "123 fake street"
 		And I fill in "event_city_province" with "San Jose"
 		And I fill in "Zip code" with "95123"
-		And I fill in "event_event_dates_attributes_0_date_of_event" with current time
-		And I fill in "event_event_dates_attributes_0_time_of_event" with current time
+		And I fill in "event_event_date" with current time
+		And I fill in "event_event_time" with current time
 		And I click the "Submit" button
 		Then I should see "Your Event has been created!"
 		And I should be on the event show page for "Rails meet up"
@@ -27,8 +27,8 @@ Feature: A logged in user should be able to create events as state they are atte
 		And I fill in "Address 1" with "123 fake street"
 		And I fill in "event_city_province" with "San Jose"
 		And I fill in "Zip code" with "95123"
-		And I fill in "event_event_dates_attributes_0_date_of_event" with current time
-		And I fill in "event_event_dates_attributes_0_time_of_event" with current time
+		And I fill in "event_event_date" with current time
+		And I fill in "event_event_time" with current time
 		And I click the "Submit" button
 		Then I should see "Your Event has been submitted for approval, and will not be visible until approved"
 		And I should be on the my events page for "unapproved_event_message"
@@ -59,7 +59,7 @@ Feature: A logged in user should be able to create events as state they are atte
 		When I click the "user_new_event" link
 		Then I should be on the new event page
 		When I click the "Submit" button
-		Then I should see "Title can't be blank, Address 1 can't be blank, City province can't be blank, and Zip code can't be blank"
+		Then I should see "Title can't be blank, Address 1 can't be blank, City province can't be blank, Zip code can't be blank, Event time can't be blank, and Event date can't be blank"
 		
 	Scenario: A visitor that is not logged in should not be able to access the the new events form page
 		Given I am on the home page

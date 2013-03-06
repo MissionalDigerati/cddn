@@ -30,7 +30,7 @@
 		<%= f.text_field :event_date, value: @event.event_dates.last.date_of_event.to_s if @event.event_dates.last.present? %></div>
 		
 		<div><%= f.label :event_time, class: "pull-left" %><span class="required">*</span>
-		<%= f.text_field :event_time %></div>
+		<%= f.text_field :event_time, value: @event.event_dates.last.time_of_event.to_s if @event.event_dates.last.present? %></div>
 	
 	
 		<div>
