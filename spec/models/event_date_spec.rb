@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'rake'
+load File.join(Rails.root, 'Rakefile')
 
 describe EventDate do
   before(:each) do
@@ -51,6 +53,23 @@ describe EventDate do
       EventDate.first.event_id.should == event.id
       EventDate.first.id.should == event_date.id
     end
+    
+    it "should create a new date record for an event with recurring dates with the most current event having been passed" do
+      FactoryGirl.create(:defaulted_state)
+      FactoryGirl.create(:defaulted_country)
+      weekly_event = FactoryGirl.create(:defaulted_event, recurring_date: true, recurring_schedule: "weekly", recurring_interval: 1)
+      FactoryGirl.create(:defaulted_event_date, event_id: weekly_event.id, date_of_event: 3.days.ago.to_date.to_s)
+      monthly_event = FactoryGirl.create(:defaulted_event, recurring_date: true, recurring_schedule: "monthly", recurring_interval: 1)
+      FactoryGirl.create(:defaulted_event_date, event_id: monthly_event.id, date_of_event: 3.days.ago.to_date.to_s)
+      EventDate.all.length.should == 2
+      
+      
+      Rake::Task['db:date_update'].invoke
+      EventDate.all.length.should == 4
+      weekly_event.event_dates.last.date_of_event.should == 4.days.from_now.to_date
+    end
+
+    
     
   end
   

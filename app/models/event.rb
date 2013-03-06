@@ -21,8 +21,9 @@ class Event < ActiveRecord::Base
   scope :upcoming_events, where(["event_dates.date_of_event >= ?", Time.now.to_date])
   scope :past_events, where(["event_dates.date_of_event <= ?", Time.now.to_date])
   scope :order_by_date, order("event_dates.date_of_event asc")
+  scope :recurring, where(recurring_date: true)
   
-  attr_accessible :title, :details, :address_1, :address_2, :city_province, :state_id, :country_id, :zip_code, :online_event, :event_date, :lang_tokens, :longitude, :latitude, :event_date, :event_time
+  attr_accessible :title, :details, :address_1, :address_2, :city_province, :state_id, :country_id, :zip_code, :online_event, :event_date, :lang_tokens, :longitude, :latitude, :event_date, :event_time, :recurring_date, :recurring_schedule, :recurring_interval
   attr_accessible :networks_attributes
   attr_accessible :programmings_attributes
   attr_accessible :event_dates_attributes
@@ -35,6 +36,10 @@ class Event < ActiveRecord::Base
   validates :title, :address_1, :city_province, :state_id, :country_id, :zip_code, :event_time, :event_date, presence: true
   
   after_save :save_programming_languages
+  
+  TIME = ["weekly", "monthly", "yearly"]
+  
+  INTERVAL = *(1..12)
   
   # returns query to controller based on the id of the programming language tag associated with the event. 
   # This will only return events approved by the admin.
