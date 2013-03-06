@@ -54,8 +54,8 @@ Feature: A user should be able to add social networking accounts and links to th
 			And I fill in "Address 1" with "123 fake street"
 			And I fill in "event_city_province" with "San Jose"
 			And I fill in "Zip code" with "95123"
-			And I fill in "event_event_dates_attributes_0_date_of_event" with current date
-			And I fill in "event_event_dates_attributes_0_time_of_event" with current time
+			And I fill in "event_event_date" with current date
+			And I fill in "event_event_time" with current time
 			And I click the "Add Social Network" button
 			And I select "GitHub" from "Service"
 			And I fill in "Account name" with "github"

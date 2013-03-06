@@ -30,4 +30,28 @@ describe EventDate do
     end
     
   end
+  
+  context "methods" do
+    it "should create a valid event date, so long as they as a correct event is passsed to it" do
+      FactoryGirl.create(:defaulted_state)
+      FactoryGirl.create(:defaulted_country)
+      event = FactoryGirl.create(:defaulted_event, event_date: Time.now.to_date.to_s, event_time: "7pm")
+      EventDate.create_event_date(event)
+      EventDate.first.date_of_event.should == Time.now.to_date
+      EventDate.first.event_id.should == event.id
+    end
+    
+    it "should update the last event date when the event is updated" do
+      FactoryGirl.create(:defaulted_state)
+      FactoryGirl.create(:defaulted_country)
+      event = FactoryGirl.create(:defaulted_event, event_date: Time.now.to_date.to_s, event_time: "7pm")
+      event_date = FactoryGirl.create(:defaulted_event_date, event_id: event.id, date_of_event: 1.week.ago.to_date.to_s)
+      EventDate.update_event_date(event)
+      EventDate.first.date_of_event.should == Time.now.to_date
+      EventDate.first.event_id.should == event.id
+      EventDate.first.id.should == event_date.id
+    end
+    
+  end
+  
 end

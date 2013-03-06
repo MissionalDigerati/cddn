@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303063616) do
+ActiveRecord::Schema.define(:version => 20130306015252) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -67,13 +67,16 @@ ActiveRecord::Schema.define(:version => 20130303063616) do
     t.integer  "state_id"
     t.integer  "country_id"
     t.string   "zip_code"
-    t.boolean  "online_event",                  :default => false
-    t.float    "longitude",      :limit => 255
-    t.float    "latitude",       :limit => 255
-    t.datetime "created_at",                                       :null => false
-    t.datetime "updated_at",                                       :null => false
-    t.boolean  "approved_event",                :default => false
-    t.boolean  "gmaps",                         :default => false
+    t.boolean  "online_event",                      :default => false
+    t.float    "longitude",          :limit => 255
+    t.float    "latitude",           :limit => 255
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
+    t.boolean  "approved_event",                    :default => false
+    t.boolean  "gmaps",                             :default => false
+    t.boolean  "recurring_date",                    :default => false
+    t.string   "recurring_schedule"
+    t.integer  "recurring_interval"
   end
 
   create_table "memberships", :force => true do |t|
