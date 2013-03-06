@@ -27,7 +27,7 @@ $(document).ready(function() {
 		prePopulate: $('.lang_tokens').data('load')
 	});
 	
-	$('.date_of_event').datepicker({
+	$('#event_event_date').datepicker({
 		dateFormat: "dd-mm-yy"
 	});
 });
