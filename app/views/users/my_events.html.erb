@@ -13,13 +13,12 @@
 				<% @created_by_user.each do |event| %>
 					<tr>
 						<td><%= event.title %></td>
-						<td><%= date_format(event.event_dates.first) %></td>
+						<td><%= date_format(event.event_dates.last) %></td>
 						<td><%= view_event(event) %> <%= link_to "Edit Event", edit_event_path(event), class: "btn btn-mini btn-success" %> <%= link_to "Delete Event", event_path(event), method: :delete, class: "btn btn-mini btn-danger", confirm: "Are you sure you want to delete this event?" %></td>
 					</tr>
 				<% end %>
 			</table>
 		</div>
-
 
 		<div class="span6">	
 			<% if @my_upcoming_events.present? %>
@@ -33,7 +32,7 @@
 						<% @my_upcoming_events.each do |event| %>
 							<tr>
 								<td><%= event.title %></td>
-								<td><%= date_format(event.event_dates.first) %></td>
+								<td><%= date_format(event.event_dates.last) %></td>
 								<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %> <%= attend_event_button(current_user.id, event) if user_signed_in? %></td>
 							</tr>
 						<% end %>
@@ -51,7 +50,7 @@
 						<% @my_past_events.each do |event| %>
 							<tr>
 								<td><%= event.title %></td>
-								<td><%= date_format(event.event_dates.first) %></td>
+								<td><%= date_format(event.event_dates.last) %></td>
 								<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %> <%= attend_event_button(current_user.id, event) if user_signed_in? %></td>
 							</tr>
 						<% end %>

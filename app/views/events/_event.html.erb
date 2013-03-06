@@ -1,7 +1,7 @@
 <% if dash.present? %>
 	<tr>
 		<td><%= event.title %></td>
-		<td><%= date_format(event.event_dates.first) %></td>
+		<td><%= date_format(event.event_dates.last) %></td>
 		<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %></td>
 	</tr>
 <% else %>
@@ -11,7 +11,7 @@
 		<td><%= display_state_name(event.state_id) %></td>
 		<td><%= display_country_name(event.country_id) %></td>
 		<td><%= yes_or_no(event.online_event) %></td>
-		<td><%= date_format(event.event_dates.first) %></td>
+		<td><%= date_format(event.event_dates.last) %></td>
 		<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %> <%= attend_event_button(current_user.id, event) if user_signed_in? %></td>
 	</tr>
 <% end %>

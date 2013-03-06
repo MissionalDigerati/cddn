@@ -25,6 +25,12 @@
 	
 		<div><%= f.label :zip_code, class: "pull-left" %><span class="required">*</span>
 		<%= f.text_field :zip_code %></div>
+		
+		<div><%= f.label :event_date, class: "pull-left" %><span class="required">*</span>
+		<%= f.text_field :event_date, value: @event.event_dates.last.date_of_event.to_s if @event.event_dates.last.present? %></div>
+		
+		<div><%= f.label :event_time, class: "pull-left" %><span class="required">*</span>
+		<%= f.text_field :event_time %></div>
 	
 	
 		<div>
@@ -34,17 +40,6 @@
 			<%= f.radio_button :online_event, true, class: "pull-left" %>
 			<%= f.label :online_event, "Yes", class: "pull-left" %>
 		<br/>
-		</div>
-		
-		<div>
-			<br/>
-			<%= f.fields_for :event_dates do |builder| %>
-				<%= builder.label :date_of_event, class: "pull-left" %><span class="required">*</span>
-				<%= builder.text_field :date_of_event, class: "date_of_event" %>
-				<br/>
-				<%= builder.label :time_of_event, class: "pull-left" %><span class="required">*</span>
-				<%= builder.text_field :time_of_event, class: "time_of_event" %>
-			<% end %>
 		</div>
 		
 		<br/>

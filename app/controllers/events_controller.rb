@@ -33,6 +33,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.save
         Attendee.attendee_creation(@user.id, @event, 'creator')
+        EventDate.create_event_date(@event)
         if @event.approved_event == true
           format.html {redirect_to event_path(@event)}
           flash[:notice] = "Your Event has been created!"
@@ -63,6 +64,7 @@ class EventsController < ApplicationController
     @event.approved_event = @user.event_approved
     respond_to do |format|
       if @event.update_attributes(params[:event])
+        EventDate.update_event_date(@event)
         if @event.approved_event == true
           format.html {redirect_to event_path(@event)}
           flash[:notice] = "Your event was successfully updated."
