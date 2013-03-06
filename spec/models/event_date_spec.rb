@@ -55,18 +55,23 @@ describe EventDate do
     end
     
     it "should create a new date record for an event with recurring dates with the most current event having been passed" do
+      month_from_now = 1.months.from_now.localtime.to_date
       FactoryGirl.create(:defaulted_state)
       FactoryGirl.create(:defaulted_country)
       weekly_event = FactoryGirl.create(:defaulted_event, recurring_date: true, recurring_schedule: "weekly", recurring_interval: 1)
       FactoryGirl.create(:defaulted_event_date, event_id: weekly_event.id, date_of_event: 3.days.ago.to_date.to_s)
       monthly_event = FactoryGirl.create(:defaulted_event, recurring_date: true, recurring_schedule: "monthly", recurring_interval: 1)
-      FactoryGirl.create(:defaulted_event_date, event_id: monthly_event.id, date_of_event: 3.days.ago.to_date.to_s)
-      EventDate.all.length.should == 2
+      FactoryGirl.create(:defaulted_event_date, event_id: monthly_event.id, date_of_event: 1.day.ago.localtime.to_date.to_s)
+      yearly_event = FactoryGirl.create(:defaulted_event, recurring_date: true, recurring_schedule: "yearly", recurring_interval: 1)
+      FactoryGirl.create(:defaulted_event_date, event_id: yearly_event.id, date_of_event: 1.day.ago.localtime.to_date.to_s)
+      EventDate.all.length.should == 3
       
       
       Rake::Task['db:date_update'].invoke
-      EventDate.all.length.should == 4
+      EventDate.all.length.should == 6
       weekly_event.event_dates.last.date_of_event.should == 4.days.from_now.to_date
+      monthly_event.event_dates.last.date_of_event.should == month_from_now - 1.day
+      yearly_event.event_dates.last.date_of_event.should == 1.year.from_now.to_date - 1.day
     end
 
     
