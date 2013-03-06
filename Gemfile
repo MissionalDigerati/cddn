@@ -25,6 +25,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
   gem 'gmaps4rails'
+  gem 'ice_cube'
 end
 
 gem 'jquery-rails'
