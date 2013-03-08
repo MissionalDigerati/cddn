@@ -35,6 +35,7 @@ group :test, :development do
   gem "factory_girl_rails"
   gem 'populator'
   gem 'faker'
+  gem 'quiet_assets'
 end
 
 group :test do
