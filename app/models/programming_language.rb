@@ -1,5 +1,5 @@
 class ProgrammingLanguage < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :language
   # has_many :programmings, dependent: :destroy
   has_many :programmings, dependent: :destroy
   has_many :users, through: :programmings, source: :programmable, source_type: "User"
