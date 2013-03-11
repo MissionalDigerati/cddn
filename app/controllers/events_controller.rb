@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show, :past_events]
   before_filter :current_user_variable
+  before_filter :set_event_var, only: [:update, :destroy, :attend_event, :edit ]
   
   #this will only display events that are created by authorized users
   def index
@@ -53,14 +54,13 @@ class EventsController < ApplicationController
   def edit
     @attendee = Attendee.where("event_id = ? AND attendee_type = ?", params[:id], "creator").first
     if @attendee.user_id == current_user.id
-      @event = Event.find(params[:id])
+      @event
     else
       redirect_home
     end
   end
   
   def update
-    @event = Event.find(params[:id])
     @event.approved_event = @user.event_approved
     respond_to do |format|
       if @event.update_attributes(params[:event])
@@ -80,7 +80,6 @@ class EventsController < ApplicationController
   end
   
   def destroy
-    @event = Event.find(params[:id])
     @event.destroy
     respond_to do |format|
       format.html {redirect_to my_events_user_path(current_user)}
@@ -89,7 +88,6 @@ class EventsController < ApplicationController
   end
   
   def attend_event
-    @event = Event.find(params[:id])
     @attendee = Attendee.where(user_id: @user.id, event_id: @event.id, attendee_type: 'attendee').first
     if @attendee.present?
       @attendee.destroy
@@ -100,6 +98,12 @@ class EventsController < ApplicationController
       redirect_to event_path(@event)
       flash[:notice] = "You are now attending #{@event.title.capitalize}."
     end
+  end
+
+private
+
+  def set_event_var
+    @event = Event.find(params[:id])
   end
   
 end

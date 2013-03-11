@@ -1,6 +1,7 @@
 class Admin::ProjectsController < ApplicationController
   before_filter :admin_auth
   before_filter :authenticate_admin!, only: [:index, :show, :destroy, :allow_project_posting]
+  before_filter :set_project_var, only: [:show, :destroy]
   
   def index
     @projects = Project.all
@@ -8,11 +9,9 @@ class Admin::ProjectsController < ApplicationController
   end
   
   def show
-    @project = Project.find(params[:id])
   end
   
   def destroy
-    @project = Project.find(params[:id])
     @project.destroy
     respond_to do |format|
       format.html {redirect_to admin_projects_path}
@@ -36,5 +35,10 @@ class Admin::ProjectsController < ApplicationController
     end
     redirect_to :back
   end
+
+  private
+    def set_project_var
+      @project = Project.find(params[:id])
+    end
   
 end

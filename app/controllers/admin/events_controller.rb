@@ -1,6 +1,7 @@
 class Admin::EventsController < ApplicationController
   before_filter :admin_auth
   before_filter :authenticate_admin!, only: [:index, :destroy, :event_to_approve, :allow_event_posting]
+  before_filter :set_event_var, only: [:show, :destroy]
   
   def index
     @events = Event.include_attendees_creator.includes_users
@@ -8,11 +9,9 @@ class Admin::EventsController < ApplicationController
   end
   
   def show
-    @event = Event.find(params[:id])
   end
   
   def destroy
-    @event = Event.find(params[:id])
     @event.destroy
     flash[:notice] = "Event has been deleted."
     redirect_to :back
@@ -35,5 +34,10 @@ class Admin::EventsController < ApplicationController
     end
     redirect_to :back
   end
+
+  private
+    def set_event_var
+      @event = Event.find(params[:id])
+    end
   
 end
