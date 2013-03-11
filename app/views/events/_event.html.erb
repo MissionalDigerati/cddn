@@ -8,7 +8,7 @@
 	<tr>
 		<td><%= event.title %></td>
 		<td><%= event.city_province %></td>
-		<td><%= display_state_name(event.state_id) %></td>
+		<td><%= State.display_state_name(event.state_id) %></td>
 		<td><%= display_country_name(event.country_id) %></td>
 		<td><%= yes_or_no(event.online_event) %></td>
 		<td><%= date_format(event.event_dates.last) %></td>

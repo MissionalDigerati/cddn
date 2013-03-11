@@ -5,7 +5,7 @@ This is the event show page
 	<%= @event.address_1 %><br/>
 	<%= @event.address_2 if @event.address_2.present? %><br/>
 	<%= @event.city_province %><br/>
-	<%= display_state_name(@event.state_id) %><br/>
+	<%= State.display_state_name(@event.state_id) %><br/>
 	<%= display_country_name(@event.country_id) %><br/>
 	<%= @event.zip_code %><br/>
 	Online Event?: <%= yes_or_no(@event.online_event) %><br/>

@@ -55,10 +55,6 @@ module ApplicationHelper
     link_to "#{network.account_name}", network.account_url
   end
   
-  def display_state_name(state_id)
-    state_id.present? ? State.find(state_id).state_long : ""
-  end
-  
   def display_country_name(country_id)
     country_id.present? ? Country.find(country_id).printable_name : ""
   end

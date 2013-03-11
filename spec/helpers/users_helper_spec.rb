@@ -70,19 +70,7 @@ describe ApplicationHelper do
       network = FactoryGirl.create(:defaulted_network, social_media_id: social_media.id)
       network_service(network).should == "facebook: "
     end
-    
-    it "should return the name of the state provided if available, else it will return a blank string" do
-      state = FactoryGirl.create(:defaulted_state)
-      display_state_name(state.id).should == "California"
-      display_state_name(nil).should == ""
-    end
-    
-    
-    it "should return the name of the country that is associated with the id, if one is not provided it should return a blank string" do
-      country = FactoryGirl.create(:defaulted_country)
-      display_country_name(country.id).should == "United States"
-      display_country_name(nil).should == ""
-    end
+
     
     it "should return the date in a date format if one is available, if not then it should return nothing" do
       FactoryGirl.create(:defaulted_state, id: 5)
@@ -97,6 +85,13 @@ describe ApplicationHelper do
       date_format(event_without_date.event_dates.first).should == nil
     end
     
+    
+    it "should return the name of the country that is associated with the id, if one is not provided it should return a blank string" do
+      country = FactoryGirl.create(:defaulted_country)
+      display_country_name(country.id).should == "United States"
+      display_country_name(nil).should == ""
+    end
+
   end
   
 end

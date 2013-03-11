@@ -12,7 +12,7 @@
 		<%= @user.bio %><br/>
 		<%= @user.city_province %><br/>
 		<%= @user.primary_role %><br/>
-		<%= display_state_name(@user.state_id) %><br/>
+		<%= State.display_state_name(@user.state_id) %><br/>
 		<%= display_country_name(@user.country_id) %><br/>
 		<br/>
 		<% @user.networks.each do |network| %>
