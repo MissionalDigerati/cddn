@@ -7,4 +7,5 @@ class ProgrammingLanguage < ActiveRecord::Base
   has_many :projects, through: :programmings, source: :programmable, source_type: "Project"
   
   validates :language, presence: true
+
 end

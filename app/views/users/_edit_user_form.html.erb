@@ -21,10 +21,10 @@
 		<%= f.text_field :city_province %></div>
 
 		<div><%= f.label :state_id, "State" %>
-		<%= f.select(:state_id, state_drop_down) %></div>
+		<%= f.select(:state_id, State.state_drop_down) %></div>
 
 		<div><%= f.label :country_id, "Country" %>
-		<%= f.select(:country_id, country_drop_down) %></div>
+		<%= f.select(:country_id, Country.country_drop_down) %></div>
 
 		<div><%= f.label :bio %>
 		<%= f.text_area :bio, rows: 12 %></div>

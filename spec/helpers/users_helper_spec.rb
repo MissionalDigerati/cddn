@@ -50,11 +50,6 @@ describe ApplicationHelper do
       yes_or_no(nil).should == ""
     end
     
-    it "should return true if the id for a language id passed in, is contained with the array of languages" do
-      check_lang([1, 2, 4], 3).should == false
-      check_lang([1, 2, 4], 1).should == true
-    end
-    
     it "should return a link the the users profile when the user instance is provided. It will return nickname if available or email if not" do
       user_with_nickname = FactoryGirl.create(:defaulted_user, nickname: "The Master")
       link_to_users_profile(user_with_nickname).should == "<a href=\"/users/1\">The master</a>"
@@ -74,16 +69,6 @@ describe ApplicationHelper do
       social_media = FactoryGirl.create(:social_medium, service: "facebook")
       network = FactoryGirl.create(:defaulted_network, social_media_id: social_media.id)
       network_service(network).should == "facebook: "
-    end
-    
-    it "should return a select box containing all states" do
-      FactoryGirl.create(:defaulted_state)
-      state_drop_down.should == [["California", 5]]
-    end
-    
-    it "should return a select box containing all countries" do
-      FactoryGirl.create(:defaulted_country)
-      country_drop_down.should == [["United States", 226]]
     end
     
     it "should return the name of the state provided if available, else it will return a blank string" do

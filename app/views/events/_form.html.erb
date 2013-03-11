@@ -18,10 +18,10 @@
 		<%= f.text_field :city_province %></div>
 	
 		<div><%= f.label :state_id, class: "pull-left" %><span class="required">*</span>
-		<%= f.select(:state_id, state_drop_down) %></div>
+		<%= f.select(:state_id, State.state_drop_down) %></div>
 	
 		<div><%= f.label :country_id, class: "pull-left" %><span class="required">*</span>
-		<%= f.select(:country_id, country_drop_down) %></div>
+		<%= f.select(:country_id, Country.country_drop_down) %></div>
 	
 		<div><%= f.label :zip_code, class: "pull-left" %><span class="required">*</span>
 		<%= f.text_field :zip_code %></div>

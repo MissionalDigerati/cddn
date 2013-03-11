@@ -42,24 +42,6 @@ module ApplicationHelper
     link_to(name, '#', class: "add_fields btn btn-small btn-danger", data: {id: id, fields: fields.gsub("/n", "")})
   end
   
-  def display_programming_tags(programmings_ids)
-    langs_to_display = []
-    ProgrammingLanguage.all.each do |lang|
-      if programmings_ids.include?(lang.id)
-        langs_to_display << lang.language
-      end
-    end
-    langs_to_display
-  end
-  
-  def check_lang(lang_array, lang_id)
-    lang_array.include?(lang_id)
-  end
-  
-  def programming_select
-    ProgrammingLanguage.all.collect {|p| [ p.language, p.id ] }
-  end
-  
   def link_to_users_profile(user)
     name = user.nickname.present? ? user.nickname : user.email
     link_to name.capitalize, user_path(user)
@@ -71,14 +53,6 @@ module ApplicationHelper
   
   def networking_link(network)
     link_to "#{network.account_name}", network.account_url
-  end
-  
-  def state_drop_down
-    State.all.collect {|s| [s.state_long, s.id]}
-  end
-  
-  def country_drop_down
-    Country.all.collect {|c| [c.printable_name, c.id]}
   end
   
   def display_state_name(state_id)
