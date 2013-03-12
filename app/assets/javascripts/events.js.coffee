@@ -10,3 +10,8 @@ jQuery ->
 				$('.pagination').html('<img src="/assets/ajax-loader.gif" />')
 				$.getScript(url)
 		$(window).scroll()
+
+	$("#event_recurring_date_true").click ->
+		$("#recurring_date_fields").slideDown()
+	$("#event_recurring_date_false").click ->
+		$("#recurring_date_fields").slideUp()

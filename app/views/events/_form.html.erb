@@ -31,6 +31,15 @@
 		
 		<div><%= f.label :event_time, class: "pull-left" %><span class="required">*</span>
 		<%= f.text_field :event_time, value: @event.event_dates.last.time_of_event.to_s if @event.event_dates.last.present? %></div>
+
+		<div>
+			<%= f.label :online_event, "Online Event?" %><span class="required">*</span>
+			<%= f.radio_button :online_event, false, checked: true, class: "pull-left" %>
+			<%= f.label :online_event, "No", class: "pull-left"%>
+			<%= f.radio_button :online_event, true, class: "pull-left" %>
+			<%= f.label :online_event, "Yes", class: "pull-left" %>
+		<br/><br/>
+		</div>
 		
 		<div>
 			<%= f.label :recurring_date, "Recurring Event?" %><span class="required">*</span>
@@ -41,21 +50,14 @@
 			<br/>	<br/>
 		</div>
 		
-		<div><%= f.label :recurring_interval, class: "pull-left" %><span class="required">*</span>
-		<%= f.select(:recurring_interval, Event::INTERVAL, include_blank: true) %></div>
-		
-		<div><%= f.label :recurring_schedule, class: "pull-left" %><span class="required">*</span>
-		<%= f.select(:recurring_schedule, Event::TIME.map{|p| [ p.capitalize, p ] }, include_blank: true) %></div>
-		
-	
-		<div>
-			<%= f.label :online_event, "Online Event?" %><span class="required">*</span>
-			<%= f.radio_button :online_event, false, checked: true, class: "pull-left" %>
-			<%= f.label :online_event, "No", class: "pull-left"%>
-			<%= f.radio_button :online_event, true, class: "pull-left" %>
-			<%= f.label :online_event, "Yes", class: "pull-left" %>
-		<br/>
+		<div id="recurring_date_fields">
+			<%= f.label :recurring_interval, class: "pull-left" %><span class="required">*</span>
+			<%= f.select(:recurring_interval, Event::INTERVAL, include_blank: true) %>
+			
+			<%= f.label :recurring_schedule, class: "pull-left" %><span class="required">*</span>
+			<%= f.select(:recurring_schedule, Event::TIME.map{|p| [ p.capitalize, p ] }, include_blank: true) %>
 		</div>
+		
 		
 		<br/>
 

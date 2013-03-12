@@ -31,11 +31,11 @@ $(document).ready(function() {
 		dateFormat: "dd-mm-yy"
 	});
 
-	$('.country_select_box').change(function(){
+	$('#event_country_select').change(function(){
 		if ($(this).val() == 240){
-			$('.state_select_box').val(52)
-			$('.state_select_box').attr("disabled", "disabled");
+			$('#event_state_id').val(52)
+			$('#event_state_id').attr("disabled", "disabled");
 		}else
-              $(".state_select_box").removeAttr("disabled");
+              $("#event_state_id").removeAttr("disabled");
 	});
 });
