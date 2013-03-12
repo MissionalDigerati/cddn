@@ -30,4 +30,12 @@ $(document).ready(function() {
 	$('#event_event_date').datepicker({
 		dateFormat: "dd-mm-yy"
 	});
+
+	$('.country_select_box').change(function(){
+		if ($(this).val() == 240){
+			$('.state_select_box').val(52)
+			$('.state_select_box').attr("disabled", "disabled");
+		}else
+              $(".state_select_box").removeAttr("disabled");
+	});
 });
