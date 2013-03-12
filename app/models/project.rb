@@ -19,7 +19,8 @@ class Project < ActiveRecord::Base
   attr_accessor :lang_tokens
   accepts_nested_attributes_for :networks, reject_if: lambda{ |a| a[:account_url].blank? }, allow_destroy: true
   
-  validates :name, :description, :license, :organization, presence: true
+  validates :name, :description, :license, presence: true
+
   after_save :save_programming_languages
   
   def self.project_index_search(language_tag_id, accepting_requests)

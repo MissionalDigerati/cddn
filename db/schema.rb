@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130306015252) do
+ActiveRecord::Schema.define(:version => 20130312215941) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -77,6 +77,12 @@ ActiveRecord::Schema.define(:version => 20130306015252) do
     t.boolean  "recurring_date",                    :default => false
     t.string   "recurring_schedule"
     t.integer  "recurring_interval"
+  end
+
+  create_table "licenses", :force => true do |t|
+    t.string   "license_title"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "memberships", :force => true do |t|
