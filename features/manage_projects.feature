@@ -16,6 +16,18 @@ Feature: A user should be able to create update delete and join projects, as wel
 		Then I should see "Your project has been successfully created."
 		And I should see "Project Name"
 		And I should be on the project show page for "Project Name"
+
+	Scenario: A user that does not select a correct programming license should recieve a special message
+		Given I am a user "special_project_message" and I am logged in
+		And I am on the home page
+		When I click the "user_new_project" link
+		Then I should be on the new project page
+		And I fill in "Name" with "Project Name"
+		And I fill in "Description" with "This is the best project ever"
+		And I fill in "License name" with ""
+		And I fill in "Organization" with "CDDN"
+		And I click the "Submit" button
+		Then I should see "License is required, if you do not have one, please select 'No License Specified'."
 		
 	Scenario: A user that is not approved for project creation should receive a special message and redirection for product creation
 		Given I am a user not approved for project creation "unapproved_project_user" and I am logged in 
