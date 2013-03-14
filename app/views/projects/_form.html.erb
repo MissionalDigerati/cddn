@@ -9,8 +9,8 @@
 		<div><%= f.label :description, class: "pull-left" %><span class="required">*</span>
 		<%= f.text_area :description, rows: 5 %></div>
 	
-		<div><%= f.label :license, class: "pull-left" %><span class="required">*</span>
-		<%= f.text_field :license %></div>
+		<div><%= f.label :license_name, class: "pull-left" %>
+		<%= f.text_field :license_name, data: {autocomplete_source: License.order(:license_title).map(&:license_title)} %></div>
 	
 		<div><%= f.label :organization, class: "pull-left" %>
 		<%= f.text_field :organization %></div>

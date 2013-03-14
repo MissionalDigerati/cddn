@@ -1,3 +1,6 @@
 class License < ActiveRecord::Base
-  attr_accessible :license_title
+
+	has_many :projects
+
+	attr_accessible :license_title
 end

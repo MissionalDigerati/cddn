@@ -10,7 +10,7 @@ Feature: A user should be able to create update delete and join projects, as wel
 		Then I should be on the new project page
 		And I fill in "Name" with "Project Name"
 		And I fill in "Description" with "This is the best project ever"
-		And I fill in "License" with "Standard"
+		And I fill in "License name" with "Test Programming License"
 		And I fill in "Organization" with "CDDN"
 		And I click the "Submit" button
 		Then I should see "Your project has been successfully created."
@@ -24,7 +24,7 @@ Feature: A user should be able to create update delete and join projects, as wel
 		Then I should be on the new project page
 		And I fill in "Name" with "Project Name"
 		And I fill in "Description" with "This is the best project ever"
-		And I fill in "License" with "Standard"
+		And I fill in "License name" with "Test Programming License"
 		And I fill in "Organization" with "CDDN"
 		And I click the "Submit" button
 		Then I should see "Your Project has been submitted for approval, and will not be visible until approved."

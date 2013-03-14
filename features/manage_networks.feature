@@ -130,7 +130,7 @@ Feature: A user should be able to add social networking accounts and links to th
 	 		And I am on the new project page
 	 		And I fill in "Name" with "create projects network"
 	 		And I fill in "Description" with "this is a project description"
-	 		And I fill in "License" with "Standard"
+	 		And I fill in "License name" with "Test Programming License"
 	 		And I fill in "Organization" with "CDDN"
 	 		And I click the "Add Social Network" button
 	 		And I select "GitHub" from "Service"
@@ -147,7 +147,7 @@ Feature: A user should be able to add social networking accounts and links to th
 	   	And I am on the new project page
 	   	And I fill in "Name" with "edit projects network"
 	   	And I fill in "Description" with "this is a project description"
-	   	And I fill in "License" with "Standard"
+	   	And I fill in "License name" with "Test Programming License"
 	   	And I fill in "Organization" with "CDDN"
 	   	And I click the "Add Social Network" button
 	   	And I select "GitHub" from "Service"
@@ -174,7 +174,7 @@ Feature: A user should be able to add social networking accounts and links to th
 	    And I am on the new project page
 	    And I fill in "Name" with "delete projects network"
 	    And I fill in "Description" with "this is a project description"
-	    And I fill in "License" with "Standard"
+	    And I fill in "License name" with "Test Programming License"
 	    And I fill in "Organization" with "CDDN"
 	    And I click the "Add Social Network" button
 	    And I select "GitHub" from "Service"
@@ -198,7 +198,7 @@ Feature: A user should be able to add social networking accounts and links to th
       And I am on the new project page
       And I fill in "Name" with "reject projects network"
       And I fill in "Description" with "this is a project description"
-      And I fill in "License" with "Standard"
+      And I fill in "License name" with "Test Programming License"
       And I fill in "Organization" with "CDDN"
       And I click the "Add Social Network" button
       And I select "GitHub" from "Service"

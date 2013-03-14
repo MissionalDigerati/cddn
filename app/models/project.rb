@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+
+  belongs_to :license
   
   has_many :users, through: :memberships
   has_many :memberships, dependent: :destroy
@@ -14,12 +16,12 @@ class Project < ActiveRecord::Base
   scope :open_projects, where(accepts_requests: true)
   scope :joins_programmings, joins(:programmings)
   
-  attr_accessible :name, :description, :license, :organization, :accepts_requests, :lang_tokens
+  attr_accessible :name, :description, :license_id, :organization, :accepts_requests, :lang_tokens, :license_name
   attr_accessible :networks_attributes
   attr_accessor :lang_tokens
   accepts_nested_attributes_for :networks, reject_if: lambda{ |a| a[:account_url].blank? }, allow_destroy: true
   
-  validates :name, :description, :license, presence: true
+  validates :name, :description, :license_id, presence: true
 
   after_save :save_programming_languages
   
@@ -50,6 +52,14 @@ class Project < ActiveRecord::Base
   
   def self.only_open_projects
     self.approved_projects.open_projects.include_creator
+  end
+
+  def license_name
+    license.try(:license_title)
+  end
+
+  def license_name=(title)
+    self.license = License.find_by_license_title(title) if title.present?
   end
   
   private

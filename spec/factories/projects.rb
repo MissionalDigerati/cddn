@@ -6,7 +6,7 @@ FactoryGirl.define do
   factory :defaulted_project, parent: :project do
     name "project123"
     description "project description"
-    license "license"
+    license_id 0
     organization "organization"
     accepts_requests true
     approved_project true
