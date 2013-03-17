@@ -49,12 +49,12 @@ Cddn::Application.routes.draw do
       put "project_update_memberships", as: "project_update"
     end
   end
-  match 'users/dashboard/:id' => 'users#dashboard', method: :get, as: :users_dashboard
-  match 'event/past_events' => 'events#past_events', as: "past_events"
   resources :programming_languages do
   end
-  resources :completes do
-  end
+  match 'users/dashboard/:id' => 'users#dashboard', method: :get, as: :users_dashboard
+  match 'event/past_events' => 'events#past_events', as: "past_events"
+  match 'complete/licenses' => 'completes#licenses', as: "licenses"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
