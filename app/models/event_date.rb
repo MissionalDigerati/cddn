@@ -1,6 +1,9 @@
 class EventDate < ActiveRecord::Base
+  
   belongs_to :event
+
   attr_accessible :event_id, :date_of_event, :time_of_event
+
   validates :date_of_event, :time_of_event, presence: true
   
   def self.create_event_date(event)

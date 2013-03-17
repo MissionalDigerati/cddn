@@ -54,10 +54,12 @@ class Project < ActiveRecord::Base
     self.approved_projects.open_projects.include_creator
   end
 
+  #getter
   def license_name
     license.try(:license_title)
   end
 
+  #setter
   def license_name=(title)
     self.license = License.find_by_license_title(title) if title.present?
   end

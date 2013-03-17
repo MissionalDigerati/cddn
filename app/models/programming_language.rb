@@ -1,5 +1,5 @@
 class ProgrammingLanguage < ActiveRecord::Base
-  attr_accessible :language
+  
   # has_many :programmings, dependent: :destroy
   has_many :programmings, dependent: :destroy
   has_many :users, through: :programmings, source: :programmable, source_type: "User"
@@ -7,5 +7,7 @@ class ProgrammingLanguage < ActiveRecord::Base
   has_many :projects, through: :programmings, source: :programmable, source_type: "Project"
   
   validates :language, presence: true
+
+  attr_accessible :language
 
 end

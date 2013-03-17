@@ -1,7 +1,10 @@
 class Membership < ActiveRecord::Base
-  attr_accessible :user_id, :project_id, :role, :status, :creator_id
+  
   belongs_to :user
   belongs_to :project
+
+  attr_accessible :user_id, :project_id, :role, :status, :creator_id
+  
   validates :user_id, :project_id, :role, :status, :creator_id, presence: true
   
   def self.membership_creation(user_id, project)
