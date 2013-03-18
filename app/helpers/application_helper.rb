@@ -62,4 +62,12 @@ module ApplicationHelper
   def date_format(event_date)
     event_date.date_of_event.strftime('%m/%d/%Y') if event_date.present?
   end
+
+  def event_search_pill
+    if request.params["language"].present?
+      text = "Searching by tag: #{request.params["language"].titleize}" 
+      link_to text, "", :class => "label label-important"
+    end
+  end
+
 end
