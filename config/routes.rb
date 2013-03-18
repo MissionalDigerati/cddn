@@ -56,6 +56,7 @@ Cddn::Application.routes.draw do
 
   match 'complete/licenses' => 'completes#licenses', as: "licenses_auto"
   match 'complete/languages' => 'completes#languages', as: "languages_auto"
+  match 'complete/networks' => 'completes#networks', as: "networks_auto"
 
 
   # The priority is based upon order of creation:

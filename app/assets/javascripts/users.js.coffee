@@ -12,3 +12,5 @@ jQuery ->
 		regexp = new RegExp($(this).data('id'), 'g')
 		$(this).before($(this).data('fields').replace(regexp, time))
 		event.preventDefault()
+		$(".social_media_service").autocomplete
+	  	  source: $('.social_media_service').data('autocomplete-source')

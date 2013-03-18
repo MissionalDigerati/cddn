@@ -2,6 +2,8 @@
 	<br/>
 	<%= f.label :social_media_id, "Service", class: "pull-left" %><span class="required">*</span>
 	<%= f.select(:social_media_id, network_service_select) %>
+	<%= f.label :social_media_name, "Service" %>
+	<%= f.text_field :social_media_name, class: "social_media_service", data: {autocomplete_source: networks_auto_path} %>
 	<%= f.label :account_name, class: "pull-left" %><span class="required">*</span>
 	<%= f.text_field :account_name %>
 	<%= f.label :account_url, class: "pull-left" %><span class="required">*</span>
