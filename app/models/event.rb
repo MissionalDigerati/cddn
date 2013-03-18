@@ -45,7 +45,8 @@ class Event < ActiveRecord::Base
   # This will only return events approved by the admin.
   def self.upcoming_event_query(language_tag_id)
     if language_tag_id.present?
-      Event.approved_events.include_date.upcoming_events.joins(:programmings).where(programmings: {programming_language_id: language_tag_id}).order_by_date
+      lang_id = ProgrammingLanguage.where("language like ?", "%#{language_tag_id}%").first
+      Event.approved_events.include_date.upcoming_events.joins(:programmings).where(programmings: {programming_language_id: lang_id}).order_by_date
     else
       Event.approved_events.include_date.upcoming_events.include_programmings.order_by_date
     end
@@ -53,7 +54,8 @@ class Event < ActiveRecord::Base
   
   def self.past_event_query(language_tag_id)
     if language_tag_id.present?
-      Event.approved_events.include_date.past_events.joins(:programmings).where(programmings: {programming_language_id: language_tag_id}).order_by_date
+      lang_id = ProgrammingLanguage.where("language like ?", "%#{language_tag_id}%").first
+      Event.approved_events.include_date.past_events.joins(:programmings).where(programmings: {programming_language_id: lang_id}).order_by_date
     else
       Event.approved_events.include_date.past_events.include_programmings.order_by_date
     end

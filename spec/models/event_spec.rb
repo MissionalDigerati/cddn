@@ -100,9 +100,9 @@ describe Event do
       tag = approved_event_with_tag.programmings.create({programming_language_id: language.id})
       #should only return 2 becasue the 3rd is not approved
       Event.upcoming_event_query(nil).length.should == 2
-      #should only return 1 because it is filtered by a programming language
-      Event.upcoming_event_query(1).length.should == 1
-      Event.upcoming_event_query(1).first.title.should == "approved_with_tag"
+      #should only return 1 because it is filtered by a programming language that is inputed
+      Event.upcoming_event_query(language.language).length.should == 1
+      Event.upcoming_event_query(language.language).first.title.should == "approved_with_tag"
     end
     
     it "should only return upcoming events not past events" do

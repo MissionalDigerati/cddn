@@ -182,15 +182,15 @@ Feature: A logged in user should be able to create events as state they are atte
   Scenario:	Events should be searchable by programming language
   	Given I am a user "event_tag_search_1", and I have an event "fun event", and I have a ruby language tag, and I am logged in 
 		And I am a user "event_tag_search_2", and I have an event "stupid event", and I have a smalltalk tag, and I am not logged in
-  	And I am on the home page
+  		And I am on the home page
 		When I click the "all_events" button
-  	Then I should see "fun event"
+  		Then I should see "fun event"
 		And I should see "stupid event"
-		When I select "Ruby" from "lang_select"
+		When I fill in "language" with "ruby"
 		And I click the "Search" button
 		Then I should see "fun event"
 		And I should not see "stupid event"
-		When I select "SmallTalk" from "lang_select"
+		When I fill in "language" with "smalltalk"
 		And I click the "Search" button
 		Then I should see "stupid event"
 		And I should not see "fun event"
@@ -224,21 +224,21 @@ Feature: A logged in user should be able to create events as state they are atte
 		Then I should be on the past events page
 		And I should see "past_event"
 		
-  Scenario:	past events should be searchable by programming language
-  	Given I am a user "event_tag_search_1", and I have a past event "fun event", and I have a ruby language tag, and I am logged in 
-  	And I am a user "event_tag_search_2", and I have a past event "stupid event", and I have a smalltalk tag, and I am not logged in
-  	And I am on the home page
-  	When I click the "past_events" button
-  	Then I should see "fun event"
-  	And I should see "stupid event"
-  	When I select "Ruby" from "lang_select"
-  	And I click the "Search" button
-  	Then I should see "fun event"
-  	And I should not see "stupid event"
-  	When I select "SmallTalk" from "lang_select"
-  	And I click the "Search" button
-  	Then I should see "stupid event"
-  	And I should not see "fun event"
+  	Scenario:	past events should be searchable by programming language
+  		Given I am a user "event_tag_search_1", and I have a past event "fun event", and I have a ruby language tag, and I am logged in 
+  		And I am a user "event_tag_search_2", and I have a past event "stupid event", and I have a smalltalk tag, and I am not logged in
+  		And I am on the home page
+  		When I click the "past_events" button
+  		Then I should see "fun event"
+  		And I should see "stupid event"
+  		When I fill in "language" with "ruby"
+  		And I click the "Search" button
+  		Then I should see "fun event"
+  		And I should not see "stupid event"
+  		When I fill in "language" with "smalltalk"
+  		And I click the "Search" button
+  		Then I should see "stupid event"
+  		And I should not see "fun event"
 		
 		
 		

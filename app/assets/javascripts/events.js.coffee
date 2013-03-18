@@ -15,3 +15,6 @@ jQuery ->
 		$("#recurring_date_fields").slideDown()
 	$("#event_recurring_date_false").click ->
 		$("#recurring_date_fields").slideUp()
+
+	$("#language").autocomplete
+	  source: $('#language').data('autocomplete-source')

@@ -1,11 +1,15 @@
 <div class="container">
 	Listing past events
 	<br/>
+
 	<%= form_tag past_events_path, method: :get do %>
 		Search by language: <br/>
-		<%= select_tag :language, options_from_collection_for_select(ProgrammingLanguage.all, "id", "language", selected: params[:language]), include_blank: true, id: "lang_select" %> <br/>
-		<%= submit_tag "Search" %>
+		<div class="input-append">
+			<%= text_field_tag "language", '', data: {autocomplete_source: languages_auto_path} %>
+			<%= submit_tag "Search", class: "btn" %>
+		</div>
 	<% end %>
+
 	<br/><br/>
 	<table id="events" class="table table-striped table-bordered">
 		<tbody>

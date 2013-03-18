@@ -5,4 +5,9 @@ class CompletesController < ApplicationController
 		render json: @licenses.map(&:license_title)
 	end
 
+	def languages
+		@languages = ProgrammingLanguage.order(:language).where("language like ?", "%#{params[:term]}%")
+		render json: @languages.map(&:language)
+	end
+
 end
