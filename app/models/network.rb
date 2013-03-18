@@ -9,11 +9,11 @@ class Network < ActiveRecord::Base
 
   #getter
   def social_media_name
-    social_media.try(:service)
+    social_media_id.try(:service)
   end
 
   #setter
-  def social_media_name=(name)
-    self.social_media = SocialMedia.find_by_service(name) if name.present?
+  def social_media_name=(service)
+    self.social_media_id = SocialMedia.find_by_service(service) if service.present?
   end
 end
