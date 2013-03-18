@@ -65,8 +65,8 @@ module ApplicationHelper
 
   def event_search_pill
     if request.params["language"].present?
-      text = "Searching by tag: #{request.params["language"].titleize}" 
-      link_to text, "", :class => "label label-important"
+      text = "Searching by tag: #{request.params["language"].titleize}"
+      "<span class='label label-important'>" "#{text}" "</span>".html_safe
     end
   end
 
