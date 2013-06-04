@@ -13,7 +13,8 @@ class ApplicationController < ActionController::Base
   
   def user_suspended
     if current_user.suspended == true
-      flash[:notice] = "Your account has been suspended please contact us for any additional information."
+      sign_out :user
+      flash[:notice] = "Your account has been suspended, you have been logged out. Please contact us for any additional information."
       redirect_to root_path
     end
   end

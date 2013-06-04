@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
-  before_filter :user_suspended, except: [:show]
+  before_filter :user_suspended, except: [:show, :dashbaord]
   
   def dashboard
     @user = User.include_networks.include_programmings.find(current_user)

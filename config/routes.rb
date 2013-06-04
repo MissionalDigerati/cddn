@@ -58,7 +58,9 @@ Cddn::Application.routes.draw do
   match 'complete/languages' => 'completes#languages', as: "languages_auto"
   match 'complete/networks' => 'completes#networks', as: "networks_auto"
 
-
+  authenticated :user do
+    root :to => "users#dashboard"
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

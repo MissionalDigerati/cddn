@@ -75,13 +75,8 @@ Feature: An admin should be able to login as well as well as delete and suspend 
 	
 	Scenario: A user that is suspended should not be able to edit basic account info or access the dashboard
 	 	Given I am a user "suspended_account_test" and I am logged in and I have a suspended account
-		And I am on the home page
-		When I click the "Home | Dashboard" link
 		Then I should be on the home page
-		And I should see "Your account has been suspended please contact us for any additional information."
-		When I click the "user_account_info_link" link
-		Then I should be on the home page
-		And I should see "Your account has been suspended please contact us for any additional information."
+		And I should see "Your account has been suspended, you have been logged out. Please contact us for any additional information."
 	
 	Scenario: An admin should be able to view all events through the event index, and should be able to delete them at will
 		Given I am a user "test1", and I have an event "admin index 1", and I am not logged in 
