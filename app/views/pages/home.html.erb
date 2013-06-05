@@ -53,10 +53,41 @@
 
 
 
+	<div id="about_us">
+	    <div class="container">
+	        <div class="section_header">
+	            <h3>About Us</h3>
+	        </div>            
+	            <!-- Features Row -->
+
+	        <p>
+	        	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	        	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	        	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	        	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	        	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	        	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	        	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	        	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	        	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	        	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	        	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	        	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	        	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	        	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	        	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	        	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	        	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	        	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	        </p>
+	        <br/>
+	    </div>
+	</div>
 
 
 
-	<div id="showcase">
+
+	<div id="upcoming_projects">
 	    <div class="container">
 	        <div class="section_header">
 	            <h3>Newest Projects</h3>
@@ -67,14 +98,14 @@
 	            <% if @projects.present? %>
 	            	<table class="table">
 	            		<tr>
-	            			<th>Name</th>
-	            			<th>Organization</th>
-	            			<th class="text_right">Action</th>
+	            			<th class="third">Name</th>
+	            			<th class="third center">Organization</th>
+	            			<th class="third text_right">Action</th>
 	            		</tr>
 	            		<% @projects.each do |project| %>
 	            			<tr>
-	            				<td><%= project.name %></td>
-	            				<td><%= project.organization %></td>
+	            				<td class="center"><%= project.name %></td>
+	            				<td class="center"><%= project.organization %></td>
 	            				<td class="text_right"><%= link_to "View Project", project_path(project), class: "btn btn-mini btn-info" %></td>
 	            			</tr>
 	            		<% end %>
@@ -88,7 +119,7 @@
 
 
 
-	<div id="showcase">
+	<div id="upcoming_events">
 	    <div class="container">
 	        <div class="section_header">
 	            <h3>Upcoming Events</h3>
@@ -99,14 +130,14 @@
 	            <% if @events.present? %>
 	            	<table class="table">
 	            		<tr>
-	            			<th>Title</th>
-	            			<th>Date</th>
-	            			<th class="text_right">Action</th>
+	            			<th class="third">Title</th>
+	            			<th class="third center">Date</th>
+	            			<th class="third text_right">Action</th>
 	            		</tr>
 	            		<% @events.each do |event| %>
 	            			<tr>
-	            				<td><%= event.title %></td>
-	            				<td><%= date_format(event.event_dates.first) %></td>
+	            				<td class="center"><%= event.title %></td>
+	            				<td class="center"><%= date_format(event.event_dates.first) %></td>
 	            				<td class="text_right"><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %></td>
 	            			</tr>
 	            		<% end %>
@@ -116,13 +147,15 @@
 	</div>
 
 	<div class="clear"></div>
-	
+
+	<div class="span4 offset5">
 	<!-- AddThis Button BEGIN -->
-	<div class="addthis_toolbox addthis_default_style ">
-	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-	<a class="addthis_button_tweet"></a>
-	<a class="addthis_button_pinterest_pinit"></a>
-	<a class="addthis_counter addthis_pill_style"></a>
+		<div class="addthis_toolbox addthis_default_style ">
+		<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+		<a class="addthis_button_tweet"></a>
+		<a class="addthis_button_pinterest_pinit"></a>
+		<a class="addthis_counter addthis_pill_style"></a>
+		</div>
+		<%= render "/layouts/share_this" %>
 	</div>
-	<%= render "/layouts/share_this" %>
 	<!-- AddThis Button END -->

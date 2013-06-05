@@ -48,7 +48,7 @@ header {
     background: #252528;    
 }
 .navbar.navbar-inverse .navbar-inner.sticky {
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.8) !important;
     border-bottom: 1px solid #252525;
 }
 .navbar-inverse .navbar-inner.sticky .container {

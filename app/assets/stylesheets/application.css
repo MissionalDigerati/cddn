@@ -9,12 +9,12 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
  *= reqire_twitter/bootstrap
  *= require token-input-facebook.css
  *= require token-input-bootstrappy
  *= require gmaps4rails
  *= require jquery.ui.all
+ *= require_tree .
  */
 
 
@@ -40,4 +40,7 @@
 }
 .text_right{
 	text-align:right !important;
+}
+.center_text{
+	margin: auto auto;
 }
