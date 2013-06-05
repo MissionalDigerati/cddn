@@ -38,6 +38,6 @@
 .hidden{
 	display: none;
 }
-.span12{
-	text-align:center;
+.text_right{
+	text-align:right !important;
 }

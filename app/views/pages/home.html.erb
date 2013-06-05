@@ -1,58 +1,121 @@
-<div class="container">
-	<h1>
-		Home page
-	</h1>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
 
-	<div class="row">
-		
-		<div class="span6">
-			Upcoming Projects:
-			<% if @projects.present? %>
-				<table class="table">
-					<tr>
-						<th>Name</th>
-						<th>Organization</th>
-						<th>Action</th>
-					</tr>
-					<% @projects.each do |project| %>
-						<tr>
-							<td><%= project.name %></td>
-							<td><%= project.organization %></td>
-							<td><%= link_to "View Project", project_path(project), class: "btn btn-mini btn-info" %></td>
-						</tr>
-					<% end %>
-				</table>
-			<% end %>
-		</div>
-		
-		
-		<div class="span6">
-			Upcoming Events:
-			<% if @events.present? %>
-				<table class="table">
-					<tr>
-						<th>Title</th>
-						<th>Date</th>
-						<th>Action</th>
-					</tr>
-					<% @events.each do |event| %>
-						<tr>
-							<td><%= event.title %></td>
-							<td><%= date_format(event.event_dates.first) %></td>
-							<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %></td>
-						</tr>
-					<% end %>
-				</table>
-			<% end %>
-		</div>
-		
+	
+	<section id="feature_slider" class="">
+	    <!-- 
+	        Each slide is composed by <img> and .info
+	        - .info's position is customized with css in index.css
+	        - each <img> parallax effect is declared by the following params inside its class:
+	        
+	        example: class="asset left-472 sp600 t120 z3"
+	        left-472 means left: -472px from the center
+	        sp600 is speed transition
+	        t120 is top to 120px
+	        z3 is z-index to 3
+	        Note: Maintain this order of params
+
+	        For the backgrounds, you can combine from the bgs folder :D
+	    -->
+	    <article class="slide" id="showcasing" style="background: url('/assets/theme/backgrounds/landscape.png') repeat-x top center;">
+	        <img class="asset left-30 sp600 t120 z1" src="/assets/theme/slides/scene1/macbook.png" />
+	        <div class="info">
+	            <h2>Beautiful theme for showcasing your works.</h2>
+	        </div>
+	    </article>
+	    <article class="slide" id="ideas" style="background: url('/assets/theme/backgrounds/aqua.jpg') repeat-x top center;">
+	        <div class="info">
+	            <h2>We love to turn ideas into beautiful things.</h2>
+	        </div>
+	        <img class="asset left-480 sp600 t260 z1" src="/assets/theme/slides/scene2/left.png" />
+	        <img class="asset left-210 sp600 t213 z2" src="/assets/theme/slides/scene2/middle.png" />
+	        <img class="asset left60 sp600 t260 z1" src="/assets/theme/slides/scene2/right.png" />
+	    </article>
+	    <article class="slide" id="tour" style="background: url('/assets/theme/backgrounds/color-splash.jpg') repeat-x top center;">
+	        <img class="asset left-472 sp650 t210 z3" src="/assets/theme/slides/scene3/ipad.png" />
+	        <img class="asset left-365 sp600 t270 z4" src="/assets/theme/slides/scene3/iphone.png" />
+	        <img class="asset left-350 sp450 t135 z2" src="/assets/theme/slides/scene3/desktop.png" />
+	        <img class="asset left-185 sp550 t220 z1" src="/assets/theme/slides/scene3/macbook.png" />
+	        <div class="info">
+	            <h2>Fully Responsive theme</h2>
+	            <a href="features.html">TOUR THE PRODUCT</a>
+	        </div>
+	    </article>
+	    <article class="slide" id="responsive" style="background: url('/assets/theme/backgrounds/indigo.jpg') repeat-x top center;">
+	        <img class="asset left-472 sp600 t120 z3" src="/assets/theme/slides/scene4/html5.png" />
+	        <img class="asset left-190 sp500 t120 z2" src="/assets/theme/slides/scene4/css3.png" />
+	        <div class="info">
+	            <h2>
+	                Responsive <strong>HTML5 & CSS3</strong>
+	                Theme
+	            </h2>                
+	        </div>
+	    </article>        
+	</section>
+
+
+
+
+
+
+	<div id="showcase">
+	    <div class="container">
+	        <div class="section_header">
+	            <h3>Newest Projects</h3>
+	        </div>            
+	            <!-- Features Row -->
+
+	            <!-- Feature -->
+	            <% if @projects.present? %>
+	            	<table class="table">
+	            		<tr>
+	            			<th>Name</th>
+	            			<th>Organization</th>
+	            			<th class="text_right">Action</th>
+	            		</tr>
+	            		<% @projects.each do |project| %>
+	            			<tr>
+	            				<td><%= project.name %></td>
+	            				<td><%= project.organization %></td>
+	            				<td class="text_right"><%= link_to "View Project", project_path(project), class: "btn btn-mini btn-info" %></td>
+	            			</tr>
+	            		<% end %>
+	            	</table>
+	            <% end %>
+
+	    </div>
 	</div>
+
+
+
+
+
+	<div id="showcase">
+	    <div class="container">
+	        <div class="section_header">
+	            <h3>Upcoming Events</h3>
+	        </div>            
+	            <!-- Features Row -->
+
+	            <!-- Feature -->
+	            <% if @events.present? %>
+	            	<table class="table">
+	            		<tr>
+	            			<th>Title</th>
+	            			<th>Date</th>
+	            			<th class="text_right">Action</th>
+	            		</tr>
+	            		<% @events.each do |event| %>
+	            			<tr>
+	            				<td><%= event.title %></td>
+	            				<td><%= date_format(event.event_dates.first) %></td>
+	            				<td class="text_right"><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %></td>
+	            			</tr>
+	            		<% end %>
+	            	</table>
+	            <% end %>
+	    </div>
+	</div>
+
+	<div class="clear"></div>
 	
 	<!-- AddThis Button BEGIN -->
 	<div class="addthis_toolbox addthis_default_style ">
@@ -63,4 +126,3 @@
 	</div>
 	<%= render "/layouts/share_this" %>
 	<!-- AddThis Button END -->
-</div>
