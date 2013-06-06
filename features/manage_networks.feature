@@ -83,22 +83,17 @@ Feature: A user should be able to add social networking accounts and links to th
 		Scenario: A user's should be able to delete their social networks
 			Given I am a user "networking_user_delete_test" and I have a network "twitter" I am logged in
 			And I am on the home page
-			When I click the "Home | Dashboard" link
-			Then I should be on the dashboard for "networking_user_delete_test"
 			And I should see "twitter: twitter"
 			When I click the "edit_account_details" button
 			And I click the "remove" button
 			And I click the "Update" button
 			Then I should see "Your account information has been updated."
-			And I should be on the dashboard for "networking_user_delete_test"
 			And I should not see "twitter: twitter"
 
 	@javascript	
 		Scenario: A user should be able to add social networks to their user account
 			Given I am a user "networking_user_add_test" and I am logged in
 			And I am on the home page
-			When I click the "Home | Dashboard" link
-			Then I should be on the dashboard for "networking_user_add_test"
 			When I click the "edit_account_details" button
 			And I click the "Add Social Network" button
 			And I select "Facebook" from "Service"
@@ -106,22 +101,18 @@ Feature: A user should be able to add social networking accounts and links to th
 			And I fill in "Account url" with "http://www.facebook.com"
 			And I click the "Update" button
 			Then I should see "Your account information has been updated."
-			And I should be on the dashboard for "networking_user_add_test"
 			And I should see "Facebook: facebook"
 			
 	@javascript
 		Scenario: The application should reject a social network the attribute url is left blank
 			Given I am a user "networking_user_reject_test" and I am logged in
 			And I am on the home page
-			When I click the "Home | Dashboard" link
-			Then I should be on the dashboard for "networking_user_reject_test"
 			When I click the "edit_account_details" button
 			And I click the "Add Social Network" button
 			And I select "Facebook" from "Service"
 			And I fill in "Account name" with "facebook"
 			And I click the "Update" button
 			Then I should see "Your account information has been updated."
-			And I should be on the dashboard for "networking_user_reject_test"
 			And I should not see "http://www.facebook.com"
 			
 	 @javascript
