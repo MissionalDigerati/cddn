@@ -1,50 +1,112 @@
-This is the event show page
-	<br/>
-	<%= @event.title %><br/>
-	<%= @event.details %><br/>
-	<%= @event.address_1 %><br/>
-	<%= @event.address_2 if @event.address_2.present? %><br/>
-	<%= @event.city_province %><br/>
-	<%= State.display_state_name(@event.state_id) %><br/>
-	<%= display_country_name(@event.country_id) %><br/>
-	<%= @event.zip_code %><br/>
-	Online Event?: <%= yes_or_no(@event.online_event) %><br/>
-	Event Date (m/d/y): <%= date_format(@event.event_dates.last) %><br/>
-	Event Time: <%= @event.event_dates.first.time_of_event %><br/>
-	
-	
-	<% @event.networks.each do |network| %>
-		<%= network_service(network) %><%= networking_link(network) %><br/>
-	<% end %>
-	<br/>
-	
-	<% if @event.programming_languages.present? %>
-		Language tags:<br/>
-		<% @event.programming_languages.each do |lang| %>
-			<%= lang.language %><br/>
-		<% end %>
-	<% end %>
-	
-	
-	This event was created by: <%= attendee_creator_name(@event) %>
-	<%= attend_event_button(current_user.id, @event) if user_signed_in? %>
-	
-	<br/>
-	<br/>
-	Confirmed Attendees:<br/>
-	<% @event.users.each do |user| %>
-		<%= link_to_users_profile(user) %><br/>
-	<% end %>
-	
-	<div id="google_map">
-		<br/>
-		
-		<%= gmaps({
-		       "map_options" => {"auto_zoom" => false, "zoom" => 15 },
-		       "markers"     => {"data" => @json }
-		      })
-		%>
-		
-	</div>
-	
-<!-- #<Event id: nil, title: nil, details: nil, address_1: nil, address_2: nil, city_province: nil, state_id: nil, country_id: nil, zip_code: nil, online_event: false, longitude: nil, latitude: nil, created_at: nil, updated_at: nil>  -->
+<div id="contact">
+    <div class="container">
+        <div class="section_header">
+            <h3><%= @event.title.titleize %></h3>
+        </div>
+        
+        <div class="row map">
+            <div class="container">
+                <div class="span5 box_wrapp">
+                    <div class="box_cont">
+                        <div class="head">
+                            <h6>Address</h6>
+                        </div>
+                        <ul class="street">
+                            <li><%= @event.address_1 %></li>
+                            <li><%= @event.address_2 if @event.address_2.present? %></li>
+                            <li><%= @event.city_province.titleize %>, <%= State.display_state_name(@event.state_id) %></li>
+                            <li><%= display_country_name(@event.country_id) %></li>
+                            <li><%= @event.zip_code %></li>
+                        </ul>
+
+                        <div class="head headbottom">
+                            <h6>Join us</h6>
+                        </div>
+                        <ul class="street">
+                        	<li>Created By: <%= attendee_creator_name(@event) %></li>
+                        	<li>Online Event?: <%= yes_or_no(@event.online_event) %></li>
+                        	<li>Event Date (m/d/y): <%= date_format(@event.event_dates.last) %></li>
+                        	<li>Event Time: <%= @event.event_dates.first.time_of_event %></li>
+                        </ul>
+                        <br/><br/>
+                        <%= attend_event_button(current_user.id, @event) if user_signed_in? %>
+                    </div>
+                </div>
+                <div class="contact">
+	                <p>
+	                	<%= @event.details %>
+	                </p>
+            	</div>
+            </div>
+       	</div>
+    </div>
+
+    <div id="team">
+        <div class="container">
+            <div class="section_header">
+                <h3>Connect with us</h3>
+            </div>
+
+            <div class="row people">
+            	<% if @event.networks.present? || @event.programming_languages.present? %>
+	                <div class="row row1">
+	                	<% if @event.networks.present? %>
+		                    <div class="span6 bio_box">
+		                        <div class="section_sub_header">
+		                    	    <h6>Social Networking Links</h6>
+		                    	</div>
+		                    	<br/>
+		                        <ul class="social_network_links">
+		                        <% @event.networks.each do |network| %>
+		                        	<li><%= network_service(network) %><%= networking_link(network) %></li>
+		                        <% end %>
+		                        </ul>
+		                        </br></br>
+		                    </div>
+	                    <% end %>
+
+	                    <% if @event.programming_languages.present? %>
+		                    <div class="span6 bio_box bio_boxr">
+		                    	<div class="section_sub_header">
+		                    	    <h6>Programming Language Tags</h6>
+		                    	</div>
+		                    	<br/>
+		                    	<div class="span6 bio_box">
+		                    	    <% @event.programming_languages.each do |lang| %>
+		                    			<span class="label label-important"><%= lang.language %></span>
+		                    		<% end %>
+		                    	</div>
+		                    </div>
+	                    <% end %>
+	                </div>
+	            <% end %>
+
+                <div class="row row1">
+                    <div class="span12 bio_box">
+                       <div class="section_sub_header">
+                           <h6>Confirmed Attendees</h6>
+                       </div>
+                       <br/>
+                       <% @event.users.each do |user| %>
+                       	<i class="pull-left"><%= link_to_users_profile(user) %> &nbsp; &nbsp; </i>
+                       <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row map">
+        <div id="google_map">
+        	<br/>
+        	
+        	<%= gmaps({
+        	       "map_options" => {"auto_zoom" => false, "zoom" => 15 },
+        	       "markers"     => {"data" => @json }
+        	      })
+        	%>
+        </div>
+    </div>
+</div>
