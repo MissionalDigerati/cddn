@@ -88,7 +88,7 @@ Feature: A logged in user should be able to create events as state they are atte
 		Then I should be on the events index page
 		And I should see "show_testing_self_test"
 		When I click the "View Event" button
-		Then I should see "This event was created by: event_show_test@cddn.com"
+		Then I should see "Created By: event_show_test@cddn.com"
 		
 	Scenario: A visitor that is not logged in should be able to view a show page for an event
 		Given I am a user "event_show_test_for_visitor", and I have an event "show_testing_visitor_test", and I am not logged in 
@@ -96,7 +96,7 @@ Feature: A logged in user should be able to create events as state they are atte
 		When I visit the events index page
 		Then I should see "show_testing_visitor_test"
 		When I click the "View Event" button
-		Then I should see "This event was created by: event_show_test_for_visitor@cddn.com"
+		Then I should see "Created By: event_show_test_for_visitor@cddn.com"
 		
 	Scenario: A user should be able to view their events on the my index page
 		Given I am a user "my_events_show", and I have an event "my_events_show_test", and I am logged in
@@ -161,8 +161,8 @@ Feature: A logged in user should be able to create events as state they are atte
 		Then I should be on the home page
 		And I should see "Unable to process your request."
 		When I try to view the show page for the "approved event" event
-		Then I should see "approved event"
-		And I should see "This event was created by: approved_event_user"
+		Then I should see "Approved Event"
+		And I should see "Created By: approved_event_user@cddn.com"
 		
 	Scenario: A user should be able to attend and un attend an event
 		Given I am a user "attend_event_test_1", and I have an event "attend this event", and I am not logged in 
