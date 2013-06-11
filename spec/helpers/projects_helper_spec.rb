@@ -17,7 +17,7 @@ describe ProjectsHelper do
       not_accepting_project = FactoryGirl.create(:defaulted_project, accepts_requests: false)
       memberships = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress", creator_id: user.id)
       #the creator of the project should not veiw anything
-      join_project_request_button(project, user).should == ""
+      join_project_request_button(project, user).should == "<a href=\"/projects/1/edit\" class=\"btn\">Manage Project</a>"
       
       #a user that is already a member of the project should recieve a leave project button
       project_member = FactoryGirl.create(:defaulted_user, email: "project_member@cddn.com")
