@@ -6,15 +6,15 @@ module ProjectsHelper
     link_to name.capitalize, user_path(creator)
   end
   
-  def join_project_request_button(project, user)
-    if project.memberships.where(user_id: user.id, role: "creator").present?
+  def join_project_request_button(project, user=nil)
+    if user.present? && project.memberships.where(user_id: user.id, role: "creator").present?
       ""
-    elsif project.memberships.where(user_id: user.id).present? 
-      link_to "Leave Project", leave_project_path(project), method: :delete, confirm: "Are you sure you want to leave the project's team?"
-    elsif project.memberships.where(user_id: user.id).present? == false && project.accepts_requests == true
-      link_to "Request to Join Project", join_project_path(project), method: :post
+    elsif user.present? && project.memberships.where(user_id: user.id).present? 
+      link_to "Leave Project", leave_project_path(project), method: :delete, class: "btn", confirm: "Are you sure you want to leave the project's team?"
+    elsif user.present? && project.memberships.where(user_id: user.id).present? == false && project.accepts_requests == true
+      link_to "Request to Join Project", join_project_path(project), method: :post, class: "btn"
     else
-      ""
+      link_to "Request to Join Project", join_project_path(project), method: :post, class: "btn"
     end
   end
   

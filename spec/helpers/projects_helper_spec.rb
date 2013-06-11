@@ -20,13 +20,14 @@ describe ProjectsHelper do
       
       #a user that is already a member of the project should recieve a leave project button
       project_member = FactoryGirl.create(:defaulted_user, email: "project_member@cddn.com")
-      join_project_request_button(project, project_member).should == "<a href=\"/projects/1/join_project_request\" data-method=\"post\" rel=\"nofollow\">Request to Join Project</a>"
+      join_project_request_button(project, project_member).should == "<a href=\"/projects/1/join_project_request\" class=\"btn\" data-method=\"post\" rel=\"nofollow\">Request to Join Project</a>"
       
       # user that is not a member of the project should recieve a request to join project button
       non_member = FactoryGirl.create(:defaulted_user, email: "non_member@cddn.com")
-      join_project_request_button(project, non_member).should == "<a href=\"/projects/1/join_project_request\" data-method=\"post\" rel=\"nofollow\">Request to Join Project</a>"
+      join_project_request_button(project, non_member).should == "<a href=\"/projects/1/join_project_request\" class=\"btn\" data-method=\"post\" rel=\"nofollow\">Request to Join Project</a>"
       
-      # if a user is not logged in then nothing is displayed
+      # if a user is not logged in then the same request to join link is displayed however it bounces them to the login page. 
+      join_project_request_button(project).should == "<a href=\"/projects/1/join_project_request\" class=\"btn\" data-method=\"post\" rel=\"nofollow\">Request to Join Project</a>"
     end
     
   end

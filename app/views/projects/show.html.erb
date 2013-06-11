@@ -1,10 +1,4 @@
-This is the project show page
-<br/>
-<br/>
-<%= @project.name %><br/>
-<%= @project.description %><br/>
-<%= @project.organization %><br/>
-<%= @project.license_name %><br/>
+
 
 <br/>
 <% @project.networks.each do |network| %>
@@ -30,10 +24,6 @@ Project members:<br/>
 		<%= link_to_users_profile(member.user) %><br/>
 	<% end %>
 <% end %>
-<br/>
-
-<%= join_project_request_button(@project, current_user) if user_signed_in?%>
-<br/>
 
 
 
@@ -49,8 +39,8 @@ Project members:<br/>
             		<%= image_tag("/assets/theme/signin_icos.png") %>
             	</span>
             </h1>
-            <br/><br/>
-            <h3><%=  %></h3>
+            <br/>
+            <h3><%= @project.name.titleize %></h3>
         </div>
         
         <div class="row map">
@@ -58,24 +48,26 @@ Project members:<br/>
                 <div class="span5 box_wrapp">
                     <div class="box_cont">
                         <div class="head">
-                            <h6>Address</h6>
+                            <h6>Project Info</h6>
                         </div>
                         <ul class="street">
-                            
+                            <li>Organization: <br/><%= @project.organization %></li><br/>
+                            <li>License: <br/><%= @project.license_name %></li><br/>
+                            <li>Project Creator: <br/><%= link_to_users_profile(@creator) %> </li>
                         </ul>
 
-                        <div class="head headbottom">
-                            <h6>Join us</h6>
-                        </div>
-                        <ul class="street">
-                        	
-                        </ul>
-                        <br/><br/>
+                        <% if @project.accepts_requests === true %>
+                            <div class="head headbottom">
+                                <h6>Join us</h6>
+                            </div>
+                            <br/>
+                            <%= join_project_request_button(@project, current_user)%>
+                        <% end %>
                     </div>
                 </div>
                 <div class="contact">
 	                <p>
-	                	<%=  %>
+	                	<%= @project.description %>
 	                </p>
             	</div>
             </div>

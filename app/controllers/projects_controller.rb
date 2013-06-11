@@ -30,6 +30,7 @@ class ProjectsController < ApplicationController
     @project = Project.include_networks.include_memberships.include_programmings.find(params[:id])
     if @project.approved_project == true 
       @project
+      @creator = @project.memberships.where(role: "creator").first.user
     else
       redirect_home
     end
