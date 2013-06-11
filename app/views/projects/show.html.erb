@@ -1,36 +1,3 @@
-
-
-<br/>
-<% @project.networks.each do |network| %>
-	<%= network_service(network) %><%= networking_link(network) %><br/>
-<% end %>
-
-<br/><br/>
-
-<% if @project.programming_languages.present? %>
-	Language tags:<br/>
-	<% @project.programming_languages.each do |lang| %>
-		<%= lang.language %><br/>
-	<% end %>
-<% end %>
-
-<br/> <br/>
-Project members:<br/>
-<% @project.memberships.each do |member| %>
-	<% if member.role == "creator" && member.status == "active" %>
-		Project Creator: <span class="label label-inverse"><%= link_to_users_profile(member.user) %></span><br/>
-	<% elsif member.role != "creator" && member.status == "approved" %>
-		Members:<br/>
-		<%= link_to_users_profile(member.user) %><br/>
-	<% end %>
-<% end %>
-
-
-
-
-
-
-
 <div id="contact">
     <div class="container">
         <div class="section_header">
@@ -78,7 +45,51 @@ Project members:<br/>
                 <h3>Connect with us</h3>
             </div>
 
-            
+            <div class="row people">
+                <% if @project.networks.present? || @project.programming_languages.present? %>
+                    <div class="row row1">
+                        <% if @project.networks.present? %>
+                            <div class="span6 bio_box">
+                                <div class="section_sub_header">
+                                    <h6>Social Networking Links</h6>
+                                </div>
+                                <br/>
+                                <ul class="social_network_links">
+                                    <% @project.networks.each do |network| %>
+                                    <li><%= network_service(network) %><%= networking_link(network) %></li>
+                                <% end %>
+                                </ul>
+                                <br/> <br/>
+                            </div>
+                        <% end %>
+
+                        <% if @project.programming_languages.present? %>
+                            <div class="span6 bio_box bio_boxr">
+                                <div class="section_sub_header">
+                                    <h6>Programming Language Tags</h6>
+                                </div>
+                                <br/>
+                                <div class="span6 bio_box">
+                                    <% @project.programming_languages.each do |lang| %>
+                                        <span class="label label-important"><%= lang.language %></span>
+                                    <% end %>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
+                <div class="row row1">
+                    <div class="span12 bio_box">
+                       <div class="section_sub_header">
+                           <h6>Project Members</h6>
+                       </div>
+                       <br/>
+                       <% @project.users.each do |user| %>
+                        <i class="pull-left"><%= link_to_users_profile(user) %> &nbsp; &nbsp; </i>
+                       <% end %>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
