@@ -56,13 +56,11 @@ Project members:<br/>
                             <li>Project Creator: <br/><%= link_to_users_profile(@creator) %> </li>
                         </ul>
 
-                        <% if @project.accepts_requests === true %>
-                            <div class="head headbottom">
-                                <h6>Join us</h6>
-                            </div>
-                            <br/>
-                            <%= join_project_request_button(@project, current_user)%>
-                        <% end %>
+                        <div class="head headbottom">
+                            <h6>Join us</h6>
+                        </div>
+                        <br/>
+                        <%= join_project_request_button(@project, current_user)%>
                     </div>
                 </div>
                 <div class="contact">

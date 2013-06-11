@@ -92,7 +92,7 @@ Feature: A user should be able to create update delete and join projects, as wel
 		Then I should see "visitor project index"
 		When I click the "View Project" button
 		And I should be on the project show page for "visitor project index"
-		And I should see "visitor project index"
+		And I should see "Visitor_project_index@cddn.com"
 		
 	Scenario: A user that is logged in should be able to view projects index page as well as the show pages
 		Given I am a user "user_project_index" and I have a project "user project index", and I am not logged in
@@ -101,7 +101,7 @@ Feature: A user should be able to create update delete and join projects, as wel
 		Then I should see "user project index"
 		When I click the "View Project" button
 		And I should be on the project show page for "user project index"
-		And I should see "user project index"
+		And I should see "User_project_index@cddn.com"
 		
 	Scenario: A user that as a project should be able to delete said project
 		Given I am a user "delete_projects_test" and I have a project "project name", and I am logged in
