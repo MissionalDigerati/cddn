@@ -94,7 +94,7 @@ describe Project do
       project.programmings.create({programming_language_id: language.id})
       project_not_open.programmings.create({programming_language_id: language.id})
       
-      search = Project.project_index_search(1, nil)
+      search = Project.project_index_search(language.language, nil)
       search.length.should == 3
       search.include?(project_without_tag).should == false
     end
@@ -128,7 +128,7 @@ describe Project do
       project_with_tag_not_accepting.programmings.create({programming_language_id: language.id})
       project_with_tag_accepting.programmings.create({programming_language_id: language.id})
       
-      search = Project.project_index_search(1, 1)
+      search = Project.project_index_search(language.language, 1)
       search.length.should == 1
       search.include?(project_with_tag_accepting).should == true
     end

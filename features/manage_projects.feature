@@ -142,7 +142,7 @@ Feature: A user should be able to create update delete and join projects, as wel
 		When I visit the projects index
 		Then I should see "project_no_lang_project"
 		And I should see "project_with_lang_project"
-		When I select "Ruby" from "lang_select"
+		When I fill in "language" with "Ruby"
 		And I click the "Search" button
 		Then I should see "project_with_lang_project"
 		And I should not see "project_no_lang_project"
@@ -159,7 +159,7 @@ Feature: A user should be able to create update delete and join projects, as wel
 		And I should see "project_with_lang_accepting_project"
 		And I should see "project_with_lang_not_accepting_project"
 		When I check the "open_projects" checkbox
-		And I select "Ruby" from "lang_select"
+		And I fill in "language" with "Ruby"
 		And I click the "Search" button
 		Then I should see "project_with_lang_accepting_project"
 		And I should not see "no_tag_accepting_project"

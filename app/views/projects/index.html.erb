@@ -3,10 +3,10 @@
 	<%= link_to image_tag("feed-icon-28x28.png"), projects_path(format: "rss"), class: "pull-right"%>
 <br/>
 <%= form_tag projects_path, method: :get do %>
-	Search by language: <br/>
 	<%= check_box_tag :open_projects, "open_projects", params[:open_projects] %> <%= label_tag :open_projects, "Search by open projects" %> <br/>
-	<%= select_tag(:language, options_from_collection_for_select(ProgrammingLanguage.all, "id", "language", selected: params[:language]), include_blank: true, id: "lang_select") %> <br/>
-	<%= label_tag :language, "Search by programming language" %><br/>
+	Search by language: (autocompleting form)<br/>
+	<%= text_field_tag "language", '', data: {autocomplete_source: languages_auto_path} %>
+	<br/>
 	<%= submit_tag "Search" %>
 <% end %>
 <br/>
