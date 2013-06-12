@@ -1,8 +1,8 @@
 // Place all the styles related to the events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-select.event_form_select{
-	width: 92%;
+select.event_form_selects, select.form_select_box{
+	width: 92% !important;
 }
 #recurring_date_fields{
 	select{

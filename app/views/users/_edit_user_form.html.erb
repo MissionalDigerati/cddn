@@ -1,63 +1,70 @@
 <%= form_for(@user) do |f| %>
-	<br/>
-	<br/>
-	<div class="span3 offset5">
-		<div><%= f.label :first_name %>
-		<%= f.text_field :first_name %></div>
+	<div id="contact">
+		<div class="container">
+			<div class="row contact">
+				<div class="row form">
+					<div class="span6 box">
+						<div><%= f.label :first_name %>
+						<%= f.text_field :first_name %></div>
 
-		<div><%= f.label :last_name %>
-		<%= f.text_field :last_name %></div>
+						<div><%= f.label :last_name %>
+						<%= f.text_field :last_name %></div>
 
-		<div><%= f.label :nickname %>
-		<%= f.text_field :nickname %></div>
+						<div><%= f.label :nickname %>
+						<%= f.text_field :nickname %></div>
 
-		<div><%= f.label :primary_role %>
-		<%= f.text_field :primary_role %></div>
+						<div><%= f.label :primary_role %>
+						<%= f.text_field :primary_role %></div>
 
-		<div><%= f.label :church %>
-		<%= f.text_field :church %></div>
+						<div><%= f.label :church %>
+						<%= f.text_field :church %></div>
 
-		<div><%= f.label :city_province, "City/Province" %>
-		<%= f.text_field :city_province %></div>
+						<div><%= f.label :city_province, "City/Province" %>
+						<%= f.text_field :city_province %></div>
 
-		<div><%= f.label :country_id, "Country" %>
-		<%= f.select(:country_id, Country.country_drop_down, {}, class: "country_select_box") %></div>
+						<div><%= f.label :country_id, "Country" %>
+						<%= f.select(:country_id, Country.country_drop_down, {}, class: "country_select_box form_select_box") %></div>
 
-		<div><%= f.label :state_id, "State" %>
-		<%= f.select(:state_id, State.state_drop_down, {}, class: "state_select_box") %></div>
+						<div><%= f.label :state_id, "State" %>
+						<%= f.select(:state_id, State.state_drop_down, {}, class: "state_select_box form_select_box") %></div>
 
-		<div><%= f.label :bio %>
-		<%= f.text_area :bio, rows: 12 %></div>
+						<div><%= f.label :bio %>
+						<%= f.text_area :bio, rows: 12 %></div>
 
-		<div><%= f.hidden_field :please_update, value: true %><br /></div>
+						<div><%= f.hidden_field :please_update, value: true %><br /></div>
+					</div>
 
-	</div>
+					<div class="span6 box box_r">
+						Social Networking<br/>
+						Add your social networking links to your profile
+						<br/>
+						<%= f.fields_for :networks do |builder| %>
+							<%= render partial: '/layouts/network_fields', locals: {f: builder} %>
+						<% end %>
+						<%= link_to_add_fields "Add Social Network", f, :networks %>
+						
+						<br/><br/>
+						
+						Programming languages<br/>
+						<div>
+						<%= f.label :lang_tokens, "Languages" %>
+						<%= f.text_field :lang_tokens, class: "lang_tokens lang_token_field", data: {load: @user.programming_languages} %>
+						</div>
+					</div>
 
-	<div class="span3 offset2">
-		Social Networking<br/>
-		Add your social networking links to your profile
-		<br/>
-		<%= f.fields_for :networks do |builder| %>
-			<%= render partial: '/layouts/network_fields', locals: {f: builder} %>
-		<% end %>
-		<%= link_to_add_fields "Add Social Network", f, :networks %>
-		
-		<br/><br/>
-		
-		Programming languages<br/>
-		<div>
-		<%= f.label :lang_tokens, "Languages" %>
-		<%= f.text_field :lang_tokens, class: "lang_tokens", data: {load: @user.programming_languages} %>
+					<div class="clear"></div>
+
+					<div class="row submit">
+						<div class="span3 right">
+							<br/>
+							<%= f.submit "Update" %>
+						</div>
+					</div>
+
+					<br/><br/>
+
+				</div>
+			</div>
 		</div>
-		
-		<div class="clear"></div>
-		<br/>
-		<br/>
-		<div><%= f.submit "Update" %></div>
 	</div>
-	
-	
-	
 <% end %>
-<br/>
-<br/>

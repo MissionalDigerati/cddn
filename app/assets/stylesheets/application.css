@@ -17,9 +17,6 @@
  *= require font-awesome
  *= require_tree .
  */
-
-
-
 .clear{
 	display: block;
 	clear: both;
@@ -51,4 +48,7 @@
 }
 .form_container .section_header{
 	margin-bottom: 0px !important;
+}
+ul.token-input-list-facebook{
+	width: 92% !important;
 }
