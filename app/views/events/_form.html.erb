@@ -1,87 +1,126 @@
 <%= form_for(@event) do |f| %>
-	<br/>
-	<br/>
-	<div class="span3 offset5">
-		<div><%= f.label :title, class: "pull-left" %><span class="required">*</span>
-		<%= f.text_field :title %></div>
-	
-		<div><%= f.label :details %>
-		<%= f.text_area :details, rows: 5 %></div>
-	
-		<div><%= f.label :address_1, class: "pull-left" %><span class="required">*</span>
-		<%= f.text_field :address_1 %></div>
-	
-		<div><%= f.label :address_2 %>
-		<%= f.text_field :address_2 %></div>
-	
-		<div><%= f.label :city_province, "City/Province", class: "pull-left" %><span class="required">*</span>
-		<%= f.text_field :city_province %></div>
+<div id="contact">
+	<div class="container">
+		<div class="row contact">
+			<div class="row form">
+				
+				<div class="span6 box">
+						<%= f.label :title, class: "pull-left" %><span class="required">*</span>
+						<div class="clear"></div>
+						<%= f.text_field :title %>
 
-		<div><%= f.label :country_id, class: "pull-left" %><span class="required">*</span>
-		<%= f.select(:country_id, Country.country_drop_down, {}, class: "country_select_box") %></div>
-	
-		<div><%= f.label :state_id, class: "pull-left" %><span class="required">*</span>
-		<%= f.select(:state_id, State.state_drop_down, {}, class: "state_select_box") %></div>
-	
-		<div><%= f.label :zip_code, class: "pull-left" %><span class="required">*</span>
-		<%= f.text_field :zip_code %></div>
-		
-		<div><%= f.label :event_date, class: "pull-left" %><span class="required">*</span>
-		<%= f.text_field :event_date, value: @event.event_dates.last.date_of_event.to_s if @event.event_dates.last.present? %></div>
-		
-		<div><%= f.label :event_time, class: "pull-left" %><span class="required">*</span>
-		<%= f.text_field :event_time, value: @event.event_dates.last.time_of_event.to_s if @event.event_dates.last.present? %></div>
+						<br/><br/>
 
-		<div>
-			<%= f.label :online_event, "Online Event?" %><span class="required">*</span>
-			<%= f.radio_button :online_event, false, checked: true, class: "pull-left" %>
-			<%= f.label :online_event, "No", class: "pull-left"%>
-			<%= f.radio_button :online_event, true, class: "pull-left" %>
-			<%= f.label :online_event, "Yes", class: "pull-left" %>
-		<br/><br/>
-		</div>
-		
-		<div>
-			<%= f.label :recurring_date, "Recurring Event?" %><span class="required">*</span>
-			<%= f.radio_button :recurring_date, false, checked: true, class: "pull-left" %>
-			<%= f.label :recurring_date, "No", class: "pull-left"%>
-			<%= f.radio_button :recurring_date, true, class: "pull-left" %>
-			<%= f.label :recurring_date, "Yes", class: "pull-left" %>
-			<br/>	<br/>
-		</div>
-		
-		<div id="recurring_date_fields">
-			<%= f.label :recurring_interval, class: "pull-left" %><span class="required">*</span>
-			<%= f.select(:recurring_interval, Event::INTERVAL, include_blank: true) %>
-			
-			<%= f.label :recurring_schedule, class: "pull-left" %><span class="required">*</span>
-			<%= f.select(:recurring_schedule, Event::TIME.map{|p| [ p.capitalize, p ] }, include_blank: true) %>
-		</div>
-		
-		
-		<br/>
+						<%= f.label :details %>
+						<div class="clear"></div>
+						<%= f.text_area :details, rows: 5 %>
 
+						<br/><br/>
+
+						<%= f.label :address_1, class: "pull-left" %><span class="required">*</span>
+						<div class="clear"></div>
+						<%= f.text_field :address_1 %>
+
+						<br/><br/>
+
+						<%= f.label :address_2 %>
+						<div class="clear"></div>
+						<%= f.text_field :address_2 %>
+
+						<br/><br/>
+
+						<%= f.label :city_province, "City/Province", class: "pull-left" %><span class="required">*</span>
+						<div class="clear"></div>
+						<%= f.text_field :city_province %>
+
+						<br/><br/>
+
+						<%= f.label :country_id, class: "pull-left" %><span class="required">*</span>
+						<div class="clear"></div>
+						<%= f.select(:country_id, Country.country_drop_down, {}, class: "country_select_box event_form_select") %>
+
+						<br/><br/>
+
+						<%= f.label :state_id, class: "pull-left" %><span class="required">*</span>
+						<div class="clear"></div>
+						<%= f.select(:state_id, State.state_drop_down, {}, class: "state_select_box event_form_select") %>
+
+						<br/><br/>
+
+						<%= f.label :zip_code, class: "pull-left" %><span class="required">*</span>
+						<div class="clear"></div>
+						<%= f.text_field :zip_code %>
+
+						<br/><br/>
+
+						<%= f.label :event_date, class: "pull-left" %><span class="required">*</span>
+						<div class="clear"></div>
+						<%= f.text_field :event_date, value: @event.event_dates.last.date_of_event.to_s if @event.event_dates.last.present? %>
+
+						<br/><br/>
+
+						<%= f.label :event_time, class: "pull-left" %><span class="required">*</span>
+						<div class="clear"></div>
+						<%= f.text_field :event_time, value: @event.event_dates.last.time_of_event.to_s if @event.event_dates.last.present? %>
+
+						<br/><br/>
+
+						<div>
+						    <%= f.label :online_event, "Online Event?" %><span class="required">*</span>
+						    <%= f.radio_button :online_event, false, checked: true, class: "pull-left" %>
+						    <%= f.label :online_event, "No", class: "pull-left radio_button_label_spacing radio_button_spacing"%>
+						    <%= f.radio_button :online_event, true, class: "pull-left" %>
+						    <%= f.label :online_event, "Yes", class: "pull-left radio_button_spacing" %>
+							<br/><br/>
+						</div>
+
+						<div>
+						    <%= f.label :recurring_date, "Recurring Event?" %><span class="required">*</span>
+						    <%= f.radio_button :recurring_date, false, checked: true, class: "pull-left" %>
+						    <%= f.label :recurring_date, "No", class: "pull-left radio_button_spacing radio_button_label_spacing"%>
+						    <%= f.radio_button :recurring_date, true, class: "pull-left" %>
+						    <%= f.label :recurring_date, "Yes", class: "pull-left radio_button_spacing" %>
+						    <br/><br/>
+						</div>
+
+						<div id="recurring_date_fields">
+						    <%= f.label :recurring_interval, class: "pull-left" %><span class="required">*</span>
+						    <div class="clear"></div>
+						    <%= f.select(:recurring_interval, Event::INTERVAL, include_blank: true) %>
+
+						    <br/><br/>
+						    
+						    <%= f.label :recurring_schedule, class: "pull-left" %><span class="required">*</span>
+						    <div class="clear"></div>
+						    <%= f.select(:recurring_schedule, Event::TIME.map{|p| [ p.capitalize, p ] }, class: "event_form_select", include_blank: true) %>
+						</div>
+				</div>
+
+				<div class="span6 box box_r">
+					Social Networking<br/>
+					Add your social networking links to your profile
+					<br/>
+					<%= f.fields_for :networks do |builder| %>
+						<%= render partial: '/layouts/network_fields', locals: {f: builder} %>
+					<% end %>
+					<%= link_to_add_fields "Add Social Network", f, :networks %>
+					<br/><br/>
+
+					Programming languages<br/>
+					<div>
+					    <%= f.label :lang_tokens, "Languages" %>
+					    <%= f.text_field :lang_tokens, class: "lang_tokens", data: {load: @event.programming_languages} %>
+					</div>
+					<br/>
+					<span class="required">*</span> = Required
+				</div>
+			</div>
+
+			<div class="span3 right">
+			    <div><%= f.submit "Submit" %></div>
+			</div>
+
+		</div>
 	</div>
-		
-	<div class="span3 offset2">
-		Social Networking<br/>
-		Add your social networking links to your profile
-		<br/>
-		<%= f.fields_for :networks do |builder| %>
-			<%= render partial: '/layouts/network_fields', locals: {f: builder} %>
-		<% end %>
-		<%= link_to_add_fields "Add Social Network", f, :networks %>
-		<br/><br/>
-		
-		Programming languages<br/>
-		<div>
-		<%= f.label :lang_tokens, "Languages" %>
-		<%= f.text_field :lang_tokens, class: "lang_tokens", data: {load: @event.programming_languages} %>
-		</div>
-		<br/>
-		
-		<div><%= f.submit "Submit" %></div>
-		<span class="required">*</span> = Required
-	</div>
-
+</div>
 <% end %>

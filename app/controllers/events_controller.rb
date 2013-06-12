@@ -43,6 +43,7 @@ class EventsController < ApplicationController
           flash[:notice] = "Your Event has been submitted for approval, and will not be visible until approved."
         end
       else
+        @event.event_dates.build
         format.html {render action: "new"}
         flash[:notice] = @event.errors.full_messages.to_sentence
       end

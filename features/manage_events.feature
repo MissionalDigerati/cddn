@@ -14,7 +14,7 @@ Feature: A logged in user should be able to create events as state they are atte
 		And I fill in "Zip code" with "95123"
 		And I fill in "event_event_date" with current time
 		And I fill in "event_event_time" with current time
-		And I click the "Submit" button
+		And I click the "Submit" link
 		Then I should see "Your Event has been created!"
 		And I should be on the event show page for "Rails meet up"
 		

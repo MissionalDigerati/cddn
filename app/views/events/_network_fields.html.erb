@@ -1,13 +1,27 @@
 <fieldset class="networking_attributes">
 	<br/>
 	<%= f.label :social_media_id, "Service", class: "pull-left" %><span class="required">*</span>
+	<div class="clear"></div>
 	<%= f.select(:social_media_id, network_service_select) %>
+
+	<br/><br/>
+
 	<%= f.label :account_name, class: "pull-left" %><span class="required">*</span>
+	<div class="clear"></div>
 	<%= f.text_field :account_name %>
+
+	<br/><br/>
+
+
 	<%= f.label :account_url, class: "pull-left" %><span class="required">*</span>
+	<div class="clear"></div>
 	<%= f.text_field :account_url %>
+
+	<br/><br/>
+
 	<%= f.hidden_field :_destroy, class: "remove_boolean"%>
 	<%= link_to "remove", '#', class: "remove_fields btn btn-small btn-info", id: "remove_button" %>
+	<br/><br/>
 	<div class="clear"></div>
 </fieldset>
 

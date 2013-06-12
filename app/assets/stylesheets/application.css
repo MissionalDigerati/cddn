@@ -43,3 +43,12 @@
 .center_text{
 	margin: auto auto;
 }
+.radio_button_label_spacing{
+	padding-right: 3%;
+}
+.radio_button_spacing{
+	padding-left: 1%;
+}
+.form_container .section_header{
+	margin-bottom: 0px !important;
+}
