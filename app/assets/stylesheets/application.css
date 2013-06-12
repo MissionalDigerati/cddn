@@ -52,3 +52,11 @@
 ul.token-input-list-facebook{
 	width: 92% !important;
 }
+.center_div{
+	margin:0 auto !important;
+	float:none !important;
+}
+.devise_forms input[type=email], 
+.devise_forms input[type=password]{
+	width: 92% !important;
+}
