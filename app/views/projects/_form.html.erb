@@ -1,51 +1,75 @@
 
 <%= form_for(@project) do |f| %>
-	<br/>
-	<br/>
-	<div class="span3 offset5">
-		<div><%= f.label :name, class: "pull-left" %><span class="required">*</span>
-		<%= f.text_field :name %></div>
-	
-		<div><%= f.label :description, class: "pull-left" %><span class="required">*</span>
-		<%= f.text_area :description, rows: 5 %></div>
-	
-		<div><%= f.label :license_name, class: "pull-left" %>
-		<%= f.text_field :license_name, data: {autocomplete_source: licenses_auto_path} %></div>
-	
-		<div><%= f.label :organization, class: "pull-left" %>
-		<%= f.text_field :organization %></div>
-	
-		<div><%= f.label :accepts_requests, "Accept requests?" %>
-			<%= f.radio_button :accepts_requests, true, checked: true, class: "pull-left" %></div>
-			<%= f.label :accepts_requests, "Yes", class: "pull-left" %>
-		<%= f.radio_button :accepts_requests, false, class: "pull-left" %>
-		<%= f.label :accepts_requests, "No"%>
-		
-		<br/>
-	</div>
-		
-		
-	<div class="span3 offset2">
-		Social Networking<br/>
-		Add your social networking links to your profile
-		<br/>
-		<%= f.fields_for :networks do |builder| %>
-			<%= render partial: '/layouts/network_fields', locals: {f: builder} %>
-		<% end %>
-		<%= link_to_add_fields "Add Social Network", f, :networks %>
-		<br/><br/>
-		
-		Programming languages<br/>
-		<div>
-		<%= f.label :lang_tokens, "Languages" %>
-		<%= f.text_field :lang_tokens, class: "lang_tokens", data: {load: @project.programming_languages} %>
+<div id="contact">
+	<div class="container">
+		<div class="row contact">
+			<div class="row form">
+				<div class="span6 box">
+					<%= f.label :name, class: "pull-left" %><span class="required">*</span>
+					<div class="clear"></div>
+					<%= f.text_field :name %>
+
+					<br/><br/>
+				
+					<%= f.label :description, class: "pull-left" %><span class="required">*</span>
+					<div class="clear"></div>
+					<%= f.text_area :description, rows: 5 %>
+
+					<br/><br/>
+				
+					<%= f.label :license_name, class: "pull-left" %>
+					<div class="clear"></div>
+					<%= f.text_field :license_name, data: {autocomplete_source: licenses_auto_path} %>
+
+					<br/><br/>
+				
+					<%= f.label :organization, class: "pull-left" %>
+					<div class="clear"></div>
+					<%= f.text_field :organization %>
+
+					<br/><br/>
+				
+					<%= f.label :accepts_requests, "Accept requests?" %>
+					<div class="clear"></div>
+					<%= f.radio_button :accepts_requests, true, checked: true, class: "pull-left" %>
+					<%= f.label :accepts_requests, "Yes", class: "pull-left radio_button_label_spacing radio_button_spacing" %>
+					<%= f.radio_button :accepts_requests, false, class: "pull-left" %>
+					<%= f.label :accepts_requests, "No", class: "pull-left radio_button_spacing"%>
+					
+					<br/>
+				</div>
+					
+					
+				<div class="span6 box box_r">
+					Social Networking<br/>
+					Add your social networking links to your profile
+					<br/>
+					<%= f.fields_for :networks do |builder| %>
+						<%= render partial: '/layouts/network_fields', locals: {f: builder} %>
+					<% end %>
+					<%= link_to_add_fields "Add Social Network", f, :networks %>
+					<br/><br/>
+					
+					Programming languages<br/>
+					
+					<%= f.label :lang_tokens, "Languages" %>
+					<%= f.text_field :lang_tokens, class: "lang_tokens", data: {load: @project.programming_languages} %>
+					
+					<br/>
+					
+					<span class="required">*</span> = Required
+				</div>
+				<div class="clear"></div>
+
+				<div class="row submit">
+					<div class="span3 right">
+						<br/>
+					    <div><%= f.submit "Submit" %></div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<br/>
-		
-		<div><%= f.submit "Submit" %></div>
-		<span class="required">*</span> = Required
 	</div>
-		
-	
+</div>	
 	
 <% end %>
