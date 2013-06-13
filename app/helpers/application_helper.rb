@@ -28,6 +28,10 @@ module ApplicationHelper
       ""
     end
   end
+
+  def online_or_in_person(boolean)
+    boolean === true ? "Online Event" : "In Person"
+  end
   
   def network_service_select
     SocialMedia.all.collect {|p| [ p.service, p.id ] }

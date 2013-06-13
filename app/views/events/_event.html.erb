@@ -6,12 +6,12 @@
 	</tr>
 <% else %>
 	<tr>
-		<td><%= event.title %></td>
-		<td><%= event.city_province %></td>
-		<td><%= State.display_state_name(event.state_id) %></td>
-		<td><%= display_country_name(event.country_id) %></td>
-		<td><%= yes_or_no(event.online_event) %></td>
-		<td><%= date_format(event.event_dates.last) %></td>
-		<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %> <%= attend_event_button(current_user.id, event) if user_signed_in? %></td>
+		<td>
+			<%= link_to event.title.titleize, event_path(event) %> <span class="slash">/</span> <%= date_format(event.event_dates.last) %> <span class="slash">/</span> <%= online_or_in_person(event.online_event) %>
+			<br/>
+			<%= event.city_province.titleize %>, <%= State.display_state_name(event.state_id) %>, <%= display_country_name(event.country_id) %> 
+		</td>
+
+		<td><%= link_to "View Event", event_path(event), class: "theme_button" %> </td>
 	</tr>
 <% end %>

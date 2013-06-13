@@ -130,7 +130,7 @@ Feature: An admin should be able to login as well as well as delete and suspend 
 		And I should not see "Unapproved_user_2" within "[@class='needing_approval']"
 		When I click the "Admin logout" button
 		And I visit the users events index page
-		Then I should see "party asdfasdf"
+		Then I should see "Party Asdfasdf"
 		 
 	Scenario: An admin should be able to view events that have not been approved
 		Given I am a user "Not_an_approved_event_user", and I have an event "unapproved event title", and I am not logged in, and I am not approved for event creation

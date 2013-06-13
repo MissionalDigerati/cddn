@@ -49,6 +49,12 @@ describe ApplicationHelper do
       yes_or_no(false).should == "No"
       yes_or_no(nil).should == ""
     end
+
+    it "should return if it is an online or in person event based on the boolean" do
+      online_or_in_person(true).should == "Online Event"
+      online_or_in_person(false).should == "In Person"
+      online_or_in_person(nil).should == "In Person"
+    end
     
     it "should return a link the the users profile when the user instance is provided. It will return nickname if available or email if not" do
       user_with_nickname = FactoryGirl.create(:defaulted_user, nickname: "The Master")

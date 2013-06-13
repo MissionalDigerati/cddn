@@ -73,20 +73,20 @@ Feature: A logged in user should be able to create events as state they are atte
 		And I am on the home page
 		When I click the "all_events" link
 		Then I should be on the events index page
-		And I should see "Testing event index"
+		And I should see "Testing Event Index"
 	
 	Scenario: A visitor that is not logged in should be able to view the event index page
 		Given I am on the home page
 		And I have an event "visitor event index test"
 		When I visit the events index page
-		Then I should see "visitor event index test"
+		Then I should see "Visitor Event Index Test"
 		
 	Scenario: A user that is logged in should be able to visit a show page for their own event
 		Given I am a user "event_show_test", and I have an event "show_testing_self_test", and I am logged in
 		And I am on the home page
 		When I click the "all_events" button
 		Then I should be on the events index page
-		And I should see "show_testing_self_test"
+		And I should see "Show Testing Self Test"
 		When I click the "View Event" button
 		Then I should see "Created By: event_show_test@cddn.com"
 		
@@ -94,7 +94,7 @@ Feature: A logged in user should be able to create events as state they are atte
 		Given I am a user "event_show_test_for_visitor", and I have an event "show_testing_visitor_test", and I am not logged in 
 		And I am on the home page
 		When I visit the events index page
-		Then I should see "show_testing_visitor_test"
+		Then I should see "Show Testing Visitor Test"
 		When I click the "View Event" button
 		Then I should see "Created By: event_show_test_for_visitor@cddn.com"
 		
@@ -150,8 +150,8 @@ Feature: A logged in user should be able to create events as state they are atte
 		And I am a user "approved_user", and I have an event "approved event", and I am not logged in 
 		And I am on the home page
 		When I visit the events index page
-		Then I should see "approved event"
-		And I should not see "event not approved"
+		Then I should see "Approved Event"
+		And I should not see "Event Not Approved"
 	
 	Scenario: You should only be able to access the show page for events that are created by approved users
 		Given I am a user "Unapproved_event_user", and I have an event "un approved event", and I am not logged in, and I am not approved for event creation
@@ -168,7 +168,8 @@ Feature: A logged in user should be able to create events as state they are atte
 		Given I am a user "attend_event_test_1", and I have an event "attend this event", and I am not logged in 
 		And I am a user "attend_event_test_2" and I am logged in
 		When I click the "all_events" button
-		Then I should see "attend this event"
+		And I click the "View Event" button
+		Then I should see "Attend This Event"
 		When I click the "Attend Event" button 
 		Then I should be on the show page for the "attend this event" event
 		And I should see "You are now attending Attend this event"
@@ -184,23 +185,23 @@ Feature: A logged in user should be able to create events as state they are atte
 		And I am a user "event_tag_search_2", and I have an event "stupid event", and I have a smalltalk tag, and I am not logged in
   		And I am on the home page
 		When I click the "all_events" button
-  		Then I should see "fun event"
-		And I should see "stupid event"
+  		Then I should see "Fun Event"
+		And I should see "Stupid Event"
 		When I fill in "language" with "ruby"
 		And I click the "Search" button
-		Then I should see "fun event"
-		And I should not see "stupid event"
+		Then I should see "Fun Event"
+		And I should not see "Stupid Event"
 		When I fill in "language" with "smalltalk"
 		And I click the "Search" button
-		Then I should see "stupid event"
-		And I should not see "fun event"
+		Then I should see "Stupid Event"
+		And I should not see "Fun Event"
 		
 	Scenario: The events index page should only display upcoming events not past events
 		Given I am a user "date_event_user", and I have an event "upcoming_event", and I am logged in
-		And I am a user "date_event_user_2", and I have an event "past_event", that is a past event, that is not logged in
+		And I am a user "date_event_user_2", and I have an event "this_is_a_past_event", that is a past event, that is not logged in
 		When I click the "all_events" button
-		Then I should see "upcoming_event"
-		And I should not see "past_event"
+		Then I should see "Upcoming Event"
+		And I should not see "This Is A Past Event"
 		
 	Scenario: Only past events should be viewable on the view past events page. 
 		Given I am a user "date_event_user", and I have an event "upcoming_event", and I am logged in
