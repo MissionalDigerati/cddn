@@ -19,5 +19,9 @@ module ProjectsHelper
       link_to "Request to Join Project", join_project_path(project), method: :post, class: "btn"
     end
   end
+
+  def organization_name(name)
+    name.present? ? name.capitalize : "N/A"
+  end
   
 end

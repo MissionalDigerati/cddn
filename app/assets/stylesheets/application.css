@@ -60,3 +60,26 @@ ul.token-input-list-facebook{
 .devise_forms input[type=password]{
 	width: 92% !important;
 }
+.slash{
+	color: #999;
+	font-size: 15px;
+	font-weight: bold;
+}
+.theme_button{
+	float: right;
+	text-transform: uppercase;
+	color: #fff;
+	background: #187CCC;
+	font-size: 15px;
+	padding: 4px 12px;
+	border: 0 none;
+	border-radius: 3px;
+	-webkit-transition: background linear .2s, box-shadow linear .2s;
+	-moz-transition: background linear .2s, box-shadow linear .2s;
+	-o-transition: background linear .2s, box-shadow linear .2s;
+	transition: background linear .2s, box-shadow linear .2s;
+}
+.theme_button:hover{
+	background: #252528;
+	color: white;
+}

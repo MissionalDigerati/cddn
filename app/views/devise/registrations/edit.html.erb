@@ -4,12 +4,13 @@
 		    <h3>Edit <%= resource_name.to_s.humanize %> Account Settings</h3>
 		</div>
 	</div>
+	<br/><br/>
+	<%= devise_error_messages! %>
 	<div id="contact">
 		<div class="container devise_forms">
 			<div class="row contact">
 				<div class="row form">
 					<div class="span6 center_div">
-						  <%= devise_error_messages! %>
 
 						  <%= f.label :email, class: "pull-left" %><span class="required">*</span>
 						  <div class="clear"></div>
