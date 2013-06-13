@@ -161,13 +161,13 @@ Feature: An admin should be able to login as well as well as delete and suspend 
 		Given I am a user "project_unapproved" and I have a project "unapproved_project", that is not approved for project creation, and I am not logged in
 		And I have an admin account "project_approval test" and I am logged in
 		When I visit the projects index
-		Then I should not see "unapproved_project"
+		Then I should not see "Unapproved_project"
 		When I click the "Manage Projects" button
 		Then I should see "project_unapproved@cddn.com"
 		When I click the "Approve for Projects" button
 		Then I should see "User has been approved to post projects."
 		When I visit the projects index
-		Then I should see "unapproved_project"
+		Then I should see "Unapproved_project"
 		
 	Scenario: A visitor to the site that is not logged in should not be able to access the project approval page
 		Given I am on the home page

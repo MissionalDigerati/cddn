@@ -89,7 +89,7 @@ Feature: A user should be able to create update delete and join projects, as wel
 		Given I am a user "visitor_project_index" and I have a project "visitor project index", and I am not logged in
 		And I am on the home page
 		When I visit the projects index
-		Then I should see "visitor project index"
+		Then I should see "Visitor project index"
 		When I click the "View Project" button
 		And I should be on the project show page for "visitor project index"
 		And I should see "Visitor_project_index@cddn.com"
@@ -98,7 +98,7 @@ Feature: A user should be able to create update delete and join projects, as wel
 		Given I am a user "user_project_index" and I have a project "user project index", and I am not logged in
 		And I am a user "visitor" and I am logged in
 		When I visit the projects index
-		Then I should see "user project index"
+		Then I should see "User project index"
 		When I click the "View Project" button
 		And I should be on the project show page for "user project index"
 		And I should see "User_project_index@cddn.com"
@@ -128,24 +128,24 @@ Feature: A user should be able to create update delete and join projects, as wel
 		And I am a user "not_accepting_requests" and I have a project "not_accepting_requests_project", that is not accepting requests, and I am not logged in
 		And I am on the home page
 		When I visit the projects index
-		Then I should see "accepting_requests_project"
-		And I should see "not_accepting_requests_project"
+		Then I should see "Accepting_requests_project"
+		And I should see "Not_accepting_requests_project"
 		When I check the "open_projects" checkbox
 		And I click the "Search" button
-		Then I should see "accepting_requests_project"
-		And I should not see "not_accepting_requests_project"
+		Then I should see "Accepting_requests_project"
+		And I should not see "Not_accepting_requests_project"
 		
 	Scenario: A user should be able to search for projects based on language tags
 		Given I am a user "project_no_lang" and I have a project "project_no_lang_project", and I am not logged in
 		And I am a user "project_with_lang" and I have a project "project_with_lang_project", that has a language tag, and I am not logged in
 		And I am on the home page
 		When I visit the projects index
-		Then I should see "project_no_lang_project"
-		And I should see "project_with_lang_project"
+		Then I should see "Project_no_lang_project"
+		And I should see "Project_with_lang_project"
 		When I fill in "language" with "Ruby"
 		And I click the "Search" button
-		Then I should see "project_with_lang_project"
-		And I should not see "project_no_lang_project"
+		Then I should see "Project_with_lang_project"
+		And I should not see "Project_no_lang_project"
 		
 	Scenario: A user should be able to filter by both programming language as well as projects accepting requests
 		Given I am a user "no_tag_accepting" and I have a project "no_tag_accepting_project", and I am not logged in
@@ -154,17 +154,17 @@ Feature: A user should be able to create update delete and join projects, as wel
 		And I am a user "project_with_lang_not_accepting" and I have a project "project_with_lang_not_accepting_project", that has a language tag, that is not accepting requests, and I am not logged in
 		And I am on the home page
 		When I visit the projects index
-		Then I should see "no_tag_accepting_project"
-		And I should see "no_tag_not_accepting_project"
-		And I should see "project_with_lang_accepting_project"
-		And I should see "project_with_lang_not_accepting_project"
+		Then I should see "No_tag_accepting_project"
+		And I should see "No_tag_not_accepting_project"
+		And I should see "Project_with_lang_accepting_project"
+		And I should see "Project_with_lang_not_accepting_project"
 		When I check the "open_projects" checkbox
 		And I fill in "language" with "Ruby"
 		And I click the "Search" button
-		Then I should see "project_with_lang_accepting_project"
-		And I should not see "no_tag_accepting_project"
-		And I should not see "no_tag_not_accepting_project"
-		And I should not see "project_with_lang_not_accepting_project"
+		Then I should see "Project_with_lang_accepting_project"
+		And I should not see "No_tag_accepting_project"
+		And I should not see "No_tag_not_accepting_project"
+		And I should not see "Nroject_with_lang_not_accepting_project"
 		
 	Scenario: A user that is logged in should be able to view their my projects page
 		Given I am a user "user_one" and I have a project "other_project", and I am not logged in

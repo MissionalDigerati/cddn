@@ -8,7 +8,7 @@ Feature: A user that is logged in should be able to join projects so long as the
 		And I am a user "request_project_user" and I am logged in
 		And I am on the home page
 		When I visit the projects index
-		Then I should see "accepting_requests_project"
+		Then I should see "Accepting_requests_project"
 		When I click the "View Project" button
 		And I should be on the project show page for "accepting_requests_project"
 		And I should see "Project Creator: Project_creator"
@@ -61,7 +61,7 @@ Feature: A user that is logged in should be able to join projects so long as the
 		Given I am a user "project_creator" and I have a project "not_accepting_requests", that is not accepting requests, and I am not logged in
 		And I am a user "request_project_user" and I am logged in
 		When I visit the projects index
-		Then I should see "not_accepting_requests"
+		Then I should see "Not_accepting_requests"
 		When I click the "View Project" button
 		And I should be on the project show page for "not_accepting_requests"
 		And I should not see "Request to Join Project"
@@ -70,7 +70,7 @@ Feature: A user that is logged in should be able to join projects so long as the
 		Given I am a user "project_creator" and I have a project "not_accepting_requests", that is not accepting requests, and I am not logged in
 		And I am a user "leaving_project_user", that is a member of the project "not_accepting_requests", and I am logged in
 		When I visit the projects index
-		Then I should see "not_accepting_requests"
+		Then I should see "Not_accepting_requests"
 		When I click the "View Project" button
 		And I should be on the project show page for "not_accepting_requests"
 		When I click the "Leave Project" button
