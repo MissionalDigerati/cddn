@@ -37,7 +37,7 @@ Feature: A user should be able to add social networking accounts and links to th
 		Given I am a logged in user "event_network_edit" and I have an event "event networking edit" with a network "facebook" 
 		And I am on the home page
 		When I click the "user_my_events" link
-		And I click the "Edit Event" button for "event networking edit"
+		And I click the "Edit Event" button for "Event Networking Edit"
 		And I select "Facebook" from "Service"
 		And I fill in "Account name" with "twitter"
 		And I fill in "Account url" with "http://www.twitter.com"
@@ -70,8 +70,7 @@ Feature: A user should be able to add social networking accounts and links to th
 		Given I am a logged in user "event_network_remove" and I have an event "event networking remove" with a network "twitter" 
 		And I try to view the show page for the "event networking remove" event
 		And I should see "network_name: twitter"
-		When I visit the my events page for "event_network_remove"  
-		And I click the "Edit Event" button
+		When I try to access the edit event page for "event networking remove"
 		And I click the "remove_networks_button" button
 		And I click the "Submit" button
 		Then I should see "Your event was successfully updated."

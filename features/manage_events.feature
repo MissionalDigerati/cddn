@@ -37,7 +37,7 @@ Feature: A logged in user should be able to create events as state they are atte
 		Given I am a user "event_update_redirect", and I have an event "great_event", and I am logged in
 		And I am on the home page
 		When I click the "user_my_events" button
-		And I click the "Edit Event" button for "great_event"
+		And I click the "Edit Event" button for "Great Event"
 		And I fill in "Title" with "better_event"
 		And I click the "Submit" button
 		Then I should see "Your event was successfully updated."
@@ -47,7 +47,7 @@ Feature: A logged in user should be able to create events as state they are atte
 		Given I am a user "unapproved_event_update_redirect", and I have an event "unapproved_redirect", and I am logged in, and I am not approved for event creation
 		And I am on the home page
 		When I click the "user_my_events" button
-		And I click the "Edit Event" button for "unapproved_redirect"
+		And I click the "Edit Event" button for "Unapproved Redirect"
 		And I fill in "Title" with "still_not_approved"
 		And I click the "Submit" button
 		Then I should see "Your event has been update, and is still pending approval, and will not be visible until approved."
@@ -102,7 +102,7 @@ Feature: A logged in user should be able to create events as state they are atte
 		Given I am a user "my_events_show", and I have an event "my_events_show_test", and I am logged in
 		And I am on the home page
 		When I click the "user_my_events" button
-		And I should see "my_events_show_test" 
+		And I should see "My Events Show Test" 
 		
 	Scenario: A visitor that is not logged in should not be able to view a users my events index page
 		Given I am a user "my_event_visitor", and I have an event "my_event_visitor_test", and I am not logged in 
@@ -116,11 +116,11 @@ Feature: A logged in user should be able to create events as state they are atte
 		And I am a user "testing123", and I have an event "testing999", and I am logged in
 		And I am on the home page
 		When I click the "user_my_events" button
-		Then I should see "testing999"
-		And I should not see "my_event_user_test"
+		Then I should see "Testing999"
+		And I should not see "My Event User Test"
 		When I try to access the my events page for "my_event_user"
-		Then I should see "testing999"
-		And I should not see "my_event_user_test"
+		Then I should see "Testing999"
+		And I should not see "My Event User Test"
 		
 	Scenario: A visitor that is not logged in should not be to edit another users event
 		Given I am a user "edit_event_visitor", and I have an event "edit_event_visitor_test", and I am not logged in 
@@ -141,9 +141,9 @@ Feature: A logged in user should be able to create events as state they are atte
   	Given I am a user "my_events_delete", and I have an event "my_events_delete_test", and I am logged in
   	And I am on the home page
   	When I click the "user_my_events" button
-  	And I should see "my_events_delete_test"
-		When I click the "Delete Event" button for "my_events_delete_test"
-		Then I should see "Your event was successfully deleted."
+  	And I should see "My Events Delete Test"
+	When I click the "Delete Event" button for "My Events Delete Test"
+	Then I should see "Your event was successfully deleted."
 
 	Scenario: Only events that are created by an approved user should be publicly viewable 
 		Given I am a user "Unapproved_event_user", and I have an event "event not approved", and I am not logged in, and I am not approved for event creation
@@ -174,7 +174,7 @@ Feature: A logged in user should be able to create events as state they are atte
 		Then I should be on the show page for the "attend this event" event
 		And I should see "You are now attending Attend this event"
 		When I click the "user_my_events" button
-		Then I should see "attend this event"
+		Then I should see "Attend This Event"
 		When I click the "Un-attend Event" button
 		Then I should be on the show page for the "attend this event" event
 		And I should see "You are no longer attending Attend this event"
