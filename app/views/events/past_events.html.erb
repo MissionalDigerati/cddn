@@ -1,38 +1,39 @@
 <div class="container">
-	Listing past events
-	<br/>
 
-	<%= form_tag past_events_path, method: :get do %>
-		Search by language: <br/>
-		<div class="input-append">
-			<%= text_field_tag "language", '', data: {autocomplete_source: languages_auto_path} %>
-			<%= submit_tag "Search", class: "btn event_search_button" %>
+	<div class="form_container pull-left">
+		<div class="section_header">
+		    <h3>Listing Past Events</h3>
+		    <br/>
+		    <%= event_search_pill %>
+		    <br/><br/>
 		</div>
-	<% end %>
+	</div>
 
-	<%= event_search_pill %>
+	<div class="pull-right">
+		<%= form_tag past_events_path, method: :get do %>
+			Search by language: <br/>
+			<div class="input-append">
+				<%= text_field_tag "language", '', data: {autocomplete_source: languages_auto_path} %>
+				<%= submit_tag "Search", class: "btn event_search_button" %>
+			</div>
+		<% end %>
+	</div>
 
 	<br/><br/>
-	<table id="events" class="table table-striped table-bordered">
+	<table id="events" class="table table-striped table-hover">
 		<tbody>
 		<tr>
-			<td>Title</td>
-			<td>City/Province</td>
-			<td>State</td>
-			<td>Country</td>
-			<td>Online Event</td>
-			<td>Date (m/d/y)</td>
-			<td>Action</td>
+			<td>Event <span class="slash">/</span> Date <span class="slash">/</span> Online Event? <span class="slash">/</span> Location</td>
+			<td><span class="pull-right">Action</span></td>
 		</tr>
 		<% @past_events.each do |event| %>
 			<tr>
-				<td><%= event.title %></td>
-				<td><%= event.city_province %></td>
-				<td><%= State.display_state_name(event.state_id) %></td>
-				<td><%= display_country_name(event.country_id) %></td>
-				<td><%= yes_or_no(event.online_event) %></td>
-				<td><%= date_format(event.event_dates.first) %></td>
-				<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %> </td>
+				<td>
+					<%= link_to event.title.titleize, event_path(event) %> <span class="slash">/</span> <%= date_format(event.event_dates.last) %> <span class="slash">/</span> <%= online_or_in_person(event.online_event) %>
+					<br/>
+					<%= event.city_province.titleize %>, <%= State.display_state_name(event.state_id) %>, <%= display_country_name(event.country_id) %> 
+				</td>
+				<td><%= link_to "View Event", event_path(event), class: "theme_button" %> </td>
 			</tr>
 		<% end %>	
 		</tbody>

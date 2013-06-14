@@ -11,7 +11,6 @@
 			<br/>
 			<%= event.city_province.titleize %>, <%= State.display_state_name(event.state_id) %>, <%= display_country_name(event.country_id) %> 
 		</td>
-
 		<td><%= link_to "View Event", event_path(event), class: "theme_button" %> </td>
 	</tr>
 <% end %>
