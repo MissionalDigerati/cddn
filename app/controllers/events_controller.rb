@@ -81,10 +81,14 @@ class EventsController < ApplicationController
   end
   
   def destroy
-    @event.destroy
-    respond_to do |format|
-      format.html {redirect_to my_events_user_path(current_user)}
-      flash[:notice] = "Your event was successfully deleted."
+    if current_admin || @event.attendees.where(attendee_type: "creator").first.user_id == current_user.id
+      @event.destroy
+        respond_to do |format|
+        format.html {redirect_to my_events_user_path(current_user)}
+        flash[:notice] = "Your event was successfully deleted."
+      end
+    else
+      redirect_home
     end
   end
   

@@ -240,8 +240,3 @@ Feature: A logged in user should be able to create events as state they are atte
   		And I click the "Search" button
   		Then I should see "Stupid Event"
   		And I should not see "Fun Event"
-		
-		
-		
-		
-		

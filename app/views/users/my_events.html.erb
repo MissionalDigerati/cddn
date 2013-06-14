@@ -2,56 +2,103 @@
 
 	<div class="row">
 		<div class="span6">
-			Events created by me:<br/>
+			<div class="form_container pull-left">
+				<div class="section_header">
+				    <h3>Events Created By Me</h3>
+				    <br/><br/>
+				</div>
+			</div>
 
-			<table class="table table-striped table-bordered">
+			<table class="table table-striped table-hover">
 				<tr>
-					<td>Title</td>
-					<td>Date</td>
-					<td>Action</td>
+					<td>Title <span class="slash">/</span> Date</td>
+					<td><span class="pull-right">Action</span></td>
 				</tr>
 				<% @created_by_user.each do |event| %>
 					<tr>
-						<td><%= event.title %></td>
-						<td><%= date_format(event.event_dates.last) %></td>
-						<td><%= view_event(event) %> <%= link_to "Edit Event", edit_event_path(event), class: "btn btn-mini btn-success" %> <%= link_to "Delete Event", event_path(event), method: :delete, class: "btn btn-mini btn-danger", confirm: "Are you sure you want to delete this event?" %></td>
+						<td>
+							<%= link_to event.title.titleize, event_path(event) %> <span class="slash">/</span> <%= date_format(event.event_dates.last) %>
+						</td>
+						<td>
+							<div class="btn-group pull-right">
+								<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li>
+										<%= link_to "View Event", event_path(event) %>
+									</li>
+									<li class="divider"></li>
+									<li>
+										<%= link_to "Edit Event", edit_event_path(event) %>
+									</li>
+									<li class="divider"></li>
+									<li>
+										<%= link_to "Delete Event", event_path(event), method: :delete, confirm: "Are you sure you want to delete this event?" %> 
+									</li>
+								</ul>
+							</div> 
+						</td>
 					</tr>
 				<% end %>
 			</table>
 		</div>
 
 		<div class="span6">	
+
+			<div class="form_container pull-left">
+				<div class="section_header">
+				    <h3>Upcoming Events I'm Attending</h3>
+				    <br/><br/>
+				</div>
+			</div>
+
 			<% if @my_upcoming_events.present? %>
-				Upcoming events that I am attending: <br/>
-					<table class="table table-striped table-bordered">
+					<table class="table table-striped table-hover">
 						<tr>
-							<td>Title</td>
-							<td>Date</td>
-							<td>Action</td>
+							<td>Title <span class="slash">/</span> Date</td>
+							<td><span class="pull-right">Action</span></td>
 						</tr>
 						<% @my_upcoming_events.each do |event| %>
 							<tr>
-								<td><%= event.title %></td>
-								<td><%= date_format(event.event_dates.last) %></td>
-								<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %> <%= attend_event_button(current_user.id, event) if user_signed_in? %></td>
+								<td>
+									<%= link_to event.title.titleize, event_path(event) %> <span class="slash">/</span> <%= date_format(event.event_dates.last) %>
+								</td>
+								<td>
+									<div class="btn-group pull-right">
+										<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li>
+												<%= link_to "View Event", event_path(event) %> 
+											</li>
+											<li class="divider"></li>
+											<li>
+												<%= attend_event_button(current_user.id, event) if user_signed_in? %>
+											</li>
+										</ul>
+									</div> 
+								</td>
 							</tr>
 						<% end %>
 					</table>
 			<% end %>
 			
 			<% if @my_past_events.present? %>
-				Past events: <br/>
-					<table class="table table-striped table-bordered">
+				<div class="form_container pull-left">
+					<div class="section_header">
+					    <h3>My Past Events</h3>
+					    <br/><br/>
+					</div>
+				</div>
+					<table class="table table-striped table-hover">
 						<tr>
-							<td>Title</td>
-							<td>Date</td>
-							<td>Action</td>
+							<td>Title <span class="slash">/</span> Date</td>
+							<td><span class="pull-right">Action</span></td>
 						</tr>
 						<% @my_past_events.each do |event| %>
 							<tr>
-								<td><%= event.title %></td>
-								<td><%= date_format(event.event_dates.last) %></td>
-								<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %> <%= attend_event_button(current_user.id, event) if user_signed_in? %></td>
+								<td>
+									<%= link_to event.title.titleize, event_path(event) %> <span class="slash">/</span> <%= date_format(event.event_dates.last) %>
+								</td>
+								<td><%= link_to "View Event", event_path(event), class: "pull-right btn btn-mini btn-primary" %> 
 							</tr>
 						<% end %>
 					</table>
