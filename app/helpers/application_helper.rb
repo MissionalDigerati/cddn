@@ -74,4 +74,8 @@ module ApplicationHelper
     end
   end
 
+  def display_if_present_with_break(input)
+    input.present? ? "#{input} <br/>".html_safe : ""
+  end
+
 end

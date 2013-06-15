@@ -1,20 +1,37 @@
 <div class="container">
 	<div class="row">
+		<%= link_to 'View My Profile', user_path(@user), class: "pull-right btn btn-small btn-inverse" %>
+
+		<div class="clear"></div>
+		<div class="form_container pull-left">
+			<div class="section_header">
+				<br/>
+			    <h3>Dashboard</h3>
+			    <br/><br/>
+			</div>
+		</div>
+		<div class="clear"></div>
 		<div class="span4">
 			
-			<h2>This is the dashboard for </h2>
 			<br/>
-			<%= @user.email %>
-			<%= @user.nickname %>
-			
-			<%= @user.first_name if @user.first_name.present? %>
-			<%= @user.last_name if @user.last_name.present? %>
-			<%= @user.church if @user.church.present? %>
-			<%= @user.bio if @user.bio.present?%>
-			<%= @user.city_province if @user.city_province.present? %>
-			<%= @user.primary_role if @user.primary_role.present? %>
-			<%= State.display_state_name(@user.state_id) if @user.state_id.present? %>
-			<%= display_country_name(@user.country_id) if @user.country_id.present? %>
+			<%= "Nickname:".html_safe if @user.nickname.present? %>
+			<%= display_if_present_with_break(@user.nickname) %>
+			<%= "Email:".html_safe if @user.email.present? %>
+			<%= display_if_present_with_break(truncate(@user.email, length: 20)) %>
+			<%= "Primary Role:".html_safe if @user.primary_role.present? %>
+			<%= display_if_present_with_break(@user.primary_role) %>
+			<%= "First Name:".html_safe if @user.first_name.present? %>
+			<%= display_if_present_with_break(@user.first_name) %>
+			<%= "Last Name:".html_safe if @user.last_name.present? %>
+			<%= display_if_present_with_break(@user.last_name) %>
+			<%= "Church:".html_safe if @user.first_name.present? %>
+			<%= display_if_present_with_break(@user.church) %>
+			<%= "Location: <br/>".html_safe if @user.city_province.present? || @user.state_id || @user.country_id %>
+			<%= display_if_present_with_break(@user.city_province) %>
+			<%= display_if_present_with_break(State.display_state_name(@user.state_id)) %>
+			<%= display_if_present_with_break(display_country_name(@user.country_id))%>
+			<%= "Bio:".html_safe if @user.bio.present? %>
+			<%= display_if_present_with_break(@user.bio) %>
 			
 			<% @user.networks.each do |network| %>
 				<%= network_service(network) %><%= networking_link(network) %>
@@ -41,7 +58,6 @@
 			
 			<%= link_to 'Account Settings', edit_user_registration_path, id: "account_settings" %><br/>
 			<%= link_to 'Edit Account Details', edit_user_path(@user), id: "edit_account_details" %><br/>
-			<%= link_to 'View My Profile / Brag page', user_path(@user) %>
 
 		</div> <!-- span 3 -->
 
@@ -51,7 +67,8 @@
 			<div class="span4">
 				<div class="form_container pull-left">
 					<div class="section_header">
-					    <h3>Members for Approval</h3>
+						<br/>
+					    <h4>Members for Approval</h4>
 					    <br/><br/>
 					</div>
 				</div>
@@ -70,7 +87,8 @@
 			<div class="span4">
 				<div class="form_container pull-left">
 					<div class="section_header">
-					    <h3>Upcoming Events</h3>
+						<br/>
+					    <h4>Upcoming Events</h4>
 					    <br/><br/>
 					</div>
 				</div>

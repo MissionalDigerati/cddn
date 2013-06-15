@@ -89,3 +89,16 @@ ul.token-input-list-facebook{
 hr.table_color{
 	border-top: 1px solid #dddddd;
 }
+.theme_button_text{
+	color: white !important;
+}
+.section_header h4{
+	color: rgb(100, 100, 100);
+	font-weight: 300;
+	font-style: italic;
+	font-size: 19px;
+	border-bottom: 1px solid #b3b3b3;
+	padding-bottom: 0px;
+	display: inline-block;
+	margin: 0;
+}

@@ -121,4 +121,4 @@ Feature: A user should be able to manage their account and have certain pages an
 		Given I am a user "dashboard_event_user", and I have an event "upcoming_event", and I am logged in
 		And I am on the home page
 		When I click the "Home | Dashboard" button
-		Then I should see "upcoming_event"
+		Then I should see "Upcoming Event"
