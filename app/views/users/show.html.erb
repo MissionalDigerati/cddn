@@ -1,63 +1,141 @@
-<div class="span8 offset4">
-<h2>This is the Show page / Brag page for </h2>
+<div class="container">
 
-<%= @user.first_name %><br/>
-<%= @user.last_name %><br/>
-<%= @user.nickname %><br/>
-<%= @user.church %><br/>
-<%= @user.bio %><br/>
-<%= @user.primary_role %><br/>
-<%= State.display_state_name(@user.state_id) %><br/>
-<%= display_country_name(@user.country_id) %><br/>
+	<div class="row">
 
-<% @user.networks.each do |network| %>
-	<%= network_service(network) %><%= networking_link(network) %><br/>
-<% end %>
-
-<br/>
-
-<% if @user.programming_languages.present? %>
-	Language tags:<br/>
-	<% @user.programming_languages.each do |lang| %>
-		<%= lang.language %><br/>
-	<% end %>
-	<br/>
-<% end %>
-
-
-<% if @upcoming_events.present? %>
-	Upcoming Events: <br/>
-		<table class="table table-striped table-bordered">
-			<tr>
-				<td>Title</td>
-				<td>Date</td>
-				<td>Action</td>
-			</tr>
-			<% @upcoming_events.each do |event| %>
-				<tr>
-					<td><%= event.title %></td>
-					<td><%= date_format(event.event_dates.first) %></td>
-					<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %></td>
-				</tr>
+		<div class="span12">
+			<% if @user.nickname.present? %>
+				<div class="form_container pull-left">
+					<div class="section_header">
+						<br/>
+					    <h3><%= @user.nickname.capitalize %></h3>
+					    <br/><br/>
+					</div>
+				</div>
+				<div class="clear"></div>
 			<% end %>
-		</table>
-		<br/>
-<% end %>
 
-<% if @my_projects.present? %>
-	<table class="table table-striped table-bordered">
-		<tr>
-			<td>Name</td>
-			<td>Organization</td>
-			<td>Action</td>
-		</tr>
-		<% @my_projects.each do |project| %>
-			<tr>
-				<td><%= project.name %></td>
-				<td><%= project.organization %></td>
-				<td><%= link_to "View Project", project_path(project), class: "btn btn-mini btn-info" %></td>
-			</tr>
-		<% end %>
-	</table>
-	<br/>
+			<div class="pull-left">
+			<%= "<b>Nickname:</b>".html_safe if @user.nickname.present? %>
+			<%= display_if_present_with_break(@user.nickname) %>
+			<%= "<b>Email:</b>".html_safe if @user.email.present? %>
+			<%= display_if_present_with_break(truncate(@user.email, length: 20)) %>
+			<%= "<b>Primary Role:</b>".html_safe if @user.primary_role.present? %>
+			<%= display_if_present_with_break(@user.primary_role) %>
+			<%= "<b>First Name:</b>".html_safe if @user.first_name.present? %>
+			<%= display_if_present_with_break(@user.first_name) %>
+			<%= "<b>Last Name:</b>".html_safe if @user.last_name.present? %>
+			<%= display_if_present_with_break(@user.last_name) %>
+			</div>
+
+			<div class="pull-left">
+			<%= "<b>Church:</b>".html_safe if @user.first_name.present? %>
+			<%= display_if_present_with_break(@user.church) %>
+			<%= "<b>Location: </b><br/>".html_safe if @user.city_province.present? || @user.state_id || @user.country_id %>
+			<%= display_if_present_with_break(@user.city_province) %>
+			<%= display_if_present_with_break(State.display_state_name(@user.state_id)) %>
+			<%= display_if_present_with_break(display_country_name(@user.country_id))%>
+			</div>
+			<div class="clear"></div>
+			<br/>
+			<%= "<b>Bio:</b>".html_safe if @user.bio.present? %>
+			<%= display_if_present_with_break(@user.bio) %>
+
+			<br/>
+
+			<% if @upcoming_events.present? %>
+				<div class="form_container pull-left">
+					<div class="section_header">
+						<br/>
+					    <h4>Upcoming Events</h4>
+					    <br/><br/>
+					</div>
+				</div>
+					<table class="table table-striped table-hover">
+						<tr>
+							<td>Title <span class="slash">/</span> Date(m/d/y)</td>
+							<td><span class="pull-right">Action</span></td>
+						</tr>
+						<% @upcoming_events.each do |event| %>
+							<tr>
+								<td><%= link_to event.title.titleize, event_path(event) %> <span class="slash">/</span> <%= date_format(event.event_dates.first) %>
+								</td>
+								<td><%= link_to "View Event", event_path(event), class: "theme_button" %></td>
+							</tr>
+						<% end %>
+					</table>
+					<br/>
+			<% end %>
+
+			<% if @my_projects.present? %>
+				<div class="form_container pull-left">
+					<div class="section_header">
+						<br/>
+					    <h4>Projects Contributed to</h4>
+					    <br/><br/>
+					</div>
+				</div>
+				<table class="table table-striped table-hover">
+					<tr>
+						<td>Name <span class="slash">/</span> Organization</td>
+						<td><span class="pull-right">Action</span></td>
+					</tr>
+					<% @my_projects.each do |project| %>
+						<tr>
+							<td><%= link_to project.name.titleize, project_path(project) %> <span class="slash">/</span> <%= project.organization %></td>
+							<td><%= link_to "View Project", project_path(project), class: "theme_button" %></td>
+						</tr>
+					<% end %>
+				</table>
+				<br/>
+			<% end %>
+		</div>
+
+	</div> <!-- row -->
+
+</div><!-- container -->
+
+<% if @user.networks.present? || @user.programming_languages.present? %>
+    <div id="team">
+        <div class="container">
+            <div class="section_header">
+                <h3>Connect with us</h3>
+            </div>
+
+            <div class="row people">
+            	<% if @user.networks.present? || @user.programming_languages.present? %>
+	                <div class="row row1">
+	                	<% if @user.networks.present? %>
+		                    <div class="span6 bio_box">
+		                        <div class="section_sub_header">
+		                    	    <h6>Social Networking Links</h6>
+		                    	</div>
+		                    	<br/>
+		                        <ul class="social_network_links">
+		                        <% @user.networks.each do |network| %>
+		                        	<li><%= network_service(network) %><%= networking_link(network) %></li>
+		                        <% end %>
+		                        </ul>
+		                        </br></br>
+		                    </div>
+	                    <% end %>
+
+	                    <% if @user.programming_languages.present? %>
+		                    <div class="span6 bio_box bio_boxr">
+		                    	<div class="section_sub_header">
+		                    	    <h6>Programming Language Tags</h6>
+		                    	</div>
+		                    	<br/>
+		                    	<div class="span6 bio_box">
+		                    	    <% @user.programming_languages.each do |lang| %>
+		                    			<span class="label label-important"><%= lang.language %></span>
+		                    		<% end %>
+		                    	</div>
+		                    </div>
+	                    <% end %>
+
+	                </div>
+	            <% end %>
+            </div>
+        </div>
+    </div>
 <% end %>
