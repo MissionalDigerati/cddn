@@ -1,5 +1,19 @@
 <tr>
-	<td><%= membership.project.name.titleize %></td>
-	<td><%= link_to_users_profile(membership.user) %></td>
-	<td><%= approve_mem_button(membership) %> <%= deny_mem_button(membership) %></td>
+	<td>
+		<%= link_to membership.project.name.titleize, project_path(membership.project) %> <span class="slash">/</span> <%= link_to_users_profile(membership.user) %>
+	</td>
+	<td>
+		<div class="btn-group pull-right">
+			<a class="theme_button" data-toggle="dropdown" href="#">Action</a>
+			<ul class="dropdown-menu">
+				<li>
+					<%= approve_mem_button(membership) %> 
+				</li>
+				<li class="divider"></li>
+				<li>
+					<%= deny_mem_button(membership) %>
+				</li>
+			</ul>
+		</div>
+	</td>
 </tr>

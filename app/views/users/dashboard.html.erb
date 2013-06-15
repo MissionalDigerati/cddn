@@ -1,86 +1,92 @@
 <div class="container">
-	<div class="span3">
-		
-		<h2>This is the dashboard for </h2>
-		<br/>
-		<%= @user.email %><br/>
-		<%= @user.nickname %><br/>
-		<br/>
-		<%= @user.first_name %><br/>
-		<%= @user.last_name %><br/>
-		<%= @user.church %><br/>
-		<%= @user.bio %><br/>
-		<%= @user.city_province %><br/>
-		<%= @user.primary_role %><br/>
-		<%= State.display_state_name(@user.state_id) %><br/>
-		<%= display_country_name(@user.country_id) %><br/>
-		<br/>
-		<% @user.networks.each do |network| %>
-			<%= network_service(network) %><%= networking_link(network) %><br/>
-		<% end %>
-		<br/>
-
-		<% if @user.event_approved == false %>
-			You are not currently approved for event creation.
-			<br/><br/>
-		<% end %>
-		
-		<% if @user.project_approved == false %>
-			You are not currently approved for project creation.
-			<br/><br/>
-		<% end %>
-		
-		<% if @user.programming_languages.present? %>
-			Language tags:<br/>
-			<% @user.programming_languages.each do |lang| %>
-				<%= lang.language %><br/>
-			<% end %>
-		<% end %>
-		<br/>
-		
-		<%= link_to 'Account Settings', edit_user_registration_path, id: "account_settings" %><br/>
-		<%= link_to 'Edit Account Details', edit_user_path(@user), id: "edit_account_details" %><br/>
-		<%= link_to 'View My Profile / Brag page', user_path(@user) %>
-
-	</div> <!-- span 3 -->
-
-	<div class="span8">
-		
-		<div class="row">
+	<div class="row">
+		<div class="span4">
 			
-			<% if @approvals.present? %>
-				<div class="span4">
-					Members for Approval:
-					<table class="table table-bordered table-hover" id="approvals">
-						<tr>
-							<th>Project</th>
-							<th>User</th>
-							<th>Action</th>
-						</tr>
-						<%= render @approvals %>
-					</table>
-				</div>
+			<h2>This is the dashboard for </h2>
+			<br/>
+			<%= @user.email %>
+			<%= @user.nickname %>
+			
+			<%= @user.first_name if @user.first_name.present? %>
+			<%= @user.last_name if @user.last_name.present? %>
+			<%= @user.church if @user.church.present? %>
+			<%= @user.bio if @user.bio.present?%>
+			<%= @user.city_province if @user.city_province.present? %>
+			<%= @user.primary_role if @user.primary_role.present? %>
+			<%= State.display_state_name(@user.state_id) if @user.state_id.present? %>
+			<%= display_country_name(@user.country_id) if @user.country_id.present? %>
+			
+			<% @user.networks.each do |network| %>
+				<%= network_service(network) %><%= networking_link(network) %>
 			<% end %>
-		
-			<% if @events.present? %>
-				<div class="span4">
-					Upcoming Events:
-					<table class="table table-bordered table-hover" id="dash_events">
-						<tr>
-							<th>Event</th>
-							<th>Date(m/d/y)</th>
-							<th>Action</th>
-						</tr>
-							<%= render @events, dash: true %>
-					</table>
-				</div>
+			<br/>
+
+			<% if @user.event_approved == false %>
+				You are not currently approved for event creation.
+				<br/><br/>
 			<% end %>
 			
-			<div class="span3 offset3">
-				<%= paginate @approvals, :theme => 'twitter-bootstrap' %>
-				<div class="hidden"><%= paginate @events, :theme => 'twitter-bootstrap' %></div>
+			<% if @user.project_approved == false %>
+				You are not currently approved for project creation.
+				<br/><br/>
+			<% end %>
+			
+			<% if @user.programming_languages.present? %>
+				Language tags:<br/>
+				<% @user.programming_languages.each do |lang| %>
+					<%= lang.language %><br/>
+				<% end %>
+			<% end %>
+			<br/>
+			
+			<%= link_to 'Account Settings', edit_user_registration_path, id: "account_settings" %><br/>
+			<%= link_to 'Edit Account Details', edit_user_path(@user), id: "edit_account_details" %><br/>
+			<%= link_to 'View My Profile / Brag page', user_path(@user) %>
+
+		</div> <!-- span 3 -->
+
+			
+				
+		<% if @approvals.present? %>
+			<div class="span4">
+				<div class="form_container pull-left">
+					<div class="section_header">
+					    <h3>Members for Approval</h3>
+					    <br/><br/>
+					</div>
+				</div>
+				<table class="table table-hover" id="approvals">
+					<tr>
+						<th>Project <span class="slash">/</span> User</th>
+						<th><span class="pull-right">Action</span></th>
+					</tr>
+					<%= render @approvals %>
+				</table>
+				<hr class="table_color"/>
 			</div>
+		<% end %>
 		
-		</div>
-	</div>
+		<% if @events.present? %>
+			<div class="span4">
+				<div class="form_container pull-left">
+					<div class="section_header">
+					    <h3>Upcoming Events</h3>
+					    <br/><br/>
+					</div>
+				</div>
+				<table class="table table-hover" id="dash_events">
+					<tr>
+						<th>Event <span class="slash">/</span> Date(m/d/y)</th>
+						<th><span class="pull-right">Action</span></th>
+					</tr>
+						<%= render @events, dash: true %>
+				</table>
+				<hr class="table_color"/>
+			</div>
+		<% end %>
+		
+		<%= paginate @approvals, :theme => 'twitter-bootstrap' %>
+		<div class="hidden"><%= paginate @events, :theme => 'twitter-bootstrap' %></div>
+								
+	</div><!-- row -->
 </div>

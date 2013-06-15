@@ -1,8 +1,9 @@
 <% if dash.present? %>
 	<tr>
-		<td><%= event.title %></td>
-		<td><%= date_format(event.event_dates.last) %></td>
-		<td><%= link_to "View Event", event_path(event), class: "btn btn-mini btn-info" %></td>
+		<td>
+			<%= link_to event.title.titleize, event_path(event) %> <span class="slash">/</span> <%= date_format(event.event_dates.last) %>
+		</td>
+		<td><%= link_to "View Event", event_path(event), class: "theme_button" %></td>
 	</tr>
 <% else %>
 	<tr>

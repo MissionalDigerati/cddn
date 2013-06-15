@@ -86,3 +86,6 @@ ul.token-input-list-facebook{
 .centered_text{
 	text-align: center;
 }
+hr.table_color{
+	border-top: 1px solid #dddddd;
+}
