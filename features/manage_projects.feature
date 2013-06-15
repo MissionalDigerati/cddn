@@ -52,8 +52,8 @@ Feature: A user should be able to create update delete and join projects, as wel
 		Given I am a user "edit_project_test" and I have a project "project name", and I am logged in
 		And I am on the home page
 		When I click the "user_my_projects" button
-		Then I should see "project name"
-		When I click the "Edit Project" button for "project name"
+		Then I should see "Project Name"
+		When I click the "Edit Project" button for "Project Name"
 		And I fill in "Name" with "Edited_project_name"
 		And I click the "Submit" button
 		Then I should see "Your project has been successfully updated."
@@ -63,8 +63,8 @@ Feature: A user should be able to create update delete and join projects, as wel
 		Given I am a user "un_approved_project_update" and I have a project "un-approved-project", and I am not approved for project creation
 		And I am on the home page
 		When I click the "user_my_projects" button
-		Then I should see "un-approved-project"
-		When I click the "Edit Project" button for "un-approved-project"
+		Then I should see "Un Approved Project"
+		When I click the "Edit Project" button for "Un Approved Project"
 		And I fill in "Name" with "Edited_project_name"
 		And I click the "Submit" button
 		Then I should see "Your Project has been update, and is still pending approval, and will not be visible until approved."
@@ -107,18 +107,18 @@ Feature: A user should be able to create update delete and join projects, as wel
 		Given I am a user "delete_projects_test" and I have a project "project name", and I am logged in
 		And I am on the home page
 		When I click the "user_my_projects" button
-		Then I should see "project name"
-		When I click the "Delete Project" button for "project name"
+		Then I should see "Project Name"
+		When I click the "Delete Project" button for "Project Name"
 		Then I should see "Your Project has been deleted."
-		And I should not see "project name"
+		And I should not see "Project Name"
 		
   Scenario: A user that is not project approved should not have their projects viewable via index or show
   	Given I am a user "un_approved_project_show" and I have a project "un-approved-project", and I am not approved for project creation
   	And I am on the home page
   	When I click the "user_my_projects" button
-  	Then I should see "un-approved-project"
+  	Then I should see "Un Approved Project"
   	When I visit the projects index
-  	Then I should not see "un-approved-project"
+  	Then I should not see "Un Approved Project"
   	When I click the "user_my_projects" button
 		And I click the "View Project" button
 		Then I should see "Unable to process your request."
@@ -172,8 +172,8 @@ Feature: A user should be able to create update delete and join projects, as wel
 		And "user_two" is a "approved" member of the "other_project"
 		And I am on the home page
 		When I click the "user_my_projects" button
-		Then I should see "other_project"
-		And I should see "my_project"
+		Then I should see "Other Project"
+		And I should see "My Project"
 		
 	Scenario: A user that is logged in should not be able to view another users my project page
 		Given I am a user "user_one" and I have a project "other_project", and I am not logged in
@@ -181,11 +181,11 @@ Feature: A user should be able to create update delete and join projects, as wel
 		And I am on the home page
 		When I click the "user_my_projects" button
 		Then I should be on the my project page for "user_two"
-		Then I should see "my_project"
-		And I should not see "other_project"
+		Then I should see "My Project"
+		And I should not see "Other Project"
 		When I try to access the my project page for "user_one"
-		And I should see "my_project"
-		And I should not see "other_project"
+		And I should see "My Project"
+		And I should not see "Other Project"
 	
 	Scenario: A user that is not logged in should not be able to access the my project page
 		Given I am a user "user_one" and I have a project "my_project", and I am not logged in

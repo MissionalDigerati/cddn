@@ -3,19 +3,41 @@
 	<div class="row">
 		
 		<div class="span6">
-			Projects created by me:<br/>
+			<div class="form_container pull-left">
+				<div class="section_header">
+				    <h3>Projects Created By Me</h3>
+				    <br/><br/>
+				</div>
+			</div>
 
-			<table class="table table-striped table-bordered">
+			<table class="table table-striped table-hover">
 				<tr>
-					<td>Name</td>
-					<td>Organization</td>
-					<td>Action</td>
+					<td>Name <span class="slash">/</span> Organization</td>
+					<td><span class="pull-right">Action</span></td>
 				</tr>
 				<% @my_projects.each do |my_project| %>
 					<tr>
-						<td><%= my_project.name %></td>
-						<td><%= my_project.organization %></td>
-						<td><%= link_to "View Project", project_path(my_project), class: "btn btn-mini btn-info" %> <%= link_to "Edit Project", edit_project_path(my_project), class: "btn btn-mini btn-success" %> <%= link_to "Delete Project", project_path(my_project), method: :delete, class: "btn btn-mini btn-danger", confirm: "Are you sure?" %></td>
+						<td>
+							<%= link_to my_project.name.titleize, project_path(my_project) %> <span class="slash">/</span> <%= my_project.organization.titleize %>
+						</td>
+						<td> 
+							<div class="btn-group pull-right">
+								<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li>
+										<%= link_to "View Project", project_path(my_project) %>
+									</li>
+									<li class="divider"></li>
+									<li>
+										<%= link_to "Edit Project", edit_project_path(my_project) %> 
+									</li>
+									<li class="divider"></li>
+									<li>
+										<%= link_to "Delete Project", project_path(my_project), method: :delete, confirm: "Are you sure?" %>
+									</li>
+								</ul>
+							</div> 
+						</td>
 					</tr>
 				<% end %>
 			</table>
@@ -23,21 +45,39 @@
 		
 		
 		<div class="span6">
-			Projects I contribute to:<br/>
+			<div class="form_container pull-left">
+				<div class="section_header">
+				    <h3>Projects I Contribute To</h3>
+				    <br/><br/>
+				</div>
+			</div>
 
-			<table class="table table-striped table-bordered">
+			<table class="table table-striped table-hover">
 				<tr>
-					<td>Name</td>
-					<td>Organization</td>
-					<td>Action</td>
+					<td>Name <span class="slash">/</span> Organization</td>
+					<td><span class="pull-right">Action</span></td>
 				</tr>
 				<% @project_participation.each do |project| %>
 					<tr>
-						<td><%= project.name %></td>
-						<td><%= project.organization %></td>
-						<td><%= link_to "View Project", project_path(project), class: "btn btn-mini btn-info" %> <%= link_to "Leave Project", leave_project_path(project), method: :delete, confirm: "Are you sure you want to leave the project's team?", class: "btn btn-mini btn-danger" %></td>
+						<td><%= link_to project.name.titleize, project_path(project) %> <span class="slash">/</span> <%= project.organization.titleize %></td>
+
+						<td>
+							<div class="btn-group pull-right">
+								<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li>
+										<%= link_to "View Project", project_path(project) %>
+									</li>
+									<li class="divider"></li>
+									<li>
+										<%= link_to "Leave Project", leave_project_path(project), method: :delete, confirm: "Are you sure you want to leave the project's team?" %>
+									</li>
+								</ul>
+							</div>
+						</td>
 					</tr>
 				<% end %>
+				<hr>
 			</table>
 		</div>
 	

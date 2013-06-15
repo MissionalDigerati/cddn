@@ -71,10 +71,14 @@ class ProjectsController < ApplicationController
   
   def destroy
     @project = Project.find(params[:id])
-    @project.destroy if @project.memberships.find_by_role("creator").user_id = current_user.id
-    respond_to do |format|
-      format.html {redirect_to users_dashboard_path(current_user)}
-      flash[:notice] = "Your Project has been deleted."
+    if current_admin || @project.memberships.where(role: "creator").first.user_id == current_user.id
+      @project.destroy 
+      respond_to do |format|
+        format.html {redirect_to users_dashboard_path(current_user)}
+        flash[:notice] = "Your Project has been deleted."
+      end
+    else
+        redirect_home
     end
   end
   

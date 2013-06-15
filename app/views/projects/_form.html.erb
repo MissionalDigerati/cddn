@@ -16,7 +16,7 @@
 
 					<br/><br/>
 				
-					<%= f.label :license_name, class: "pull-left" %> &nbsp;&nbsp;&nbsp; (Auto complete field)
+					<%= f.label :license_name, class: "pull-left" %><span class="required">*</span> &nbsp; (Auto complete field)
 					<div class="clear"></div>
 					<%= f.text_field :license_name, data: {autocomplete_source: licenses_auto_path} %>
 
@@ -55,8 +55,6 @@
 					<%= f.text_field :lang_tokens, class: "lang_tokens", data: {load: @project.programming_languages} %>
 					
 					<br/>
-					
-					<span class="required">*</span> = Required
 				</div>
 				<div class="clear"></div>
 
@@ -64,6 +62,8 @@
 					<div class="span3 right">
 						<br/>
 					    <div><%= f.submit "Submit" %></div>
+					    <div class="clear"></div>
+					    <div class="pull-right"><span class="required">*</span> = Required</div>
 					</div>
 				</div>
 			</div>

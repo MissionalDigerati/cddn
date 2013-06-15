@@ -145,18 +145,18 @@ Feature: A user should be able to add social networking accounts and links to th
 	   	And I fill in "Account url" with "http://www.GitHub.com"
 	   	And I click the "Submit" button
 	   	Then I should see "Your project has been successfully created."
-	 	 	And I should be on the project show page for "edit projects network"
+	 	And I should be on the project show page for "edit projects network"
 	  	And I should see "GitHub: github"
-			When I visit the my project page for "edit_projects_networks"
-			And I click the "Edit Project" button
-			And I select "Twitter" from "Service"
-			And I fill in "Account name" with "Twitter"
+		When I visit the my project page for "edit_projects_networks"
+		And I try to access the edit project page for "edit projects network"
+		And I select "Twitter" from "Service"
+		And I fill in "Account name" with "Twitter"
 	   	And I fill in "Account url" with "http://www.Twitter.com"
-			And I click the "Submit" button
-			Then I should see "Your project has been successfully updated."
-			And I should be on the project show page for "edit projects network"
-			And I should see "Twitter: Twitter"
-			And I should not see "GitHub: github"
+		And I click the "Submit" button
+		Then I should see "Your project has been successfully updated."
+		And I should be on the project show page for "edit projects network"
+		And I should see "Twitter: Twitter"
+		And I should not see "GitHub: github"
 			
 	 @javascript
 	    Scenario: A user should be able to delete networks associated with their projects
@@ -175,7 +175,7 @@ Feature: A user should be able to add social networking accounts and links to th
 	  	And I should be on the project show page for "delete projects network"
 	   	And I should see "GitHub: github"
 	 		When I visit the my project page for "delete_projects_networks"
-	 		And I click the "Edit Project" button
+	 		And I try to access the edit project page for "delete projects network"
 	 		And I click the "remove" button
 	 		And I click the "Submit" button
 	 		Then I should see "Your project has been successfully updated."
