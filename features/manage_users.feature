@@ -40,7 +40,7 @@ Feature: A user should be able to manage their account and have certain pages an
 		Given I am a user "edit_account_info" and I am logged in
 		And I am on the home page
 		When I click the "Home | Dashboard" link
-		Then I should see "dashboard"
+		Then I should see "Dashboard"
 		And I should see "edit_account_info@example.com"
 		When I click the "account_settings" link
 		And I fill in "Email" with "updated_email@test.com"
@@ -53,7 +53,7 @@ Feature: A user should be able to manage their account and have certain pages an
 		Given I am a user "edit_account_info_2" and I am logged in
 		And I am on the home page
 		When I click the "Home | Dashboard" link
-		Then I should see "dashboard"
+		Then I should see "Dashboard"
 		And I should see "edit_account_info_2@example.com"
 		When I click the "user_account_info_link" link
 		And I fill in "Nickname" with "Fred"

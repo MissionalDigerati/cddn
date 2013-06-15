@@ -102,3 +102,6 @@ hr.table_color{
 	display: inline-block;
 	margin: 0;
 }
+.text_right{
+	text-align: right;
+}

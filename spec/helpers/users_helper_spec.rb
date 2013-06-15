@@ -98,6 +98,11 @@ describe ApplicationHelper do
       display_country_name(nil).should == ""
     end
 
+    it "should return the inputted text with a br tag following it. if nil then it should return nothing" do
+      display_if_present_with_break("info").should == "info <br/>"
+      display_if_present_with_break(nil).should == ""
+    end
+
   end
   
 end

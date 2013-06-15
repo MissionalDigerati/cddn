@@ -14,44 +14,48 @@
 		<div class="span4">
 			
 			<br/>
-			<%= "Nickname:".html_safe if @user.nickname.present? %>
+
+			<%= "<b>Nickname:</b>".html_safe if @user.nickname.present? %>
 			<%= display_if_present_with_break(@user.nickname) %>
-			<%= "Email:".html_safe if @user.email.present? %>
+			<%= "<b>Email:</b>".html_safe if @user.email.present? %>
 			<%= display_if_present_with_break(truncate(@user.email, length: 20)) %>
-			<%= "Primary Role:".html_safe if @user.primary_role.present? %>
+			<%= "<b>Primary Role:</b>".html_safe if @user.primary_role.present? %>
 			<%= display_if_present_with_break(@user.primary_role) %>
-			<%= "First Name:".html_safe if @user.first_name.present? %>
+			<%= "<b>First Name:</b>".html_safe if @user.first_name.present? %>
 			<%= display_if_present_with_break(@user.first_name) %>
-			<%= "Last Name:".html_safe if @user.last_name.present? %>
+			<%= "<b>Last Name:</b>".html_safe if @user.last_name.present? %>
 			<%= display_if_present_with_break(@user.last_name) %>
-			<%= "Church:".html_safe if @user.first_name.present? %>
+			<%= "<b>Church:</b>".html_safe if @user.first_name.present? %>
 			<%= display_if_present_with_break(@user.church) %>
-			<%= "Location: <br/>".html_safe if @user.city_province.present? || @user.state_id || @user.country_id %>
+			<%= "<b>Location: </b><br/>".html_safe if @user.city_province.present? || @user.state_id || @user.country_id %>
 			<%= display_if_present_with_break(@user.city_province) %>
 			<%= display_if_present_with_break(State.display_state_name(@user.state_id)) %>
 			<%= display_if_present_with_break(display_country_name(@user.country_id))%>
-			<%= "Bio:".html_safe if @user.bio.present? %>
+			<%= "<b>Bio:</b>".html_safe if @user.bio.present? %>
 			<%= display_if_present_with_break(@user.bio) %>
 			
-			<% @user.networks.each do |network| %>
-				<%= network_service(network) %><%= networking_link(network) %>
+			<% if @user.networks.present? %>
+				<br/><b>Networking:</b><br/>
+				<% @user.networks.each do |network| %>
+					<%= network_service(network) %><br/><%= networking_link(network) %><br/>
+				<% end %>
 			<% end %>
 			<br/>
 
 			<% if @user.event_approved == false %>
-				You are not currently approved for event creation.
+				<b><span class='label label-warning'>You are not currently approved for event creation.</span></b>
 				<br/><br/>
 			<% end %>
 			
 			<% if @user.project_approved == false %>
-				You are not currently approved for project creation.
+				<b><span class='label label-warning'>You are not currently approved for project creation.</span></b>
 				<br/><br/>
 			<% end %>
 			
 			<% if @user.programming_languages.present? %>
-				Language tags:<br/>
+				<b>Programming Language Tags:</b><br/>
 				<% @user.programming_languages.each do |lang| %>
-					<%= lang.language %><br/>
+					<%= "<span class='label label-important'>#{lang.language}</span>".html_safe %><br/>
 				<% end %>
 			<% end %>
 			<br/>
