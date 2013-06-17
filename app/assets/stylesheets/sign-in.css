@@ -106,7 +106,7 @@
     margin: 0 0 46px 0;
 }
 #sign_in1 .footer input[type="text"],
-input#user_email,
+input#user_email, input#admin_email, input#admin_password,
 #sign_in1 .footer input[type="password"] {
     border-radius: 3px;
     font-size: 16px;
@@ -401,7 +401,7 @@ input#user_email,
         width: 35%;
     }
     #sign_in1 .footer input[type="text"],
-    input#user_email, 
+    input#user, input#admin_email, input#admin_password,
     #sign_in1 .footer input[type="password"]{
         width: 25%;
     }
@@ -440,7 +440,7 @@ input#user_email,
         border-color: #333;
     }
     #sign_in1 .footer input[type="text"],
-    input#user_email, 
+    input#user_email, input#admin_email, input#admin_password,
     #sign_in1 .footer input[type="password"]{
         font-size: 13px;
         width: 97%;
