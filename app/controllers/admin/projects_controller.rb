@@ -5,7 +5,7 @@ class Admin::ProjectsController < ApplicationController
   
   def index
     @projects = Project.all
-    @users = User.project_unapproved.memberships_project_creator.include_projects
+    @users = User.project_unapproved.memberships_project_creator.include_projects.group("users.id")
   end
   
   def show
