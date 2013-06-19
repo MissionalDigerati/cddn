@@ -15,12 +15,12 @@ describe Admin::UsersHelper do
     
     it "should return the suspend user button if the user is active" do
       user = FactoryGirl.create(:defaulted_user)
-      suspend_button(user).should == "<a href=\"/admin/users/1/suspend\" class=\"btn btn-mini btn-warning\" data-method=\"put\" rel=\"nofollow\">Suspend</a>"
+      suspend_button(user).should == "<a href=\"/admin/users/1/suspend\" data-method=\"put\" rel=\"nofollow\">Suspend</a>"
     end
     
     it "should return the un suspend user button if the user is currently suspended" do
       user = FactoryGirl.create(:defaulted_user, suspended: true)
-      suspend_button(user).should == "<a href=\"/admin/users/1/suspend\" class=\"btn btn-mini btn-info\" data-method=\"put\" rel=\"nofollow\">Un-suspend</a>"
+      suspend_button(user).should == "<a href=\"/admin/users/1/suspend\" data-method=\"put\" rel=\"nofollow\">Un-suspend</a>"
     end
     
   end
