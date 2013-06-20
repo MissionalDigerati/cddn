@@ -140,8 +140,8 @@ Feature: An admin should be able to login as well as well as delete and suspend 
 		Then I should see "Not_an_approved_event_user"
 		When I click the "View Event" button for "Not_an_approved_event_user"
 		Then I should be on the admin event show page for "unapproved event title"
-		And I should see "unapproved event title"
-		And I should see "This event was created by: Not_an_approved_event_user"
+		And I should see "Unapproved Event Title"
+		And I should see "Created By: Not_an_approved_event_user"
 		
 	Scenario: A user that is logged in should not be able to view events that have not been approved through the admin event show page
 		Given I am a user "Sam", and I have an event "birthday", and I am not logged in, and I am not approved for event creation

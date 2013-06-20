@@ -1,6 +1,6 @@
 class Admin::ProjectsController < ApplicationController
   before_filter :admin_auth
-  before_filter :authenticate_admin!, only: [:index, :show, :destroy, :allow_project_posting]
+  before_filter :authenticate_admin!, only: [:index, :show, :destroy, :allow_project_posting, :show]
   before_filter :set_project_var, only: [:show, :destroy]
   
   def index
@@ -9,6 +9,7 @@ class Admin::ProjectsController < ApplicationController
   end
   
   def show
+    @creator = @project.memberships.where(role: "creator").first.user
   end
   
   def destroy

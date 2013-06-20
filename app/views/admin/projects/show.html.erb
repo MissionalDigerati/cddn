@@ -1,33 +1,101 @@
-This is the admin project show page
-<br/>
-<br/>
-<%= @project.name %><br/>
-<%= @project.description %><br/>
-<%= @project.organization %><br/>
-<%= @project.license %><br/>
+<div id="contact">
+    <div class="container">
 
-<br/>
-<% @project.networks.each do |network| %>
-	<%= link_to network.account_url, network.account_url %><br/>
-<% end %>
+        <div class="section_header">
+            <h1>Project
+            	<span class="pull-right">
+            		<%= image_tag("/assets/theme/signin_icos.png") %>
+            	</span>
+            </h1>
+            <br/>
+            <h3><%= @project.name.titleize %></h3>
+        </div>
+        
+        <div class="row map">
+            <div class="container">
+                <div class="span5 box_wrapp">
+                    <div class="box_cont">
+                        <div class="head">
+                            <h6>Project Info</h6>
+                        </div>
+                        <ul class="street">
+                            <li>Organization: <br/><%= @project.organization %></li><br/>
+                            <li>License: <br/><%= @project.license_name %></li><br/>
+                            <li>Project Creator: <br/><%= link_to_users_profile(@creator) %> </li>
+                        </ul>
 
-<br/><br/>
+                        <div class="head headbottom">
+                            <h6>Join us</h6>
+                        </div>
+                        <br/>
+                        <%= join_project_request_button(@project, current_user)%>
+                    </div>
+                </div>
+                <div class="contact">
+	                <p>
+	                	<%= @project.description %>
+	                </p>
+            	</div>
+            </div>
+       	</div>
+    </div>
+    <br/><br/><br/>
+    <div id="team">
+        <div class="container">
+            <div class="section_header">
+                <h3>Connect with us</h3>
+            </div>
 
-<% if @project.programming_languages.present? %>
-	Language tags:<br/>
-	<% @project.programming_languages.each do |lang| %>
-		<%= lang.language %><br/>
-	<% end %>
-<% end %>
+            <div class="row people">
+                <% if @project.networks.present? || @project.programming_languages.present? %>
+                    <div class="row row1">
+                        <% if @project.networks.present? %>
+                            <div class="span6 bio_box">
+                                <div class="section_sub_header">
+                                    <h6>Social Networking Links</h6>
+                                </div>
+                                <br/>
+                                <ul class="social_network_links">
+                                    <% @project.networks.each do |network| %>
+                                    <li><%= network_service(network) %><%= networking_link(network) %></li>
+                                <% end %>
+                                </ul>
+                                <br/> <br/>
+                            </div>
+                        <% end %>
 
-<br/> <br/>
-Project members:<br/>
-<% @project.memberships.each do |member| %>
-	<% if member.role == "creator" %>
-		Project Creator: <%= link_to_users_profile(member.user) %><br/>
-	<% else %>
-		<%= link_to_users_profile(member.user) %><br/>
-	<% end %>
-<% end %>
-<br/>
+                        <% if @project.programming_languages.present? %>
+                            <div class="span6 bio_box bio_boxr">
+                                <div class="section_sub_header">
+                                    <h6>Programming Language Tags</h6>
+                                </div>
+                                <br/>
+                                <div class="span6 bio_box">
+                                    <% @project.programming_languages.each do |lang| %>
+                                        <span class="label label-important"><%= lang.language %></span>
+                                    <% end %>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
+                <div class="row row1">
+                    <div class="span12 bio_box">
+                       <div class="section_sub_header">
+                           <h6>Project Members</h6>
+                       </div>
+                       <br/>
+                       <% @project.users.each do |user| %>
+                        <i class="pull-left"><%= link_to_users_profile(user) %> &nbsp; &nbsp; </i>
+                       <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+  
+</div>
 

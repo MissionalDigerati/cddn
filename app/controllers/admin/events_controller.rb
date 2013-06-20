@@ -1,6 +1,6 @@
 class Admin::EventsController < ApplicationController
   before_filter :admin_auth
-  before_filter :authenticate_admin!, only: [:index, :destroy, :event_to_approve, :allow_event_posting]
+  before_filter :authenticate_admin!, only: [:index, :destroy, :event_to_approve, :allow_event_posting, :show]
   before_filter :set_event_var, only: [:show, :destroy]
   
   def index
@@ -9,6 +9,7 @@ class Admin::EventsController < ApplicationController
   end
   
   def show
+    @json = @event.to_gmaps4rails
   end
   
   def destroy
