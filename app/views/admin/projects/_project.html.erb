@@ -1,9 +1,26 @@
 <tr>
-	<td><%= project.name %></td>
-	<td><%= project.description %></td>
-	<td><%= project.license %></td>
-	<td><%= project.organization %></td>
-	<td><%= project_creator_link(project) %></td>
-	<td><%= project.created_at %></td>
-	<td><%= link_to "View Project", admin_project_path(project) %> <%= link_to "Delete Project", admin_project_path(project), method: :delete, class: "btn btn-danger btn-mini" %> <%= project_creator_link(project) %></td>
+	<td>
+		<%= link_to project.name, admin_project_path(project) %> <span class="slash">/</span> <%= project.license.license_title %> <span class="slash">/</span> <%= project.organization %> <span class="slash">/</span> <%= project_creator_link(project) %> <span class="slash">/</span> <%= project.created_at.strftime("%d-%m-%Y") %>
+		<br/>
+		<%= truncate(project.description, length: 100) %>
+	</td>
+
+	<td>
+		<div class="btn-group pull-right">
+				<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li>
+						<%= link_to "View Project", admin_project_path(project) %>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<%= project_creator_link(project) %>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<%= link_to "Delete Project", admin_project_path(project), method: :delete, confirm: "Are you sure?" %>
+					</li>
+				</ul>
+			</div>
+	</td>
 </tr>

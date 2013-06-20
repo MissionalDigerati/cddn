@@ -98,7 +98,7 @@ end
 Given /^I am a user "(.*?)" and I have a project "(.*?)", that is not approved for project creation, and I am not logged in$/ do |email_prefix, project|
   password = 'secretpassword1000'
   user = FactoryGirl.create(:defaulted_user, email: email_prefix + "@cddn.com", password: password, project_approved: false)
-  project = FactoryGirl.create(:defaulted_project, name: project, approved_project: false)
+  project = FactoryGirl.create(:defaulted_project, name: project, approved_project: false, license_id: 1)
   membership = FactoryGirl.create(:membership, user_id: user.id, project_id: project.id, role: "creator", status: "progress", creator_id: user.id)
 end
 

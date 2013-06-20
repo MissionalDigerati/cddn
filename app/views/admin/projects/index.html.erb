@@ -50,29 +50,32 @@
 		<% end %>
 	</table>
 
+	<div class="form_container pull-left">
+		<div class="section_header">
+		    <h3>Listing All Projects</h3>
+		    <br/><br/>
+		</div>
+	</div>
 
-
-
-	Listing all projects
-	<br/>
-	<%= form_tag projects_path, method: :get do %>
-		Search by language: <br/>
-		<%= check_box_tag :open_projects, "open_projects", params[:open_projects] %> <%= label_tag :open_projects, "Search by open projects" %> <br/>
-		<%= select_tag(:language, options_from_collection_for_select(ProgrammingLanguage.all, "id", "language", selected: params[:language]), include_blank: true, id: "lang_select") %> <br/>
-		<%= label_tag :language, "Search by programming language" %><br/>
-		<%= submit_tag "Search" %>
-	<% end %>
-	<br/>
-	<table id="projects" class="table table-striped table-bordered">
+	<div class="pull-right">
+		<%= form_tag projects_path, method: :get do %>
+			Search by language: <br/>
+			<%= check_box_tag :open_projects, "open_projects", params[:open_projects] %> <%= label_tag :open_projects, "Search by open projects" %> <br/>
+			<%= select_tag(:language, options_from_collection_for_select(ProgrammingLanguage.all, "id", "language", selected: params[:language]), include_blank: true, id: "lang_select") %> <br/>
+			<%= label_tag :language, "Search by programming language" %><br/>
+			<%= submit_tag "Search", class: "pull-right theme_button" %>
+		<% end %>
+		<br/><br/>
+	</div>
+	<table id="projects" class="table table-striped table-hover">
 		<tbody>
 		<tr>
-			<td>Name</td>
-			<td>Description</td>
-			<td>License</td>
-			<td>Organization</td>
-			<td>Created by</td>
-			<td>Created at</td>
-			<td>Action</td>
+			<td>
+				Name <span class="slash">/</span> License <span class="slash">/</span> Organization <span class="slash">/</span> Created by <span class="slash">/</span> Created at
+				<br/>
+				Description
+			</td>
+			<td><span class="pull-right">Action</span></td>
 		</tr>
 		
 		<%= render @projects %>
