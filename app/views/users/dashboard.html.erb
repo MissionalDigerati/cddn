@@ -29,11 +29,11 @@
 			<%= display_if_present_with_break(@user.last_name) %>
 			<%= "<b>Church:</b>".html_safe if @user.first_name.present? %>
 			<%= display_if_present_with_break(@user.church) %>
-			<%= "<b>Location: </b><br/>".html_safe if @user.city_province.present? || @user.state_id || @user.country_id %>
+			<%= "<br/><b>Location: </b><br/>".html_safe if @user.city_province.present? || @user.state_id || @user.country_id %>
 			<%= display_if_present_with_break(@user.city_province) %>
 			<%= display_if_present_with_break(State.display_state_name(@user.state_id)) %>
 			<%= display_if_present_with_break(display_country_name(@user.country_id))%>
-			<%= "<b>Bio:</b>".html_safe if @user.bio.present? %>
+			<%= "<br/><b>Bio:</b>".html_safe if @user.bio.present? %>
 			<%= display_if_present_with_break(@user.bio) %>
 			
 			<% if @user.networks.present? %>
