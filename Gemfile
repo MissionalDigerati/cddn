@@ -14,6 +14,9 @@ gem 'devise'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'font-awesome-rails'
+gem 'populator'
+gem 'faker'
+gem 'gravatar_image_tag'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -34,8 +37,6 @@ gem 'jquery-rails'
 group :test, :development do
   gem "rspec-rails", "~> 2.12.2"
   gem "factory_girl_rails"
-  gem 'populator'
-  gem 'faker'
   gem 'quiet_assets'
 end
 

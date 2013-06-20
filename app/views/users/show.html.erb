@@ -14,7 +14,11 @@
 				<div class="clear"></div>
 			<% end %>
 
-			<div class="pull-left">
+			<div class="pull-left user_show_padding">
+				<%= gravatar_image_tag("#{@user.email}".gsub('spam', 'mdeering'), :alt => @user.nickname.present? ? @user.nickname : "") %>
+			</div>
+
+			<div class="pull-left user_show_padding">
 			<%= "<b>Nickname:</b>".html_safe if @user.nickname.present? %>
 			<%= display_if_present_with_break(@user.nickname) %>
 			<%= "<b>Email:</b>".html_safe if @user.email.present? %>
@@ -98,7 +102,7 @@
     <div id="team">
         <div class="container">
             <div class="section_header">
-                <h3>Connect with us</h3>
+                <h3>Connect with me</h3>
             </div>
 
             <div class="row people">

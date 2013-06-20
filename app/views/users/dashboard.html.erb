@@ -15,6 +15,8 @@
 			
 			<br/>
 
+			<%= gravatar_image_tag("#{@user.email}".gsub('spam', 'mdeering'), :alt => @user.nickname.present? ? @user.nickname : "") %>
+			<br/><br/>
 			<%= "<b>Nickname:</b>".html_safe if @user.nickname.present? %>
 			<%= display_if_present_with_break(@user.nickname) %>
 			<%= "<b>Email:</b>".html_safe if @user.email.present? %>
