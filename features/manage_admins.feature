@@ -138,7 +138,7 @@ Feature: An admin should be able to login as well as well as delete and suspend 
 		And I am on the home page
 		When I click the "Manage Events" button
 		Then I should see "Not_an_approved_event_user"
-		When I click the "unapproved event title" button
+		When I click the "View Event" button for "Not_an_approved_event_user"
 		Then I should be on the admin event show page for "unapproved event title"
 		And I should see "unapproved event title"
 		And I should see "This event was created by: Not_an_approved_event_user"
