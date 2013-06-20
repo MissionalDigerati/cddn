@@ -11,6 +11,11 @@ namespace :db do
     
     [Users, Admins, Attendees, Networks, SocialMedia, ProgrammingLanguages, Programmings, Memberships, Countries, States, EventDates, Licenses, Projects].each(&:delete_all)
     
+
+    Users.populate 40 do |user|
+      
+    end
+
     Contact.populate 40 do |contact|
       contact.first_name = Faker::Name.first_name
       contact.last_name = Faker::Name.last_name

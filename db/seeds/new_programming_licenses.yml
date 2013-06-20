@@ -1,0 +1,273 @@
+programming_licenses:
+ - id: 1
+   license_title: "No License Specified"
+ - id: 2
+   license_title: "GNU General Public License (GPL) version 3 (#GNUGPL) (#GNUGPLv3)"
+ - id: 3
+   license_title: "GNU General Public License (GPL) version 2 (#GPLv2)"
+ - id: 4
+   license_title: "GNU Lesser General Public License (LGPL) version 3 (#LGPL) (#LGPLv3)"
+ - id: 5
+   license_title: "GNU Lesser General Public License (LGPL) version 2.1 (#LGPLv2.1)"
+ - id: 6
+   license_title: "GNU Affero General Public License (AGPL) version 3 (#AGPL) (#AGPLv3.0)"
+ - id: 7
+   license_title: "GNU All-Permissive License (#GNUAllPermissive)"
+ - id: 8
+   license_title: "Apache License, Version 2.0 (#apache2)"
+ - id: 9
+   license_title: "Artistic License 2.0 (#ArtisticLicense2)"
+ - id: 10
+   license_title: "Clarified Artistic License"
+ - id: 11
+   license_title: "Berkeley Database License (a.k.a. the Sleepycat Software Product License) (#BerkeleyDB)"
+ - id: 12
+   license_title: "Boost Software License (#boost)"
+ - id: 13
+   license_title: "Modified BSD license (#ModifiedBSD)"
+ - id: 14
+   license_title: "CC0 (#CC0)"
+ - id: 15
+   license_title: "CeCILL version 2 (#CeCILL)"
+ - id: 16
+   license_title: "The Clear BSD License (#clearbsd)"
+ - id: 17
+   license_title: "Cryptix General License (#CryptixGeneralLicense)"
+ - id: 18
+   license_title: "License of the ec fonts for LaTeX (#ecfonts)"
+ - id: 19
+   license_title: "eCos license version 2.0 (#eCos2.0)"
+ - id: 20
+   license_title: "Educational Community License 2.0 (#ECL2.0)"
+ - id: 21
+   license_title: "Eiffel Forum License, version 2 (#Eiffel)"
+ - id: 22
+   license_title: "EU DataGrid Software License (#EUDataGrid)"
+ - id: 23
+   license_title: "Expat License (#Expat)"
+ - id: 24
+   license_title: "FreeBSD license (#FreeBSD)"
+ - id: 25
+   license_title: "Freetype Project License (#freetype)"
+ - id: 26
+   license_title: "License of the iMatix Standard Function Library (#iMatix)"
+ - id: 27
+   license_title: "Independent JPEG Group License (#ijg)"
+ - id: 28
+   license_title: "License of imlib2 (#imlib)"
+ - id: 29
+   license_title: "Intel Open Source License (#intel)"
+ - id: 30
+   license_title: "ISC License (#ISC)"
+ - id: 31
+   license_title: "Mozilla Public License (MPL) version 2.0 (#MPL-2.0)"
+ - id: 32
+   license_title: "NCSA/University of Illinois Open Source License (#NCSA)"
+ - id: 33
+   license_title: "License of Netscape JavaScript (#NetscapeJavaScript)"
+ - id: 34
+   license_title: "OpenLDAP License, Version 2.7 (#newOpenLDAP)"
+ - id: 35
+   license_title: "License of Perl 5 and below (#PerlLicense)"
+ - id: 36
+   license_title: "Public Domain (#PublicDomain)"
+ - id: 37
+   license_title: "License of Python 2.0.1, 2.1.1, and newer versions (#Python)"
+ - id: 38
+   license_title: "License of Python 1.6a2 and earlier versions (#Python1.6a2)"
+ - id: 39
+   license_title: "License of Ruby (#Ruby)"
+ - id: 40
+   license_title: "SGI Free Software License B, version 2.0 (#SGIFreeB)"
+ - id: 41
+   license_title: "Standard ML of New Jersey Copyright License (#StandardMLofNJ)"
+ - id: 42
+   license_title: "Unicode, Inc. License Agreement for Data Files and Software (#Unicode)"
+ - id: 43
+   license_title: "The Unlicense (#Unlicense)"
+ - id: 44
+   license_title: "License of Vim, Version 6.1 or later (#Vim)"
+ - id: 45
+   license_title: "W3C Software Notice and License (#W3C)"
+ - id: 46
+   license_title: "License of WebM (#WebM)"
+ - id: 47
+   license_title: "WTFPL, Version 2 (#WTFPL)"
+ - id: 48
+   license_title: "X11 License (#X11License)"
+ - id: 49
+   license_title: "XFree86 1.1 License (#XFree861.1License)"
+ - id: 50
+   license_title: "License of ZLib (#ZLib)"
+ - id: 51
+   license_title: "Zope Public License, versions 2.0 and 2.1 (#Zope2.0)"
+ - id: 52
+   license_title: "WxWidgets License (#Wx)"
+ - id: 53
+   license_title: "Affero General Public License version 1 (#AGPLv1.0)"
+ - id: 54
+   license_title: "Academic Free License, all versions through 3.0 (#AcademicFreeLicense)"
+ - id: 55
+   license_title: "Apache License, Version 1.1 (#apache1.1)"
+ - id: 56
+   license_title: "Apache License, Version 1.0 (#apache1)"
+ - id: 57
+   license_title: "Apple Public Source License (APSL), version 2 (#apsl2)"
+ - id: 58
+   license_title: "BitTorrent Open Source License (#bittorrent)"
+ - id: 59
+   license_title: "Original BSD license (#OriginalBSD)"
+ - id: 60
+   license_title: "Common Development and Distribution License (CDDL), version 1.0 (#CDDL)"
+ - id: 61
+   license_title: "Common Public Attribution License 1.0 (CPAL) (#CPAL)"
+ - id: 62
+   license_title: "Common Public License Version 1.0 (#CommonPublicLicense10)"
+ - id: 63
+   license_title: "Condor Public License (#Condor)"
+ - id: 64
+   license_title: "Eclipse Public License Version 1.0 (#EPL)"
+ - id: 65
+   license_title: "European Union Public License (EUPL) version 1.1 (#EUPL)"
+ - id: 66
+   license_title: "IBM Public License, Version 1.0 (#IBMPL)"
+ - id: 67
+   license_title: "Jabber Open Source License, Version 1.0 (#josl)"
+ - id: 68
+   license_title: "LaTeX Project Public License 1.3a (#LPPL-1.3a)"
+ - id: 69
+   license_title: "LaTeX Project Public License 1.2 (#LPPL-1.2)"
+ - id: 70
+   license_title: "Lucent Public License Version 1.02 (Plan 9 license) (#lucent102)"
+ - id: 71
+   license_title: "Microsoft Public License (Ms-PL) (#ms-pl)"
+ - id: 72
+   license_title: "Microsoft Reciprocal License (Ms-RL) (#ms-rl)"
+ - id: 73
+   license_title: "Mozilla Public License (MPL) version 1.1 (#MPL)"
+ - id: 74
+   license_title: "Netizen Open Source License (NOSL), Version 1.0 (#NOSL)"
+ - id: 75
+   license_title: "Netscape Public License (NPL), versions 1.0 and 1.1 (#NPL)"
+ - id: 76
+   license_title: "Nokia Open Source License (#Nokia)"
+ - id: 77
+   license_title: "Old OpenLDAP License, Version 2.3 (#oldOpenLDAP)"
+ - id: 78
+   license_title: "Open Software License, all versions through 3.0 (#OSL)"
+ - id: 79
+   license_title: "OpenSSL license (#OpenSSL)"
+ - id: 80
+   license_title: "Phorum License, Version 2.0 (#Phorum)"
+ - id: 81
+   license_title: "PHP License, Version 3.01 (#PHP-3.01)"
+ - id: 82
+   license_title: "License of Python 1.6b1 through 2.0 and 2.1 (#PythonOld)"
+ - id: 83
+   license_title: "Q Public License (QPL), Version 1.0 (#QPL)"
+ - id: 84
+   license_title: "RealNetworks Public Source License (RPSL), Version 1.0 (#RPSL)"
+ - id: 85
+   license_title: "Sun Industry Standards Source License 1.0 (#SISSL)"
+ - id: 86
+   license_title: "Sun Public License (#SPL)"
+ - id: 87
+   license_title: "License of xinetd (#xinetd)"
+ - id: 88
+   license_title: "Yahoo! Public License 1.1 (#Yahoo)"
+ - id: 89
+   license_title: "Zend License, Version 2.0 (#Zend)"
+ - id: 90
+   license_title: "Zimbra Public License 1.3 (#Zimbra)"
+ - id: 91
+   license_title: "Zope Public License version 1 (#Zope)"
+ - id: 92
+   license_title: "No license (#NoLicense)"
+ - id: 93
+   license_title: "Aladdin Free Public License (#Aladdin)"
+ - id: 94
+   license_title: "Apple Public Source License (APSL), version 1.x (#apsl1)"
+ - id: 95
+   license_title: "Artistic License 1.0 (#ArtisticLicense)"
+ - id: 96
+   license_title: "AT&amp;T Public License (#ATTPublicLicense)"
+ - id: 97
+   license_title: "Code Project Open License, version 1.02 (#cpol)"
+ - id: 98
+   license_title: "eCos Public License, version 1.1 (#eCos11)"
+ - id: 99
+   license_title: "GPL for Computer Programs of the Public Administration (#GPL-PA)"
+ - id: 100
+   license_title: "Hacktivismo Enhanced-Source Software License Agreement (HESSLA) (#HESSLA)"
+ - id: 101
+   license_title: "Jahia Community Source License (#Jahia)"
+ - id: 102
+   license_title: "The JSON License (#JSON)"
+ - id: 103
+   license_title: "Old license of ksh93 (#ksh93)"
+ - id: 104
+   license_title: "License of Lha (#Lha)"
+ - id: 105
+   license_title: "Microsoft's Shared Source CLI, C#, and Jscript License (#Ms-SS)"
+ - id: 106
+   license_title: "NASA Open Source Agreement (#NASA)"
+ - id: 107
+   license_title: "Open Public License (#OpenPublicL)"
+ - id: 108
+   license_title: "License of PINE (#PINE)"
+ - id: 109
+   license_title: "Old Plan 9 license (#Plan9)"
+ - id: 110
+   license_title: "Reciprocal Public License (#RPL)"
+ - id: 111
+   license_title: "Scilab license (#Scilab)"
+ - id: 112
+   license_title: "Simple Machines License (#SML)"
+ - id: 113
+   license_title: "Old Squeak license (#Squeak)"
+ - id: 114
+   license_title: "Sun Community Source License (#SunCommunitySourceLicense)"
+ - id: 115
+   license_title: "Sun Solaris Source Code (Foundation Release) License, Version 1.1 (#SunSolarisSourceCode)"
+ - id: 116
+   license_title: "Sybase Open Watcom Public License version 1.0 (#Watcom)"
+ - id: 117
+   license_title: "SystemC \342\200\234Open Source\342\200\235 License, Version 3.0 (#SystemC-3.0)"
+ - id: 118
+   license_title: "University of Utah Public License (#UtahPublicLicense)"
+ - id: 119
+   license_title: "YaST License (#YaST)"
+ - id: 120
+   license_title: "GNU Free Documentation License (#FDL)"
+ - id: 121
+   license_title: "Apple's Common Documentation License, Version 1.0 (#ACDL)"
+ - id: 122
+   license_title: "FreeBSD Documentation License (#FreeBSDDL)"
+ - id: 123
+   license_title: "Open Publication License, Version 1.0 (#OpenPublicationL)"
+ - id: 124
+   license_title: "Open Content License, Version 1.0 (#OpenContentL)"
+ - id: 125
+   license_title: "GNU General Public License (#GPLOther)"
+ - id: 126
+   license_title: "GNU Free Documentation License (#FDLOther)"
+ - id: 127
+   license_title: "Creative Commons Attribution 2.0 license (a.k.a. CC\302\240BY) (#ccby)"
+ - id: 128
+   license_title: "Creative Commons Attribution-Sharealike 2.0 license (a.k.a. CC\302\240BY-SA) (#ccbysa)"
+ - id: 129
+   license_title: "Design Science License (DSL) (#dsl)"
+ - id: 130
+   license_title: "Free Art License (#FreeArt)"
+ - id: 131
+   license_title: "Open Database license (#ODbl)"
+ - id: 132
+   license_title: "GNU General Public License (#GPLFonts)"
+ - id: 133
+   license_title: "Arphic Public License (#Arphic)"
+ - id: 134
+   license_title: "SIL Open Font License 1.1 (#SILOFL)"
+ - id: 135
+   license_title: "GNU Verbatim Copying License (#GNUVerbatim)"
+ - id: 136
+   license_title: "Creative Commons Attribution-NoDerivs 3.0 license (a.k.a. CC\302\240BY-ND) (#ccbynd)"

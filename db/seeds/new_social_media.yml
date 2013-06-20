@@ -1,0 +1,391 @@
+social_media:
+ - id: 1
+   service: "43 Things"
+ - id: 2
+   service: "Academia.edu"
+ - id: 3
+   service: "Advogato"
+ - id: 4
+   service: "aNobii"
+ - id: 5
+   service: "AsianAvenue"
+ - id: 6
+   service: "aSmallWorld"
+ - id: 7
+   service: "Athlinks"
+ - id: 8
+   service: "Audimated.com"
+ - id: 9
+   service: "Bebo"
+ - id: 10
+   service: "BIGADDA"
+ - id: 11
+   service: "Biip.no"
+ - id: 12
+   service: "Bit Bucket"
+ - id: 13
+   service: "BlackPlanet"
+ - id: 14
+   service: "Blauk"
+ - id: 15
+   service: "Blogster"
+ - id: 16
+   service: "Bolt.com"
+ - id: 17
+   service: "Busuu"
+ - id: 18
+   service: "Buzznet"
+ - id: 19
+   service: "CafeMom"
+ - id: 20
+   service: "Care2"
+ - id: 21
+   service: "CaringBridge"
+ - id: 22
+   service: "Classmates.com"
+ - id: 23
+   service: "Cloob"
+ - id: 24
+   service: "CouchSurfing"
+ - id: 25
+   service: "CozyCot"
+ - id: 26
+   service: "Cross.tv"
+ - id: 27
+   service: "Crunchyroll"
+ - id: 28
+   service: "Cyworld"
+ - id: 29
+   service: "DailyBooth"
+ - id: 30
+   service: "DailyStrength"
+ - id: 31
+   service: "delicious"
+ - id: 32
+   service: "deviantART"
+ - id: 33
+   service: "Diaspora*"
+ - id: 34
+   service: "Disaboom"
+ - id: 35
+   service: "Dol2day"
+ - id: 36
+   service: "Draugiem.lv"
+ - id: 37
+   service: "douban"
+ - id: 38
+   service: "DXY.cn"
+ - id: 39
+   service: "Elftown"
+ - id: 40
+   service: "Elixio"
+ - id: 41
+   service: "English, baby!"
+ - id: 42
+   service: "Epernicus"
+ - id: 43
+   service: "eToro"
+ - id: 44
+   service: "Experience Project"
+ - id: 45
+   service: "Exploroo"
+ - id: 46
+   service: "Facebook"
+ - id: 47
+   service: "Faceparty"
+ - id: 48
+   service: "Faces.com"
+ - id: 49
+   service: "Fetlife"
+ - id: 50
+   service: "FilmAffinity"
+ - id: 51
+   service: "Filmow"
+ - id: 52
+   service: "FledgeWing"
+ - id: 53
+   service: "Flixster"
+ - id: 54
+   service: "Flickr"
+ - id: 55
+   service: "Focus.com"
+ - id: 56
+   service: "Fotki"
+ - id: 57
+   service: "Fotolog"
+ - id: 58
+   service: "Foursquare"
+ - id: 59
+   service: "Friendica"
+ - id: 60
+   service: "Friends Reunited"
+ - id: 61
+   service: "Friendster"
+ - id: 62
+   service: "Fr\303\274hst\303\274ckstreff"
+ - id: 63
+   service: "Fuelmyblog"
+ - id: 64
+   service: "FullCircle"
+ - id: 65
+   service: "Gaia Online"
+ - id: 66
+   service: "GamerDNA"
+ - id: 67
+   service: "Gapyear.com"
+ - id: 68
+   service: "Gather.com"
+ - id: 69
+   service: "Geni.com"
+ - id: 70
+   service: "GetGlue"
+ - id: 71
+   service: "Github"
+ - id: 72
+   service: "Gogoyoko"
+ - id: 73
+   service: "Goodreads"
+ - id: 74
+   service: "Goodwizz"
+ - id: 75
+   service: "Google+"
+ - id: 76
+   service: "GovLoop"
+ - id: 77
+   service: "Grono.net"
+ - id: 78
+   service: "Habbo"
+ - id: 79
+   service: "hi5"
+ - id: 80
+   service: "Hospitality Club"
+ - id: 81
+   service: "Hotlist"
+ - id: 82
+   service: "HR.com"
+ - id: 83
+   service: "Hub Culture"
+ - id: 84
+   service: "Hyves"
+ - id: 85
+   service: "Ibibo"
+ - id: 86
+   service: "Identi.ca"
+ - id: 87
+   service: "Indaba Music"
+ - id: 88
+   service: "IRC-Galleria"
+ - id: 89
+   service: "italki.com"
+ - id: 90
+   service: "Itsmy"
+ - id: 91
+   service: "iWiW"
+ - id: 92
+   service: "Jaiku"
+ - id: 93
+   service: "Jiepang"
+ - id: 94
+   service: "Kaixin001"
+ - id: 95
+   service: "Kiwibox"
+ - id: 96
+   service: "Lafango"
+ - id: 97
+   service: "LAGbook"
+ - id: 98
+   service: "LaiBhaari"
+ - id: 99
+   service: "Last.fm"
+ - id: 100
+   service: "LibraryThing"
+ - id: 101
+   service: "Lifeknot"
+ - id: 102
+   service: "LinkedIn"
+ - id: 103
+   service: "LinkExpats"
+ - id: 104
+   service: "Listography"
+ - id: 105
+   service: "LiveJournal"
+ - id: 106
+   service: "Livemocha"
+ - id: 107
+   service: "Makeoutclub"
+ - id: 108
+   service: "MEETin"
+ - id: 109
+   service: "Meetup"
+ - id: 110
+   service: "Meettheboss"
+ - id: 111
+   service: "MillatFacebook"
+ - id: 112
+   service: "mixi"
+ - id: 113
+   service: "MocoSpace"
+ - id: 114
+   service: "MOG"
+ - id: 115
+   service: "MouthShut.com"
+ - id: 116
+   service: "Mubi"
+ - id: 117
+   service: "MyHeritage"
+ - id: 118
+   service: "MyLife"
+ - id: 119
+   service: "My Opera"
+ - id: 120
+   service: "Myspace"
+ - id: 121
+   service: "Nasza-klasa.pl"
+ - id: 122
+   service: "Netlog"
+ - id: 123
+   service: "Nexopia"
+ - id: 124
+   service: "NGO Post"
+ - id: 125
+   service: "Ning"
+ - id: 126
+   service: "Odnoklassniki"
+ - id: 127
+   service: "Open Diary"
+ - id: 128
+   service: "Orkut"
+ - id: 129
+   service: "PatientsLikeMe"
+ - id: 130
+   service: "Partyflock"
+ - id: 131
+   service: "Pingsta"
+ - id: 132
+   service: "Pinterest"
+ - id: 133
+   service: "Plaxo"
+ - id: 134
+   service: "Playfire"
+ - id: 135
+   service: "Playlist.com"
+ - id: 136
+   service: "Plurk"
+ - id: 137
+   service: "Qapacity"
+ - id: 138
+   service: "Quechup"
+ - id: 139
+   service: "Qzone"
+ - id: 140
+   service: "Raptr"
+ - id: 141
+   service: "Ravelry"
+ - id: 142
+   service: "Renren"
+ - id: 143
+   service: "ReverbNation.com"
+ - id: 144
+   service: "Ryze"
+ - id: 145
+   service: "ScienceStage"
+ - id: 146
+   service: "ShareTheMusic"
+ - id: 147
+   service: "Shelfari"
+ - id: 148
+   service: "Sina Weibo"
+ - id: 149
+   service: "Skoob"
+ - id: 150
+   service: "Skyrock"
+ - id: 151
+   service: "SocialVibe"
+ - id: 152
+   service: "Sonico.com"
+ - id: 153
+   service: "SoundCloud"
+ - id: 154
+   service: "Spaces"
+ - id: 155
+   service: "Stickam"
+ - id: 156
+   service: "StudiVZ"
+ - id: 157
+   service: "Students Circle Network"
+ - id: 158
+   service: "StumbleUpon"
+ - id: 159
+   service: "Tagged"
+ - id: 160
+   service: "Talkbiznow"
+ - id: 161
+   service: "Taltopia"
+ - id: 162
+   service: "Taringa!"
+ - id: 163
+   service: "TeachStreet"
+ - id: 164
+   service: "TermWiki"
+ - id: 165
+   service: "The Sphere"
+ - id: 166
+   service: "TravBuddy.com"
+ - id: 167
+   service: "Travellerspoint"
+ - id: 168
+   service: "tribe.net"
+ - id: 169
+   service: "Trombi.com"
+ - id: 170
+   service: "Tuenti"
+ - id: 171
+   service: "Twitter"
+ - id: 172
+   service: "Tylted"
+ - id: 173
+   service: "Vkontakte"
+ - id: 174
+   service: "Viadeo"
+ - id: 175
+   service: "Virb"
+ - id: 176
+   service: "Vox"
+ - id: 177
+   service: "Wakoopa"
+ - id: 178
+   service: "Wattpad"
+ - id: 179
+   service: "WAYN"
+ - id: 180
+   service: "WeeWorld"
+ - id: 181
+   service: "Wellwer"
+ - id: 182
+   service: "WeOurFamily"
+ - id: 183
+   service: "Wepolls.com"
+ - id: 184
+   service: "Wer-kennt-wen"
+ - id: 185
+   service: "weRead"
+ - id: 186
+   service: "Wiser.org"
+ - id: 187
+   service: "Wooxie"
+ - id: 188
+   service: "WriteAPrisoner.com"
+ - id: 189
+   service: "Xanga"
+ - id: 190
+   service: "XING"
+ - id: 191
+   service: "Xt3"
+ - id: 192
+   service: "Yammer"
+ - id: 193
+   service: "Yelp, Inc."
+ - id: 194
+   service: "Zoo.gr"
+ - id: 195
+   service: "Zooppa"

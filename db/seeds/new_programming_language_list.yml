@@ -1,0 +1,1325 @@
+programming_languages:
+ - id: 1
+   language: "A# .NET"
+ - id: 2
+   language: "A# (Axiom)"
+ - id: 3
+   language: "A-0 System"
+ - id: 4
+   language: "A+"
+ - id: 5
+   language: "A++"
+ - id: 6
+   language: "ABAP"
+ - id: 7
+   language: "ABC"
+ - id: 8
+   language: "ABC ALGOL"
+ - id: 9
+   language: "ABLE"
+ - id: 10
+   language: "ABSET"
+ - id: 11
+   language: "ABSYS"
+ - id: 12
+   language: "Abundance"
+ - id: 13
+   language: "ACC"
+ - id: 14
+   language: "Accent"
+ - id: 15
+   language: "Ace DASL"
+ - id: 16
+   language: "ACT-III"
+ - id: 17
+   language: "Action!"
+ - id: 18
+   language: "ActionScript"
+ - id: 19
+   language: "Ada"
+ - id: 20
+   language: "Adenine"
+ - id: 21
+   language: "Agda"
+ - id: 22
+   language: "Agora"
+ - id: 23
+   language: "AIMMS"
+ - id: 24
+   language: "Alef"
+ - id: 25
+   language: "ALF"
+ - id: 26
+   language: "ALGOL 58"
+ - id: 27
+   language: "ALGOL 60"
+ - id: 28
+   language: "ALGOL 68"
+ - id: 29
+   language: "Alice"
+ - id: 30
+   language: "Alma-0"
+ - id: 31
+   language: "AmbientTalk"
+ - id: 32
+   language: "Amiga E"
+ - id: 33
+   language: "AMOS"
+ - id: 34
+   language: "AMPL"
+ - id: 35
+   language: "APL"
+ - id: 36
+   language: "AppleScript"
+ - id: 37
+   language: "Arc"
+ - id: 38
+   language: "ARexx"
+ - id: 39
+   language: "Argus"
+ - id: 40
+   language: "AspectJ"
+ - id: 41
+   language: "ASP.NET"
+ - id: 42
+   language: "Assembly language"
+ - id: 43
+   language: "ATS"
+ - id: 44
+   language: "Ateji PX"
+ - id: 45
+   language: "AutoHotkey"
+ - id: 46
+   language: "Autocoder"
+ - id: 47
+   language: "AutoIt"
+ - id: 48
+   language: "AutoLISP / Visual LISP"
+ - id: 49
+   language: "Averest"
+ - id: 50
+   language: "AWK"
+ - id: 51
+   language: "Axum"
+ - id: 52
+   language: "B"
+ - id: 53
+   language: "Babbage"
+ - id: 54
+   language: "Bash"
+ - id: 55
+   language: "BASIC"
+ - id: 56
+   language: "bc"
+ - id: 57
+   language: "BCPL"
+ - id: 58
+   language: "BeanShell"
+ - id: 59
+   language: "Batch (Windows/Dos)"
+ - id: 60
+   language: "Bertrand"
+ - id: 61
+   language: "BETA"
+ - id: 62
+   language: "Bigwig"
+ - id: 63
+   language: "Bistro"
+ - id: 64
+   language: "BitC"
+ - id: 65
+   language: "BLISS"
+ - id: 66
+   language: "Blue"
+ - id: 67
+   language: "Bon"
+ - id: 68
+   language: "Boo"
+ - id: 69
+   language: "Boomerang"
+ - id: 70
+   language: "Bourne shell (including bash and ksh)"
+ - id: 71
+   language: "BREW"
+ - id: 72
+   language: "BPEL"
+ - id: 73
+   language: "BUGSYS"
+ - id: 74
+   language: "BuildProfessional"
+ - id: 75
+   language: "C"
+ - id: 76
+   language: "C--"
+ - id: 77
+   language: "C++"
+ - id: 78
+   language: "C#"
+ - id: 79
+   language: "C/AL"
+ - id: 80
+   language: "Cach\303\251 ObjectScript"
+ - id: 81
+   language: "C Shell"
+ - id: 82
+   language: "Caml"
+ - id: 83
+   language: "Candle"
+ - id: 84
+   language: "Cayenne"
+ - id: 85
+   language: "CDuce"
+ - id: 86
+   language: "Cecil"
+ - id: 87
+   language: "Cel"
+ - id: 88
+   language: "Cesil"
+ - id: 89
+   language: "Ceylon"
+ - id: 90
+   language: "CFML"
+ - id: 91
+   language: "Cg"
+ - id: 92
+   language: "Ch"
+ - id: 93
+   language: "Chapel"
+ - id: 94
+   language: "CHAIN"
+ - id: 95
+   language: "Charity"
+ - id: 96
+   language: "Charm"
+ - id: 97
+   language: "Chef"
+ - id: 98
+   language: "CHILL"
+ - id: 99
+   language: "CHIP-8"
+ - id: 100
+   language: "chomski"
+ - id: 101
+   language: "Chrome (now Oxygene)"
+ - id: 102
+   language: "ChucK"
+ - id: 103
+   language: "CICS"
+ - id: 104
+   language: "Cilk"
+ - id: 105
+   language: "CL (IBM)"
+ - id: 106
+   language: "Claire"
+ - id: 107
+   language: "Clarion"
+ - id: 108
+   language: "Clean"
+ - id: 109
+   language: "Clipper"
+ - id: 110
+   language: "CLIST"
+ - id: 111
+   language: "Clojure"
+ - id: 112
+   language: "CLU"
+ - id: 113
+   language: "CMS-2"
+ - id: 114
+   language: "COBOL"
+ - id: 115
+   language: "CobolScript"
+ - id: 116
+   language: "Cobra"
+ - id: 117
+   language: "CODE"
+ - id: 118
+   language: "CoffeeScript"
+ - id: 119
+   language: "Cola"
+ - id: 120
+   language: "ColdC"
+ - id: 121
+   language: "ColdFusion"
+ - id: 122
+   language: "Cool"
+ - id: 123
+   language: "COMAL"
+ - id: 124
+   language: "Combined Programming Language (CPL)"
+ - id: 125
+   language: "Common Intermediate Language (CIL)"
+ - id: 126
+   language: "Common Lisp (also known as CL)"
+ - id: 127
+   language: "COMPASS"
+ - id: 128
+   language: "Component Pascal"
+ - id: 129
+   language: "COMIT"
+ - id: 130
+   language: "Constraint Handling Rules (CHR)"
+ - id: 131
+   language: "Converge"
+ - id: 132
+   language: "Coral 66"
+ - id: 133
+   language: "Corn"
+ - id: 134
+   language: "CorVision"
+ - id: 135
+   language: "Coq"
+ - id: 136
+   language: "COWSEL"
+ - id: 137
+   language: "CPL"
+ - id: 138
+   language: "csh"
+ - id: 139
+   language: "CSP"
+ - id: 140
+   language: "Csound"
+ - id: 141
+   language: "Curl"
+ - id: 142
+   language: "Curry"
+ - id: 143
+   language: "Cyclone"
+ - id: 144
+   language: "Cython"
+ - id: 145
+   language: "D"
+ - id: 146
+   language: "DASL (Datapoint''s Advanced Systems Language)"
+ - id: 147
+   language: "DASL (Distributed Application Specification Language)"
+ - id: 148
+   language: "Dart"
+ - id: 149
+   language: "DataFlex"
+ - id: 150
+   language: "Datalog"
+ - id: 151
+   language: "DATATRIEVE"
+ - id: 152
+   language: "dBase"
+ - id: 153
+   language: "dc"
+ - id: 154
+   language: "DCL"
+ - id: 155
+   language: "Deesel (formerly G)"
+ - id: 156
+   language: "Delphi"
+ - id: 157
+   language: "DinkC"
+ - id: 158
+   language: "DIBOL"
+ - id: 159
+   language: "Dog"
+ - id: 160
+   language: "Draco"
+ - id: 161
+   language: "Dylan"
+ - id: 162
+   language: "DYNAMO"
+ - id: 163
+   language: "E"
+ - id: 164
+   language: "E#"
+ - id: 165
+   language: "Ease"
+ - id: 166
+   language: "Easy PL/I"
+ - id: 167
+   language: "EASYTRIEVE PLUS"
+ - id: 168
+   language: "ECMAScript"
+ - id: 169
+   language: "Edinburgh IMP"
+ - id: 170
+   language: "EGL"
+ - id: 171
+   language: "Eiffel"
+ - id: 172
+   language: "ELAN"
+ - id: 173
+   language: "Emacs Lisp"
+ - id: 174
+   language: "Emerald"
+ - id: 175
+   language: "Epigram"
+ - id: 176
+   language: "Erlang"
+ - id: 177
+   language: "es"
+ - id: 178
+   language: "Escapade"
+ - id: 179
+   language: "Escher"
+ - id: 180
+   language: "ESPOL"
+ - id: 181
+   language: "Esterel"
+ - id: 182
+   language: "Etoys"
+ - id: 183
+   language: "Euclid"
+ - id: 184
+   language: "Euler"
+ - id: 185
+   language: "Euphoria"
+ - id: 186
+   language: "EusLisp Robot Programming Language"
+ - id: 187
+   language: "CMS EXEC"
+ - id: 188
+   language: "EXEC 2"
+ - id: 189
+   language: "F"
+ - id: 190
+   language: "F#"
+ - id: 191
+   language: "Factor"
+ - id: 192
+   language: "Falcon"
+ - id: 193
+   language: "Fancy"
+ - id: 194
+   language: "Fantom"
+ - id: 195
+   language: "FAUST"
+ - id: 196
+   language: "Felix"
+ - id: 197
+   language: "Ferite"
+ - id: 198
+   language: "FFP"
+ - id: 199
+   language: "Fj\303\266lnir"
+ - id: 200
+   language: "FL"
+ - id: 201
+   language: "Flavors"
+ - id: 202
+   language: "Flex"
+ - id: 203
+   language: "FLOW-MATIC"
+ - id: 204
+   language: "FOCAL"
+ - id: 205
+   language: "FOCUS"
+ - id: 206
+   language: "FOIL"
+ - id: 207
+   language: "FORMAC"
+ - id: 208
+   language: "@Formula"
+ - id: 209
+   language: "Forth"
+ - id: 210
+   language: "Fortran"
+ - id: 211
+   language: "Fortress"
+ - id: 212
+   language: "FoxBase"
+ - id: 213
+   language: "FoxPro"
+ - id: 214
+   language: "FP"
+ - id: 215
+   language: "FPr"
+ - id: 216
+   language: "Franz Lisp"
+ - id: 217
+   language: "Frink"
+ - id: 218
+   language: "F-Script"
+ - id: 219
+   language: "FSProg"
+ - id: 220
+   language: "G"
+ - id: 221
+   language: "Game Maker Language"
+ - id: 222
+   language: "GameMonkey Script"
+ - id: 223
+   language: "GAMS"
+ - id: 224
+   language: "GAP"
+ - id: 225
+   language: "G-code"
+ - id: 226
+   language: "Genie"
+ - id: 227
+   language: "GDL"
+ - id: 228
+   language: "Gibiane"
+ - id: 229
+   language: "GJ"
+ - id: 230
+   language: "GEORGE (programming language)"
+ - id: 231
+   language: "GLSL"
+ - id: 232
+   language: "GNU E"
+ - id: 233
+   language: "GM"
+ - id: 234
+   language: "Go"
+ - id: 235
+   language: "Go!"
+ - id: 236
+   language: "GOAL"
+ - id: 237
+   language: "G\303\266del"
+ - id: 238
+   language: "Godiva"
+ - id: 239
+   language: "GOM (Good Old Mad)"
+ - id: 240
+   language: "Goo"
+ - id: 241
+   language: "GOTRAN"
+ - id: 242
+   language: "GPSS"
+ - id: 243
+   language: "GraphTalk"
+ - id: 244
+   language: "GRASS"
+ - id: 245
+   language: "Groovy"
+ - id: 246
+   language: "HAL/S"
+ - id: 247
+   language: "Hamilton C shell"
+ - id: 248
+   language: "Harbour"
+ - id: 249
+   language: "Haskell"
+ - id: 250
+   language: "Haxe"
+ - id: 251
+   language: "High Level Assembly"
+ - id: 252
+   language: "HLSL"
+ - id: 253
+   language: "Hop"
+ - id: 254
+   language: "Hope"
+ - id: 255
+   language: "Hugo"
+ - id: 256
+   language: "Hume"
+ - id: 257
+   language: "HyperTalk"
+ - id: 258
+   language: "IBM Basic assembly language"
+ - id: 259
+   language: "IBM HAScript"
+ - id: 260
+   language: "IBM Informix-4GL"
+ - id: 261
+   language: "IBM RPG"
+ - id: 262
+   language: "ICI"
+ - id: 263
+   language: "Icon"
+ - id: 264
+   language: "Id"
+ - id: 265
+   language: "IDL"
+ - id: 266
+   language: "IMP"
+ - id: 267
+   language: "Inform"
+ - id: 268
+   language: "Io"
+ - id: 269
+   language: "Ioke"
+ - id: 270
+   language: "IPL"
+ - id: 271
+   language: "IPTSCRAE"
+ - id: 272
+   language: "ISLISP"
+ - id: 273
+   language: "ISPF"
+ - id: 274
+   language: "ISWIM"
+ - id: 275
+   language: "J"
+ - id: 276
+   language: "J#"
+ - id: 277
+   language: "J++"
+ - id: 278
+   language: "JADE"
+ - id: 279
+   language: "Jako"
+ - id: 280
+   language: "JAL"
+ - id: 281
+   language: "Janus"
+ - id: 282
+   language: "JASS"
+ - id: 283
+   language: "Java"
+ - id: 284
+   language: "JavaScript"
+ - id: 285
+   language: "JCL"
+ - id: 286
+   language: "JEAN"
+ - id: 287
+   language: "Join Java"
+ - id: 288
+   language: "JOSS"
+ - id: 289
+   language: "Joule"
+ - id: 290
+   language: "JOVIAL"
+ - id: 291
+   language: "Joy"
+ - id: 292
+   language: "JScript"
+ - id: 293
+   language: "JavaFX Script"
+ - id: 294
+   language: "K"
+ - id: 295
+   language: "Kaleidoscope"
+ - id: 296
+   language: "Karel"
+ - id: 297
+   language: "Karel++"
+ - id: 298
+   language: "Kaya"
+ - id: 299
+   language: "KEE"
+ - id: 300
+   language: "KIF"
+ - id: 301
+   language: "KRC"
+ - id: 302
+   language: "KRL"
+ - id: 303
+   language: "KRL (KUKA Robot Language)"
+ - id: 304
+   language: "KRYPTON"
+ - id: 305
+   language: "ksh"
+ - id: 306
+   language: "L"
+ - id: 307
+   language: "L# .NET"
+ - id: 308
+   language: "LabVIEW"
+ - id: 309
+   language: "Ladder"
+ - id: 310
+   language: "Lagoona"
+ - id: 311
+   language: "LANSA"
+ - id: 312
+   language: "Lasso"
+ - id: 313
+   language: "LaTeX"
+ - id: 314
+   language: "Lava"
+ - id: 315
+   language: "LC-3"
+ - id: 316
+   language: "Leadwerks Script"
+ - id: 317
+   language: "Leda"
+ - id: 318
+   language: "Legoscript"
+ - id: 319
+   language: "LIL"
+ - id: 320
+   language: "LilyPond"
+ - id: 321
+   language: "Limbo"
+ - id: 322
+   language: "Limnor"
+ - id: 323
+   language: "LINC"
+ - id: 324
+   language: "Lingo"
+ - id: 325
+   language: "Linoleum"
+ - id: 326
+   language: "LIS"
+ - id: 327
+   language: "LISA"
+ - id: 328
+   language: "Lisaac"
+ - id: 329
+   language: "Lisp"
+ - id: 330
+   language: "Lite-C"
+ - id: 331
+   language: "Lithe"
+ - id: 332
+   language: "Little b"
+ - id: 333
+   language: "Logo"
+ - id: 334
+   language: "Logtalk"
+ - id: 335
+   language: "LPC"
+ - id: 336
+   language: "LSE"
+ - id: 337
+   language: "LSL"
+ - id: 338
+   language: "LiveCode"
+ - id: 339
+   language: "Lua"
+ - id: 340
+   language: "Lucid"
+ - id: 341
+   language: "Lustre"
+ - id: 342
+   language: "LYaPAS"
+ - id: 343
+   language: "Lynx"
+ - id: 344
+   language: "M"
+ - id: 345
+   language: "M2001"
+ - id: 346
+   language: "M4"
+ - id: 347
+   language: "Machine code"
+ - id: 348
+   language: "MAD (Michigan Algorithm Decoder)"
+ - id: 349
+   language: "MAD/I"
+ - id: 350
+   language: "Magik"
+ - id: 351
+   language: "Magma"
+ - id: 352
+   language: "make"
+ - id: 353
+   language: "Maple"
+ - id: 354
+   language: "MAPPER"
+ - id: 355
+   language: "MARK-IV"
+ - id: 356
+   language: "Mary"
+ - id: 357
+   language: "MASM Microsoft Assembly x86"
+ - id: 358
+   language: "Mathematica"
+ - id: 359
+   language: "MATLAB"
+ - id: 360
+   language: "Maxima (see also Macsyma)"
+ - id: 361
+   language: "Max (Max Msp)"
+ - id: 362
+   language: "MaxScript internal language 3D Studio Max"
+ - id: 363
+   language: "Maya (MEL)"
+ - id: 364
+   language: "MDL"
+ - id: 365
+   language: "Mercury"
+ - id: 366
+   language: "Mesa"
+ - id: 367
+   language: "Metacard"
+ - id: 368
+   language: "Metafont"
+ - id: 369
+   language: "MetaL"
+ - id: 370
+   language: "Microcode"
+ - id: 371
+   language: "MicroScript"
+ - id: 372
+   language: "MIIS"
+ - id: 373
+   language: "MillScript"
+ - id: 374
+   language: "MIMIC"
+ - id: 375
+   language: "Mirah"
+ - id: 376
+   language: "Miranda"
+ - id: 377
+   language: "MIVA Script"
+ - id: 378
+   language: "ML"
+ - id: 379
+   language: "Moby"
+ - id: 380
+   language: "Model 204"
+ - id: 381
+   language: "Modelica"
+ - id: 382
+   language: "Modula"
+ - id: 383
+   language: "Modula-2"
+ - id: 384
+   language: "Modula-3"
+ - id: 385
+   language: "Mohol"
+ - id: 386
+   language: "MOO"
+ - id: 387
+   language: "Mortran"
+ - id: 388
+   language: "Mouse"
+ - id: 389
+   language: "MPD"
+ - id: 390
+   language: "MSIL - deprecated name for CIL"
+ - id: 391
+   language: "MSL"
+ - id: 392
+   language: "MUMPS"
+ - id: 393
+   language: "Napier88"
+ - id: 394
+   language: "NASM"
+ - id: 395
+   language: "NATURAL"
+ - id: 396
+   language: "Neko"
+ - id: 397
+   language: "Nemerle"
+ - id: 398
+   language: "NESL"
+ - id: 399
+   language: "Net.Data"
+ - id: 400
+   language: "NetLogo"
+ - id: 401
+   language: "NetRexx"
+ - id: 402
+   language: "NewLISP"
+ - id: 403
+   language: "NEWP"
+ - id: 404
+   language: "Newspeak"
+ - id: 405
+   language: "NewtonScript"
+ - id: 406
+   language: "NGL"
+ - id: 407
+   language: "Nial"
+ - id: 408
+   language: "Nice"
+ - id: 409
+   language: "Nickle"
+ - id: 410
+   language: "NPL"
+ - id: 411
+   language: "Not eXactly C (NXC)"
+ - id: 412
+   language: "Not Quite C (NQC)"
+ - id: 413
+   language: "Nu"
+ - id: 414
+   language: "NSIS"
+ - id: 415
+   language: "NWScript"
+ - id: 416
+   language: "XML"
+ - id: 417
+   language: "Oak"
+ - id: 418
+   language: "Oberon"
+ - id: 419
+   language: "Obix"
+ - id: 420
+   language: "OBJ2"
+ - id: 421
+   language: "Object Lisp"
+ - id: 422
+   language: "ObjectLOGO"
+ - id: 423
+   language: "Object REXX"
+ - id: 424
+   language: "Object Pascal"
+ - id: 425
+   language: "Objective-C"
+ - id: 426
+   language: "Objective-J"
+ - id: 427
+   language: "Obliq"
+ - id: 428
+   language: "Obol"
+ - id: 429
+   language: "OCaml"
+ - id: 430
+   language: "occam"
+ - id: 431
+   language: "occam-\317\200"
+ - id: 432
+   language: "Octave"
+ - id: 433
+   language: "OmniMark"
+ - id: 434
+   language: "Onyx"
+ - id: 435
+   language: "Opa"
+ - id: 436
+   language: "Opal"
+ - id: 437
+   language: "OpenEdge ABL"
+ - id: 438
+   language: "OPL"
+ - id: 439
+   language: "OPS5"
+ - id: 440
+   language: "OptimJ"
+ - id: 441
+   language: "Orc"
+ - id: 442
+   language: "ORCA/Modula-2"
+ - id: 443
+   language: "Oriel"
+ - id: 444
+   language: "Orwell"
+ - id: 445
+   language: "Oxygene"
+ - id: 446
+   language: "Oz"
+ - id: 447
+   language: "P#"
+ - id: 448
+   language: "PARI/GP"
+ - id: 449
+   language: "Pascal"
+ - id: 450
+   language: "Pawn"
+ - id: 451
+   language: "PCASTL"
+ - id: 452
+   language: "PCF"
+ - id: 453
+   language: "PEARL"
+ - id: 454
+   language: "PeopleCode"
+ - id: 455
+   language: "Perl"
+ - id: 456
+   language: "PDL"
+ - id: 457
+   language: "PHP"
+ - id: 458
+   language: "Phrogram"
+ - id: 459
+   language: "Pico"
+ - id: 460
+   language: "Pict"
+ - id: 461
+   language: "Pike"
+ - id: 462
+   language: "PIKT"
+ - id: 463
+   language: "PILOT"
+ - id: 464
+   language: "Pizza"
+ - id: 465
+   language: "PL-11"
+ - id: 466
+   language: "PL/0"
+ - id: 467
+   language: "PL/B"
+ - id: 468
+   language: "PL/C"
+ - id: 469
+   language: "PL/I"
+ - id: 470
+   language: "PL/M"
+ - id: 471
+   language: "PL/P"
+ - id: 472
+   language: "PL/SQL"
+ - id: 473
+   language: "PL360"
+ - id: 474
+   language: "PLANC"
+ - id: 475
+   language: "Plankalk\303\274l"
+ - id: 476
+   language: "PLEX"
+ - id: 477
+   language: "PLEXIL"
+ - id: 478
+   language: "Plus"
+ - id: 479
+   language: "POP-11"
+ - id: 480
+   language: "PostScript"
+ - id: 481
+   language: "PortablE"
+ - id: 482
+   language: "Powerhouse"
+ - id: 483
+   language: "PowerBuilder"
+ - id: 484
+   language: "PowerShell"
+ - id: 485
+   language: "PPL"
+ - id: 486
+   language: "Processing"
+ - id: 487
+   language: "Processing.js"
+ - id: 488
+   language: "Prograph"
+ - id: 489
+   language: "PROIV"
+ - id: 490
+   language: "Prolog"
+ - id: 491
+   language: "Visual Prolog"
+ - id: 492
+   language: "Promela"
+ - id: 493
+   language: "PROTEL"
+ - id: 494
+   language: "ProvideX"
+ - id: 495
+   language: "Pro*C"
+ - id: 496
+   language: "Pure"
+ - id: 497
+   language: "Python"
+ - id: 498
+   language: "Q (equational programming language)"
+ - id: 499
+   language: "Q (programming language from Kx Systems)"
+ - id: 500
+   language: "Qalb"
+ - id: 501
+   language: "QBasic"
+ - id: 502
+   language: "Qi"
+ - id: 503
+   language: "QtScript"
+ - id: 504
+   language: "QuakeC"
+ - id: 505
+   language: "QPL"
+ - id: 506
+   language: "R"
+ - id: 507
+   language: "R++"
+ - id: 508
+   language: "Racket"
+ - id: 509
+   language: "RAPID"
+ - id: 510
+   language: "Rapira"
+ - id: 511
+   language: "Ratfiv"
+ - id: 512
+   language: "Ratfor"
+ - id: 513
+   language: "rc"
+ - id: 514
+   language: "REBOL"
+ - id: 515
+   language: "Redcode"
+ - id: 516
+   language: "REFAL"
+ - id: 517
+   language: "Reia"
+ - id: 518
+   language: "Revolution"
+ - id: 519
+   language: "rex"
+ - id: 520
+   language: "REXX"
+ - id: 521
+   language: "Rlab"
+ - id: 522
+   language: "ROOP"
+ - id: 523
+   language: "RPG"
+ - id: 524
+   language: "RPL"
+ - id: 525
+   language: "RSL"
+ - id: 526
+   language: "RTL/2"
+ - id: 527
+   language: "Ruby"
+ - id: 528
+   language: "Rust"
+ - id: 529
+   language: "S"
+ - id: 530
+   language: "S2"
+ - id: 531
+   language: "S3"
+ - id: 532
+   language: "S-Lang"
+ - id: 533
+   language: "S-PLUS"
+ - id: 534
+   language: "SA-C"
+ - id: 535
+   language: "SabreTalk"
+ - id: 536
+   language: "SAIL"
+ - id: 537
+   language: "SALSA"
+ - id: 538
+   language: "SAM76"
+ - id: 539
+   language: "SAS"
+ - id: 540
+   language: "SASL"
+ - id: 541
+   language: "Sather"
+ - id: 542
+   language: "Sawzall"
+ - id: 543
+   language: "SBL"
+ - id: 544
+   language: "Scala"
+ - id: 545
+   language: "Scheme"
+ - id: 546
+   language: "Scilab"
+ - id: 547
+   language: "Scratch"
+ - id: 548
+   language: "Script.NET"
+ - id: 549
+   language: "Sed"
+ - id: 550
+   language: "Seed7"
+ - id: 551
+   language: "Self"
+ - id: 552
+   language: "SenseTalk"
+ - id: 553
+   language: "SequenceL"
+ - id: 554
+   language: "SETL"
+ - id: 555
+   language: "Shift Script"
+ - id: 556
+   language: "SiMPLE"
+ - id: 557
+   language: "SIMPOL"
+ - id: 558
+   language: "SIMSCRIPT"
+ - id: 559
+   language: "Simula"
+ - id: 560
+   language: "Simulink"
+ - id: 561
+   language: "SISAL"
+ - id: 562
+   language: "SLIP"
+ - id: 563
+   language: "SMALL"
+ - id: 564
+   language: "Smalltalk"
+ - id: 565
+   language: "Small Basic"
+ - id: 566
+   language: "SML"
+ - id: 567
+   language: "SNOBOL(SPITBOL)"
+ - id: 568
+   language: "Snowball"
+ - id: 569
+   language: "SOL"
+ - id: 570
+   language: "Span"
+ - id: 571
+   language: "SPARK"
+ - id: 572
+   language: "SPIN"
+ - id: 573
+   language: "SP/k"
+ - id: 574
+   language: "SPS"
+ - id: 575
+   language: "Squeak"
+ - id: 576
+   language: "Squirrel"
+ - id: 577
+   language: "SR"
+ - id: 578
+   language: "S/SL"
+ - id: 579
+   language: "Starlogo"
+ - id: 580
+   language: "Strand"
+ - id: 581
+   language: "Stata"
+ - id: 582
+   language: "Stateflow"
+ - id: 583
+   language: "Subtext"
+ - id: 584
+   language: "SuperCollider"
+ - id: 585
+   language: "SuperTalk"
+ - id: 586
+   language: "SYMPL"
+ - id: 587
+   language: "SyncCharts"
+ - id: 588
+   language: "SystemVerilog"
+ - id: 589
+   language: "T"
+ - id: 590
+   language: "TACL"
+ - id: 591
+   language: "TACPOL"
+ - id: 592
+   language: "TADS"
+ - id: 593
+   language: "TAL"
+ - id: 594
+   language: "Tcl"
+ - id: 595
+   language: "Tea"
+ - id: 596
+   language: "TECO"
+ - id: 597
+   language: "TELCOMP"
+ - id: 598
+   language: "TeX"
+ - id: 599
+   language: "TEX"
+ - id: 600
+   language: "TIE"
+ - id: 601
+   language: "Timber"
+ - id: 602
+   language: "TMG"
+ - id: 603
+   language: "Tom"
+ - id: 604
+   language: "TOM"
+ - id: 605
+   language: "Topspeed"
+ - id: 606
+   language: "TPU"
+ - id: 607
+   language: "Trac"
+ - id: 608
+   language: "TTM"
+ - id: 609
+   language: "T-SQL"
+ - id: 610
+   language: "TTCN"
+ - id: 611
+   language: "Turing"
+ - id: 612
+   language: "TUTOR"
+ - id: 613
+   language: "TXL"
+ - id: 614
+   language: "TypeScript"
+ - id: 615
+   language: "Ubercode"
+ - id: 616
+   language: "UCSD Pascal"
+ - id: 617
+   language: "Unicon"
+ - id: 618
+   language: "Uniface"
+ - id: 619
+   language: "UNITY"
+ - id: 620
+   language: "Unix shell"
+ - id: 621
+   language: "UnrealScript"
+ - id: 622
+   language: "Vala"
+ - id: 623
+   language: "VBA"
+ - id: 624
+   language: "VBScript"
+ - id: 625
+   language: "Verilog"
+ - id: 626
+   language: "VHDL"
+ - id: 627
+   language: "Visual Basic"
+ - id: 628
+   language: "Visual Basic .NET"
+ - id: 629
+   language: "Microsoft Visual C++"
+ - id: 630
+   language: "Visual C#"
+ - id: 631
+   language: "Visual DataFlex"
+ - id: 632
+   language: "Visual DialogScript"
+ - id: 633
+   language: "Visual Fortran"
+ - id: 634
+   language: "Visual FoxPro"
+ - id: 635
+   language: "Visual J++"
+ - id: 636
+   language: "Visual J#"
+ - id: 637
+   language: "Visual Objects"
+ - id: 638
+   language: "VSXu"
+ - id: 639
+   language: "Vvvv"
+ - id: 640
+   language: "WATFIV"
+ - id: 641
+   language: "WebDNA"
+ - id: 642
+   language: "WebQL"
+ - id: 643
+   language: "Windows PowerShell"
+ - id: 644
+   language: "Winbatch"
+ - id: 645
+   language: "X++"
+ - id: 646
+   language: "X10"
+ - id: 647
+   language: "XBL"
+ - id: 648
+   language: "XC (exploits XMOS architecture)"
+ - id: 649
+   language: "xHarbour"
+ - id: 650
+   language: "XL"
+ - id: 651
+   language: "XOTcl"
+ - id: 652
+   language: "XPL"
+ - id: 653
+   language: "XPL0"
+ - id: 654
+   language: "XQuery"
+ - id: 655
+   language: "XSB"
+ - id: 656
+   language: "Yorick"
+ - id: 657
+   language: "YQL"
+ - id: 658
+   language: "Z notation"
+ - id: 659
+   language: "Zeno"
+ - id: 660
+   language: "Ziron"
+ - id: 661
+   language: "ZOPL"
+ - id: 662
+   language: "ZPL"
