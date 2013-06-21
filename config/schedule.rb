@@ -19,5 +19,9 @@
 
 # Learn more: http://github.com/javan/whenever
 every 1.day, :at => '12:01 am' do
-  rake "db:date_update"
+	rake "db:date_update"
+end
+
+every 3.hours do
+	rake "db:populate"
 end
