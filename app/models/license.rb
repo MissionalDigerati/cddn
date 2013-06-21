@@ -2,5 +2,5 @@ class License < ActiveRecord::Base
 
 	has_many :projects
 
-	attr_accessible :license_title
+	attr_accessible :id, :license_title
 end

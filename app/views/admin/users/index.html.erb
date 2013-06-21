@@ -27,7 +27,7 @@
 					<br/>
 					<%= status(user.suspended) %> <span class="slash">/</span> <%= yes_or_no(user.event_approved) %> <span class="slash">/</span> <%= yes_or_no(user.project_approved) %>
 					<br/>
-					<%= return_input_or_nil(user.primary_role) %> <span class="slash">/</span> <%= return_input_or_nil(user.provider) %> <span class="slash">/</span> <%= return_input_or_nil(user.sign_in_count) %> <span class="slash">/</span> <%= return_input_or_nil(user.last_sign_in_at.to_date) %>
+					<%= return_input_or_nil(user.primary_role) %> <span class="slash">/</span> <%= return_input_or_nil(user.provider) %> <span class="slash">/</span> <%= return_input_or_nil(user.sign_in_count) %> <span class="slash">/</span> <%= return_input_or_nil(user.last_sign_in_at) %>
 				</td>
 				<td>
 					<div class="btn-group pull-right">

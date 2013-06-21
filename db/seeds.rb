@@ -6,6 +6,8 @@ State.destroy_all
 Country.destroy_all
 ProgrammingLanguage.destroy_all
 License.destroy_all
+Event.destroy_all
+Project.destroy_all
 User.destroy_all
 Admin.destroy_all
 # Grab the data files
@@ -42,14 +44,18 @@ end
 
 puts "seeding programming_languages"
 languages['programming_languages'].each do |l|
-	puts l
-  ProgrammingLanguage.create({id: l['id'], language: l['language']})
+  puts l['language']
+  language = ProgrammingLanguage.new({language: l['language']})
+  language.id = l['id']
+  language.save
 end
 
 puts "seeding programming licenses"
-licenses['programming_licenses'].each do |license|
-	puts license
-	License.create({id: license['id'], license_title: license['license_title']})
+licenses['programming_licenses'].each do |pl|
+  puts pl['id']
+	license = License.new({license_title: pl['license_title']})
+  license.id = pl['id']
+  license.save
 end
 
 puts "Seeding complete."

@@ -1,4 +1,4 @@
 class SocialMedia < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :id, :service
   has_many :networks
 end

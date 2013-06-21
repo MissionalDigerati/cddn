@@ -158,7 +158,7 @@ programming_languages:
  - id: 79
    language: "C/AL"
  - id: 80
-   language: "Cach\303\251 ObjectScript"
+   language: "Caché ObjectScript"
  - id: 81
    language: "C Shell"
  - id: 82
@@ -396,7 +396,7 @@ programming_languages:
  - id: 198
    language: "FFP"
  - id: 199
-   language: "Fj\303\266lnir"
+   language: "Fjölnir"
  - id: 200
    language: "FL"
  - id: 201
@@ -472,7 +472,7 @@ programming_languages:
  - id: 236
    language: "GOAL"
  - id: 237
-   language: "G\303\266del"
+   language: "Gödel"
  - id: 238
    language: "Godiva"
  - id: 239
@@ -860,7 +860,7 @@ programming_languages:
  - id: 430
    language: "occam"
  - id: 431
-   language: "occam-\317\200"
+   language: "occam-π"
  - id: 432
    language: "Octave"
  - id: 433
@@ -948,7 +948,7 @@ programming_languages:
  - id: 474
    language: "PLANC"
  - id: 475
-   language: "Plankalk\303\274l"
+   language: "Plankalkül"
  - id: 476
    language: "PLEX"
  - id: 477

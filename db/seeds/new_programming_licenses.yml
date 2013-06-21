@@ -232,7 +232,7 @@ programming_licenses:
  - id: 116
    license_title: "Sybase Open Watcom Public License version 1.0 (#Watcom)"
  - id: 117
-   license_title: "SystemC \342\200\234Open Source\342\200\235 License, Version 3.0 (#SystemC-3.0)"
+   license_title: "SystemC “Open Source” License, Version 3.0 (#SystemC-3.0)"
  - id: 118
    license_title: "University of Utah Public License (#UtahPublicLicense)"
  - id: 119
@@ -252,9 +252,9 @@ programming_licenses:
  - id: 126
    license_title: "GNU Free Documentation License (#FDLOther)"
  - id: 127
-   license_title: "Creative Commons Attribution 2.0 license (a.k.a. CC\302\240BY) (#ccby)"
+   license_title: "Creative Commons Attribution 2.0 license (a.k.a. CC BY) (#ccby)"
  - id: 128
-   license_title: "Creative Commons Attribution-Sharealike 2.0 license (a.k.a. CC\302\240BY-SA) (#ccbysa)"
+   license_title: "Creative Commons Attribution-Sharealike 2.0 license (a.k.a. CC BY-SA) (#ccbysa)"
  - id: 129
    license_title: "Design Science License (DSL) (#dsl)"
  - id: 130
@@ -270,4 +270,4 @@ programming_licenses:
  - id: 135
    license_title: "GNU Verbatim Copying License (#GNUVerbatim)"
  - id: 136
-   license_title: "Creative Commons Attribution-NoDerivs 3.0 license (a.k.a. CC\302\240BY-ND) (#ccbynd)"
+   license_title: "Creative Commons Attribution-NoDerivs 3.0 license (a.k.a. CC BY-ND) (#ccbynd)"
