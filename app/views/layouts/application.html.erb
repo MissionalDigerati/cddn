@@ -24,6 +24,12 @@
 	
 	<%= render "layouts/please_update_banner" %>
 
+	<!-- this is here only for the version on the dev server -->
+	<br/>
+	<div class="alert">
+		This is test version of this application. The database will be purged and re-populated every 3 hours. Any changes you make will be temporary. Login as a user with Email: "testuser@test.com", Password: "password"
+	</div>
+
 	<% if flash[:notice] %>
 		<div class="alert">
 			<a class="close" data-dismiss="alert" href="#">&times;</a>
@@ -36,7 +42,6 @@
 			<%= flash[:alert] %>
 		</div>
 	<% end %>
-	
 	
 	<%= yield %>
 	<%= yield :scripts %>
