@@ -17,6 +17,8 @@ gem 'font-awesome-rails'
 gem 'populator'
 gem 'faker'
 gem 'gravatar_image_tag'
+gem 'gmaps4rails'
+gem 'ice_cube'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -28,8 +30,6 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'gmaps4rails'
-  gem 'ice_cube'
 end
 
 gem 'jquery-rails'
