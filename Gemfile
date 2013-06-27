@@ -38,6 +38,7 @@ group :test, :development do
   gem "rspec-rails", "~> 2.12.2"
   gem "factory_girl_rails"
   gem 'quiet_assets'
+  gem 'capistrano'
 end
 
 group :test do
