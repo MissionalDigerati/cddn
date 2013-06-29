@@ -21,6 +21,7 @@ gem 'gmaps4rails'
 gem 'ice_cube'
 gem 'bootstrap-sass'
 gem 'jquery-ui-rails'
+gem 'therubyracer'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
